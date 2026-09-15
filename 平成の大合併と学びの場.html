@@ -254,8 +254,9 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
 <li role="presentation"><button role="tab" id="tab-politics" aria-controls="panel-politics" aria-selected="false" data-tab="politics"><span class="n">08</span>政治的背景</button></li>
 <li role="presentation"><button role="tab" id="tab-japan" aria-controls="panel-japan" aria-selected="false" data-tab="japan"><span class="n">09</span>日本全体</button></li>
 <li role="presentation"><button role="tab" id="tab-issues" aria-controls="panel-issues" aria-selected="false" data-tab="issues"><span class="n">10</span>総合的な課題</button></li>
-<li role="presentation"><button role="tab" id="tab-data" aria-controls="panel-data" aria-selected="false" data-tab="data"><span class="n">11</span>参考資料</button></li>
-<li role="presentation"><button role="tab" id="tab-src" aria-controls="panel-src" aria-selected="false" data-tab="src"><span class="n">12</span>出典</button></li>
+<li role="presentation"><button role="tab" id="tab-coverage" aria-controls="panel-coverage" aria-selected="false" data-tab="coverage"><span class="n">11</span>分析の点検</button></li>
+<li role="presentation"><button role="tab" id="tab-data" aria-controls="panel-data" aria-selected="false" data-tab="data"><span class="n">12</span>参考資料</button></li>
+<li role="presentation"><button role="tab" id="tab-src" aria-controls="panel-src" aria-selected="false" data-tab="src"><span class="n">13</span>出典</button></li>
 </ol></nav>
 <div class="tabpanel" id="panel-summary" role="tabpanel" aria-labelledby="tab-summary">
 
@@ -344,8 +345,8 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
 
   <div class="note">
     <div class="nh">これは予測ではない</div>
-    <p>以下の試算は、<strong>明示した前提を機械的に延長したものであり、予測ではない</strong>。施設の増減は各自治体の政策判断で決まるため、本報告が第11章で示したとおり、人口だけでは説明できない（決定係数0.01）。3つのシナリオは「このまま行くとどうなるか」を可視化し、判断の材料を提供するためのものである。</p>
-    <p>人口は国立社会保障・人口問題研究所「日本の将来推計人口（令和5年推計）」の出生中位・死亡中位推計を用いた。2020年の1億2,615万人が2070年に<strong>8,700万人</strong>（−31.0％）、高齢化率は28.6％から<strong>38.7％</strong>へ上昇する。ただし年齢層ごとの動きは大きく異なり、<strong>高齢人口は2024年から2070年で7.1％しか減らない</strong>（第9章）。</p>
+    <p>以下の試算は、<strong>明示した前提を機械的に延長したものであり、予測ではない</strong>。施設の増減は各自治体の政策判断で決まるため、本報告が「総合的な課題」タブで示したとおり、人口だけでは説明できない（決定係数0.01）。3つのシナリオは「このまま行くとどうなるか」を可視化し、判断の材料を提供するためのものである。</p>
+    <p>人口は国立社会保障・人口問題研究所「日本の将来推計人口（令和5年推計）」の出生中位・死亡中位推計を用いた。2020年の1億2,615万人が2070年に<strong>8,700万人</strong>（−31.0％）、高齢化率は28.6％から<strong>38.7％</strong>へ上昇する。ただし年齢層ごとの動きは大きく異なり、<strong>高齢人口は2024年から2070年で7.1％しか減らない</strong>（「日本全体」タブ）。</p>
   </div>
 
   <h3>3つのシナリオの定義</h3>
@@ -620,12 +621,12 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   </ul>
   <div class="note">
     <div class="nh">図書館・博物館が減少に転じるという想定は現実的か</div>
-    <p>この想定には根拠がある。第4章でみたとおり、<strong>博物館の純増減は令和6年度に−1館となり、この20年で初めてマイナスに転じた</strong>。また20年間の増加1,296館のうち実際の新設は345館にすぎず、残り961館は既存館の新規把握（追加館）である。<strong>統計上の「増加」の大半は新設ではない。</strong>把握が一巡すれば、増加は止まる。</p>
+    <p>この想定には根拠がある。「博物館」タブでみたとおり、<strong>博物館の純増減は令和6年度に−1館となり、この20年で初めてマイナスに転じた</strong>。また20年間の増加1,296館のうち実際の新設は345館にすぎず、残り961館は既存館の新規把握（追加館）である。<strong>統計上の「増加」の大半は新設ではない。</strong>把握が一巡すれば、増加は止まる。</p>
     <p>なお本報告の初版では「悪い未来」を実績ペースの機械的な延長として定義していた。その場合、増加傾向にある図書館は2070年に4,177館へ増え、1館あたり人口はむしろ改善するという矛盾が生じていた。<strong>アクセスを評価軸に据え、増加局面の終了を想定に含めることで、この不整合を解消した。</strong></p>
   </div>
 
   <h3 id="scen-worst">C　最悪の未来 ── 財政と更新期が重なる</h3>
-  <p>第10章でみたとおり、合併市町村の経常収支比率は92.6％と非合併市町村より3.0ポイント硬直的で、押し上げ要因は合併特例債の公債費である。合併特例債で整備された施設は2005年前後に集中して建設されており、<strong>大規模改修の目安30年なら2030年代半ば、更新の目安60年なら2060年代に更新期を迎える</strong>。</p>
+  <p>「日本全体」タブでみたとおり、合併市町村の経常収支比率は92.6％と非合併市町村より3.0ポイント硬直的で、押し上げ要因は合併特例債の公債費である。合併特例債で整備された施設は2005年前後に集中して建設されており、<strong>大規模改修の目安30年なら2030年代半ば、更新の目安60年なら2060年代に更新期を迎える</strong>。</p>
   <p>削減が全施設種に及んだ場合、2070年は公民館4,295館（1館あたり高齢人口7,840人）、小中学校9,460校（同842人）、図書館1,121館（同77,638人）、博物館1,900館（同45,780人）となる。<strong>アクセスは公民館で181.9％、図書館・博物館で113.2％、学校で74.8％悪化する。</strong></p>
   <p>この未来が現実味を帯びるのは、次の3つが同時に起きる場合である。</p>
   <ul>
@@ -633,6 +634,229 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
     <li><strong>専門職の消滅。</strong>社会教育主事は72.5％減り、1自治体あたり0.84人まで落ちた。施設を残すべきかを判断し、残った施設で事業を組み立てる人がいなくなれば、削減は機械的に進む。</li>
     <li><strong>総量削減目標の一律適用。</strong>公共施設等総合管理計画が到達可能性の検討を伴わずに運用されれば、統計上は「効率化」として現れながら、住民から見た学びの場は消える。</li>
   </ul>
+
+
+  <h3 id="scen-region">D　8地方別にみたシナリオ</h3>
+  <p>全国平均は、東京都と長野県のように113倍の開きがある地域を平均した値にすぎない。ここでは同じ3シナリオを8地方に展開する。<strong>シナリオの判定基準は全国版と同一にしてあるため、地方間の差は人口構造の違いだけから生じる。</strong></p>
+  <div class="note">
+    <div class="nh">地方別シナリオの作り方</div>
+    <p>「良い未来」は各地方の対象年齢人口と同率で施設数が変わる場合。「悪い未来」「最悪の未来」は、<strong>全国版と同じアクセス悪化倍率</strong>を各地方に適用した。</p>
+    <p>施設数の年率をそのまま当てはめる方法は採らなかった。需要が政策ペースより速く減る地方（たとえば北海道の年少人口は年−1.78％で、学校の全国実績ペース年−0.94％より速い）では、同じ政策でもアクセスが改善してしまい、「良い≦悪い≦最悪」の順序が崩れるためである。基準を<strong>率ではなく悪化度で揃えた</strong>。</p>
+    <p>地域別の将来推計は国立社会保障・人口問題研究所が2050年までしか公表していないため、本節の試算は2050年までとした（全国版は2070年まで）。</p>
+  </div>
+
+  <h4>人口構造の地方差</h4>
+  <p>2020年から2050年にかけての変化は、地方によってまったく異なる。</p>
+  <ul>
+    <li><strong>関東は総人口が7.2％減にとどまる一方、高齢人口は21.7％増える。</strong>8地方で唯一、高齢人口が大きく増加する。</li>
+    <li><strong>東北は総人口31.6％減、年少人口49.0％減</strong>と最も急激に縮む。高齢人口も6.6％減る。</li>
+    <li>四国は総人口29.6％減、高齢人口9.8％減。北海道は26.9％減、高齢人口3.1％減。</li>
+    <li>中部・関西・九州沖縄は総人口が約2割減り、高齢人口は2〜7％増える。</li>
+  </ul>
+
+  <figure>
+    <figcaption><b>図3</b>地方別の公民館1館あたり高齢人口。左の緑が2025年の水準（＝良い未来の2050年）、中央の紫が悪い未来、右の赤が最悪の未来。右に行くほど住民から遠い。</figcaption>
+    <div class="figbox"><svg viewBox="0 0 760 554" role="img" aria-label="地方別の公民館1館あたり高齢人口" class="cht">
+<line x1="96.0" y1="52" x2="96.0" y2="502" stroke="var(--grid)" stroke-width="1"/>
+<text x="96.0" y="46" text-anchor="middle" class="tick">0</text>
+<text x="96.0" y="516" text-anchor="middle" class="tick">0</text>
+<line x1="226.8" y1="52" x2="226.8" y2="502" stroke="var(--grid)" stroke-width="1"/>
+<text x="226.8" y="46" text-anchor="middle" class="tick">4,000</text>
+<text x="226.8" y="516" text-anchor="middle" class="tick">4,000</text>
+<line x1="357.6" y1="52" x2="357.6" y2="502" stroke="var(--grid)" stroke-width="1"/>
+<text x="357.6" y="46" text-anchor="middle" class="tick">8,000</text>
+<text x="357.6" y="516" text-anchor="middle" class="tick">8,000</text>
+<line x1="488.5" y1="52" x2="488.5" y2="502" stroke="var(--grid)" stroke-width="1"/>
+<text x="488.5" y="46" text-anchor="middle" class="tick">12,000</text>
+<text x="488.5" y="516" text-anchor="middle" class="tick">12,000</text>
+<line x1="619.3" y1="52" x2="619.3" y2="502" stroke="var(--grid)" stroke-width="1"/>
+<text x="619.3" y="46" text-anchor="middle" class="tick">16,000</text>
+<text x="619.3" y="516" text-anchor="middle" class="tick">16,000</text>
+<text x="86" y="97.0" text-anchor="end" class="rowlab">北海道</text>
+<line x1="234.0" y1="93.0" x2="369.6" y2="93.0" stroke="var(--axis)" stroke-width="2" opacity="0.4"/>
+<circle cx="234.0" cy="93.0" r="5.4" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.8"><title>北海道 2025年（＝良い未来2050）：1館あたり高齢人口 4,219人</title></circle>
+<circle cx="311.8" cy="93.0" r="5.4" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.8"><title>北海道 悪い未来2050：1館あたり高齢人口 6,599人</title></circle>
+<circle cx="369.6" cy="93.0" r="5.4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>北海道 最悪2050：1館あたり高齢人口 8,365人</title></circle>
+<text x="234.0" y="82.0" text-anchor="middle" class="vtiny" fill="var(--s3)">4,219</text>
+<text x="660" y="97.0" class="vsm" fill="var(--s4)">6,599</text>
+<text x="704" y="97.0" class="vtiny" fill="var(--s2)">8,365</text>
+<text x="86" y="151.0" text-anchor="end" class="rowlab">東北</text>
+<line x1="144.4" y1="147.0" x2="192.0" y2="147.0" stroke="var(--axis)" stroke-width="2" opacity="0.4"/>
+<circle cx="144.4" cy="147.0" r="5.4" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.8"><title>東北 2025年（＝良い未来2050）：1館あたり高齢人口 1,481人</title></circle>
+<circle cx="171.8" cy="147.0" r="5.4" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.8"><title>東北 悪い未来2050：1館あたり高齢人口 2,317人</title></circle>
+<circle cx="192.0" cy="147.0" r="5.4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>東北 最悪2050：1館あたり高齢人口 2,937人</title></circle>
+<text x="144.4" y="136.0" text-anchor="middle" class="vtiny" fill="var(--s3)">1,481</text>
+<text x="660" y="151.0" class="vsm" fill="var(--s4)">2,317</text>
+<text x="704" y="151.0" class="vtiny" fill="var(--s2)">2,937</text>
+<text x="86" y="205.0" text-anchor="end" class="rowlab">関東</text>
+<line x1="330.6" y1="201.0" x2="561.1" y2="201.0" stroke="var(--axis)" stroke-width="2" opacity="0.4"/>
+<circle cx="330.6" cy="201.0" r="5.4" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.8"><title>関東 2025年（＝良い未来2050）：1館あたり高齢人口 7,173人</title></circle>
+<circle cx="462.9" cy="201.0" r="5.4" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.8"><title>関東 悪い未来2050：1館あたり高齢人口 11,219人</title></circle>
+<circle cx="561.1" cy="201.0" r="5.4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>関東 最悪2050：1館あたり高齢人口 14,220人</title></circle>
+<text x="330.6" y="190.0" text-anchor="middle" class="vtiny" fill="var(--s3)">7,173</text>
+<text x="660" y="205.0" class="vsm" fill="var(--s4)">11,219</text>
+<text x="704" y="205.0" class="vtiny" fill="var(--s2)">14,220</text>
+<text x="86" y="259.0" text-anchor="end" class="rowlab">中部</text>
+<line x1="149.9" y1="255.0" x2="202.8" y2="255.0" stroke="var(--axis)" stroke-width="2" opacity="0.4"/>
+<circle cx="149.9" cy="255.0" r="5.4" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.8"><title>中部 2025年（＝良い未来2050）：1館あたり高齢人口 1,648人</title></circle>
+<circle cx="180.3" cy="255.0" r="5.4" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.8"><title>中部 悪い未来2050：1館あたり高齢人口 2,577人</title></circle>
+<circle cx="202.8" cy="255.0" r="5.4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>中部 最悪2050：1館あたり高齢人口 3,267人</title></circle>
+<text x="149.9" y="244.0" text-anchor="middle" class="vtiny" fill="var(--s3)">1,648</text>
+<text x="660" y="259.0" class="vsm" fill="var(--s4)">2,577</text>
+<text x="704" y="259.0" class="vtiny" fill="var(--s2)">3,267</text>
+<text x="86" y="313.0" text-anchor="end" class="rowlab">関西</text>
+<line x1="226.0" y1="309.0" x2="353.7" y2="309.0" stroke="var(--axis)" stroke-width="2" opacity="0.4"/>
+<circle cx="226.0" cy="309.0" r="5.4" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.8"><title>関西 2025年（＝良い未来2050）：1館あたり高齢人口 3,975人</title></circle>
+<circle cx="299.3" cy="309.0" r="5.4" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.8"><title>関西 悪い未来2050：1館あたり高齢人口 6,217人</title></circle>
+<circle cx="353.7" cy="309.0" r="5.4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>関西 最悪2050：1館あたり高齢人口 7,880人</title></circle>
+<text x="226.0" y="298.0" text-anchor="middle" class="vtiny" fill="var(--s3)">3,975</text>
+<text x="660" y="313.0" class="vsm" fill="var(--s4)">6,217</text>
+<text x="704" y="313.0" class="vtiny" fill="var(--s2)">7,880</text>
+<text x="86" y="367.0" text-anchor="end" class="rowlab">中国</text>
+<line x1="161.3" y1="363.0" x2="225.5" y2="363.0" stroke="var(--axis)" stroke-width="2" opacity="0.4"/>
+<circle cx="161.3" cy="363.0" r="5.4" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.8"><title>中国 2025年（＝良い未来2050）：1館あたり高齢人口 1,997人</title></circle>
+<circle cx="198.2" cy="363.0" r="5.4" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.8"><title>中国 悪い未来2050：1館あたり高齢人口 3,124人</title></circle>
+<circle cx="225.5" cy="363.0" r="5.4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>中国 最悪2050：1館あたり高齢人口 3,960人</title></circle>
+<text x="161.3" y="352.0" text-anchor="middle" class="vtiny" fill="var(--s3)">1,997</text>
+<text x="660" y="367.0" class="vsm" fill="var(--s4)">3,124</text>
+<text x="704" y="367.0" class="vtiny" fill="var(--s2)">3,960</text>
+<text x="86" y="421.0" text-anchor="end" class="rowlab">四国</text>
+<line x1="136.5" y1="417.0" x2="176.2" y2="417.0" stroke="var(--axis)" stroke-width="2" opacity="0.4"/>
+<circle cx="136.5" cy="417.0" r="5.4" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.8"><title>四国 2025年（＝良い未来2050）：1館あたり高齢人口 1,238人</title></circle>
+<circle cx="159.3" cy="417.0" r="5.4" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.8"><title>四国 悪い未来2050：1館あたり高齢人口 1,936人</title></circle>
+<circle cx="176.2" cy="417.0" r="5.4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>四国 最悪2050：1館あたり高齢人口 2,453人</title></circle>
+<text x="136.5" y="406.0" text-anchor="middle" class="vtiny" fill="var(--s3)">1,238</text>
+<text x="660" y="421.0" class="vsm" fill="var(--s4)">1,936</text>
+<text x="704" y="421.0" class="vtiny" fill="var(--s2)">2,453</text>
+<text x="86" y="475.0" text-anchor="end" class="rowlab">九州・沖縄</text>
+<line x1="184.3" y1="471.0" x2="271.0" y2="471.0" stroke="var(--axis)" stroke-width="2" opacity="0.4"/>
+<circle cx="184.3" cy="471.0" r="5.4" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.8"><title>九州・沖縄 2025年（＝良い未来2050）：1館あたり高齢人口 2,699人</title></circle>
+<circle cx="234.1" cy="471.0" r="5.4" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.8"><title>九州・沖縄 悪い未来2050：1館あたり高齢人口 4,221人</title></circle>
+<circle cx="271.0" cy="471.0" r="5.4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>九州・沖縄 最悪2050：1館あたり高齢人口 5,350人</title></circle>
+<text x="184.3" y="460.0" text-anchor="middle" class="vtiny" fill="var(--s3)">2,699</text>
+<text x="660" y="475.0" class="vsm" fill="var(--s4)">4,221</text>
+<text x="704" y="475.0" class="vtiny" fill="var(--s2)">5,350</text>
+<circle cx="20" cy="530" r="5" fill="var(--s3)"/>
+<text x="30" y="534" class="leg">2025年＝良い未来2050</text>
+<circle cx="222" cy="530" r="5" fill="var(--s4)"/>
+<text x="232" y="534" class="leg">悪い未来2050</text>
+<circle cx="352" cy="530" r="5" fill="var(--s2)"/>
+<text x="362" y="534" class="leg">最悪2050</text>
+<text x="374" y="28" text-anchor="middle" class="axttl">公民館1館あたりの高齢人口（人）　右に行くほど住民から遠い</text>
+</svg></div>
+    <p class="src">出典：施設数＝文部科学省「社会教育調査」令和6年度の都道府県別集計。人口＝国立社会保障・人口問題研究所「日本の地域別将来推計人口（令和5年推計）」。試算は本報告による。</p>
+  </figure>
+
+  <p>公民館のアクセスには、2025年時点で<strong>5.8倍の地方差</strong>がある。最も密なのは東北の1,481人／館、最も疎なのは関東の7,173人／館である。この差は将来も縮まらない。悪い未来の2050年には、東北2,317人に対し関東11,219人となる。</p>
+
+  <figure>
+    <figcaption><b>図4</b>アクセスを2025年水準に保つために、2050年に必要な施設数（2024年比）。公民館だけが地方によって符号が変わる。</figcaption>
+    <div class="figbox"><svg viewBox="0 0 760 420" role="img" aria-label="地方別に必要な施設数の変化率" class="cht">
+<line x1="96.0" y1="38" x2="96.0" y2="368" stroke="var(--grid)" stroke-width="1"/>
+<text x="96.0" y="32" text-anchor="middle" class="tick">-50%</text>
+<line x1="174.0" y1="38" x2="174.0" y2="368" stroke="var(--grid)" stroke-width="1"/>
+<text x="174.0" y="32" text-anchor="middle" class="tick">-40%</text>
+<line x1="252.0" y1="38" x2="252.0" y2="368" stroke="var(--grid)" stroke-width="1"/>
+<text x="252.0" y="32" text-anchor="middle" class="tick">-30%</text>
+<line x1="330.0" y1="38" x2="330.0" y2="368" stroke="var(--grid)" stroke-width="1"/>
+<text x="330.0" y="32" text-anchor="middle" class="tick">-20%</text>
+<line x1="408.0" y1="38" x2="408.0" y2="368" stroke="var(--grid)" stroke-width="1"/>
+<text x="408.0" y="32" text-anchor="middle" class="tick">-10%</text>
+<line x1="486.0" y1="38" x2="486.0" y2="368" stroke="var(--axis)" stroke-width="1.6"/>
+<text x="486.0" y="32" text-anchor="middle" class="tick">+0%</text>
+<line x1="564.0" y1="38" x2="564.0" y2="368" stroke="var(--grid)" stroke-width="1"/>
+<text x="564.0" y="32" text-anchor="middle" class="tick">+10%</text>
+<line x1="642.0" y1="38" x2="642.0" y2="368" stroke="var(--grid)" stroke-width="1"/>
+<text x="642.0" y="32" text-anchor="middle" class="tick">+20%</text>
+<text x="86" y="69.9" text-anchor="end" class="rowlab">北海道</text>
+<rect x="458.4" y="52.0" width="27.6" height="7.2" fill="var(--s2)" rx="2"><title>北海道 公民館：2050年に必要な数 386（2024年比 -3.5%）</title></rect>
+<text x="453.4" y="57.4" text-anchor="end" class="vtiny" fill="var(--s2)">-3.5</text>
+<rect x="222.5" y="61.9" width="263.5" height="7.2" fill="var(--s1)" rx="2"><title>北海道 小中学校：2050年に必要な数 1,002（2024年比 -33.8%）</title></rect>
+<text x="217.5" y="67.4" text-anchor="end" class="vtiny" fill="var(--s1)">-33.8</text>
+<rect x="301.1" y="71.8" width="184.9" height="7.2" fill="var(--s3)" rx="2"><title>北海道 図書館：2050年に必要な数 127（2024年比 -23.7%）</title></rect>
+<text x="296.1" y="77.3" text-anchor="end" class="vtiny" fill="var(--s3)">-23.7</text>
+<text x="86" y="109.6" text-anchor="end" class="rowlab">東北</text>
+<rect x="426.7" y="91.7" width="59.3" height="7.2" fill="var(--s2)" rx="2"><title>東北 公民館：2050年に必要な数 1,749（2024年比 -7.6%）</title></rect>
+<text x="421.7" y="97.2" text-anchor="end" class="vtiny" fill="var(--s2)">-7.6</text>
+<rect x="166.2" y="101.7" width="319.8" height="7.2" fill="var(--s1)" rx="2"><title>東北 小中学校：2050年に必要な数 1,522（2024年比 -41.0%）</title></rect>
+<text x="161.2" y="107.1" text-anchor="end" class="vtiny" fill="var(--s1)">-41.0</text>
+<rect x="268.7" y="111.6" width="217.3" height="7.2" fill="var(--s3)" rx="2"><title>東北 図書館：2050年に必要な数 200（2024年比 -27.9%）</title></rect>
+<text x="263.7" y="117.1" text-anchor="end" class="vtiny" fill="var(--s3)">-27.9</text>
+<text x="86" y="149.4" text-anchor="end" class="rowlab">関東</text>
+<rect x="486.0" y="131.5" width="148.3" height="7.2" fill="var(--s2)" rx="2"><title>関東 公民館：2050年に必要な数 1,912（2024年比 +19.0%）</title></rect>
+<text x="639.3" y="136.9" text-anchor="start" class="vtiny" fill="var(--s2)">+19.0</text>
+<rect x="370.5" y="141.4" width="115.5" height="7.2" fill="var(--s1)" rx="2"><title>関東 小中学校：2050年に必要な数 6,386（2024年比 -14.8%）</title></rect>
+<text x="365.5" y="146.9" text-anchor="end" class="vtiny" fill="var(--s1)">-14.8</text>
+<rect x="432.5" y="151.3" width="53.5" height="7.2" fill="var(--s3)" rx="2"><title>関東 図書館：2050年に必要な数 916（2024年比 -6.9%）</title></rect>
+<text x="427.5" y="156.8" text-anchor="end" class="vtiny" fill="var(--s3)">-6.9</text>
+<text x="86" y="189.1" text-anchor="end" class="rowlab">中部</text>
+<rect x="486.0" y="171.2" width="35.1" height="7.2" fill="var(--s2)" rx="2"><title>中部 公民館：2050年に必要な数 3,934（2024年比 +4.5%）</title></rect>
+<text x="526.1" y="176.7" text-anchor="start" class="vtiny" fill="var(--s2)">+4.5</text>
+<rect x="279.5" y="181.2" width="206.5" height="7.2" fill="var(--s1)" rx="2"><title>中部 小中学校：2050年に必要な数 3,690（2024年比 -26.5%）</title></rect>
+<text x="274.5" y="186.6" text-anchor="end" class="vtiny" fill="var(--s1)">-26.5</text>
+<rect x="349.4" y="191.1" width="136.6" height="7.2" fill="var(--s3)" rx="2"><title>中部 図書館：2050年に必要な数 533（2024年比 -17.5%）</title></rect>
+<text x="344.4" y="196.6" text-anchor="end" class="vtiny" fill="var(--s3)">-17.5</text>
+<text x="86" y="228.9" text-anchor="end" class="rowlab">関西</text>
+<rect x="486.0" y="211.0" width="46.3" height="7.2" fill="var(--s2)" rx="2"><title>関西 公民館：2050年に必要な数 1,723（2024年比 +5.9%）</title></rect>
+<text x="537.3" y="216.4" text-anchor="start" class="vtiny" fill="var(--s2)">+5.9</text>
+<rect x="274.6" y="220.9" width="211.4" height="7.2" fill="var(--s1)" rx="2"><title>関西 小中学校：2050年に必要な数 3,407（2024年比 -27.1%）</title></rect>
+<text x="269.6" y="226.4" text-anchor="end" class="vtiny" fill="var(--s1)">-27.1</text>
+<rect x="346.0" y="230.8" width="140.0" height="7.2" fill="var(--s3)" rx="2"><title>関西 図書館：2050年に必要な数 403（2024年比 -18.0%）</title></rect>
+<text x="341.0" y="236.3" text-anchor="end" class="vtiny" fill="var(--s3)">-18.0</text>
+<text x="86" y="268.6" text-anchor="end" class="rowlab">中国</text>
+<rect x="449.0" y="250.7" width="37.0" height="7.2" fill="var(--s2)" rx="2"><title>中国 公民館：2050年に必要な数 1,081（2024年比 -4.7%）</title></rect>
+<text x="444.0" y="256.2" text-anchor="end" class="vtiny" fill="var(--s2)">-4.7</text>
+<rect x="275.3" y="260.6" width="210.7" height="7.2" fill="var(--s1)" rx="2"><title>中国 小中学校：2050年に必要な数 1,590（2024年比 -27.0%）</title></rect>
+<text x="270.3" y="266.1" text-anchor="end" class="vtiny" fill="var(--s1)">-27.0</text>
+<rect x="329.1" y="270.6" width="156.9" height="7.2" fill="var(--s3)" rx="2"><title>中国 図書館：2050年に必要な数 228（2024年比 -20.1%）</title></rect>
+<text x="324.1" y="276.1" text-anchor="end" class="vtiny" fill="var(--s3)">-20.1</text>
+<text x="86" y="308.4" text-anchor="end" class="rowlab">四国</text>
+<rect x="412.3" y="290.5" width="73.7" height="7.2" fill="var(--s2)" rx="2"><title>四国 公民館：2050年に必要な数 901（2024年比 -9.5%）</title></rect>
+<text x="407.3" y="295.9" text-anchor="end" class="vtiny" fill="var(--s2)">-9.5</text>
+<rect x="210.1" y="300.4" width="275.9" height="7.2" fill="var(--s1)" rx="2"><title>四国 小中学校：2050年に必要な数 816（2024年比 -35.4%）</title></rect>
+<text x="205.1" y="305.9" text-anchor="end" class="vtiny" fill="var(--s1)">-35.4</text>
+<rect x="284.7" y="310.3" width="201.3" height="7.2" fill="var(--s3)" rx="2"><title>四国 図書館：2050年に必要な数 107（2024年比 -25.8%）</title></rect>
+<text x="279.7" y="315.8" text-anchor="end" class="vtiny" fill="var(--s3)">-25.8</text>
+<text x="86" y="348.1" text-anchor="end" class="rowlab">九州・沖縄</text>
+<rect x="484.7" y="330.2" width="1.3" height="7.2" fill="var(--s2)" rx="2"><title>九州・沖縄 公民館：2050年に必要な数 1,606（2024年比 -0.2%）</title></rect>
+<text x="479.7" y="335.7" text-anchor="end" class="vtiny" fill="var(--s2)">-0.2</text>
+<rect x="298.3" y="340.1" width="187.7" height="7.2" fill="var(--s1)" rx="2"><title>九州・沖縄 小中学校：2050年に必要な数 3,190（2024年比 -24.1%）</title></rect>
+<text x="293.3" y="345.6" text-anchor="end" class="vtiny" fill="var(--s1)">-24.1</text>
+<rect x="355.0" y="350.1" width="131.0" height="7.2" fill="var(--s3)" rx="2"><title>九州・沖縄 図書館：2050年に必要な数 339（2024年比 -16.8%）</title></rect>
+<text x="350.0" y="355.6" text-anchor="end" class="vtiny" fill="var(--s3)">-16.8</text>
+<rect x="96" y="394" width="11" height="11" fill="var(--s2)" rx="2"/>
+<text x="112" y="404" class="leg">公民館</text>
+<rect x="183" y="394" width="11" height="11" fill="var(--s1)" rx="2"/>
+<text x="199" y="404" class="leg">小中学校</text>
+<rect x="283" y="394" width="11" height="11" fill="var(--s3)" rx="2"/>
+<text x="299" y="404" class="leg">図書館</text>
+<text x="650" y="56" class="vtiny">アクセス維持に</text>
+<text x="650" y="69" class="vtiny">必要な施設数の</text>
+<text x="650" y="82" class="vtiny">2024年比変化率</text>
+</svg></div>
+    <p class="src">出典：同上。</p>
+  </figure>
+  <div class="tbox"><table data-sortable>
+<caption><b>表2</b>8地方別の未来シナリオ（2050年）。3シナリオの定義は全国版と同一で、差は人口構造の違いのみから生じる。アクセスは1施設あたりの対象年齢人口で、小さいほど住民に身近。</caption>
+<thead><tr><th>地方</th><th>総人口<br>2020→2050</th><th>高齢人口<br>2020→2050</th><th>公民館<br>2024年</th><th>良い未来に<br>必要な数</th><th>公民館アクセス<br>2025年</th><th>悪い未来<br>2050年</th><th>悪化率</th></tr></thead><tbody>
+<tr><td>北海道</td><td class="num neg">-26.9%</td><td class="num neg">-3.1%</td><td class="num">400</td><td class="num">386<br><span class="ix">-3.5%</span></td><td class="num">4,219</td><td class="num">6,599</td><td class="num neg">+56.4%</td></tr>
+<tr><td>東北</td><td class="num neg">-31.6%</td><td class="num neg">-6.6%</td><td class="num">1,893</td><td class="num">1,749<br><span class="ix">-7.6%</span></td><td class="num">1,481</td><td class="num">2,317</td><td class="num neg">+56.4%</td></tr>
+<tr><td>関東</td><td class="num neg">-7.2%</td><td class="num pos">+21.7%</td><td class="num">1,607</td><td class="num pos">1,912<br><span class="ix">+19.0%</span></td><td class="num">7,173</td><td class="num">11,219</td><td class="num neg">+56.4%</td></tr>
+<tr><td>中部</td><td class="num neg">-20.0%</td><td class="num pos">+5.6%</td><td class="num">3,765</td><td class="num pos">3,934<br><span class="ix">+4.5%</span></td><td class="num">1,648</td><td class="num">2,577</td><td class="num neg">+56.4%</td></tr>
+<tr><td>関西</td><td class="num neg">-20.0%</td><td class="num pos">+6.6%</td><td class="num">1,627</td><td class="num pos">1,723<br><span class="ix">+5.9%</span></td><td class="num">3,975</td><td class="num">6,217</td><td class="num neg">+56.4%</td></tr>
+<tr><td>中国</td><td class="num neg">-23.2%</td><td class="num neg">-4.8%</td><td class="num">1,135</td><td class="num">1,081<br><span class="ix">-4.7%</span></td><td class="num">1,997</td><td class="num">3,124</td><td class="num neg">+56.4%</td></tr>
+<tr><td>四国</td><td class="num neg">-29.6%</td><td class="num neg">-9.8%</td><td class="num">995</td><td class="num">901<br><span class="ix">-9.5%</span></td><td class="num">1,238</td><td class="num">1,936</td><td class="num neg">+56.4%</td></tr>
+<tr><td>九州・沖縄</td><td class="num neg">-19.1%</td><td class="num pos">+2.4%</td><td class="num">1,609</td><td class="num">1,606<br><span class="ix">-0.2%</span></td><td class="num">2,699</td><td class="num">4,221</td><td class="num neg">+56.4%</td></tr>
+</tbody></table></div>
+  <p class="src">出典：同上。</p>
+
+  <div class="note">
+    <div class="nh">関東だけ、公民館を増やす必要がある</div>
+    <p>高齢人口が21.7％増える関東では、アクセスを保つために公民館を<strong>1,607館から1,912館へ19.0％増やす</strong>必要がある。他の7地方はいずれも横ばいから微減（北海道−3.5％、東北−7.6％、四国−9.5％）である。</p>
+    <p>一方、小中学校は全地方で大幅な削減が「アクセス維持」と両立する。東北は41.0％減、四国は35.4％減、北海道は33.8％減が、年少人口の減少と釣り合う水準にあたる。</p>
+    <p><strong>同じ「公共施設の適正化」という言葉でも、関東の公民館と東北の学校ではやるべきことが正反対である。</strong>全国一律の総量削減目標が地域の実態と噛み合わない理由が、ここにある。</p>
+  </div>
+
 
   <h3>3つのシナリオを分けるもの</h3>
   <p>この3つを分けているのは人口ではない。人口推計はどのシナリオでも同一である。分けているのは<strong>政策判断</strong>である。</p>
@@ -654,7 +878,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <p>これに対し平成の大合併は、地方分権の受け皿づくりと行財政基盤の強化を目的に掲げ、学校規模のような具体的な設計基準を持たなかった。この点は後述する国会審議でも繰り返し論点となる。</p>
 
   <figure>
-    <figcaption><b>図3</b>市町村数の変遷。三度の大合併がそれぞれ市町村数をほぼ3分の1に減らし、同時に「村」を消していった。昭和20年に8,518あった村は現在183である。各区分の数値を棒の中に、総数を棒の上に表示している。</figcaption>
+    <figcaption><b>図5</b>市町村数の変遷。三度の大合併がそれぞれ市町村数をほぼ3分の1に減らし、同時に「村」を消していった。昭和20年に8,518あった村は現在183である。各区分の数値を棒の中に、総数を棒の上に表示している。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 440" role="img" aria-label="市町村数の変遷（明治22年から現在）" class="cht">
 <line x1="60" y1="366.0" x2="740" y2="366.0" stroke="var(--grid)" stroke-width="1"/>
 <text x="50" y="370.0" text-anchor="end" class="tick">0</text>
@@ -763,7 +987,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   </figure>
 
   <div class="tbox"><table>
-    <caption><b>表2</b>市町村数の変遷（図3の数値表）。明治・昭和の大合併では合併の「標準」が教育制度から導かれたのに対し、平成の大合併では与党が示した「1,000団体」という数値目標が先行した。</caption>
+    <caption><b>表3</b>市町村数の変遷（図5の数値表）。明治・昭和の大合併では合併の「標準」が教育制度から導かれたのに対し、平成の大合併では与党が示した「1,000団体」という数値目標が先行した。</caption>
     <thead><tr><th>時点</th><th>市</th><th>町</th><th>村</th><th>計</th><th class="lab" style="text-align:left">合併の標準・目標</th></tr></thead>
     <tbody>
       <tr><td>明治21年（1888）</td><td>—</td><td colspan="2">—</td><td class="num">71,314</td><td class="lab" style="text-align:left">—</td></tr>
@@ -780,7 +1004,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <h3>1-2　「アメ」としての合併特例債と合併算定替</h3>
   <p>平成の大合併の推進手段は、1999年の合併特例法改正で整備された財政措置に集約される。中心は次の二つである。</p>
   <div class="tbox"><table>
-    <caption><b>表3</b>合併市町村に対する主要な財政措置。旧法（〜平成17年3月）の手厚い措置が合併時期を平成16〜17年度に集中させた。</caption>
+    <caption><b>表4</b>合併市町村に対する主要な財政措置。旧法（〜平成17年3月）の手厚い措置が合併時期を平成16〜17年度に集中させた。</caption>
     <thead><tr><th>措置</th><th class="lab" style="text-align:left">内容</th><th class="lab" style="text-align:left">期間・条件</th></tr></thead>
     <tbody>
       <tr><td>合併特例債</td><td class="lab" style="text-align:left">市町村建設計画に基づく公共的施設の整備、旧市町村単位の地域振興基金の造成等の事業費の<strong>95％</strong>を起債でき、元利償還金の<strong>70％</strong>を普通交付税で措置</td><td class="lab" style="text-align:left">平成17年3月末までの合併が対象（経過措置で18年3月まで）。発行期限は合併年度＋10年間、のちに東日本大震災を機に延長され現行は被災地25年・その他20年</td></tr>
@@ -807,7 +1031,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <p>合併件数の年度別分布は、財政措置の期限に正確に対応している。平成15年度までの5年間で合併件数は累計42件にとどまっていたが、平成16年度に215件、平成17年度に325件と急増し、この2年間だけで全649件の<strong>83％</strong>が実行された。市町村数は平成15年度末の3,132から平成17年度末の1,821へ、わずか2年で1,311団体減少している。</p>
   <p>その後の推移も確認しておきたい。平成21年度の30件を最後に合併はほぼ止まり、平成22年度はゼロ、平成23年度に6件、平成24・25年度はゼロ、そして<strong>平成26年4月5日の栃木市・岩舟町の編入合併を最後に、令和6年度まで10年以上にわたり合併は1件も行われていない</strong>。市町村数は平成26年度末の1,718団体から一度も変わっていない。</p>
   <figure>
-    <figcaption><b>図4</b>年度別の合併件数（上段）と年度末の市町村数（下段）。単位が異なるため縦軸を共有せず、上下2段のパネルに分けている。平成16・17年度の突出と、平成27年度以降の完全な停止が対照的である。</figcaption>
+    <figcaption><b>図6</b>年度別の合併件数（上段）と年度末の市町村数（下段）。単位が異なるため縦軸を共有せず、上下2段のパネルに分けている。平成16・17年度の突出と、平成27年度以降の完全な停止が対照的である。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 470" role="img" aria-label="年度別の合併件数と年度末市町村数" class="cht">
 <text x="58" y="20" class="panel-ttl" fill="var(--s2)">合併件数（件）</text>
 <line x1="58" y1="202.0" x2="738" y2="202.0" stroke="var(--grid)" stroke-width="1"/>
@@ -939,7 +1163,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
     <p class="src">出典：総務省「平成11年度以降の市町村合併の実績」（全649件の合併年月日から年度別に集計）、同「『平成の合併』について」（平成22年3月）。</p>
   </figure>
   <div class="tbox"><table>
-    <caption><b>表4</b>年度別の合併件数と市町村数（図4の数値表）。平成27年度から令和6年度までは合併件数ゼロ・市町村数1,718で一定のため、まとめて表示している。</caption>
+    <caption><b>表5</b>年度別の合併件数と市町村数（図6の数値表）。平成27年度から令和6年度までは合併件数ゼロ・市町村数1,718で一定のため、まとめて表示している。</caption>
     <thead><tr><th>年度</th><th>合併件数</th><th>年度末市町村数</th><th>前年度からの減少</th></tr></thead>
     <tbody>
       <tr><td>平成11年度</td><td class="num">1</td><td class="num">3,229</td><td class="num">−3</td></tr>
@@ -971,7 +1195,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   </div>
 <h3>3-1　全体像 ── 減ったのは公民館と学校、増えたのは図書館</h3>
   <figure>
-    <figcaption><b>図5</b>平成11年度を100とした指数の推移。市町村数が11年でほぼ半減する一方、図書館は一貫して増加し、公民館と小学校は緩やかだが継続的に減少した。単位の異なる4系列を共通基準で比較するため指数化している。<strong>各点の数値は指数</strong>で、実数は直下の表5に示した。</figcaption>
+    <figcaption><b>図7</b>平成11年度を100とした指数の推移。市町村数が11年でほぼ半減する一方、図書館は一貫して増加し、公民館と小学校は緩やかだが継続的に減少した。単位の異なる4系列を共通基準で比較するため指数化している。<strong>各点の数値は指数</strong>で、実数は直下の表6に示した。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 470" role="img" aria-label="平成11年度を100とした指数の推移" class="cht">
 <line x1="52" y1="416.0" x2="628" y2="416.0" stroke="var(--grid)" stroke-width="1"/>
 <text x="42" y="420.0" text-anchor="end" class="tick">40</text>
@@ -1080,7 +1304,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
     <p class="src">出典：総務省「『平成の合併』について」（市町村数）、文部科学省「社会教育調査」（公民館＝類似施設含む、図書館）、同「学校基本調査」（小学校）。<br>注：令和6年度調査から公民館類似施設の調査対象に市町村首長部局設置の施設が追加されている。</p>
   </figure>
   <div class="tbox"><table>
-    <caption><b>表5</b>図5の実数と指数（括弧内）。市町村数は各年度末、社会教育施設は各年度10月1日現在、小学校は各年度5月1日現在の数値。</caption>
+    <caption><b>表6</b>図7の実数と指数（括弧内）。市町村数は各年度末、社会教育施設は各年度10月1日現在、小学校は各年度5月1日現在の数値。</caption>
     <thead><tr><th>年度</th><th>市町村数</th><th>公民館</th><th>図書館</th><th>小学校</th></tr></thead>
     <tbody>
       <tr><td>平成11年度</td><td class="num">3,232 <span class="ix">(100.0)</span></td><td class="num">19,063 <span class="ix">(100.0)</span></td><td class="num">2,592 <span class="ix">(100.0)</span></td><td class="num">24,188 <span class="ix">(100.0)</span></td></tr>
@@ -1098,7 +1322,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <p>この違いは施設の配置密度で説明できる。1999年度時点で図書館は全国2,592館、市町村数3,232に対して1団体あたり平均0.8館しかなく、合併しても重複は生じにくい。これに対し公民館は19,063館、1団体あたり平均5.9館が存在し、旧町村ごとに複数館を抱える構造だった。<strong>合併が直撃したのは「小規模自治体が密に配置していた施設」である。</strong></p>
 
   <div class="tbox"><table>
-    <caption><b>表6</b>社会教育施設数の推移（平成11年度〜令和6年度）。増減率は平成17年度と令和6年度の比較。平成11・14年度は生涯学習センター等の調査対象外項目がある。</caption>
+    <caption><b>表7</b>社会教育施設数の推移（平成11年度〜令和6年度）。増減率は平成17年度と令和6年度の比較。平成11・14年度は生涯学習センター等の調査対象外項目がある。</caption>
     <thead><tr><th>施設種</th><th>H11</th><th>H17</th><th>H20</th><th>H23</th><th>H27</th><th>H30</th><th>R3</th><th>R6</th><th>H17→R6</th></tr></thead>
     <tbody>
       <tr><td>公民館（類似施設含む）</td><td class="num">19,063</td><td class="num">18,182</td><td class="num">16,566</td><td class="num">15,399</td><td class="num">14,841</td><td class="num">14,281</td><td class="num">13,798</td><td class="num">13,031</td><td class="num neg">−28.3%</td></tr>
@@ -1117,7 +1341,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <h3>3-4　運営体制 ── 指定管理者制度の浸透</h3>
   <p>2003年9月の地方自治法改正で創設された指定管理者制度は、合併の集中期とほぼ同時に社会教育施設へ広がった。公立社会教育施設全体に占める導入率は、平成20年度の約2割から令和6年度には<strong>32.8％</strong>に達している。</p>
   <figure>
-    <figcaption><b>図6</b>公立社会教育施設に占める指定管理者制度導入施設の割合。平成20年度から令和6年度にかけて全施設種で上昇したが、上昇幅は施設種により大きく異なる。図書館は6.5％から22.2％へ3.4倍に増えた。</figcaption>
+    <figcaption><b>図8</b>公立社会教育施設に占める指定管理者制度導入施設の割合。平成20年度から令和6年度にかけて全施設種で上昇したが、上昇幅は施設種により大きく異なる。図書館は6.5％から22.2％へ3.4倍に増えた。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 380" role="img" aria-label="社会教育施設の指定管理者制度導入率" class="cht">
 <line x1="172.0" y1="32" x2="172.0" y2="350" stroke="var(--grid)" stroke-width="1"/>
 <text x="172.0" y="366" text-anchor="middle" class="tick">0%</text>
@@ -1203,7 +1427,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <h3>3-6　財政 ── 社会教育費は20年で4割減</h3>
   <p>地方教育費調査によれば、社会教育費の総額は平成6会計年度の27,103億円から令和2会計年度の15,144億円へ<strong>44.1％減少</strong>している。内訳では博物館費の減少幅が最も大きく、図書館費は比較的維持された。</p>
   <div class="tbox"><table>
-    <caption><b>表7</b>社会教育費の推移（億円）。合併期を挟む平成11年度から平成21年度の10年間で社会教育費は32.5％減少した。</caption>
+    <caption><b>表8</b>社会教育費の推移（億円）。合併期を挟む平成11年度から平成21年度の10年間で社会教育費は32.5％減少した。</caption>
     <thead><tr><th>会計年度</th><th>平成6</th><th>平成11</th><th>平成16</th><th>平成21</th><th>平成26</th><th>平成30</th><th>令和2</th><th>H11→R2</th></tr></thead>
     <tbody>
       <tr><td>社会教育費 総額</td><td class="num">27,103</td><td class="num">25,609</td><td class="num">21,383</td><td class="num">17,291</td><td class="num">16,298</td><td class="num">15,267</td><td class="num">15,144</td><td class="num neg">−40.9%</td></tr>
@@ -1220,13 +1444,13 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
 <div class="tabpanel" id="panel-museum" role="tabpanel" aria-labelledby="tab-museum" hidden>
 
 <section id="museum">
-  <div class="sechead"><span class="n">第5章</span><h2>博物館</h2></div>
+  <div class="sechead"><span class="n">施設別</span><h2>博物館</h2></div>
   <p>博物館は、社会教育施設のなかで公民館と正反対の動きを示した施設である。合併が進んだ期間を通じて館数は増え続け、学芸員も増えた。本章では、文部科学省「社会教育調査」と日本博物館協会『博物館研究』という2つの系列から、その内実を確認する。</p>
 
   <h3>5-1　館数は増えている</h3>
   <p>社会教育調査でみると、博物館（登録博物館・指定施設）は平成11年度の1,045館から令和6年度の1,344館へ<strong>28.6％増</strong>、博物館類似施設を含めると5,109館から5,766館へ増えている。日本博物館協会『博物館研究』に基づく集計でも、2005年の4,003館から2024年の4,497館へ<strong>12.3％増</strong>である。集計対象と定義が異なるため水準は一致しないが、<strong>増加という方向は両系列で一致している</strong>。</p>
   <figure>
-    <figcaption><b>図7</b>館種別の博物館数の推移（2005〜2024年）。歴史系が最も多く、増加の大半も歴史系が占める。棒の上の数値は合計。</figcaption>
+    <figcaption><b>図9</b>館種別の博物館数の推移（2005〜2024年）。歴史系が最も多く、増加の大半も歴史系が占める。棒の上の数値は合計。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 420" role="img" aria-label="館種別の博物館数の推移" class="cht">
 <line x1="56" y1="364.0" x2="652" y2="364.0" stroke="var(--grid)" stroke-width="1"/>
 <text x="47" y="368.0" text-anchor="end" class="tick">0</text>
@@ -1351,7 +1575,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <h3>5-2　開館と閉館のフロー</h3>
   <p>館数の純増だけを見ると、博物館が安泰であるかのように見える。しかしストックの裏では、毎年一定数の館が閉じている。</p>
   <figure>
-    <figcaption><b>図8</b>博物館の新規開館と閉館の件数（2005〜2024年）。新規開館は年によって大きく振れるが、閉館は毎年20〜45件の水準で継続している。</figcaption>
+    <figcaption><b>図10</b>博物館の新規開館と閉館の件数（2005〜2024年）。新規開館は年によって大きく振れるが、閉館は毎年20〜45件の水準で継続している。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 360" role="img" aria-label="博物館の新規開館と閉館の推移" class="cht">
 <line x1="56" y1="304.0" x2="660" y2="304.0" stroke="var(--grid)" stroke-width="1"/>
 <text x="47" y="308.0" text-anchor="end" class="tick">0</text>
@@ -1425,17 +1649,17 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
 
   <h3>5-3　運営体制と専門職</h3>
   <p>博物館は、指定管理者制度の導入が早くから進んだ施設でもある。公立博物館（類似施設を含む）の導入率は平成20年度の26.3％から令和6年度の30.3％へ上昇した。公民館の11.4％、図書館の22.2％と比べて高い水準にある。</p>
-  <p>一方で学芸員は増え続けている。博物館の学芸員は平成14年度の3,393人から令和6年度の5,581人へ<strong>64.5％増</strong>、博物館類似施設では2,243人から3,817人へ<strong>70.2％増</strong>である。1館あたりでみても3.03人から4.15人へ厚くなった（第3章5節・表14）。</p>
-  <p>ただし、この増加には指定管理者制度による非常勤・委託職員の増加が含まれる点に留意が必要である。第2章でみたとおり、2008年の社会教育法等改正の国会審議では「社会教育施設における人材確保及びその在り方について、指定管理者制度の導入による弊害についても十分配慮し、検討すること」という附帯決議が付されており、長野県千曲市のように6館の博物館を指定管理から直営へ戻した事例も報告されている。</p>
+  <p>一方で学芸員は増え続けている。博物館の学芸員は平成14年度の3,393人から令和6年度の5,581人へ<strong>64.5％増</strong>、博物館類似施設では2,243人から3,817人へ<strong>70.2％増</strong>である。1館あたりでみても3.03人から4.15人へ厚くなった（「職員と雇用」タブ・1施設あたりの配置の表）。</p>
+  <p>ただし、この増加には指定管理者制度による非常勤・委託職員の増加が含まれる点に留意が必要である。「政治的背景」タブでみたとおり、2008年の社会教育法等改正の国会審議では「社会教育施設における人材確保及びその在り方について、指定管理者制度の導入による弊害についても十分配慮し、検討すること」という附帯決議が付されており、長野県千曲市のように6館の博物館を指定管理から直営へ戻した事例も報告されている。</p>
 
   <h3>5-4　財政面での位置づけ</h3>
-  <p>館数と人が増える一方で、博物館費は社会教育費のなかで<strong>最も大きく減った</strong>項目である。平成6会計年度の3,203億円から令和2会計年度の1,472億円へ<strong>54.0％減</strong>、平成11年度比でも47.3％減となっている（第3章6節・表7）。</p>
+  <p>館数と人が増える一方で、博物館費は社会教育費のなかで<strong>最も大きく減った</strong>項目である。平成6会計年度の3,203億円から令和2会計年度の1,472億円へ<strong>54.0％減</strong>、平成11年度比でも47.3％減となっている（「平成の大合併の振返り」タブ・社会教育費の表）。</p>
   <p>館が増え、学芸員が増え、しかし予算は半減した。1館あたりの資源配分が薄くなっていることを意味しており、収蔵資料の保存環境や調査研究機能への影響は、館数という指標では捉えられない。</p>
 
   <h3>5-5　英国との比較 ── 閉館はいつ、なぜ起きるか</h3>
   <p>日本の統計は施設数を年単位で把握するが、個々の館がいつ開館し、いつ閉館したかを追跡する仕組みを持たない。この点で参照になるのが、英国の Mapping Museums 研究プロジェクトである。同プロジェクトは2000〜2025年に閉館した英国の博物館479館を個票で追跡している。</p>
   <figure>
-    <figcaption><b>図9</b>英国博物館の開館からの経過年数別ハザード率（100館・年あたりの閉館件数）。開館10年未満の危険度が突出して高い。</figcaption>
+    <figcaption><b>図11</b>英国博物館の開館からの経過年数別ハザード率（100館・年あたりの閉館件数）。開館10年未満の危険度が突出して高い。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 360" role="img" aria-label="英国博物館の開館年数別ハザード率" class="cht">
 <line x1="62" y1="296.0" x2="730" y2="296.0" stroke="var(--grid)" stroke-width="1"/>
 <text x="53" y="300.0" text-anchor="end" class="tick">0</text>
@@ -1494,14 +1718,14 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <div class="note">
     <div class="nh">日本への示唆</div>
     <p>日本の博物館制度でも、博物館法に基づく登録博物館・指定施設と、それ以外の「博物館類似施設」が区別されている。令和6年度時点で登録・指定は1,344館、類似施設は4,422館と、<strong>類似施設が全体の77％を占める</strong>。英国の知見をそのまま当てはめることはできないが、制度的な位置づけの弱い施設ほど存続が不安定である可能性は検討に値する。</p>
-    <p>また、開館直後10年のリスクが高いという知見は、合併特例債で2005年前後に集中的に整備された施設群が最初の危険期を通過済みであることを意味する。次の節目は建物の更新期であり、第5章4節で見たとおり2030年代半ばの大規模改修期が該当する。</p>
+    <p>また、開館直後10年のリスクが高いという知見は、合併特例債で2005年前後に集中的に整備された施設群が最初の危険期を通過済みであることを意味する。次の節目は建物の更新期であり、「日本全体」タブで見たとおり2030年代半ばの大規模改修期が該当する。</p>
   </div>
 
 
   <div class="note">
     <div class="nh">合併と博物館</div>
     <p>合併は博物館の館数を減らす方向には働かなかった。都道府県別にみても、合併による市町村減少率と博物館数の変化の相関はr = −0.08と無相関である。</p>
-    <p>理由は配置密度にある。1999年度時点で博物館は1団体あたり平均0.3館程度しか存在せず、合併しても重複はほとんど生じない。加えて、旧市町村の館が新市の分館として存続すれば統計上は引き続き1館と数えられる。第4章でみた廃校施設の活用用途でも、社会教育施設が858件、文化施設が348件を占めており、廃校が博物館・資料館に転用された例も含まれる。</p>
+    <p>理由は配置密度にある。1999年度時点で博物館は1団体あたり平均0.3館程度しか存在せず、合併しても重複はほとんど生じない。加えて、旧市町村の館が新市の分館として存続すれば統計上は引き続き1館と数えられる。「学校」タブでみた廃校施設の活用用途でも、社会教育施設が858件、文化施設が348件を占めており、廃校が博物館・資料館に転用された例も含まれる。</p>
     <p>合併が直撃したのは、旧町村が集落単位で密に配置していた公民館であり、博物館ではなかった。</p>
   </div>
 </section>
@@ -1515,11 +1739,11 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
 
   <h3>L-1　なぜ図書館は減らなかったのか</h3>
   <p>理由は配置密度にある。1999年度時点で図書館は全国2,592館、市町村数3,232に対して<strong>1団体あたり平均0.8館</strong>しかなかった。公民館の5.9館と比べて圧倒的に薄く、合併しても重複がほとんど生じない。合併が直撃したのは「小規模自治体が密に配置していた施設」であり、図書館はそこに該当しなかった。</p>
-  <p>加えて次の要因が働いた。①旧市町村の図書館が新市の分館として存続すれば統計上は引き続き1館と数えられる。②未設置自治体への新設を合併特例債が後押しした。③廃校舎の転用（第5章で見たとおり社会教育施設への転用は858件）。</p>
+  <p>加えて次の要因が働いた。①旧市町村の図書館が新市の分館として存続すれば統計上は引き続き1館と数えられる。②未設置自治体への新設を合併特例債が後押しした。③廃校舎の転用（「学校」タブで見たとおり社会教育施設への転用は858件）。</p>
   <p>1館あたり人口でみると、40,347人（2008年）から36,410人（2024年）へ<strong>9.8％改善</strong>している。人口が減るなかで館数が増えたため、住民から見たアクセスは良くなった。社会教育施設のなかでこの動きを示したのは図書館だけである。</p>
 
   <h3>L-2　運営体制 ── 指定管理者が3.4倍に</h3>
-  <p>一方で、運営の形は大きく変わった。公立図書館に占める指定管理者制度導入施設の割合は、平成20年度の<strong>6.5％</strong>から令和6年度の<strong>22.2％</strong>へ3.4倍になった。社会教育施設のなかで最も急な伸びである（第3章・図6）。</p>
+  <p>一方で、運営の形は大きく変わった。公立図書館に占める指定管理者制度導入施設の割合は、平成20年度の<strong>6.5％</strong>から令和6年度の<strong>22.2％</strong>へ3.4倍になった。社会教育施設のなかで最も急な伸びである（「平成の大合併の振返り」タブ・指定管理者導入率の図）。</p>
   <p>指定管理者の内訳をみると、令和6年度の導入750施設のうち<strong>会社が605施設（80.7％）</strong>を占める。公民館では地縁による団体が38.7％と最も多いのと対照的で、図書館の指定管理は明確に<strong>民間事業者への委託</strong>という性格をもつ。</p>
   <p>日本図書館協会は2005年・2008年・2010年・2016年と繰り返し、公立図書館への指定管理者制度は「基本的になじまない」との見解を示してきた。理由として挙げられるのは、司書の確保と資質向上、収益の生じない事業であること、指定管理期間の区切りが図書館事業の蓄積を困難にすること、一貫したコレクション構築が保証されないことである。2017年の国会審議では、一度導入したのち直営へ戻した図書館が<strong>12県14館</strong>にのぼることが文部科学省から示された。</p>
 
@@ -1539,7 +1763,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <h3>L-5　「箱は増えたが本は減った」のか ── 検証</h3>
   <p>館数が増えるなかで蔵書はどう動いたのか。日本図書館協会『日本の図書館 統計と名簿』の全国集計から、合併期にあたる2002年から2010年の推移を確認する。</p>
   <figure>
-    <figcaption><b>図2</b>公共図書館の蔵書冊数・図書館数・専任職員数（2002年＝100の指数）。蔵書は館数を上回る速さで増え、専任職員だけが減っている。</figcaption>
+    <figcaption><b>図12</b>公共図書館の蔵書冊数・図書館数・専任職員数（2002年＝100の指数）。蔵書は館数を上回る速さで増え、専任職員だけが減っている。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 430" role="img" aria-label="図書館の蔵書・館数・専任職員の推移" class="cht">
 <line x1="56" y1="372.0" x2="608" y2="372.0" stroke="var(--grid)" stroke-width="1"/>
 <text x="47" y="376.0" text-anchor="end" class="tick">70</text>
@@ -1623,7 +1847,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
     <p class="src">出典：蔵書冊数・専任職員数＝日本図書館協会『日本の図書館 統計と名簿』各年の公共図書館集計。図書館数＝文部科学省「社会教育調査」（調査年の間は線形補間）。<br>注：2011年以降、日本図書館協会の集計は画像PDFでのみ公開されており機械可読な系列を取得できなかったため、本図は2010年までとした。</p>
   </figure>
   <div class="tbox"><table data-sortable>
-<caption><b>表8</b>公共図書館の蔵書冊数・館数・専任職員数（2002〜2010年）。蔵書と専任職員は日本図書館協会『日本の図書館 統計と名簿』、館数は文部科学省「社会教育調査」（調査年の間は線形補間）。</caption>
+<caption><b>表9</b>公共図書館の蔵書冊数・館数・専任職員数（2002〜2010年）。蔵書と専任職員は日本図書館協会『日本の図書館 統計と名簿』、館数は文部科学省「社会教育調査」（調査年の間は線形補間）。</caption>
 <thead><tr><th>年</th><th>蔵書冊数<br>（千冊）</th><th>図書館数</th><th>1館あたり蔵書<br>（冊）</th><th>専任職員数</th><th>1館あたり<br>専任職員</th></tr></thead><tbody>
 <tr><td>2002</td><td class="num">310,165</td><td class="num">2,742</td><td class="num">113,116</td><td class="num">15,284</td><td class="num neg">5.57</td></tr>
 <tr><td>2003</td><td class="num">321,889</td><td class="num">2,821</td><td class="num">114,105</td><td class="num">15,108</td><td class="num neg">5.36</td></tr>
@@ -1666,7 +1890,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <h3>4-1　学校数の推移 ── 減少は合併前から始まり、合併後も続いた</h3>
   <p>公立を含む小学校数は、平成11年度の24,188校から令和6年度の18,822校へ5,366校（22.2％）減少した。中学校は11,220校から9,882校へ1,338校（11.9％）の減少である。</p>
   <div class="tbox"><table>
-    <caption><b>表9</b>小学校・中学校数の推移（国公私立計、本校・分校計）。年間減少数は平成16・17年度に一段跳ね上がり、その後も高い水準で推移した。</caption>
+    <caption><b>表10</b>小学校・中学校数の推移（国公私立計、本校・分校計）。年間減少数は平成16・17年度に一段跳ね上がり、その後も高い水準で推移した。</caption>
     <thead><tr><th>年度</th><th>小学校</th><th>前年度差</th><th>中学校</th><th>前年度差</th><th class="lab" style="text-align:left">局面</th></tr></thead>
     <tbody>
       <tr><td>平成11年度</td><td class="num">24,188</td><td class="num">−107</td><td class="num">11,220</td><td class="num">−16</td><td class="lab" style="text-align:left">合併推進の開始</td></tr>
@@ -1688,7 +1912,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <h3>4-2　廃校発生数 ── 平成24年度がピーク</h3>
   <p>文部科学省「廃校施設活用状況実態調査」によれば、平成16年度から令和5年度までの20年間に発生した公立学校の廃校は延べ<strong>8,850校</strong>（小学校5,799校、中学校1,835校、高等学校等1,216校）にのぼる。</p>
   <figure>
-    <figcaption><b>図10</b>公立学校の年度別廃校発生数。合併集中期（平成16・17年度）よりも、平成21〜27年度の水準のほうが高い。廃校のピークは合併から7年後の平成24年度（597校）である。棒の上の数値は3校種の合計。
+    <figcaption><b>図13</b>公立学校の年度別廃校発生数。合併集中期（平成16・17年度）よりも、平成21〜27年度の水準のほうが高い。廃校のピークは合併から7年後の平成24年度（597校）である。棒の上の数値は3校種の合計。
     <div class="figbox"><svg viewBox="0 0 760 400" role="img" aria-label="公立学校の年度別廃校発生数" class="cht">
 <line x1="52" y1="344.0" x2="652" y2="344.0" stroke="var(--grid)" stroke-width="1"/>
 <text x="42" y="348.0" text-anchor="end" class="tick">0</text>
@@ -1805,7 +2029,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
 </svg></div>
     <p class="src">出典：文部科学省「令和6年度 公立小中学校等における廃校施設の活用状況に関する調査」（令和7年3月31日公表）。令和6年5月1日現在。</p>
   </figure>
-  <details><summary>図10の数値をすべて表示（年度別・学校種別の廃校発生数）</summary><div class="tbox"><table>
+  <details><summary>図13の数値をすべて表示（年度別・学校種別の廃校発生数）</summary><div class="tbox"><table>
 <thead><tr><th>年度</th><th>小学校</th><th>中学校</th><th>高等学校等</th><th>計</th></tr></thead><tbody>
 <tr><td>平成16年度</td><td class="num">376</td><td class="num">117</td><td class="num">85</td><td class="num">578</td></tr>
 <tr><td>平成17年度</td><td class="num">313</td><td class="num">71</td><td class="num">70</td><td class="num">454</td></tr>
@@ -1829,13 +2053,13 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
 <tr><td>令和5年度</td><td class="num">191</td><td class="num">82</td><td class="num">25</td><td class="num">298</td></tr>
 <tr class="tot"><td>計</td><td class="num">5,799</td><td class="num">1,835</td><td class="num">1,216</td><td class="num">8,850</td></tr>
 </tbody></table></div></details>
-  <p>この時間差には合理的な説明がつく。合併協議において学校の統廃合は最も紛糾しやすい論点であり、合併時には「現状維持」で決着させ、新市の教育振興基本計画や学校適正配置計画の策定を経て数年後に実行に移された事例が多い。第2章で引いた島根県選出議員の質問（2010年）が、合併から5年前後で「統廃合された小学校とか公民館の空き建物がいっぱい残っている」状況を報告しているのも、この時期に対応する。</p>
+  <p>この時間差には合理的な説明がつく。合併協議において学校の統廃合は最も紛糾しやすい論点であり、合併時には「現状維持」で決着させ、新市の教育振興基本計画や学校適正配置計画の策定を経て数年後に実行に移された事例が多い。「政治的背景」タブで引いた島根県選出議員の質問（2010年）が、合併から5年前後で「統廃合された小学校とか公民館の空き建物がいっぱい残っている」状況を報告しているのも、この時期に対応する。</p>
   <p>制度面でも、平成27年1月に文部科学省が<strong>「公立小学校・中学校の適正規模・適正配置等に関する手引」</strong>を策定した。学校統合に関する国の手引としては昭和32年の「学校統合の手引」以来およそ60年ぶりで、小学校は1学年2学級以上、中学校は9学級以上を望ましい規模とし、通学距離の目安（小学校4km、中学校6km）を維持しつつスクールバス等による通学時間おおむね1時間以内という新たな目安を示した。廃校発生数が高止まりする局面で、国が統廃合の判断枠組みを提供した形である。</p>
 
   <h3>4-3　合併進捗と廃校率の関係を検証する</h3>
   <p>合併が学校統廃合の主因であるならば、合併が進んだ都道府県ほど廃校が多いはずである。総務省の都道府県別市町村減少率（平成11年3月→平成22年3月）と、文部科学省の都道府県別廃校数から算出した小中学校の廃校率を突き合わせて検証した。</p>
   <figure>
-    <figcaption><b>図11</b>都道府県別の合併進捗と学校廃校率の関係（n=47）。両者の相関は弱く（r=0.26、順位相関ρ=0.20）、合併の進捗だけでは廃校の多寡を説明できない。破線は最小二乗回帰直線。</figcaption>
+    <figcaption><b>図14</b>都道府県別の合併進捗と学校廃校率の関係（n=47）。両者の相関は弱く（r=0.26、順位相関ρ=0.20）、合併の進捗だけでは廃校の多寡を説明できない。破線は最小二乗回帰直線。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 470" role="img" aria-label="都道府県別の市町村減少率と小中学校廃校率の散布図" class="cht">
 <line x1="66" y1="410.0" x2="732" y2="410.0" stroke="var(--grid)" stroke-width="1"/>
 <text x="56" y="414.0" text-anchor="end" class="tick">0%</text>
@@ -1924,7 +2148,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
 </svg></div>
     <p class="src">出典：市町村減少率＝総務省「『平成の合併』について」（平成22年3月）29頁。廃校数＝文部科学省「令和6年度廃校施設活用状況実態調査」。<br>注：廃校率＝平成16〜令和5年度の小中学校廃校数 ÷（同廃校数＋令和5年度の小中学校数）。母数は平成15年度末時点の小中学校数の近似値であり、この期間の新設校は考慮していない。</p>
   </figure>
-  <details><summary>図11の数値をすべて表示（都道府県別・廃校率の高い順）</summary><div class="tbox"><table>
+  <details><summary>図14の数値をすべて表示（都道府県別・廃校率の高い順）</summary><div class="tbox"><table>
 <thead><tr><th>都道府県</th><th>市町村減少率</th><th>小中廃校数</th><th>小中廃校率</th></tr></thead><tbody>
 <tr><td>秋田県</td><td class="num">63.8%</td><td class="num">215</td><td class="num">43.6%</td></tr>
 <tr><td>岩手県</td><td class="num">42.4%</td><td class="num">304</td><td class="num">42.0%</td></tr>
@@ -1987,7 +2211,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <h3>4-4　廃校施設のゆくえ ── 4分の1は未活用</h3>
   <p>廃校8,850校のうち、令和6年5月1日時点で施設が現存するのは7,612校（86.0％）。そのうち活用されているものは5,661校（74.4％）、活用されていないものが1,951校（25.6％）である。未活用のうち用途が決まっていないものが1,503校（全体の19.7％）にのぼる。</p>
   <div class="tbox"><table>
-    <caption><b>表10</b>廃校施設の主な活用用途（校舎、複数回答）。社会教育施設・文化施設への転用が1,206件・11.7％を占め、第3章でみた図書館・博物館の増加の一部を説明する。</caption>
+    <caption><b>表11</b>廃校施設の主な活用用途（校舎、複数回答）。社会教育施設・文化施設への転用が1,206件・11.7％を占め、「図書館」「博物館」タブでみた増加の一部を説明する。</caption>
     <thead><tr><th>用途</th><th>件数</th><th>割合</th></tr></thead>
     <tbody>
       <tr><td>学校（大学を除く）</td><td class="num">4,191</td><td class="num">40.5%</td></tr>
@@ -2010,7 +2234,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <h3>4-0　79年でみる学校の増減</h3>
   <p>廃校を20年の窓で見ると平成の大合併と重なって見える。しかし学校数の長期系列に戻すと、位置づけが変わる。</p>
   <figure>
-    <figcaption><b>図12</b>小中学校数と児童数の推移（1948〜2026年度、1948年度＝100の指数）。児童数は1958年のピークから大きく減ったが、小学校数の減少はそれより緩やかで遅れている。昭和・平成の大合併期を帯で示した。</figcaption>
+    <figcaption><b>図15</b>小中学校数と児童数の推移（1948〜2026年度、1948年度＝100の指数）。児童数は1958年のピークから大きく減ったが、小学校数の減少はそれより緩やかで遅れている。昭和・平成の大合併期を帯で示した。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 430" role="img" aria-label="小中学校数と児童数の79年推移" class="cht">
 <line x1="60" y1="374.0" x2="628" y2="374.0" stroke="var(--grid)" stroke-width="1"/>
 <text x="51" y="378.0" text-anchor="end" class="tick">30</text>
@@ -2080,7 +2304,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <h3>4-5　廃校はどれくらいで使われるようになるか</h3>
   <p>廃校施設の活用状況は、廃校からの経過年数によって大きく異なる。令和6年5月1日時点で、各年度に廃校となった学校の未活用率をたどると、時間とともに活用が進む様子が見える。</p>
   <figure>
-    <figcaption><b>図13</b>廃校からの経過年数と未活用率。廃校直後は43.3％が未活用だが、6年で25.8％、11年で15.2％、20年で11.4％まで下がる。半減までおよそ5〜6年かかる。</figcaption>
+    <figcaption><b>図16</b>廃校からの経過年数と未活用率。廃校直後は43.3％が未活用だが、6年で25.8％、11年で15.2％、20年で11.4％まで下がる。半減までおよそ5〜6年かかる。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 360" role="img" aria-label="廃校からの経過年数と未活用率" class="cht">
 <line x1="56" y1="302.0" x2="730" y2="302.0" stroke="var(--grid)" stroke-width="1"/>
 <text x="47" y="306.0" text-anchor="end" class="tick">0%</text>
@@ -2138,12 +2362,12 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
 </svg></div>
     <p class="src">出典：文部科学省「廃校施設活用状況実態調査」（令和6年5月1日現在）を廃校年度別に整理（廃校クロニクル データセットより）。<br>注：これは同一集団の追跡ではなく、ある時点での断面を経過年数順に並べたものである。年度による廃校の性格の違い（都市部か過疎地か等）は考慮していない。</p>
   </figure>
-  <p>活用が決まるまでに5〜6年かかるという事実は、合併の時間差とも符合する。第4章2節でみたとおり廃校のピークは平成24年度であり、その世代の校舎が活用先を得たのは平成30年前後になる。一方で、20年経っても11.4％は使われないままである。</p>
+  <p>活用が決まるまでに5〜6年かかるという事実は、合併の時間差とも符合する。「学校」タブでみたとおり廃校のピークは平成24年度であり、その世代の校舎が活用先を得たのは平成30年前後になる。一方で、20年経っても11.4％は使われないままである。</p>
 
   <h3>4-6　都道府県別の消滅率</h3>
   <p>実数では北海道が859校と突出するが、20年間に小中学校の何％が消えたかで正規化すると序列が入れ替わる。</p>
   <figure>
-    <figcaption><b>図14</b>都道府県別の小中学校消滅率（平成16〜令和5年度）。全国平均20.9％を破線で示した。赤は全国平均以上、緑は平均未満。右端に廃校の実数を併記している。</figcaption>
+    <figcaption><b>図17</b>都道府県別の小中学校消滅率（平成16〜令和5年度）。全国平均20.9％を破線で示した。赤は全国平均以上、緑は平均未満。右端に廃校の実数を併記している。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 990.5" role="img" aria-label="都道府県別の小中学校消滅率" class="cht">
 <line x1="76.0" y1="26" x2="76.0" y2="960.5" stroke="var(--grid)" stroke-width="1"/>
 <text x="76.0" y="20" text-anchor="middle" class="tick">0%</text>
@@ -2363,7 +2587,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
 <section id="kominkan"><div class="sechead"><span class="n">施設別</span><h2>公民館</h2></div><h3>3-2　公民館 ── 合併の痕跡が最も鮮明に残る施設</h3>
   <p>公民館の減少が合併と結びついていることは、<strong>設置者別の内訳</strong>を見ると疑いの余地がない。文部科学省の集計によれば、平成14年度から平成17年度にかけて町立公民館は3,098館、村立等は896館減少し、同時期に市立公民館が3,190館増加している。町村が市に編入されたことによる設置者の「横滑り」である。そのうえで合計は804館の純減となっており、横滑りしきれなかった分が統廃合された。</p>
   <figure>
-    <figcaption><b>図15</b>設置者別の公民館数の推移。平成14年度から平成20年度にかけて町立・村立が市立へ振り替わると同時に、総数が2,004館（11.2％）減少した。</figcaption>
+    <figcaption><b>図18</b>設置者別の公民館数の推移。平成14年度から平成20年度にかけて町立・村立が市立へ振り替わると同時に、総数が2,004館（11.2％）減少した。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 420" role="img" aria-label="設置者別の公民館数の推移" class="cht">
 <line x1="56" y1="362.0" x2="640" y2="362.0" stroke="var(--grid)" stroke-width="1"/>
 <text x="46" y="366.0" text-anchor="end" class="tick">0</text>
@@ -2449,7 +2673,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   </figure>
 
   <div class="tbox"><table>
-    <caption><b>表11</b>公民館数・市町村数・設置率の推移。減少が最も急だったのは合併の集中期（平成16〜17年度）ではなく、その<strong>3〜6年後</strong>にあたる平成17→23年度である。条例の統合や施設再編の実務が合併後に進んだことを示唆する。</caption>
+    <caption><b>表12</b>公民館数・市町村数・設置率の推移。減少が最も急だったのは合併の集中期（平成16〜17年度）ではなく、その<strong>3〜6年後</strong>にあたる平成17→23年度である。条例の統合や施設再編の実務が合併後に進んだことを示唆する。</caption>
     <thead><tr><th>年度</th><th>市立</th><th>町立</th><th>村立等</th><th>合計</th><th>期間増減率</th><th>市町村数</th><th>公民館設置<br>市町村数</th><th>設置率</th></tr></thead>
     <tbody>
       <tr><td>平成11年度</td><td class="num">7,944</td><td class="num">8,383</td><td class="num">1,930</td><td class="num">18,257</td><td class="num">—</td><td class="num">3,252</td><td class="num">2,983</td><td class="num">91.7%</td></tr>
@@ -2479,7 +2703,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <ul>
     <li><strong>統計上の「館」の定義。</strong>旧市町村の図書館が合併後に新市の分館として存続すれば、統計上は引き続き1館と数えられる。総務省の合併取組事例集には、岐阜県郡上市が旧町村ごとの図書館の蔵書・利用者情報を一元管理するシステムを整備した例、高知県黒潮町が旧2町の図書館をネットワーク化した例が挙げられている。<strong>統合されたのは館ではなくシステムだった</strong>ケースが少なくない。</li>
     <li><strong>未設置自治体への新設。</strong>1999年度時点で図書館を持たない市町村が多数存在し、合併による財政基盤の強化と合併特例債が新設を後押しした。総務省調査では、合併の効果として「これまでなかった図書館などの公共施設を利用することができるようになった」という住民の声が記録されている。</li>
-    <li><strong>廃校舎の転用。</strong>第4章でみるとおり、廃校施設の活用用途のうち社会教育施設が858件（8.3％）、文化施設が348件（3.4％）を占める。</li>
+    <li><strong>廃校舎の転用。</strong>「学校」タブでみるとおり、廃校施設の活用用途のうち社会教育施設が858件（8.3％）、文化施設が348件（3.4％）を占める。</li>
     <li><strong>複合施設化。</strong>合併後に空いた旧庁舎・旧支所を図書館等に転用する動きも報告されている。</li>
   </ul>
   <p>ただし、館数の増加が<strong>サービス水準の向上を意味するとは限らない</strong>点に注意が必要である。国民1人当たりの貸出冊数は平成22年度間の5.3冊をピークに令和2年度間の4.2冊まで低下しており（コロナ禍の影響を含む）、館数と利用の動きは一致していない。</p>
@@ -2489,7 +2713,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
 
   <h4>全国の推移 ── 公民館だけが遠のいた</h4>
   <figure>
-    <figcaption><b>図16</b>全国の1施設あたり人口（上段）と65歳以上人口の割合（下段）。人口が減っているにもかかわらず公民館は1館あたりの人口が増え続けており、図書館・博物館とは逆方向に動いている。</figcaption>
+    <figcaption><b>図19</b>全国の1施設あたり人口（上段）と65歳以上人口の割合（下段）。人口が減っているにもかかわらず公民館は1館あたりの人口が増え続けており、図書館・博物館とは逆方向に動いている。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 470" role="img" aria-label="全国の1施設あたり人口と高齢化率の推移" class="cht">
 <text x="22" y="22" class="panel-ttl" fill="var(--ink2)">1施設あたりの人口（人）　少ないほど身近に施設がある</text>
 <line x1="62" y1="246.0" x2="610" y2="246.0" stroke="var(--grid)" stroke-width="1"/>
@@ -2583,7 +2807,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
     <p class="src">出典：施設数＝文部科学省「社会教育調査」各年度。人口＝総務省統計局「人口推計（各年10月1日現在）」。ただし2015年は国勢調査年のため統計センター「SSDSE-B-2026」収録の同系列値を用いた。</p>
   </figure>
   <div class="tbox"><table>
-<caption><b>表12</b>全国の1施設あたり人口と高齢化率（図16の数値表）。人口は各年10月1日現在、施設数は同年度の社会教育調査による。</caption>
+<caption><b>表13</b>全国の1施設あたり人口と高齢化率（図19の数値表）。人口は各年10月1日現在、施設数は同年度の社会教育調査による。</caption>
 <thead><tr><th>年度</th><th>総人口</th><th>65歳以上</th><th>高齢化率</th><th>公民館1館<br>あたり人口</th><th>図書館1館<br>あたり人口</th><th>博物館1館<br>あたり人口</th></tr></thead><tbody>
 <tr><td>H20（2008年）</td><td class="num">12,770万人</td><td class="num">2,822万人</td><td class="num">22.1%</td><td class="num">7,708</td><td class="num">40,347</td><td class="num">22,116</td></tr>
 <tr><td>H23（2011年）</td><td class="num">12,780万人</td><td class="num">2,975万人</td><td class="num">23.3%</td><td class="num">8,299</td><td class="num">39,034</td><td class="num">22,237</td></tr>
@@ -2599,7 +2823,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
 
   <h4>都道府県別 ── 最大113倍の格差</h4>
   <figure>
-    <figcaption><b>図17</b>都道府県別の公民館1館あたり人口（2008年→2024年）。白丸が2008年、色付きの丸が2024年。赤は密度が薄くなった県、緑は濃くなった県。値の幅が2桁に及ぶため対数目盛としている。右端に2024年の値と館数の変化を併記した。</figcaption>
+    <figcaption><b>図20</b>都道府県別の公民館1館あたり人口（2008年→2024年）。白丸が2008年、色付きの丸が2024年。赤は密度が薄くなった県、緑は濃くなった県。値の幅が2桁に及ぶため対数目盛としている。右端に2024年の値と館数の変化を併記した。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 1102.5" role="img" aria-label="都道府県別の公民館1館あたり人口" class="cht">
 <line x1="85.6" y1="36" x2="85.6" y2="1066.5" stroke="var(--grid)" stroke-width="1"/>
 <text x="85.6" y="30" text-anchor="middle" class="tick">1,000人</text>
@@ -2967,7 +3191,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
 
   <h4>高齢化率との関係</h4>
   <figure>
-    <figcaption><b>図18</b>65歳以上人口の割合と公民館1館あたり人口の関係（2024年、47都道府県）。高齢化が進んだ県ほど公民館が身近にあるという明確な負の相関がみられる（対数変換後の相関係数 r = −0.73）。</figcaption>
+    <figcaption><b>図21</b>65歳以上人口の割合と公民館1館あたり人口の関係（2024年、47都道府県）。高齢化が進んだ県ほど公民館が身近にあるという明確な負の相関がみられる（対数変換後の相関係数 r = −0.73）。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 480" role="img" aria-label="高齢化率と公民館1館あたり人口の関係" class="cht">
 <line x1="74" y1="410.0" x2="734" y2="410.0" stroke="var(--grid)" stroke-width="1"/>
 <text x="65" y="414.0" text-anchor="end" class="tick">1,000</text>
@@ -3067,7 +3291,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
 <section id="staff"><div class="sechead"><span class="n">横断</span><h2>職員と雇用</h2></div><h3>3-5　人 ── 施設より急速に失われた専門職</h3>
   <p>社会教育分野で最も大きな変化は、施設数ではなく<strong>人</strong>に生じた。都道府県・市町村教育委員会に置かれる社会教育主事は、平成14年度の5,383人から令和6年度の1,481人へ<strong>72.5％減</strong>。公民館主事（指導系職員）は18,591人から11,383人へ38.8％減となっている。</p>
   <div class="tbox"><table>
-    <caption><b>表13</b>社会教育関係の指導系職員数の推移。社会教育主事・公民館主事が減少する一方、司書・学芸員は一貫して増加しており、専門職の中でも明暗が分かれている。</caption>
+    <caption><b>表14</b>社会教育関係の指導系職員数の推移。社会教育主事・公民館主事が減少する一方、司書・学芸員は一貫して増加しており、専門職の中でも明暗が分かれている。</caption>
     <thead><tr><th>職種</th><th>H14</th><th>H17</th><th>H20</th><th>H23</th><th>H27</th><th>H30</th><th>R3</th><th>R6</th><th>H14→R6</th></tr></thead>
     <tbody>
       <tr><td>社会教育主事<br><span style="color:var(--ink3);font-size:11.5px">（都道府県・市町村教委）</span></td><td class="num">5,383</td><td class="num">4,119</td><td class="num">3,004</td><td class="num">2,518</td><td class="num">2,048</td><td class="num">1,681</td><td class="num">1,451</td><td class="num">1,481</td><td class="num neg">−72.5%</td></tr>
@@ -3084,7 +3308,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <h4>1施設あたりで見ると何が起きたか</h4>
   <p>施設数と職員数はどちらも減っている。では<strong>1施設あたりの配置</strong>はどう動いたのか。合併による統廃合が「残った施設に人を集める」方向に働いたのなら、施設あたりの職員は厚くなっているはずである。社会教育調査の公表値から算出した結果は次のとおりである。</p>
   <figure>
-    <figcaption><b>図19</b>1施設あたりの指導系職員数の推移。配置水準が大きく異なるため、上2段は施設種別を水準で分けて描いている。最下段のみ分母が施設ではなく教育委員会（都道府県47＋市町村）である点に注意。</figcaption>
+    <figcaption><b>図22</b>1施設あたりの指導系職員数の推移。配置水準が大きく異なるため、上2段は施設種別を水準で分けて描いている。最下段のみ分母が施設ではなく教育委員会（都道府県47＋市町村）である点に注意。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 620" role="img" aria-label="1施設あたりの指導系職員数の推移" class="cht">
 <text x="12" y="20" class="panel-ttl" fill="var(--ink2)">専門職が複数配置される施設（人／施設）</text>
 <line x1="46" y1="184.0" x2="634" y2="184.0" stroke="var(--grid)" stroke-width="1"/>
@@ -3288,7 +3512,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
     <p class="src">出典：文部科学省「社会教育統計（社会教育調査）」各年度の施設数・指導系職員数から本報告が算出。<br>注：社会体育施設の職員数は団体単位で調査されており、施設数との除算は概算である。生涯学習センターは令和6年度の定義変更により施設数が倍増しているため、前回との接続はできない。</p>
   </figure>
   <div class="tbox"><table>
-<caption><b>表14</b>1施設あたりの指導系職員数（人）。施設数と職員数はいずれも社会教育調査の公表値で、本報告が除して算出した。公民館のみが減少しており、施設が減っても配置が厚くならなかった唯一の施設種である。</caption>
+<caption><b>表15</b>1施設あたりの指導系職員数（人）。施設数と職員数はいずれも社会教育調査の公表値で、本報告が除して算出した。公民館のみが減少しており、施設が減っても配置が厚くならなかった唯一の施設種である。</caption>
 <thead><tr><th>施設種</th><th>H14</th><th>H17</th><th>H20</th><th>H23</th><th>H27</th><th>H30</th><th>R3</th><th>R6</th><th>H14→R6</th></tr></thead><tbody>
 <tr><td>図書館<br><span style="color:var(--ink3);font-size:11.5px">（司書）</span></td><td class="num">4.00</td><td class="num">4.29</td><td class="num">4.61</td><td class="num">5.17</td><td class="num">5.71</td><td class="num">5.99</td><td class="num">6.34</td><td class="num">6.58</td><td class="num pos">+64.4%</td></tr>
 <tr><td>博物館<br><span style="color:var(--ink3);font-size:11.5px">（学芸員）</span></td><td class="num">3.03</td><td class="num">3.20</td><td class="num">3.20</td><td class="num">3.48</td><td class="num">3.77</td><td class="num">3.91</td><td class="num">4.10</td><td class="num">4.15</td><td class="num pos">+37.1%</td></tr>
@@ -3312,8 +3536,8 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
 
   <div class="note">
     <div class="nh">合併直後に現れた「見かけ上の充実」</div>
-    <p>図19の最下段は、教育委員会1つあたりの社会教育主事数である。平成14年度の1.65人が平成17年度に2.21人へ跳ね上がり、その後1年あたり着実に低下して令和6年度には0.84人まで落ちている。</p>
-    <p>この山は、主事が増えたために生じたものではない。<strong>実数は5,383人から4,119人へ減っており、それ以上に分母である自治体数が3,259から1,868へ半減した</strong>ために、比率だけが上昇したものである。第2章でみた総務省の「合併により専門職員の配置が充実した」という評価は、ちょうどこの局面を切り取った指標に依拠している。分母効果が一巡した後、平成20年度には合併前の水準に戻り、以後は半分以下まで低下した。</p>
+    <p>図22の最下段は、教育委員会1つあたりの社会教育主事数である。平成14年度の1.65人が平成17年度に2.21人へ跳ね上がり、その後1年あたり着実に低下して令和6年度には0.84人まで落ちている。</p>
+    <p>この山は、主事が増えたために生じたものではない。<strong>実数は5,383人から4,119人へ減っており、それ以上に分母である自治体数が3,259から1,868へ半減した</strong>ために、比率だけが上昇したものである。「政治的背景」タブでみた総務省の「合併により専門職員の配置が充実した」という評価は、ちょうどこの局面を切り取った指標に依拠している。分母効果が一巡した後、平成20年度には合併前の水準に戻り、以後は半分以下まで低下した。</p>
     <p>合併が専門職配置に与えた効果を測るには、団体あたりの平均値ではなく実数と1施設あたりの配置を併せて見る必要がある。</p>
   </div>
 
@@ -3325,7 +3549,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <h3>S-1　職員は増えたが、専任は減った</h3>
   <p>社会教育調査は施設の職員を<strong>専任・兼任・非常勤・指定管理者</strong>の4区分で集計している。この内訳をみると、総数の増加と専任の減少が同時に起きていることがわかる。</p>
   <figure>
-    <figcaption><b>図20</b>社会教育施設の職員の雇用形態別構成（2008〜2024年度）。棒の中の数字は専任職員の割合（％）。すべての施設種で専任の比率が下がり続けている。</figcaption>
+    <figcaption><b>図23</b>社会教育施設の職員の雇用形態別構成（2008〜2024年度）。棒の中の数字は専任職員の割合（％）。すべての施設種で専任の比率が下がり続けている。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 456" role="img" aria-label="社会教育施設の職員の雇用形態別構成" class="cht">
 <text x="8.0" y="24" class="panel-ttl" fill="var(--ink2)">図書館</text>
 <line x1="50.0" y1="202.0" x2="364.0" y2="202.0" stroke="var(--grid)" stroke-width="1"/>
@@ -3539,7 +3763,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <h3>S-2　感覚と統計のギャップはここにある</h3>
   <p>1館あたりで並べると、2つの指標が正反対に動いていることがはっきりする。</p>
   <figure>
-    <figcaption><b>図21</b>1館あたりの指導系職員数（司書・学芸員）と専任職員数。緑の線は増え、赤の線は減っている。両者の開き（薄い赤の帯）が、統計上の「専門職の充実」と現場の「手薄」感覚のギャップにあたる。</figcaption>
+    <figcaption><b>図24</b>1館あたりの指導系職員数（司書・学芸員）と専任職員数。緑の線は増え、赤の線は減っている。両者の開き（薄い赤の帯）が、統計上の「専門職の充実」と現場の「手薄」感覚のギャップにあたる。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 486" role="img" aria-label="1館あたりの指導系職員数と専任職員数" class="cht">
 <text x="8" y="22" class="panel-ttl" fill="var(--ink2)">図書館　1館あたりの職員数（人）</text>
 <line x1="60" y1="204.0" x2="610" y2="204.0" stroke="var(--grid)" stroke-width="1"/>
@@ -3643,7 +3867,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
     <p class="src">出典：同上。指導系職員数は文部科学省「社会教育統計」、専任職員数は同「施設等別職員数」。いずれも施設数で除した値。</p>
   </figure>
   <div class="tbox"><table data-sortable>
-<caption><b>表15</b>社会教育施設の職員数（雇用形態別）と1館あたりの配置。「専任」は当該施設に専ら従事する常勤職員。指導系職員（司書・学芸員・公民館主事）は雇用形態を問わない総数であり、専任職員数とは別の集計である。</caption>
+<caption><b>表16</b>社会教育施設の職員数（雇用形態別）と1館あたりの配置。「専任」は当該施設に専ら従事する常勤職員。指導系職員（司書・学芸員・公民館主事）は雇用形態を問わない総数であり、専任職員数とは別の集計である。</caption>
 <thead><tr><th>施設種</th><th>年度</th><th>専任</th><th>兼任</th><th>非常勤</th><th>指定管理者</th><th>計</th><th>常勤率</th><th>専任／館</th><th>指導系／館</th></tr></thead><tbody>
 <tr><td>図書館</td><td>H20（2008）</td><td class="num">14,259</td><td class="num">2,169</td><td class="num">16,129</td><td class="num">0</td><td class="num">32,557</td><td class="num">43.8%</td><td class="num neg">4.51</td><td class="num pos">4.61</td></tr>
 <tr class="tot"><td>図書館</td><td>R6（2024）</td><td class="num">10,201</td><td class="num">2,392</td><td class="num">21,763</td><td class="num">11,024</td><td class="num">45,380</td><td class="num">22.5%</td><td class="num neg">3.00</td><td class="num pos">6.58</td></tr>
@@ -3663,7 +3887,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <h3>S-3　司書は誰が務めているか ── 雇用形態別の内訳</h3>
   <p>前節では施設の職員全体を4区分でみた。ここではさらに踏み込み、<strong>司書資格を持つ職員が、どの雇用形態で働いているか</strong>を確認する。日本図書館協会の集計は、雇用形態ごとに「計」と「うち司書・司書補」を分けて公表している。</p>
   <div class="tbox"><table data-sortable>
-    <caption><b>表16</b>公共図書館の職員数と司書・司書補の内訳（2010年）。非常勤・臨時・委託派遣は年間実労働時間1,500時間を1人として換算した数値である。</caption>
+    <caption><b>表17</b>公共図書館の職員数と司書・司書補の内訳（2010年）。非常勤・臨時・委託派遣は年間実労働時間1,500時間を1人として換算した数値である。</caption>
     <thead><tr><th>雇用形態</th><th>職員数</th><th>うち司書・司書補</th><th>司書率</th><th>司書全体に<br>占める割合</th></tr></thead>
     <tbody>
       <tr><td>専任（常勤）</td><td class="num">12,114</td><td class="num">6,188</td><td class="num">51.1%</td><td class="num neg">33.6%</td></tr>
@@ -3740,7 +3964,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <div class="note">
     <div class="nh">専門職員は「増えた」という政府の評価</div>
     <p>総務省調査（合併市町村558団体）によれば、約9割にあたる474市町村が合併により組織の専門化・人員増を実現したとしている。栄養士・保健師・土木技師・建築技師・司書・学芸員などの専門職について、合併市町のうち旧町村部における平均専門職員数は、非合併市町村の約5倍（平成19年で21.8人対5.7人）に達した。</p>
-    <p>ただしこれは<strong>1団体あたりの平均値</strong>であり、団体規模が数倍になった以上は当然の帰結でもある。旧町村域の住民から見た場合の専門職への到達しやすさとは別の指標であることに注意が必要である。第3章でみるように、社会教育分野に限れば専門職員の総数そのものが大きく減少している。</p>
+    <p>ただしこれは<strong>1団体あたりの平均値</strong>であり、団体規模が数倍になった以上は当然の帰結でもある。旧町村域の住民から見た場合の専門職への到達しやすさとは別の指標であることに注意が必要である。「職員と雇用」タブでみるように、社会教育分野に限れば専門職員の総数そのものが大きく減少している。</p>
   </div>
 </section>
 </div>
@@ -3754,7 +3978,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <h3>J-0　年齢構造 ── 1歳刻みで見る日本</h3>
   <p>人口が施設の需要を決める最大の要因である以上、総人口という1つの数字では解像度が足りない。<strong>学校の需要は年少人口が、公民館の需要は高齢人口が決める。</strong>両者はまったく違う動き方をする。</p>
   <figure>
-    <figcaption><b>図22</b>日本の人口ピラミッド（2024年10月1日現在、年齢各歳）。左が男性、右が女性。団塊世代（75〜77歳）と団塊ジュニア（50〜53歳）の2つの膨らみが、今後の施設需要を規定する。</figcaption>
+    <figcaption><b>図25</b>日本の人口ピラミッド（2024年10月1日現在、年齢各歳）。左が男性、右が女性。団塊世代（75〜77歳）と団塊ジュニア（50〜53歳）の2つの膨らみが、今後の施設需要を規定する。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 560" role="img" aria-label="日本の人口ピラミッド（2024年・年齢各歳）" class="cht">
 <line x1="380.0" y1="44" x2="380.0" y2="514.0" stroke="var(--grid)" stroke-width="1"/>
 <line x1="380.0" y1="44" x2="380.0" y2="514.0" stroke="var(--grid)" stroke-width="1"/>
@@ -3999,7 +4223,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <p>2つの膨らみのうち、<strong>団塊世代は今後20年でほぼ消え、団塊ジュニアがそのまま高齢層に移動する</strong>。年少人口の層は一貫して細く、下の年齢ほど細い。0歳は71万6千人で、50歳の199万人の36％にすぎない。</p>
 
   <figure>
-    <figcaption><b>図23</b>年齢3区分別人口の将来推移（2024年＝100の指数）。高齢人口だけがほぼ横ばいで、年少人口と生産年齢人口が大きく減る。</figcaption>
+    <figcaption><b>図26</b>年齢3区分別人口の将来推移（2024年＝100の指数）。高齢人口だけがほぼ横ばいで、年少人口と生産年齢人口が大きく減る。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 420" role="img" aria-label="年齢3区分別人口の将来推移" class="cht">
 <line x1="58" y1="364.0" x2="574" y2="364.0" stroke="var(--grid)" stroke-width="1"/>
 <text x="49" y="368.0" text-anchor="end" class="tick">50</text>
@@ -4074,11 +4298,11 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
     <div class="sumcard down"><span class="lb">生産年齢人口</span><span class="big">4,535万</span>
       <span class="dt">2070年の15〜64歳人口。2020年の7,509万人から約4割減。</span></div>
   </div>
-  <p>人口減少は全国一律には進まない。第4章でみたとおり、2000年から2023年の人口増減率は東京都<strong>＋16.8％</strong>から秋田県<strong>−23.1％</strong>まで開いている。同じ期間に小中学校の消滅率は秋田43.6％、愛知5.2％と、人口動態をそのまま反映した（決定係数0.64）。</p>
+  <p>人口減少は全国一律には進まない。「学校」タブでみたとおり、2000年から2023年の人口増減率は東京都<strong>＋16.8％</strong>から秋田県<strong>−23.1％</strong>まで開いている。同じ期間に小中学校の消滅率は秋田43.6％、愛知5.2％と、人口動態をそのまま反映した（決定係数0.64）。</p>
   <p>高齢化率も地域差が大きい。2024年時点で秋田県39.5％、山形県35.6％、島根県35.2％に対し、東京都22.7％、愛知県25.8％である。<strong>高齢化が進んだ県ほど公民館が身近にある</strong>という負の相関（r = −0.73）が現に存在しており、人口減少と高齢化が最も進む地域が、最も密に拠点を配置してきた地域と重なっている。</p>
 
   <h3>J-2　自治体財政 ── 借金は軽くなったが、硬さは残った</h3>
-  <p>市町村財政の20年をみると、指標によって方向が正反対である。財政力指数は0.428から0.512へ、実質公債費比率は14.5％から11.2％へ、将来負担比率は234.8％から163.2％へ、いずれも改善した。ところが<strong>経常収支比率だけは92.8％から93.4％へ悪化している</strong>（第6章・図26）。</p>
+  <p>市町村財政の20年をみると、指標によって方向が正反対である。財政力指数は0.428から0.512へ、実質公債費比率は14.5％から11.2％へ、将来負担比率は234.8％から163.2％へ、いずれも改善した。ところが<strong>経常収支比率だけは92.8％から93.4％へ悪化している</strong>（「日本全体」タブ・財政指標の図）。</p>
   <p>経常収支比率が93％台とは、経常的な収入の9割以上が人件費・扶助費・公債費といった固定的な支出で埋まっている状態である。残る1割弱が、新しい事業や施設の維持改修に充てられる裁量の幅にあたる。社会教育費が平成6会計年度の27,103億円から令和2会計年度の15,144億円へ<strong>44.1％減</strong>ったのは、この構造の帰結である。</p>
   <p>合併市町村に限れば、2024年度の経常収支比率は<strong>92.6％</strong>で非合併市町村の89.6％より3.0ポイント硬直的である。押し上げ要因は合併特例債の公債費であり、その償還はなお続いている。</p>
 
@@ -4091,7 +4315,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <h3>J-4　企業倒産と施設の閉館</h3>
   <p>地域経済の縮小は、社会教育施設の閉館と同時に進むのか。全国の企業倒産件数と博物館の閉館件数を並べて確認する。</p>
   <figure>
-    <figcaption><b>図24</b>企業倒産件数（上段）と博物館の閉館件数（下段）。2005〜2024年度。縦軸の単位が大きく異なるため上下に分けている。</figcaption>
+    <figcaption><b>図27</b>企業倒産件数（上段）と博物館の閉館件数（下段）。2005〜2024年度。縦軸の単位が大きく異なるため上下に分けている。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 420" role="img" aria-label="企業倒産件数と博物館閉館件数" class="cht">
 <text x="16" y="22" class="panel-ttl" fill="var(--s1)">企業倒産件数（件・全国）</text>
 <line x1="62" y1="186.0" x2="720" y2="186.0" stroke="var(--grid)" stroke-width="1"/>
@@ -4175,7 +4399,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <h3>J-5　増減の内訳 ── 「増えた」の正体</h3>
   <p>博物館数は2005年の3,997館から2024年の4,497館へ純増している。しかしこの純増の内訳を見ると、実態は異なる。</p>
   <figure>
-    <figcaption><b>図25</b>博物館の増減内訳（2005〜2024年度）。上向きが増加要因（新館・追加館）、下向きが減少要因（閉館・除外）。</figcaption>
+    <figcaption><b>図28</b>博物館の増減内訳（2005〜2024年度）。上向きが増加要因（新館・追加館）、下向きが減少要因（閉館・除外）。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 400" role="img" aria-label="博物館の増減内訳" class="cht">
 <line x1="58" y1="344.0" x2="644" y2="344.0" stroke="var(--grid)" stroke-width="1"/>
 <text x="49" y="348.0" text-anchor="end" class="tick">180</text>
@@ -4308,7 +4532,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
 
   <h4>全国の推移 ── 他の指標は改善したが、経常収支比率だけは改善していない</h4>
   <figure>
-    <figcaption><b>図26</b>市町村の主要財政指標の推移（2005〜2024年度）。上段の経常収支比率は20年間ほぼ横ばいで、合併直後の2007年度に96.7％のピークをつけている。下段の他の3指標は明確に改善した（指数が下がるほど改善）。</figcaption>
+    <figcaption><b>図29</b>市町村の主要財政指標の推移（2005〜2024年度）。上段の経常収支比率は20年間ほぼ横ばいで、合併直後の2007年度に96.7％のピークをつけている。下段の他の3指標は明確に改善した（指数が下がるほど改善）。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 530" role="img" aria-label="市町村の財政指標の推移" class="cht">
 <text x="22" y="21" class="panel-ttl" fill="var(--s2)">経常収支比率（％）　高いほど財政が硬直的＝悪い</text>
 <line x1="58" y1="206.0" x2="592" y2="206.0" stroke="var(--grid)" stroke-width="1"/>
@@ -4443,7 +4667,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <h4>合併市町村と非合併市町村を比べる</h4>
   <p>全国平均では合併の効果を切り出せない。そこで、2024年度の全市町村の経常収支比率を、<strong>平成の大合併を経た団体（合併市町村）と、経ていない団体（非合併市町村）に分けて</strong>比較した。総務省「市町村別決算状況調」の団体別データに、同省の合併実績（649件）から得た合併後市町村名を突き合わせて分類している。</p>
   <figure>
-    <figcaption><b>図27</b>合併市町村と非合併市町村の経常収支比率。上段は2024年度の分布、下段は2003年度（合併前）からの平均値の変化。両グループは合併前にはほぼ同じ水準から出発している。</figcaption>
+    <figcaption><b>図30</b>合併市町村と非合併市町村の経常収支比率。上段は2024年度の分布、下段は2003年度（合併前）からの平均値の変化。両グループは合併前にはほぼ同じ水準から出発している。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 470" role="img" aria-label="合併市町村と非合併市町村の経常収支比率" class="cht">
 <text x="18" y="26" class="panel-ttl" fill="var(--ink2)">2024年度 経常収支比率の分布（団体の割合％）</text>
 <line x1="128" y1="234.0" x2="720" y2="234.0" stroke="var(--grid)" stroke-width="1"/>
@@ -4523,7 +4747,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
     <p class="src">出典：総務省「市町村別決算状況調」平成15年度・令和6年度、同「平成11年度以降の市町村合併の実績」より本報告が算出。</p>
   </figure>
   <div class="tbox"><table>
-<caption><b>表17</b>合併市町村と非合併市町村の経常収支比率（2024年度）。経常収支比率は経常的な収入に対する経常的な支出の割合で、高いほど自由に使える財源が乏しく財政が硬直的であることを示す。</caption>
+<caption><b>表18</b>合併市町村と非合併市町村の経常収支比率（2024年度）。経常収支比率は経常的な収入に対する経常的な支出の割合で、高いほど自由に使える財源が乏しく財政が硬直的であることを示す。</caption>
 <thead><tr><th>区分</th><th>団体数</th><th>平均</th><th>中央値</th><th>85%未満<br>（弾力的）</th><th>95%以上<br>（硬直的）</th></tr></thead><tbody>
 <tr><td>合併市町村</td><td class="num">576</td><td class="num neg">92.6%</td><td class="num">93.2%</td><td class="num">5.2%</td><td class="num">30.4%</td></tr>
 <tr><td>非合併市町村</td><td class="num">1,133</td><td class="num">89.6%</td><td class="num">90.5%</td><td class="num">22.5%</td><td class="num">20.9%</td></tr>
@@ -4541,7 +4765,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <div class="note">
     <div class="nh">なぜ合併市町村のほうが硬直したのか</div>
     <p>日本総合研究所が市町村別パネルデータで行った検証は、同じ結論に達している。経常経費を項目別に分解した結果、合併市町村で比率を押し上げていたのは、一時的には人件費・物件費、構造的には<strong>公債費・扶助費・繰出金</strong>であり、「なかでも過去に発行した地方債の返済金（元利償還金）等である公債費の押し上げが顕著である」としている。</p>
-    <p>公債費の中身は、第1章でみた<strong>合併特例債</strong>にほかならない。事業費の95％を起債でき、元利償還金の70％が交付税措置される仕組みは、裏を返せば<strong>残り30％は自前で返す借金</strong>である。発行可能総額11兆8,600億円という規模で整備された施設の償還が、いま経常収支比率として現れている。</p>
+    <p>公債費の中身は、「平成の大合併の振返り」タブでみた<strong>合併特例債</strong>にほかならない。事業費の95％を起債でき、元利償還金の70％が交付税措置される仕組みは、裏を返せば<strong>残り30％は自前で返す借金</strong>である。発行可能総額11兆8,600億円という規模で整備された施設の償還が、いま経常収支比率として現れている。</p>
     <p>同研究の結論は「合併した市町村では、非合併市町村に比べ、財政の自立性が高まった一方、財政の弾力性は若干ながら低下しており、<strong>合併により財政基盤が強化されたとはいえない</strong>」というものである。本報告の団体別集計も、これと整合する。</p>
   </div>
 
@@ -4554,8 +4778,8 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   </div>
 
   <h4>財政と施設をつなぐ</h4>
-  <p>財政の硬直化は、社会教育施設の運営に直接はね返る。第3章でみたとおり、社会教育費は平成6会計年度の27,103億円から令和2会計年度の15,144億円へ44.1％減少し、公民館費は33.4％、博物館費は47.3％減った。経常収支比率が90％を超える状態とは、<strong>予算の9割以上が固定的な支出で埋まり、社会教育のような裁量的経費が真っ先に削られる状態</strong>である。</p>
-  <p>もっとも、県単位でみる限り、財政指標と施設数の変化に明確な関係は見出せない（2024年度の経常収支比率と公民館数の変化の相関はr = −0.23、博物館数の変化とはr = −0.05）。財政の厳しさは施設削減の必要条件ではあっても、どの施設をどれだけ減らすかを決めているのは、第5章2節でみたとおり各自治体の政策判断である。</p>
+  <p>財政の硬直化は、社会教育施設の運営に直接はね返る。「平成の大合併の振返り」タブでみたとおり、社会教育費は平成6会計年度の27,103億円から令和2会計年度の15,144億円へ44.1％減少し、公民館費は33.4％、博物館費は47.3％減った。経常収支比率が90％を超える状態とは、<strong>予算の9割以上が固定的な支出で埋まり、社会教育のような裁量的経費が真っ先に削られる状態</strong>である。</p>
+  <p>もっとも、県単位でみる限り、財政指標と施設数の変化に明確な関係は見出せない（2024年度の経常収支比率と公民館数の変化の相関はr = −0.23、博物館数の変化とはr = −0.05）。財政の厳しさは施設削減の必要条件ではあっても、どの施設をどれだけ減らすかを決めているのは、「総合的な課題」タブでみたとおり各自治体の政策判断である。</p>
   <p>なお、日本博物館協会『博物館研究』に基づく集計では、博物館数は2005年の4,003館から2024年の4,497館へ<strong>12.3％増加</strong>している。社会教育調査でみた博物館の増加傾向とも一致しており、財政の硬直化が進むなかでも博物館は減っていない。減ったのは、繰り返しになるが公民館である。</p>
 </section>
 </div>
@@ -4564,7 +4788,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <h3>5-1　因果を切り分ける</h3>
   <p>本調査で確認された事実を、要因別に整理する。合併の影響を過大にも過小にも評価しないためには、この切り分けが不可欠である。</p>
   <div class="tbox"><table>
-    <caption><b>表18</b>社会教育施設・学校の変化に対する要因の寄与。合併が「唯一の原因」である現象はほとんどなく、多くは複数要因の重なりとして現れている。</caption>
+    <caption><b>表19</b>社会教育施設・学校の変化に対する要因の寄与。合併が「唯一の原因」である現象はほとんどなく、多くは複数要因の重なりとして現れている。</caption>
     <thead><tr><th>観察された変化</th><th class="lab" style="text-align:left">合併の寄与</th><th class="lab" style="text-align:left">主たる要因・根拠</th></tr></thead>
     <tbody>
       <tr><td>町村立公民館の激減と<br>市立公民館の急増</td><td class="lab" style="text-align:left"><strong>決定的</strong></td><td class="lab" style="text-align:left">H14→H17で町村立−3,994館／市立+3,190館。設置者の付け替えは合併以外に説明がつかない</td></tr>
@@ -4579,9 +4803,9 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
 
 
   <h3>5-2　学校と公民館は、別の論理で減っている</h3>
-  <p>第4章では、合併の進捗と学校の廃校率に弱い相関しかないことを示した。では何が学校の消滅を決めているのか。そして公民館はどうか。この問いに答えるため、本報告の都道府県別施設データに、公立小中学校の廃校を長期系列で整理した外部データセット（廃校クロニクル）を結合し、47都道府県について要因の説明力を比較した。</p>
+  <p>「学校」タブでは、合併の進捗と学校の廃校率に弱い相関しかないことを示した。では何が学校の消滅を決めているのか。そして公民館はどうか。この問いに答えるため、本報告の都道府県別施設データに、公立小中学校の廃校を長期系列で整理した外部データセット（廃校クロニクル）を結合し、47都道府県について要因の説明力を比較した。</p>
   <figure>
-    <figcaption><b>図28</b>人口増減率と、学校の消滅率（上段）・公民館数の増減率（下段）の関係。横軸は共通で2000年から2023年の人口増減率。上段は右下がりの明確な関係が読み取れるが、下段には関係がみられない。</figcaption>
+    <figcaption><b>図31</b>人口増減率と、学校の消滅率（上段）・公民館数の増減率（下段）の関係。横軸は共通で2000年から2023年の人口増減率。上段は右下がりの明確な関係が読み取れるが、下段には関係がみられない。</figcaption>
     <div class="figbox"><svg viewBox="0 0 760 620" role="img" aria-label="人口増減率と学校消滅率・公民館増減率の関係" class="cht">
 <text x="6" y="24" class="panel-ttl" fill="var(--ink2)">学校の消滅率（％／平成16〜令和5年度の小中学校）</text>
 <line x1="62" y1="250.0" x2="734" y2="250.0" stroke="var(--grid)" stroke-width="1"/>
@@ -4771,7 +4995,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
     <p class="src">出典：学校の消滅率＝文部科学省「廃校施設活用状況実態調査」「学校基本調査」（Fujiterun/japan-school-closures「廃校クロニクル」データセットより）。公民館数＝文部科学省「社会教育調査」。人口＝総務省統計局。</p>
   </figure>
   <div class="tbox"><table>
-<caption><b>表19</b>都道府県別データによる説明力の比較（n=47）。R²は決定係数で、1に近いほどその要因だけで説明できることを示す。学校の消滅は人口動態でほぼ説明できるのに対し、公民館の増減はどの要因でも説明できない。</caption>
+<caption><b>表20</b>都道府県別データによる説明力の比較（n=47）。R²は決定係数で、1に近いほどその要因だけで説明できることを示す。学校の消滅は人口動態でほぼ説明できるのに対し、公民館の増減はどの要因でも説明できない。</caption>
 <thead><tr><th>説明要因</th><th>学校の消滅率<br>r</th><th>学校の消滅率<br>R²</th><th>公民館の増減率<br>r</th><th>公民館の増減率<br>R²</th></tr></thead><tbody>
 <tr><td>人口増減率（2000→2023年）</td><td class="num">-0.80</td><td class="num pos">0.641</td><td class="num">+0.10</td><td class="num neg">0.009</td></tr>
 <tr><td>高齢化率（2024年）</td><td class="num">+0.80</td><td class="num pos">0.635</td><td class="num">-0.08</td><td class="num neg">0.006</td></tr>
@@ -4790,10 +5014,10 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
     <div class="nh">人口では説明できない実例</div>
     <p><strong>滋賀県</strong>は2000年から2023年にかけて人口が<strong>4.8％増加</strong>しているにもかかわらず、公民館は176館から66館へ<strong>62.5％減</strong>となった。同県の学校の消滅率は8.5％で全国でも低い部類である。人口も子どもも減っていない県で、公民館だけが3分の1になった。</p>
     <p><strong>大阪府</strong>も人口はほぼ横ばい（−0.5％）、学校の消滅率9.0％という条件で、公民館は294館から207館へ29.6％減っている。<strong>静岡県</strong>は174館から45館へ74％減だが、学校の消滅率は12.5％にすぎない。</p>
-    <p>これらは人口減少の帰結ではなく、公民館という制度をどう扱うかという<strong>自治体ごとの政策判断の結果</strong>である。第3章でみたコミュニティセンターへの転換、首長部局への移管、指定管理者への移行は、いずれもこの判断の具体的な形にあたる。</p>
+    <p>これらは人口減少の帰結ではなく、公民館という制度をどう扱うかという<strong>自治体ごとの政策判断の結果</strong>である。「公民館」タブでみたコミュニティセンターへの転換、首長部局への移管、指定管理者への移行は、いずれもこの判断の具体的な形にあたる。</p>
   </div>
 
-  <p>この対比は、本報告の因果整理（表18）に一つの重要な修正を加える。学校統廃合について「合併は加速要因にとどまり、主因は少子化である」とした第4章の結論は、人口増減率のR² = 0.64という数字によって定量的に裏づけられた。一方で公民館については、<strong>「人口が減ったから減った」という説明が成り立たない</strong>ことが示された。公民館の減少を人口減少の不可避な帰結として扱う議論は、少なくとも都道府県レベルのデータとは整合しない。</p>
+  <p>この対比は、本報告の因果整理（表19）に一つの重要な修正を加える。学校統廃合について「合併は加速要因にとどまり、主因は少子化である」とした「学校」タブの結論は、人口増減率のR² = 0.64という数字によって定量的に裏づけられた。一方で公民館については、<strong>「人口が減ったから減った」という説明が成り立たない</strong>ことが示された。公民館の減少を人口減少の不可避な帰結として扱う議論は、少なくとも都道府県レベルのデータとは整合しない。</p>
 
   <h4>地域の公共拠点はどれだけ減ったか</h4>
   <p>学校と公民館は、いずれも歩いて行ける範囲に置かれてきた公共の拠点である。両者を合算すると、その総量の変化がみえる。</p>
@@ -4830,14 +5054,14 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <h3>5-5　合併算定替の終了と公共施設の更新問題</h3>
   <p>合併算定替は合併年度から10年（旧法下では最大15年）で終了する。平成16・17年度に集中した合併の算定替は、平成26年度以降順次縮減局面に入った。合併市町村は、合併特例債で整備した施設の元利償還と、旧市町村から引き継いだ大量の既存施設の更新費用を、縮小する交付税のもとで負担する局面に移行している。</p>
   <p>国は、支所に要する経費や人口密度等による需要の割増しを普通交付税の算定に反映させる見直しを平成26年度から段階的に実施し、縮減額の相当部分を復元した。しかし構造的な課題は残る。合併市町村は面積が平均で倍増した一方、施設は旧市町村の配置をおおむね引き継いでいるため、<strong>人口あたりの公共施設保有量が非合併市町村より大きくなる傾向</strong>がある。平成26年度以降、全市町村が策定した公共施設等総合管理計画において、社会教育施設と学校はほぼ例外なく削減対象として位置づけられている。</p>
-  <p>つまり、合併の影響は「完了」していない。第2章で引いた渡辺総務副大臣の答弁が挙げた失敗例（廃校を転用したミュージアム、蔵書の足りない図書館）は、合併特例債で整備された施設が20〜30年後に更新期を迎えたときに、あらためて統廃合の対象になることを予告している。</p>
+  <p>つまり、合併の影響は「完了」していない。「政治的背景」タブで引いた渡辺総務副大臣の答弁が挙げた失敗例（廃校を転用したミュージアム、蔵書の足りない図書館）は、合併特例債で整備された施設が20〜30年後に更新期を迎えたときに、あらためて統廃合の対象になることを予告している。</p>
 
 
 
   <h3>7-8　施設指標と自治体指標の全組み合わせ</h3>
   <p>本報告ではここまで、個別の相関を順に検証してきた。最後に、<strong>施設側の7指標と自治体側の6指標のすべての組み合わせ</strong>を一覧にする。関係の強さを一目で比較できる。</p>
   <figure>
-    <figcaption><b>図22</b>施設指標と自治体指標の相関行列（都道府県別、n=47）。赤は正の相関、青は負の相関、色が濃いほど関係が強い。太線より上が2008〜2024年の<strong>変化率</strong>、下が2024年時点の<strong>水準</strong>である。</figcaption>
+    <figcaption><b>図32</b>施設指標と自治体指標の相関行列（都道府県別、n=47）。赤は正の相関、青は負の相関、色が濃いほど関係が強い。太線より上が2008〜2024年の<strong>変化率</strong>、下が2024年時点の<strong>水準</strong>である。</figcaption>
     <div class="figbox"><svg viewBox="0 0 770 446" role="img" aria-label="施設指標と自治体指標の相関行列" class="cht">
 <text x="226" y="36" text-anchor="middle" class="tick sm">経常収支比率</text>
 <text x="226" y="49" text-anchor="middle" class="tick sm">(2024)</text>
@@ -4958,7 +5182,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
     <p class="src">出典：文部科学省「社会教育調査」「学校基本調査」「廃校施設活用状況実態調査」、総務省「市町村別決算状況調」「平成11年度以降の市町村合併の実績」、総務省統計局「人口推計」より本報告が算出。</p>
   </figure>
   <div class="tbox"><table data-sortable>
-<caption><b>表20</b>施設指標と自治体指標の相関係数（都道府県別、n=47）。上4行は2008〜2024年の<strong>変化</strong>、下3行は2024年時点の<strong>水準</strong>。変化はどの指標でもほとんど説明できないのに対し、水準は人口構造でほぼ決まる。</caption>
+<caption><b>表21</b>施設指標と自治体指標の相関係数（都道府県別、n=47）。上4行は2008〜2024年の<strong>変化</strong>、下3行は2024年時点の<strong>水準</strong>。変化はどの指標でもほとんど説明できないのに対し、水準は人口構造でほぼ決まる。</caption>
 <thead><tr><th>施設指標</th><th>経常収支比率<br>(2024)</th><th>合併市町村の割合</th><th>市町村減少率<br>(1999→2010)</th><th>人口増減率<br>(2000→2023)</th><th>高齢化率<br>(2024)</th><th>人口規模<br>(対数)</th></tr></thead><tbody>
 <tr><td>公民館数の増減率</td><td class="num">-0.23</td><td class="num">-0.30</td><td class="num">-0.28</td><td class="num">+0.10</td><td class="num">-0.08</td><td class="num">+0.01</td></tr>
 <tr><td>図書館数の増減率</td><td class="num">+0.05</td><td class="num">-0.02</td><td class="num">-0.00</td><td class="num">-0.03</td><td class="num">+0.05</td><td class="num">-0.02</td></tr>
@@ -4984,6 +5208,204 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   </div>
 
 
+
+  <h3>7-9　財政指標・物価との関係 ── ラグ相関とその妥当性</h3>
+  <p>自治体の財政状況が悪化した何年後に施設が減るのか。財政指標5種と消費者物価指数について、0〜3年のラグをとって施設の減少との相関を調べた。</p>
+  <div class="note">
+    <div class="nh">高い相関がそのまま関係を示すとは限らない</div>
+    <p>施設数も財政指標も、多くが一方向に推移し続ける系列である。こうした系列どうしの相関は、<strong>互いに無関係でも共通の時間トレンドだけで高い値になる</strong>（見せかけの相関）。</p>
+    <p>そこで本報告では、水準どうしの相関（原系列）に加えて、<strong>前年差どうしの相関（階差）</strong>を算出した。階差をとるとトレンドが除かれるため、関係が実在するなら相関は残り、見せかけなら消える。</p>
+  </div>
+  <figure>
+    <figcaption><b>図33</b>相関の強さが、トレンドを除くとどう変わるか。白丸が原系列の|r|、塗りつぶしが階差後の|r|。<strong>ほとんどの組み合わせで相関が大きく縮む</strong>＝見せかけだったことを示す。</figcaption>
+    <div class="figbox"><svg viewBox="0 0 760 628" role="img" aria-label="ラグ相関のトレンド除去前後の比較" class="cht">
+<line x1="252.0" y1="48" x2="252.0" y2="566" stroke="var(--grid)" stroke-width="1"/>
+<text x="252.0" y="42" text-anchor="middle" class="tick">0.00</text>
+<text x="252.0" y="580" text-anchor="middle" class="tick">0.00</text>
+<line x1="341.5" y1="48" x2="341.5" y2="566" stroke="var(--grid)" stroke-width="1"/>
+<text x="341.5" y="42" text-anchor="middle" class="tick">0.25</text>
+<text x="341.5" y="580" text-anchor="middle" class="tick">0.25</text>
+<line x1="431.0" y1="48" x2="431.0" y2="566" stroke="var(--grid)" stroke-width="1"/>
+<text x="431.0" y="42" text-anchor="middle" class="tick">0.50</text>
+<text x="431.0" y="580" text-anchor="middle" class="tick">0.50</text>
+<line x1="520.5" y1="48" x2="520.5" y2="566" stroke="var(--grid)" stroke-width="1"/>
+<text x="520.5" y="42" text-anchor="middle" class="tick">0.75</text>
+<text x="520.5" y="580" text-anchor="middle" class="tick">0.75</text>
+<line x1="610.0" y1="48" x2="610.0" y2="566" stroke="var(--grid)" stroke-width="1"/>
+<text x="610.0" y="42" text-anchor="middle" class="tick">1.00</text>
+<text x="610.0" y="580" text-anchor="middle" class="tick">1.00</text>
+<line x1="413.1" y1="48" x2="413.1" y2="566" stroke="var(--s2)" stroke-width="1.4" stroke-dasharray="4 3"/>
+<text x="418.1" y="42" class="vtiny" fill="var(--s2)">0.45</text>
+<text x="242" y="78.5" text-anchor="end" class="rowlab">図書館※ × 将来負担比率</text>
+<line x1="335.2" y1="74.5" x2="584.6" y2="74.5" stroke="var(--s2)" stroke-width="2.2" opacity="0.45"/>
+<circle cx="584.6" cy="74.5" r="4.6" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>図書館 × 将来負担比率 lag1　原系列 r=-0.93（n=16）</title></circle>
+<circle cx="335.2" cy="74.5" r="4.8" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>同 階差（トレンド除去後） r=-0.23</title></circle>
+<text x="618" y="78.5" class="vtiny">lag1　-0.93→-0.23</text>
+<text x="242" y="103.5" text-anchor="end" class="rowlab">社会体育施設※ × 実質公債費比率</text>
+<line x1="357.4" y1="99.5" x2="526.2" y2="99.5" stroke="var(--s2)" stroke-width="2.2" opacity="0.45"/>
+<circle cx="526.2" cy="99.5" r="4.6" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>社会体育施設 × 実質公債費比率 lag0　原系列 r=-0.77（n=19）</title></circle>
+<circle cx="357.4" cy="99.5" r="4.8" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>同 階差（トレンド除去後） r=-0.29</title></circle>
+<text x="618" y="103.5" class="vtiny">lag0　-0.77→-0.29</text>
+<text x="242" y="128.5" text-anchor="end" class="rowlab">小中学校 × 将来負担比率</text>
+<line x1="304.8" y1="124.5" x2="516.2" y2="124.5" stroke="var(--s2)" stroke-width="2.2" opacity="0.45"/>
+<circle cx="516.2" cy="124.5" r="4.6" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>小中学校 × 将来負担比率 lag3　原系列 r=+0.74（n=14）</title></circle>
+<circle cx="304.8" cy="124.5" r="4.8" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>同 階差（トレンド除去後） r=-0.15</title></circle>
+<text x="618" y="128.5" class="vtiny">lag3　+0.74→-0.15</text>
+<text x="242" y="153.5" text-anchor="end" class="rowlab">小中学校 × CPI</text>
+<line x1="325.4" y1="149.5" x2="510.1" y2="149.5" stroke="var(--s2)" stroke-width="2.2" opacity="0.45"/>
+<circle cx="510.1" cy="149.5" r="4.6" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>小中学校 × CPI lag3　原系列 r=-0.72（n=17）</title></circle>
+<circle cx="325.4" cy="149.5" r="4.8" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>同 階差（トレンド除去後） r=-0.20</title></circle>
+<text x="618" y="153.5" class="vtiny">lag3　-0.72→-0.20</text>
+<text x="242" y="178.5" text-anchor="end" class="rowlab">社会体育施設※ × 財政力指数</text>
+<line x1="405.7" y1="174.5" x2="509.7" y2="174.5" stroke="var(--s2)" stroke-width="2.2" opacity="0.45"/>
+<circle cx="509.7" cy="174.5" r="4.6" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>社会体育施設 × 財政力指数 lag1　原系列 r=+0.72（n=19）</title></circle>
+<circle cx="405.7" cy="174.5" r="4.8" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>同 階差（トレンド除去後） r=+0.43</title></circle>
+<text x="618" y="178.5" class="vtiny">lag1　+0.72→+0.43</text>
+<text x="242" y="203.5" text-anchor="end" class="rowlab">社会体育施設※ × CPI</text>
+<line x1="379.1" y1="199.5" x2="504.1" y2="199.5" stroke="var(--s2)" stroke-width="2.2" opacity="0.45"/>
+<circle cx="504.1" cy="199.5" r="4.6" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>社会体育施設 × CPI lag2　原系列 r=+0.70（n=18）</title></circle>
+<circle cx="379.1" cy="199.5" r="4.8" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>同 階差（トレンド除去後） r=+0.36</title></circle>
+<text x="618" y="203.5" class="vtiny">lag2　+0.70→+0.36</text>
+<text x="242" y="228.5" text-anchor="end" class="rowlab">小中学校 × 実質公債費比率</text>
+<line x1="310.0" y1="224.5" x2="503.6" y2="224.5" stroke="var(--s2)" stroke-width="2.2" opacity="0.45"/>
+<circle cx="503.6" cy="224.5" r="4.6" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>小中学校 × 実質公債費比率 lag3　原系列 r=+0.70（n=17）</title></circle>
+<circle cx="310.0" cy="224.5" r="4.8" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>同 階差（トレンド除去後） r=+0.16</title></circle>
+<text x="618" y="228.5" class="vtiny">lag3　+0.70→+0.16</text>
+<text x="242" y="253.5" text-anchor="end" class="rowlab">博物館※ × 将来負担比率</text>
+<line x1="355.7" y1="249.5" x2="486.0" y2="249.5" stroke="var(--s2)" stroke-width="2.2" opacity="0.45"/>
+<circle cx="486.0" cy="249.5" r="4.6" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>博物館 × 将来負担比率 lag3　原系列 r=+0.65（n=14）</title></circle>
+<circle cx="355.7" cy="249.5" r="4.8" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>同 階差（トレンド除去後） r=+0.29</title></circle>
+<text x="618" y="253.5" class="vtiny">lag3　+0.65→+0.29</text>
+<text x="242" y="278.5" text-anchor="end" class="rowlab">公民館※ × 将来負担比率</text>
+<line x1="274.7" y1="274.5" x2="482.1" y2="274.5" stroke="var(--s2)" stroke-width="2.2" opacity="0.45"/>
+<circle cx="482.1" cy="274.5" r="4.6" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>公民館 × 将来負担比率 lag0　原系列 r=+0.64（n=17）</title></circle>
+<circle cx="274.7" cy="274.5" r="4.8" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>同 階差（トレンド除去後） r=+0.06</title></circle>
+<text x="618" y="278.5" class="vtiny">lag0　+0.64→+0.06</text>
+<text x="242" y="303.5" text-anchor="end" class="rowlab">図書館※ × 実質公債費比率</text>
+<line x1="353.2" y1="299.5" x2="481.0" y2="299.5" stroke="var(--s2)" stroke-width="2.2" opacity="0.45"/>
+<circle cx="481.0" cy="299.5" r="4.6" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>図書館 × 実質公債費比率 lag0　原系列 r=-0.64（n=19）</title></circle>
+<circle cx="353.2" cy="299.5" r="4.8" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>同 階差（トレンド除去後） r=+0.28</title></circle>
+<text x="618" y="303.5" class="vtiny">lag0　-0.64→+0.28</text>
+<text x="242" y="328.5" text-anchor="end" class="rowlab">図書館※ × CPI</text>
+<line x1="365.0" y1="324.5" x2="470.4" y2="324.5" stroke="var(--s2)" stroke-width="2.2" opacity="0.45"/>
+<circle cx="470.4" cy="324.5" r="4.6" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>図書館 × CPI lag0　原系列 r=+0.61（n=19）</title></circle>
+<circle cx="365.0" cy="324.5" r="4.8" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>同 階差（トレンド除去後） r=-0.32</title></circle>
+<text x="618" y="328.5" class="vtiny">lag0　+0.61→-0.32</text>
+<text x="242" y="353.5" text-anchor="end" class="rowlab">社会体育施設※ × 将来負担比率</text>
+<line x1="292.5" y1="349.5" x2="470.1" y2="349.5" stroke="var(--s2)" stroke-width="2.2" opacity="0.45"/>
+<circle cx="470.1" cy="349.5" r="4.6" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>社会体育施設 × 将来負担比率 lag3　原系列 r=-0.61（n=14）</title></circle>
+<circle cx="292.5" cy="349.5" r="4.8" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>同 階差（トレンド除去後） r=-0.11</title></circle>
+<text x="618" y="353.5" class="vtiny">lag3　-0.61→-0.11</text>
+<text x="242" y="378.5" text-anchor="end" class="rowlab">小中学校 × 財政力指数</text>
+<line x1="328.1" y1="374.5" x2="451.3" y2="374.5" stroke="var(--s2)" stroke-width="2.2" opacity="0.45"/>
+<circle cx="451.3" cy="374.5" r="4.6" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>小中学校 × 財政力指数 lag0　原系列 r=-0.56（n=19）</title></circle>
+<circle cx="328.1" cy="374.5" r="4.8" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>同 階差（トレンド除去後） r=-0.21</title></circle>
+<text x="618" y="378.5" class="vtiny">lag0　-0.56→-0.21</text>
+<text x="242" y="403.5" text-anchor="end" class="rowlab">小中学校 × ラスパイレス指数</text>
+<line x1="376.4" y1="399.5" x2="442.1" y2="399.5" stroke="var(--s2)" stroke-width="2.2" opacity="0.45"/>
+<circle cx="442.1" cy="399.5" r="4.6" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>小中学校 × ラスパイレス指数 lag1　原系列 r=+0.53（n=19）</title></circle>
+<circle cx="376.4" cy="399.5" r="4.8" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>同 階差（トレンド除去後） r=+0.35</title></circle>
+<text x="618" y="403.5" class="vtiny">lag1　+0.53→+0.35</text>
+<text x="242" y="428.5" text-anchor="end" class="rowlab">図書館※ × 財政力指数</text>
+<line x1="341.9" y1="424.5" x2="434.4" y2="424.5" stroke="var(--s2)" stroke-width="2.2" opacity="0.45"/>
+<circle cx="434.4" cy="424.5" r="4.6" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>図書館 × 財政力指数 lag3　原系列 r=+0.51（n=17）</title></circle>
+<circle cx="341.9" cy="424.5" r="4.8" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>同 階差（トレンド除去後） r=+0.25</title></circle>
+<text x="618" y="428.5" class="vtiny">lag3　+0.51→+0.25</text>
+<text x="242" y="453.5" text-anchor="end" class="rowlab">博物館（閉館件数） × 経常収支比率</text>
+<line x1="430.9" y1="449.5" x2="484.4" y2="449.5" stroke="var(--s3)" stroke-width="2.2" opacity="0.45"/>
+<circle cx="430.9" cy="449.5" r="4.6" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>博物館（閉館件数） × 経常収支比率 lag1　原系列 r=+0.50（n=19）</title></circle>
+<circle cx="484.4" cy="449.5" r="4.8" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.6"><title>同 階差（トレンド除去後） r=+0.65</title></circle>
+<text x="618" y="453.5" class="vtiny">lag1　+0.50→+0.65</text>
+<text x="242" y="478.5" text-anchor="end" class="rowlab">公民館※ × 実質公債費比率</text>
+<line x1="291.8" y1="474.5" x2="406.7" y2="474.5" stroke="var(--s2)" stroke-width="2.2" opacity="0.45"/>
+<circle cx="406.7" cy="474.5" r="4.6" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>公民館 × 実質公債費比率 lag0　原系列 r=+0.43（n=19）</title></circle>
+<circle cx="291.8" cy="474.5" r="4.8" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>同 階差（トレンド除去後） r=-0.11</title></circle>
+<text x="618" y="478.5" class="vtiny">lag0　+0.43→-0.11</text>
+<text x="242" y="503.5" text-anchor="end" class="rowlab">博物館（閉館件数） × 将来負担比率</text>
+<line x1="391.3" y1="499.5" x2="401.9" y2="499.5" stroke="var(--s2)" stroke-width="2.2" opacity="0.45"/>
+<circle cx="401.9" cy="499.5" r="4.6" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>博物館（閉館件数） × 将来負担比率 lag2　原系列 r=-0.42（n=15）</title></circle>
+<circle cx="391.3" cy="499.5" r="4.8" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>同 階差（トレンド除去後） r=-0.39</title></circle>
+<text x="618" y="503.5" class="vtiny">lag2　-0.42→-0.39</text>
+<text x="242" y="528.5" text-anchor="end" class="rowlab">博物館（閉館件数） × 財政力指数</text>
+<line x1="271.6" y1="524.5" x2="399.5" y2="524.5" stroke="var(--s2)" stroke-width="2.2" opacity="0.45"/>
+<circle cx="399.5" cy="524.5" r="4.6" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>博物館（閉館件数） × 財政力指数 lag0　原系列 r=+0.41（n=20）</title></circle>
+<circle cx="271.6" cy="524.5" r="4.8" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>同 階差（トレンド除去後） r=+0.05</title></circle>
+<text x="618" y="528.5" class="vtiny">lag0　+0.41→+0.05</text>
+<text x="242" y="553.5" text-anchor="end" class="rowlab">公民館※ × ラスパイレス指数</text>
+<line x1="391.7" y1="549.5" x2="454.3" y2="549.5" stroke="var(--s3)" stroke-width="2.2" opacity="0.45"/>
+<circle cx="391.7" cy="549.5" r="4.6" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>公民館 × ラスパイレス指数 lag0　原系列 r=-0.39（n=19）</title></circle>
+<circle cx="454.3" cy="549.5" r="4.8" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.6"><title>同 階差（トレンド除去後） r=-0.57</title></circle>
+<text x="618" y="553.5" class="vtiny">lag0　-0.39→-0.57</text>
+<circle cx="20" cy="588" r="4.6" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"/>
+<text x="30" y="592" class="leg">原系列の |r|</text>
+<circle cx="150" cy="588" r="4.8" fill="var(--s2)"/>
+<text x="160" y="592" class="leg">階差後の |r|（赤＝見せかけ／緑＝残る）</text>
+<text x="20" y="610" class="vtiny">※印は3年ごと調査を線形補間した系列。年次ラグの解釈は参考値にとどまる</text>
+</svg></div>
+    <p class="src">出典：財政指標・物価指数・博物館閉館件数＝「博物館統計ダッシュボード ソースデータ一覧」、施設数＝文部科学省「社会教育調査」「学校基本調査」。相関係数は本報告が算出。</p>
+  </figure>
+  <div class="tbox tall"><table data-sortable>
+<caption><b>表22</b>財政指標・物価指数と施設減少の相関（ラグ0〜3年）。「原系列」は水準どうしの相関、「階差」は前年差どうしの相関で、共通の時間トレンドを除いたもの。<strong>階差で消える相関は見せかけ</strong>と判断する。</caption>
+<thead><tr><th>対象</th><th>指標</th><th>最良ラグ</th><th>原系列 r</th><th>階差 r</th><th>n</th><th>判定</th></tr></thead><tbody>
+<tr><td>博物館（閉館件数）</td><td>経常収支比率</td><td class="num">1</td><td class="num">+0.50</td><td class="num pos">+0.65</td><td class="num">19</td><td style="text-align:left">残る</td></tr>
+<tr><td>公民館<br><span class="ix">補間系列</span></td><td>ラスパイレス指数</td><td class="num">0</td><td class="num">-0.39</td><td class="num pos">-0.57</td><td class="num">19</td><td style="text-align:left">残る</td></tr>
+<tr><td>図書館<br><span class="ix">補間系列</span></td><td>ラスパイレス指数</td><td class="num">0</td><td class="num">+0.20</td><td class="num pos">+0.46</td><td class="num">19</td><td style="text-align:left">残る</td></tr>
+<tr><td>社会体育施設<br><span class="ix">補間系列</span></td><td>財政力指数</td><td class="num">1</td><td class="num">+0.72</td><td class="num neg">+0.43</td><td class="num">19</td><td style="text-align:left">見せかけ</td></tr>
+<tr><td>博物館（閉館件数）</td><td>将来負担比率</td><td class="num">2</td><td class="num">-0.42</td><td class="num">-0.39</td><td class="num">15</td><td style="text-align:left">弱い</td></tr>
+<tr><td>博物館<br><span class="ix">補間系列</span></td><td>財政力指数</td><td class="num">3</td><td class="num">+0.38</td><td class="num">+0.36</td><td class="num">17</td><td style="text-align:left">弱い</td></tr>
+<tr><td>社会体育施設<br><span class="ix">補間系列</span></td><td>CPI</td><td class="num">2</td><td class="num">+0.70</td><td class="num neg">+0.36</td><td class="num">18</td><td style="text-align:left">見せかけ</td></tr>
+<tr><td>小中学校</td><td>ラスパイレス指数</td><td class="num">1</td><td class="num">+0.53</td><td class="num neg">+0.35</td><td class="num">19</td><td style="text-align:left">見せかけ</td></tr>
+<tr><td>図書館<br><span class="ix">補間系列</span></td><td>CPI</td><td class="num">0</td><td class="num">+0.61</td><td class="num neg">-0.32</td><td class="num">19</td><td style="text-align:left">見せかけ</td></tr>
+<tr><td>社会体育施設<br><span class="ix">補間系列</span></td><td>実質公債費比率</td><td class="num">0</td><td class="num">-0.77</td><td class="num neg">-0.29</td><td class="num">19</td><td style="text-align:left">見せかけ</td></tr>
+<tr><td>博物館<br><span class="ix">補間系列</span></td><td>将来負担比率</td><td class="num">3</td><td class="num">+0.65</td><td class="num neg">+0.29</td><td class="num">14</td><td style="text-align:left">見せかけ</td></tr>
+<tr><td>図書館<br><span class="ix">補間系列</span></td><td>実質公債費比率</td><td class="num">0</td><td class="num">-0.64</td><td class="num neg">+0.28</td><td class="num">19</td><td style="text-align:left">見せかけ</td></tr>
+<tr><td>博物館（閉館件数）</td><td>実質公債費比率</td><td class="num">0</td><td class="num">-0.34</td><td class="num">-0.28</td><td class="num">20</td><td style="text-align:left">弱い</td></tr>
+<tr><td>図書館<br><span class="ix">補間系列</span></td><td>財政力指数</td><td class="num">3</td><td class="num">+0.51</td><td class="num neg">+0.25</td><td class="num">17</td><td style="text-align:left">見せかけ</td></tr>
+<tr><td>図書館<br><span class="ix">補間系列</span></td><td>将来負担比率</td><td class="num">1</td><td class="num">-0.93</td><td class="num neg">-0.23</td><td class="num">16</td><td style="text-align:left">見せかけ</td></tr>
+<tr><td>小中学校</td><td>財政力指数</td><td class="num">0</td><td class="num">-0.56</td><td class="num neg">-0.21</td><td class="num">19</td><td style="text-align:left">見せかけ</td></tr>
+<tr><td>小中学校</td><td>CPI</td><td class="num">3</td><td class="num">-0.72</td><td class="num neg">-0.20</td><td class="num">17</td><td style="text-align:left">見せかけ</td></tr>
+<tr><td>社会体育施設<br><span class="ix">補間系列</span></td><td>経常収支比率</td><td class="num">2</td><td class="num">+0.29</td><td class="num">+0.19</td><td class="num">18</td><td style="text-align:left">弱い</td></tr>
+<tr><td>社会体育施設<br><span class="ix">補間系列</span></td><td>ラスパイレス指数</td><td class="num">0</td><td class="num">-0.31</td><td class="num">-0.18</td><td class="num">19</td><td style="text-align:left">弱い</td></tr>
+<tr><td>図書館<br><span class="ix">補間系列</span></td><td>経常収支比率</td><td class="num">0</td><td class="num">-0.25</td><td class="num">+0.16</td><td class="num">19</td><td style="text-align:left">弱い</td></tr>
+<tr><td>小中学校</td><td>実質公債費比率</td><td class="num">3</td><td class="num">+0.70</td><td class="num neg">+0.16</td><td class="num">17</td><td style="text-align:left">見せかけ</td></tr>
+<tr><td>公民館<br><span class="ix">補間系列</span></td><td>経常収支比率</td><td class="num">0</td><td class="num">+0.22</td><td class="num">+0.15</td><td class="num">19</td><td style="text-align:left">弱い</td></tr>
+<tr><td>小中学校</td><td>将来負担比率</td><td class="num">3</td><td class="num">+0.74</td><td class="num neg">-0.15</td><td class="num">14</td><td style="text-align:left">見せかけ</td></tr>
+<tr><td>小中学校</td><td>経常収支比率</td><td class="num">0</td><td class="num">-0.07</td><td class="num">-0.13</td><td class="num">19</td><td style="text-align:left">弱い</td></tr>
+<tr><td>博物館<br><span class="ix">補間系列</span></td><td>実質公債費比率</td><td class="num">3</td><td class="num">+0.09</td><td class="num">+0.12</td><td class="num">17</td><td style="text-align:left">弱い</td></tr>
+<tr><td>博物館（閉館件数）</td><td>ラスパイレス指数</td><td class="num">2</td><td class="num">-0.33</td><td class="num">-0.11</td><td class="num">18</td><td style="text-align:left">弱い</td></tr>
+<tr><td>社会体育施設<br><span class="ix">補間系列</span></td><td>将来負担比率</td><td class="num">3</td><td class="num">-0.61</td><td class="num neg">-0.11</td><td class="num">14</td><td style="text-align:left">見せかけ</td></tr>
+<tr><td>公民館<br><span class="ix">補間系列</span></td><td>実質公債費比率</td><td class="num">0</td><td class="num">+0.43</td><td class="num">-0.11</td><td class="num">19</td><td style="text-align:left">弱い</td></tr>
+<tr><td>博物館（閉館件数）</td><td>CPI</td><td class="num">1</td><td class="num">+0.32</td><td class="num">+0.11</td><td class="num">19</td><td style="text-align:left">弱い</td></tr>
+<tr><td>公民館<br><span class="ix">補間系列</span></td><td>財政力指数</td><td class="num">3</td><td class="num">-0.29</td><td class="num">-0.11</td><td class="num">17</td><td style="text-align:left">弱い</td></tr>
+<tr><td>公民館<br><span class="ix">補間系列</span></td><td>将来負担比率</td><td class="num">0</td><td class="num">+0.64</td><td class="num neg">+0.06</td><td class="num">17</td><td style="text-align:left">見せかけ</td></tr>
+<tr><td>博物館（閉館件数）</td><td>財政力指数</td><td class="num">0</td><td class="num">+0.41</td><td class="num">+0.05</td><td class="num">20</td><td style="text-align:left">弱い</td></tr>
+<tr><td>博物館<br><span class="ix">補間系列</span></td><td>CPI</td><td class="num">3</td><td class="num">-0.16</td><td class="num">-0.05</td><td class="num">17</td><td style="text-align:left">弱い</td></tr>
+<tr><td>博物館<br><span class="ix">補間系列</span></td><td>経常収支比率</td><td class="num">0</td><td class="num">-0.33</td><td class="num">+0.04</td><td class="num">19</td><td style="text-align:left">弱い</td></tr>
+<tr><td>公民館<br><span class="ix">補間系列</span></td><td>CPI</td><td class="num">1</td><td class="num">-0.30</td><td class="num">+0.02</td><td class="num">19</td><td style="text-align:left">弱い</td></tr>
+<tr><td>博物館<br><span class="ix">補間系列</span></td><td>ラスパイレス指数</td><td class="num">0</td><td class="num">+0.31</td><td class="num">-0.01</td><td class="num">19</td><td style="text-align:left">弱い</td></tr>
+</tbody></table></div>
+  <p class="src">出典：同上。</p>
+
+  <p>結果は、この種の分析に対する強い警告になっている。</p>
+  <ul>
+    <li><strong>図書館の減少と将来負担比率の相関は原系列で−0.93</strong>という極めて高い値だが、階差をとると<strong>−0.23</strong>まで落ちる。将来負担比率が一貫して低下し、図書館が一貫して増えたという、それぞれ独立の趨勢が重なっただけである。</li>
+    <li>同様に、小中学校とCPI（原系列−0.72→階差−0.20）、社会体育施設と実質公債費比率（−0.77→−0.29）、小中学校と将来負担比率（+0.74→−0.15、符号まで反転）も、いずれも見せかけである。</li>
+    <li><strong>参照したダッシュボードが示す「財政力指数×閉館 r＝0.41」も、階差では+0.05まで落ちる。</strong>財政力が高い自治体ほど博物館が多く、母数が大きいぶん閉館件数も多い、という規模効果を見ている可能性が高い。</li>
+  </ul>
+  <p>36通りの組み合わせのうち、トレンド除去後も関係が残ったのは<strong>3つだけ</strong>である。</p>
+  <ul>
+    <li><strong>博物館の閉館件数 × 経常収支比率（ラグ1年）：原系列+0.50 → 階差+0.65</strong>。階差でむしろ強まっており、これが最も信頼できる。<strong>経常収支比率が悪化した翌年に博物館の閉館が増える</strong>という関係を示唆する。両系列とも年次の実測値であり、補間を含まない点も重要である。</li>
+    <li>公民館の減少 × ラスパイレス指数（同年）：−0.39 → −0.57</li>
+    <li>図書館の減少 × ラスパイレス指数（同年）：+0.20 → +0.46</li>
+  </ul>
+  <div class="note">
+    <div class="nh">この分析の限界</div>
+    <p>社会教育調査は3年ごとの調査であるため、公民館・図書館・博物館・社会体育施設の年次系列は<strong>調査年の間を線形補間した値</strong>である。補間区間内では年々の変化が一定になるため、年単位のラグ構造を論じることはできない。表の「補間系列」はこの制約を示す。</p>
+    <p>年次の実測値が存在するのは<strong>小中学校（学校基本調査）と博物館の閉館件数（博物館研究）だけ</strong>であり、ラグ分析として厳密に解釈できるのはこの2つに限られる。上記3つの残存例のうち、この条件を満たすのは博物館の閉館件数のみである。</p>
+    <p>また、いずれも全国集計どうしの相関であり、個々の自治体で財政悪化が施設削減につながったかを示すものではない。「総合的な課題」タブでみたとおり、<strong>都道府県レベルでも経常収支比率と施設の増減にはほとんど関係がない</strong>（r＝−0.23〜+0.35）。</p>
+  </div>
+
+
   <h3>5-7　検証の空白</h3>
   <p>最後に、本調査を通じて明らかになった<strong>データの欠落</strong>を記録しておく。政策提言の前提を確認するうえで重要である。</p>
   <ul>
@@ -5000,6 +5422,56 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   </div>
 </section>
 </div>
+<div class="tabpanel" id="panel-coverage" role="tabpanel" aria-labelledby="tab-coverage" hidden>
+
+<section id="coverage">
+  <div class="sechead"><span class="n">点検</span><h2>分析の網羅チェック</h2></div>
+  <p>本報告で行った分析を、施設種×分析軸の一覧に整理する。どこを調べ、どこを調べていないかを明示するための表である。</p>
+  <div class="tbox tall"><table data-sortable>
+<caption><b>表23</b>分析の網羅チェック表。<strong>済</strong>＝実施、<strong>参考値</strong>＝データ制約により解釈に留保、<strong>未取得</strong>＝必要だがデータを取得できていない、<strong>対象外</strong>＝その施設には該当しない。</caption>
+<thead><tr><th>分析軸</th><th>公民館</th><th>図書館</th><th>博物館</th><th>小中学校</th><th>社会体育施設</th><th style="text-align:left">備考</th></tr></thead><tbody>
+<tr><td>施設数の時系列</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td style="text-align:left;white-space:normal;min-width:16em"><span class="ix">社会教育調査・学校基本調査。公民館H11〜R6、学校1948〜2026</span></td></tr>
+<tr><td>都道府県別の施設数</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td class="num" style="color:var(--ink3)">対象外</td><td style="text-align:left;white-space:normal;min-width:16em"><span class="ix">2008〜2024の6時点。社会体育施設は都道府県別を未取得</span></td></tr>
+<tr><td>1施設あたり人口</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td class="num" style="color:var(--ink3)">対象外</td><td style="text-align:left;white-space:normal;min-width:16em"><span class="ix">アクセス指標。施設別タブに収録</span></td></tr>
+<tr><td>対象年齢人口ベース</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td class="num" style="color:var(--ink3)">対象外</td><td style="text-align:left;white-space:normal;min-width:16em"><span class="ix">公民館＝高齢人口、学校＝年少人口で評価</span></td></tr>
+<tr><td>合併との関係</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td class="num" style="color:var(--ink3)">対象外</td><td style="text-align:left;white-space:normal;min-width:16em"><span class="ix">都道府県別の合併率との相関。総合的な課題タブの相関行列</span></td></tr>
+<tr><td>人口動態との関係</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td class="num" style="color:var(--ink3)">対象外</td><td style="text-align:left;white-space:normal;min-width:16em"><span class="ix">人口増減率・高齢化率との相関。学校のみ決定係数0.64</span></td></tr>
+<tr><td>自治体財政との関係</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td class="num" style="color:var(--ink3)">対象外</td><td style="text-align:left;white-space:normal;min-width:16em"><span class="ix">都道府県別の経常収支比率との相関。いずれも弱い</span></td></tr>
+<tr><td>財政指標のラグ相関</td><td class="num">参考値</td><td class="num">参考値</td><td class="num pos">済</td><td class="num pos">済</td><td class="num">参考値</td><td style="text-align:left;white-space:normal;min-width:16em"><span class="ix">参考値は3年ごと調査を補間した系列によるもの</span></td></tr>
+<tr><td>物価指数との関係</td><td class="num">参考値</td><td class="num">参考値</td><td class="num pos">済</td><td class="num pos">済</td><td class="num">参考値</td><td style="text-align:left;white-space:normal;min-width:16em"><span class="ix">同上。いずれも階差で消失し見せかけと判定</span></td></tr>
+<tr><td>職員数・専門職</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td class="num" style="color:var(--ink3)">対象外</td><td class="num pos">済</td><td style="text-align:left;white-space:normal;min-width:16em"><span class="ix">指導系職員の推移。学校教員は本報告の対象外</span></td></tr>
+<tr><td>雇用形態別の内訳</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td class="num" style="color:var(--ink3)">対象外</td><td class="num pos">済</td><td style="text-align:left;white-space:normal;min-width:16em"><span class="ix">専任・兼任・非常勤・指定管理者の4区分</span></td></tr>
+<tr><td>有資格者の雇用形態</td><td class="num" style="color:var(--ink3)">対象外</td><td class="num pos">済</td><td class="num neg">未取得</td><td class="num" style="color:var(--ink3)">対象外</td><td class="num" style="color:var(--ink3)">対象外</td><td style="text-align:left;white-space:normal;min-width:16em"><span class="ix">司書のみJLAから取得。学芸員はe-Statで該当表に到達できず</span></td></tr>
+<tr><td>指定管理者の導入</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td class="num" style="color:var(--ink3)">対象外</td><td class="num pos">済</td><td style="text-align:left;white-space:normal;min-width:16em"><span class="ix">導入率と指定管理者の種別</span></td></tr>
+<tr><td>蔵書・収蔵品</td><td class="num" style="color:var(--ink3)">対象外</td><td class="num pos">済</td><td class="num neg">未取得</td><td class="num" style="color:var(--ink3)">対象外</td><td class="num" style="color:var(--ink3)">対象外</td><td style="text-align:left;white-space:normal;min-width:16em"><span class="ix">図書館は2002〜2010。博物館の収蔵品数は未取得</span></td></tr>
+<tr><td>延床面積</td><td class="num neg">未取得</td><td class="num neg">未取得</td><td class="num neg">未取得</td><td class="num neg">未取得</td><td class="num neg">未取得</td><td style="text-align:left;white-space:normal;min-width:16em"><span class="ix">全施設で未取得。総務省「公共施設状況調」が候補</span></td></tr>
+<tr><td>財政支出</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td class="num" style="color:var(--ink3)">対象外</td><td class="num" style="color:var(--ink3)">対象外</td><td style="text-align:left;white-space:normal;min-width:16em"><span class="ix">社会教育費の内訳</span></td></tr>
+<tr><td>8地方別シナリオ</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td class="num" style="color:var(--ink3)">対象外</td><td style="text-align:left;white-space:normal;min-width:16em"><span class="ix">社人研の地域別推計（2050年まで）</span></td></tr>
+<tr><td>全国シナリオ2070</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td class="num pos">済</td><td class="num" style="color:var(--ink3)">対象外</td><td style="text-align:left;white-space:normal;min-width:16em"><span class="ix">3シナリオ。未来シナリオタブに収録</span></td></tr>
+<tr><td>国際比較</td><td class="num" style="color:var(--ink3)">対象外</td><td class="num" style="color:var(--ink3)">対象外</td><td class="num pos">済</td><td class="num" style="color:var(--ink3)">対象外</td><td class="num" style="color:var(--ink3)">対象外</td><td style="text-align:left;white-space:normal;min-width:16em"><span class="ix">英国Mapping Museums。ハザード率・閉館理由・認定制度</span></td></tr>
+<tr><td>個票レベルの追跡</td><td class="num neg">未取得</td><td class="num neg">未取得</td><td class="num neg">未取得</td><td class="num pos">済</td><td class="num neg">未取得</td><td style="text-align:left;white-space:normal;min-width:16em"><span class="ix">学校は廃校調査で個別追跡可。他は統計が施設数のみ</span></td></tr>
+<tr class="tot"><td>計（20軸×5施設＝100セル）</td><td class="num pos" colspan="2">済 60（60%）</td><td class="num">参考値 6</td><td class="num neg">未取得 11</td><td class="num">対象外 23</td><td></td></tr>
+</tbody></table></div>
+  <p class="src">分類：<strong>済</strong>＝実施、<strong>参考値</strong>＝データ制約により解釈に留保あり、<strong>未取得</strong>＝分析上必要だがデータを取得できていない、<strong>対象外</strong>＝その施設には該当しない。</p>
+
+  <h3>未取得のまま残っている項目</h3>
+  <p>100セル中、未取得は11セルである。優先度の高い順に記す。</p>
+  <ol>
+    <li><strong>延床面積（全施設種）。</strong>施設「数」では、大規模館1館と小規模分館1館が同じ1として数えられる。総務省「公共施設状況調」に市町村別の延床面積があり、これを取得すれば「数は減ったが面積は減っていない」あるいはその逆を判別できる。本報告の結論に最も影響しうる欠落である。</li>
+    <li><strong>学芸員の雇用形態別内訳。</strong>司書については日本図書館協会の集計から、2010年時点で常勤の専任司書が全体の33.6％にすぎないことを確認した。博物館の学芸員について同じ分解ができていない。社会教育調査の博物館調査に該当表があると考えられるが、e-Statの分類体系上たどり着けなかった。</li>
+    <li><strong>個票レベルの追跡（学校以外）。</strong>学校は廃校調査により個々の学校の廃止年と活用状況を追跡できるが、公民館・図書館・博物館は統計が施設数の集計にとどまる。英国のMapping Museumsのような個票データがないため、「開館から何年で閉館するか」を日本について検証できない。</li>
+    <li><strong>博物館の収蔵品数。</strong>図書館の蔵書については2002〜2010年の系列を得たが、博物館の収蔵品数は未取得である。英国では閉館館の収蔵品の33.8％が他館へ移管、17.5％が売却されている。</li>
+    <li><strong>図書館の蔵書・資料費の2011年以降。</strong>日本図書館協会の集計は2011年以降、画像PDFでのみ公開されており機械可読な系列を取得できなかった。</li>
+    <li><strong>名目GDPの長期系列。</strong>社会教育費の対GDP比を求めるために必要。内閣府・統計局のいずれからも機械可読な長期系列に到達できなかった。</li>
+  </ol>
+  <div class="note">
+    <div class="nh">参考値にとどまる項目</div>
+    <p>6セルが「参考値」である。いずれも<strong>社会教育調査が3年ごとの調査であることに起因する</strong>。公民館・図書館・博物館・社会体育施設の年次系列は調査年の間を線形補間しているため、年単位のラグ相関を厳密に解釈することはできない。本節に詳述した。</p>
+    <p>この制約を解消するには、年次で施設数を把握している別系列（博物館については『博物館研究』）を使うか、3年刻みのまま分析するしかない。</p>
+  </div>
+</section>
+
+</div>
 <div class="tabpanel" id="panel-data" role="tabpanel" aria-labelledby="tab-data" hidden>
 
 <section id="data">
@@ -5007,7 +5479,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <p>本報告の分析に用いた都道府県別・長期系列のデータを、並べ替えと絞り込みができる形で収録する。列見出しをクリックすると並べ替わる。</p>
 
   <h3>A　社会教育施設と人口（都道府県別）</h3>
-  <p>本報告が文部科学省「社会教育調査」と総務省統計局「人口推計」から構築したデータセット。第3章7節の図16〜9の基礎データにあたる。</p>
+  <p>本報告が文部科学省「社会教育調査」と総務省統計局「人口推計」から構築したデータセット。「公民館」タブの都道府県別密度の基礎データにあたる。</p>
   <div class="tctl" data-filter-for="t-fac"><input type="text" id="q-fac" placeholder="都道府県で絞り込み" aria-label="都道府県で絞り込み"><span class="cnt"></span></div>
 <div class="tbox tall"><table data-sortable id="t-fac">
 <thead><tr><th>都道府県</th><th>公民館<br>2008</th><th>公民館<br>2024</th><th>公民館<br>増減率</th><th>図書館<br>2024</th><th>博物館<br>2024</th><th>人口<br>2024</th><th>高齢化率<br>2024</th><th>公民館1館<br>あたり人口</th></tr></thead><tbody>
@@ -5117,7 +5589,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
   <p class="src">出典：「廃校クロニクル — 日本の小中学校の廃校データ分析」データセット（Fujiterun/japan-school-closures）。原データは文部科学省「廃校施設活用状況実態調査」「学校基本調査」、総務省統計局の人口統計。</p>
 
   <h3>C　廃校クロニクル：全国長期系列（1948〜2026年度）</h3>
-  <p>学校数・児童生徒数・1校あたり人数・総人口の79年系列。図12の基礎データ。</p>
+  <p>学校数・児童生徒数・1校あたり人数・総人口の79年系列。図15の基礎データ。</p>
   <div class="tbox tall"><table data-sortable id="t-long">
 <thead><tr><th>年度</th><th>小学校数</th><th>中学校数</th><th>児童数</th><th>生徒数</th><th>1校あたり児童数</th><th>総人口（千人）</th></tr></thead><tbody>
 <tr><td>1948</td><td class="num">25,237</td><td class="num">16,285</td><td class="num">10,774,652</td><td class="num">4,792,504</td><td class="num">426.9</td><td class="num">80,002</td></tr>
@@ -5271,7 +5743,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
     <li><span class="n">17</span><span>国立国会図書館 国会会議録検索システム　衆議院本会議（2004年3月23日）、参議院総務委員会（2010年3月25日）、衆議院予算委員会第二分科会（2010年2月25日）、衆議院内閣委員会（2009年4月1日）、衆議院地方創生に関する特別委員会（2017年3月30日・4月25日）　<a href="https://kokkai.ndl.go.jp/">kokkai.ndl.go.jp</a></span></li>
   </ol>
   <footer>
-    数値はすべて公表統計・公表資料に基づく。図11の廃校率および相関係数は、出典統計から本報告が算出したものである。<br>
+    数値はすべて公表統計・公表資料に基づく。図14の廃校率および相関係数は、出典統計から本報告が算出したものである。<br>
     社会教育調査の令和6年度数値は中間報告値であり、確定値は令和8年3月に公表予定。
   </footer>
 </section>

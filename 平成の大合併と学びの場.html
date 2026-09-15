@@ -142,9 +142,12 @@ details table{font-size:12.5px}
 details th,details td{padding:7px 10px}
 
 /* ---- callouts ---- */
-.quote{border-left:3px solid var(--s2);background:var(--panel);padding:18px 22px;margin:26px 0;
-  max-width:var(--measure)}
-.quote p{font-size:14.5px;line-height:1.85;margin:0 0 10px}
+.quote{position:relative;border-left:3px solid var(--s2);background:var(--panel);padding:22px 22px 18px;
+  margin:30px 0;max-width:var(--measure)}
+.quote p{font-size:14.5px;line-height:1.9;margin:0 0 10px;font-style:italic}
+.quote p.attr{font-style:normal}
+.quote::before{content:"引用";position:absolute;top:-9px;left:14px;background:var(--s2);color:#fff;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;padding:2px 7px;border-radius:2px;font-style:normal}
 .quote p:last-child{margin-bottom:0}
 .quote .attr{font-family:var(--mono);font-size:11px;color:var(--ink3);line-height:1.7}
 .note{background:var(--panel);border:1px solid var(--rule);padding:18px 22px;margin:26px 0;
@@ -163,6 +166,59 @@ details th,details td{padding:7px 10px}
 footer{margin-top:64px;padding-top:24px;border-top:2px solid var(--ink);
   font-family:var(--mono);font-size:11.5px;color:var(--ink3);line-height:1.9}
 
+
+/* ---- タブナビゲーション ---- */
+.tabsbar{position:sticky;top:0;z-index:20;background:var(--paper);
+  border-bottom:2px solid var(--ink);margin-bottom:0;
+  padding-block:10px 0;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tabsbar ol{display:flex;gap:2px;list-style:none;margin:0;padding:0;min-width:max-content;max-width:none}
+.tabsbar li{margin:0}
+.tabsbar button{appearance:none;border:0;background:transparent;cursor:pointer;
+  font-family:var(--sans);font-size:13.5px;font-weight:500;color:var(--ink2);
+  padding:9px 14px 11px;border-bottom:3px solid transparent;white-space:nowrap;
+  display:flex;gap:8px;align-items:baseline;border-radius:3px 3px 0 0}
+.tabsbar button:hover{color:var(--ink);background:var(--rule2)}
+.tabsbar button[aria-selected="true"]{color:var(--s1);border-bottom-color:var(--s1);font-weight:700}
+.tabsbar .n{font-family:var(--mono);font-size:10.5px;color:var(--ink3)}
+.tabsbar button[aria-selected="true"] .n{color:var(--s1)}
+.tabpanel[hidden]{display:none!important}
+
+/* ---- サマリー ---- */
+.sumgrid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));margin:6px 0 30px}
+.sumcard{background:var(--panel);border:1px solid var(--rule);padding:18px 18px 16px;
+  display:flex;flex-direction:column;gap:5px}
+.sumcard .lb{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--ink3)}
+.sumcard .big{font-family:var(--mono);font-weight:500;font-size:26px;line-height:1.15;
+  font-variant-numeric:tabular-nums}
+.sumcard .dt{font-size:12.5px;line-height:1.65;color:var(--ink2)}
+.sumcard.up .big{color:var(--s3)} .sumcard.down .big{color:var(--s2)} .sumcard.flat .big{color:var(--s1)}
+.jump{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);margin:26px 0}
+.jump a{background:var(--panel);padding:15px 18px;text-decoration:none;color:var(--ink);
+  display:grid;grid-template-columns:2.2em 1fr auto;gap:14px;align-items:baseline}
+.jump a:hover{background:var(--rule2)}
+.jump .n{font-family:var(--mono);font-size:11px;color:var(--s2)}
+.jump .t{font-weight:700;font-size:14.5px}
+.jump .d{font-size:12.5px;color:var(--ink2);grid-column:2/4;line-height:1.6}
+.jump .arw{font-size:15px;color:var(--ink3)}
+
+/* ---- 表の操作 ---- */
+th.sortable{cursor:pointer;user-select:none;white-space:nowrap}
+th.sortable:hover{color:var(--s1)}
+th.sortable::after{content:"↕";font-size:9px;color:var(--ink3);margin-left:5px}
+th.sortable[data-dir="asc"]::after{content:"↑";color:var(--s1)}
+th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
+.tctl{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.tctl input,.tctl select{font-family:var(--sans);font-size:13px;padding:6px 10px;
+  border:1px solid var(--rule);border-radius:3px;background:var(--panel);color:var(--ink)}
+.tctl input{min-width:180px}
+.tctl .cnt{font-family:var(--mono);font-size:11.5px;color:var(--ink3)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.chip{font-family:var(--sans);font-size:12px;padding:5px 11px;border:1px solid var(--rule);
+  border-radius:99px;background:var(--panel);color:var(--ink2);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--s1);border-color:var(--s1);color:#fff;font-weight:500}
+.tall{max-height:460px;overflow-y:auto}
+.tall thead th{position:sticky;top:0;background:var(--panel);z-index:1}
+
 @media (max-width:560px){
   body{font-size:15.5px;padding-left:16px;padding-right:16px}
   .finding{grid-template-columns:1fr;gap:10px}
@@ -173,57 +229,100 @@ footer{margin-top:64px;padding-top:24px;border-top:2px solid var(--ink);
 </style>
 
 <div class="wrap">
+
 <header class="mast">
   <p class="kicker">調査報告 ／ 政策提言基礎資料</p>
   <h1>平成の大合併と学びの場</h1>
   <p class="sub">1999年から2010年にかけて市町村数を半減させた「平成の大合併」は、博物館・図書館・公民館などの社会教育施設と、小中学校に何をもたらしたのか。政府統計・国会会議録・公表資料にもとづき、事実関係を網羅的に整理する。</p>
   <div class="meta">
     <span><b>作成</b> 2026年9月</span>
-    <span><b>対象期間</b> 1999〜2024年度</span>
-    <span><b>主要出典</b> 総務省・文部科学省・国会会議録</span>
+    <span><b>対象期間</b> 1948〜2026年度</span>
+    <span><b>図表</b> 図19点・表15点＋データ表4点</span>
+    <span><b>主要出典</b> 総務省・文部科学省・国会会議録・日本博物館協会</span>
   </div>
 </header>
 
-<nav class="toc" aria-label="目次">
-  <ol>
-    <li><a href="#ch1"><span class="n">1</span><span>平成の大合併の背景と国の政策</span></a></li>
-    <li><a href="#ch2"><span class="n">2</span><span>国会等における議論</span></a></li>
-    <li><a href="#ch3"><span class="n">3</span><span>社会教育施設への影響</span></a></li>
-    <li><a href="#ch4"><span class="n">4</span><span>学校への影響</span></a></li>
-    <li><a href="#ch5"><span class="n">5</span><span>総合的な課題</span></a></li>
-    <li><a href="#src"><span class="n">—</span><span>出典一覧</span></a></li>
-  </ol>
-</nav>
+<nav class="tabsbar" aria-label="セクション"><ol role="tablist">
+<li role="presentation"><button role="tab" id="tab-summary" aria-controls="panel-summary" aria-selected="true" data-tab="summary"><span class="n">00</span>サマリー</button></li>
+<li role="presentation"><button role="tab" id="tab-bg" aria-controls="panel-bg" aria-selected="false" data-tab="bg"><span class="n">01</span>背景と政策</button></li>
+<li role="presentation"><button role="tab" id="tab-diet" aria-controls="panel-diet" aria-selected="false" data-tab="diet"><span class="n">02</span>国会の議論</button></li>
+<li role="presentation"><button role="tab" id="tab-shakai" aria-controls="panel-shakai" aria-selected="false" data-tab="shakai"><span class="n">03</span>社会教育施設</button></li>
+<li role="presentation"><button role="tab" id="tab-school" aria-controls="panel-school" aria-selected="false" data-tab="school"><span class="n">04</span>学校・廃校</button></li>
+<li role="presentation"><button role="tab" id="tab-museum" aria-controls="panel-museum" aria-selected="false" data-tab="museum"><span class="n">05</span>博物館</button></li>
+<li role="presentation"><button role="tab" id="tab-fisc" aria-controls="panel-fisc" aria-selected="false" data-tab="fisc"><span class="n">06</span>自治体財政</button></li>
+<li role="presentation"><button role="tab" id="tab-issues" aria-controls="panel-issues" aria-selected="false" data-tab="issues"><span class="n">07</span>総合的な課題</button></li>
+<li role="presentation"><button role="tab" id="tab-data" aria-controls="panel-data" aria-selected="false" data-tab="data"><span class="n">08</span>参考データ</button></li>
+<li role="presentation"><button role="tab" id="tab-src" aria-controls="panel-src" aria-selected="false" data-tab="src"><span class="n">09</span>出典</button></li>
+</ol></nav>
+<div class="tabpanel" id="panel-summary" role="tabpanel" aria-labelledby="tab-summary">
 
 <section id="summary">
-  <div class="sechead"><span class="n">要旨</span><h2>5つの事実</h2></div>
-  <div class="findings">
-    <div class="finding">
-      <div class="fig">3,232<small>→ 1,718 団体<br>（1999.3 → 現在）</small></div>
-      <div class="txt"><b>市町村数は11年で約47％減少した。</b>合併特例債と合併算定替という手厚い財政措置（1999〜2005年）と、都道府県の構想・勧告（2005〜2010年）によって推進された。市町村数の減少は2010年3月でほぼ止まり、以後は1,718団体で横ばいである。</div>
-    </div>
-    <div class="finding">
-      <div class="fig">−31.6%<small>公民館数<br>H11年度 → R6年度</small></div>
-      <div class="txt"><b>社会教育施設のうち、公民館だけが大きく減った。</b>19,063館（1999年度）から13,031館（2024年度）へ6,032館の純減。同じ期間に図書館は2,592→3,400館、博物館は1,045→1,344館へ増加している。減少は合併そのものより、<em>合併の数年後</em>にピークを迎えた。</div>
-    </div>
-    <div class="finding">
-      <div class="fig">8,383<small>→ 3,272 館<br>町立公民館（H11→R3）</small></div>
-      <div class="txt"><b>合併の痕跡は「設置者」に最も鮮明に現れる。</b>町立・村立公民館は1999年度の10,313館から2021年度の3,881館へ激減し、市立は7,944→9,282館に増えた。町村が市に編入された分の横滑りと、統廃合による純減が同時に進行した。</div>
-    </div>
-    <div class="finding">
-      <div class="fig">−73.3%<small>社会教育主事数<br>H14年度 → R6年度</small></div>
-      <div class="txt"><b>「施設」より「人」の減り方が急だった。</b>都道府県・市町村教育委員会の社会教育主事は5,383人（2002年度）から1,481人へ。公民館主事も18,591人→11,383人。一方で図書館司書・博物館学芸員は増加しており、専門職の中でも明暗が分かれた。</div>
-    </div>
-    <div class="finding">
-      <div class="fig">r = 0.26<small>都道府県別相関<br>合併進捗 × 廃校率</small></div>
-      <div class="txt"><b>学校統廃合の主因は合併ではない。</b>平成16〜令和5年度の公立学校の廃校は延べ8,850校にのぼるが、都道府県別にみると合併進捗率との相関は弱い（n=47）。合併率が最低水準の北海道が廃校数最多である一方、合併率62％の滋賀県は廃校率が最低水準にある。</div>
-    </div>
+  <div class="sechead"><span class="n">サマリー</span><h2>10の数字で見る平成の大合併</h2></div>
+  <p>1999年から2010年にかけて市町村数を半減させた「平成の大合併」が、博物館・図書館・公民館などの社会教育施設と、小中学校に何をもたらしたのか。政府統計・国会会議録・公表資料から確認できた事実を、まず数字で示す。各数字の根拠は対応するセクションにある。</p>
+
+  <div class="sumgrid">
+    <div class="sumcard flat"><span class="lb">市町村数</span><span class="big">3,232→1,718</span>
+      <span class="dt">11年で47％減。平成26年4月5日の栃木市・岩舟町を最後に、以降10年以上ひとつも合併していない。</span></div>
+    <div class="sumcard down"><span class="lb">公民館</span><span class="big">−31.6%</span>
+      <span class="dt">19,063館（H11）→13,031館（R6）。社会教育施設のうち大きく減ったのは公民館だけ。</span></div>
+    <div class="sumcard up"><span class="lb">図書館</span><span class="big">+31.2%</span>
+      <span class="dt">2,592館→3,400館。博物館も4,003→4,497館（+12.3％）と増えている。</span></div>
+    <div class="sumcard down"><span class="lb">社会教育主事</span><span class="big">−72.5%</span>
+      <span class="dt">5,383人（H14）→1,481人（R6）。施設より「人」の減り方がはるかに急だった。</span></div>
+    <div class="sumcard down"><span class="lb">公立学校の廃校</span><span class="big">8,850校</span>
+      <span class="dt">平成16〜令和5年度の20年間。小学校5,799・中学校1,835・高校等1,216。年平均443校。</span></div>
+    <div class="sumcard flat"><span class="lb">学校消滅の説明力</span><span class="big">R²=0.64</span>
+      <span class="dt">人口増減率だけで6割強を説明できる。学校統廃合はまず人口現象である。</span></div>
+    <div class="sumcard down"><span class="lb">公民館減少の説明力</span><span class="big">R²=0.01</span>
+      <span class="dt">人口ではほぼ説明できない。合併でも8％。残りは自治体ごとの政策判断。</span></div>
+    <div class="sumcard down"><span class="lb">経常収支比率</span><span class="big">92.6 / 89.6</span>
+      <span class="dt">2024年度。合併市町村／非合併市町村。合併したほうが3.0ポイント硬直的。</span></div>
+    <div class="sumcard down"><span class="lb">公民館1館あたり</span><span class="big">9,500人</span>
+      <span class="dt">7,708人（2008）から23％悪化。人口減少のペースを上回る速さで館が失われた。</span></div>
+    <div class="sumcard down"><span class="lb">地域の公共拠点</span><span class="big">−16.5%</span>
+      <span class="dt">小中学校＋公民館は49,957→41,735。人口1万人あたりでも3.91→3.37拠点。</span></div>
+  </div>
+
+  <h3>要点</h3>
+  <ol>
+    <li><strong>社会教育施設は一律に減ったわけではない。</strong>公民館だけが3割減り、図書館・博物館はむしろ増えた。合併が直撃したのは、旧町村が集落単位で密に配置していた施設である。</li>
+    <li><strong>合併の痕跡は「設置者」に最も鮮明に残る。</strong>平成14→17年度に町村立公民館が3,994館減り、市立が3,190館増えた。設置者の付け替えは合併以外に説明がつかない。</li>
+    <li><strong>影響が現れたのは合併の数年後だった。</strong>公民館の減少率がピークを迎えたのは合併集中期ではなく3〜6年後。廃校発生のピークも平成24年度である。合併協議では現状維持で決着し、新市の行政改革の段階で実行された。</li>
+    <li><strong>学校と公民館は別の論理で減っている。</strong>学校の消滅は人口動態でほぼ説明できる（R²=0.64）が、公民館の増減は人口でも合併でも説明できない（R²=0.01／0.08）。両者の間にも相関はない。</li>
+    <li><strong>合併で財政は改善しなかった。</strong>財政力指数・実質公債費比率・将来負担比率は改善したが、経常収支比率だけは20年間改善していない。合併市町村のほうが硬直的で、押し上げ要因は合併特例債の公債費である。</li>
+    <li><strong>施設より機能の空洞化が深い。</strong>施設が3割減る間に、社会教育を企画・指導する専門職は7割超が失われた。公民館の指定管理の4割弱は自治会・町内会への運営移譲である。</li>
+  </ol>
+
+  <h3>どこから読むか</h3>
+  <div class="jump">
+    <a href="#panel-bg" data-goto="bg"><span class="n">01</span><span class="t">背景と政策</span><span class="arw">→</span>
+      <span class="d">合併特例債と合併算定替という「アメ」、三位一体改革による交付税5兆円抑制という「ムチ」。合併は平成16・17年度に極端に集中した。</span></a>
+    <a href="#panel-diet" data-goto="diet"><span class="n">02</span><span class="t">国会の議論</span><span class="arw">→</span>
+      <span class="d">合併の目的をめぐる論争、合併特例債が生む「箱物」への懸念、そして合併後に残った空き校舎・空き公民館の処理。会議録から直接引用する。</span></a>
+    <a href="#panel-shakai" data-goto="shakai"><span class="n">03</span><span class="t">社会教育施設</span><span class="arw">→</span>
+      <span class="d">公民館・図書館・博物館の施設数、設置者、指定管理者、専門職、財政、都道府県別の密度。全体像はここにある。</span></a>
+    <a href="#panel-school" data-goto="school"><span class="n">04</span><span class="t">学校・廃校</span><span class="arw">→</span>
+      <span class="d">79年の長期系列、年度別・都道府県別の廃校、廃校施設の活用と「活用までの時間」。合併と廃校の関係を検証する。</span></a>
+    <a href="#panel-museum" data-goto="museum"><span class="n">05</span><span class="t">博物館</span><span class="arw">→</span>
+      <span class="d">館種別の推移、新規開館と閉館のフロー、指定管理者の浸透、学芸員の配置。社会教育調査と日本博物館協会の 2つの系列で見る。</span></a>
+    <a href="#panel-fisc" data-goto="fisc"><span class="n">06</span><span class="t">自治体財政</span><span class="arw">→</span>
+      <span class="d">合併で経常収支は改善したのか。全市町村の決算データを合併市町村と非合併市町村に分けて比較する。</span></a>
+    <a href="#panel-issues" data-goto="issues"><span class="n">07</span><span class="t">総合的な課題</span><span class="arw">→</span>
+      <span class="d">要因の切り分け、規模の経済と近接性のトレードオフ、施設は残り機能が抜ける構造、そして検証の空白。</span></a>
+    <a href="#panel-data" data-goto="data"><span class="n">08</span><span class="t">参考データ</span><span class="arw">→</span>
+      <span class="d">廃校クロニクル（都道府県別・長期系列）と閉館ウォッチ（施設閉館の週次収集）のデータを、並べ替え・絞り込みできる表で収録。</span></a>
+  </div>
+
+  <div class="note">
+    <div class="nh">この報告の性格</div>
+    <p>数値はすべて公表統計・公表資料に基づく。相関係数・決定係数・1施設あたり人口・廃校率などの派生指標は、出典統計から本報告が算出したもので、算出方法は各図表の注に明記した。</p>
+    <p>相関は因果ではない。合併の効果を厳密に識別するには、合併を選んだ市町村と選ばなかった市町村の系統的な差を処理する必要がある。本報告は記述的な比較にとどめ、計量分析を行った先行研究（日本総合研究所）の結果を併記している。</p>
   </div>
 </section>
 
-<section id="ch1">
-  <div class="sechead"><span class="n">第1章</span><h2>平成の大合併の背景と国の政策</h2></div>
-
+</div>
+<div class="tabpanel" id="panel-bg" role="tabpanel" aria-labelledby="tab-bg" hidden>
+<section id="bg"><div class="sechead"><span class="n">第1章</span><h2>平成の大合併の背景と国の政策</h2></div>
   <h3>1-1　三度の大合併は、いずれも教育制度の改革と結びついていた</h3>
   <p>日本の市町村合併は、明治・昭和・平成と三度の大規模な波を経験している。総務省自身の整理によれば、前二回の合併はいずれも<strong>学校の設置・管理を直接の動機</strong>としていた。明治の大合併は小学校と戸籍の事務処理のため戸数300〜500戸を標準とし、昭和の大合併は「中学校1校を効率的に設置管理していく」ために人口8,000人を標準として進められた。</p>
   <p>これに対し平成の大合併は、地方分権の受け皿づくりと行財政基盤の強化を目的に掲げ、学校規模のような具体的な設計基準を持たなかった。この点は後述する国会審議でも繰り返し論点となる。</p>
@@ -545,9 +644,9 @@ footer{margin-top:64px;padding-top:24px;border-top:2px solid var(--ink);
     <p>本庁と旧役場の関係は、総合支所方式47.0％、分庁方式33.3％、窓口サービス中心の支所方式12.2％、出張所方式1.3％に分かれた（合併市町村558団体）。この行政組織の形が、旧町村域の施設運営体制を規定していく。</p>
   </div>
 </section>
-
-<section id="ch2">
-  <div class="sechead"><span class="n">第2章</span><h2>国会等における議論</h2></div>
+</div>
+<div class="tabpanel" id="panel-diet" role="tabpanel" aria-labelledby="tab-diet" hidden>
+<section id="diet"><div class="sechead"><span class="n">第2章</span><h2>国会等における議論</h2></div>
   <p>合併推進をめぐる国会審議は、①合併の目的と数値目標、②合併特例債が生む「箱物」と将来負担、③住民自治・住民の声の届き方、④合併後に生じた施設・人員の処理、という四つの論点に整理できる。以下、国会会議録から主要な発言を引く。</p>
 
   <h3>2-1　推進側の論拠 ── 分権の受け皿としての行財政基盤</h3>
@@ -594,9 +693,9 @@ footer{margin-top:64px;padding-top:24px;border-top:2px solid var(--ink);
     <p>ただしこれは<strong>1団体あたりの平均値</strong>であり、団体規模が数倍になった以上は当然の帰結でもある。旧町村域の住民から見た場合の専門職への到達しやすさとは別の指標であることに注意が必要である。第3章でみるように、社会教育分野に限れば専門職員の総数そのものが大きく減少している。</p>
   </div>
 </section>
-
-<section id="ch3">
-  <div class="sechead"><span class="n">第3章</span><h2>社会教育施設への影響</h2></div>
+</div>
+<div class="tabpanel" id="panel-shakai" role="tabpanel" aria-labelledby="tab-shakai" hidden>
+<section id="shakai"><div class="sechead"><span class="n">第3章</span><h2>社会教育施設への影響</h2></div>
   <p>社会教育施設への影響は、一括して「減った」と述べられることが多い。しかし文部科学省「社会教育調査」を時系列でみると、施設種によって方向が正反対であり、影響の現れ方も一様ではない。まず全体像を確認する。</p>
 
   <h3>3-1　全体像 ── 減ったのは公民館と学校、増えたのは図書館</h3>
@@ -1800,9 +1899,9 @@ footer{margin-top:64px;padding-top:24px;border-top:2px solid var(--ink);
   </div>
 
 </section>
-
-<section id="ch4">
-  <div class="sechead"><span class="n">第4章</span><h2>学校への影響</h2></div>
+</div>
+<div class="tabpanel" id="panel-school" role="tabpanel" aria-labelledby="tab-school" hidden>
+<section id="school"><div class="sechead"><span class="n">第4章</span><h2>学校・廃校</h2></div>
   <p>学校統廃合は「平成の大合併の帰結」として語られることが多い。しかし統計を突き合わせると、実態はより複雑である。合併は統廃合の<strong>条件を整えた</strong>が、<strong>主因ではなかった</strong>。</p>
 
   <h3>4-1　学校数の推移 ── 減少は合併前から始まり、合併後も続いた</h3>
@@ -2148,11 +2247,842 @@ footer{margin-top:64px;padding-top:24px;border-top:2px solid var(--ink);
   <p class="src">出典：文部科学省「令和6年度 公立小中学校等における廃校施設の活用状況に関する調査」資料3。</p>
   <p>用途が決まっていない理由（複数回答）の上位は「地域等からの要望がない」（校舎41.5％）と「建物が老朽化している」（同41.4％）である。合併による広域化で旧町村域の人口が減少した地域ほど、施設を引き受ける主体も、改修の財源も乏しい。</p>
   <p>なお、国庫補助を受けて整備された学校施設の転用には補助金適正化法上の制約があったが、平成20年6月に財産処分手続が大幅に弾力化され、国庫補助事業完了後10年未満の財産についても、無償による転用等については<strong>市町村合併等に伴う学校の統廃合などの場合は原則として国庫納付金を不要</strong>とする取扱いとなった。合併が国の補助制度の運用を動かした数少ない事例である。</p>
+
+  <h3>4-0　79年でみる学校の増減</h3>
+  <p>廃校を20年の窓で見ると平成の大合併と重なって見える。しかし学校数の長期系列に戻すと、位置づけが変わる。</p>
+  <figure>
+    <figcaption><b>図15</b>小中学校数と児童数の推移（1948〜2026年度、1948年度＝100の指数）。児童数は1958年のピークから大きく減ったが、小学校数の減少はそれより緩やかで遅れている。昭和・平成の大合併期を帯で示した。</figcaption>
+    <div class="figbox"><svg viewBox="0 0 760 430" role="img" aria-label="小中学校数と児童数の79年推移" class="cht">
+<line x1="60" y1="374.0" x2="628" y2="374.0" stroke="var(--grid)" stroke-width="1"/>
+<text x="51" y="378.0" text-anchor="end" class="tick">30</text>
+<line x1="60" y1="302.4" x2="628" y2="302.4" stroke="var(--grid)" stroke-width="1"/>
+<text x="51" y="306.4" text-anchor="end" class="tick">50</text>
+<line x1="60" y1="230.8" x2="628" y2="230.8" stroke="var(--grid)" stroke-width="1"/>
+<text x="51" y="234.8" text-anchor="end" class="tick">70</text>
+<line x1="60" y1="159.3" x2="628" y2="159.3" stroke="var(--grid)" stroke-width="1"/>
+<text x="51" y="163.3" text-anchor="end" class="tick">90</text>
+<line x1="60" y1="87.7" x2="628" y2="87.7" stroke="var(--grid)" stroke-width="1"/>
+<text x="51" y="91.7" text-anchor="end" class="tick">110</text>
+<line x1="60" y1="123.5" x2="628" y2="123.5" stroke="var(--axis)" stroke-width="1.4" stroke-dasharray="4 3"/>
+<rect x="96.4" y="34" width="58.3" height="340" fill="var(--band)"/>
+<text x="125.5" y="47" text-anchor="middle" class="band-lb">昭和の大合併</text>
+<rect x="431.4" y="34" width="80.1" height="340" fill="var(--band)"/>
+<text x="471.4" y="47" text-anchor="middle" class="band-lb">平成の大合併</text>
+<path d="M60.0 123.5 L67.3 117.8 L74.6 114.4 L81.8 111.9 L89.1 107.3 L96.4 104.8 L103.7 101.3 L111.0 100.2 L118.3 99.1 L125.5 98.6 L132.8 99.0 L140.1 99.7 L147.4 100.5 L154.7 102.1 L161.9 103.9 L169.2 106.7 L176.5 109.7 L183.8 113.0 L191.1 117.1 L198.4 119.9 L205.6 123.1 L212.9 126.7 L220.2 129.8 L227.5 133.4 L234.8 136.4 L242.1 132.6 L249.3 132.4 L256.6 131.8 L263.9 130.8 L271.2 130.0 L278.5 129.3 L285.7 128.3 L293.0 127.6 L300.3 126.8 L307.6 126.2 L314.9 126.2 L322.2 125.9 L329.4 126.3 L336.7 127.1 L344.0 127.8 L351.3 128.2 L358.6 128.9 L365.8 129.3 L373.1 129.7 L380.4 130.7 L387.7 131.4 L395.0 132.0 L402.3 133.2 L409.5 134.2 L416.8 135.7 L424.1 136.8 L431.4 138.3 L438.7 139.5 L445.9 141.5 L453.2 143.7 L460.5 146.2 L467.8 149.2 L475.1 153.5 L482.4 156.9 L489.6 159.6 L496.9 162.6 L504.2 165.7 L511.5 169.4 L518.8 173.3 L526.1 177.0 L533.3 181.7 L540.6 185.7 L547.9 189.2 L555.2 193.3 L562.5 196.4 L569.7 199.3 L577.0 201.5 L584.3 204.5 L591.6 207.2 L598.9 209.6 L606.2 212.2 L613.4 214.4 L620.7 217.5 L628.0 220.7" fill="none" stroke="var(--s1)" stroke-width="2.3" stroke-linejoin="round"/>
+<circle cx="60.0" cy="123.5" r="3" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.4"><title>小学校数 1948年度：指数 100.0</title></circle>
+<circle cx="132.8" cy="99.0" r="3" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.4"><title>小学校数 1958年度：指数 106.8</title></circle>
+<circle cx="205.6" cy="123.1" r="3" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.4"><title>小学校数 1968年度：指数 100.1</title></circle>
+<circle cx="278.5" cy="129.3" r="3" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.4"><title>小学校数 1978年度：指数 98.4</title></circle>
+<circle cx="351.3" cy="128.2" r="3" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.4"><title>小学校数 1988年度：指数 98.7</title></circle>
+<circle cx="424.1" cy="136.8" r="3" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.4"><title>小学校数 1998年度：指数 96.3</title></circle>
+<circle cx="496.9" cy="162.6" r="3" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.4"><title>小学校数 2008年度：指数 89.1</title></circle>
+<circle cx="569.7" cy="199.3" r="3" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.4"><title>小学校数 2018年度：指数 78.8</title></circle>
+<circle cx="628.0" cy="220.7" r="3" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.4"><title>小学校数 2026年度：指数 72.8</title></circle>
+<text x="637" y="224.7" class="slab" fill="var(--s1)">小学校数 73</text>
+<path d="M60.0 123.5 L67.3 169.3 L74.6 170.1 L81.8 177.3 L89.1 179.2 L96.4 180.6 L103.7 178.7 L111.0 178.8 L118.3 179.8 L125.5 182.0 L132.8 187.1 L140.1 192.7 L147.4 196.0 L154.7 199.0 L161.9 203.4 L169.2 206.6 L176.5 210.8 L183.8 215.9 L191.1 220.9 L198.4 224.6 L205.6 229.4 L212.9 233.5 L220.2 238.7 L227.5 243.2 L234.8 246.5 L242.1 243.2 L249.3 244.0 L256.6 245.1 L263.9 245.8 L271.2 245.7 L278.5 244.5 L285.7 245.2 L293.0 244.5 L300.3 243.8 L307.6 242.3 L314.9 240.7 L322.2 238.6 L329.4 236.7 L336.7 235.4 L344.0 234.6 L351.3 233.8 L358.6 233.8 L365.8 233.6 L373.1 233.2 L380.4 233.0 L387.7 233.2 L395.0 233.3 L402.3 233.6 L409.5 233.7 L416.8 234.0 L424.1 234.4 L431.4 234.8 L438.7 235.0 L445.9 235.4 L453.2 236.1 L460.5 236.7 L467.8 237.4 L475.1 238.9 L482.4 239.8 L489.6 240.6 L496.9 241.5 L504.2 242.6 L511.5 243.7 L518.8 245.1 L526.1 246.2 L533.3 247.8 L540.6 249.4 L547.9 251.0 L555.2 252.7 L562.5 254.5 L569.7 255.7 L577.0 256.7 L584.3 258.5 L591.6 259.9 L598.9 261.3 L606.2 262.8 L613.4 264.2 L620.7 265.4 L628.0 266.9" fill="none" stroke="var(--s4)" stroke-width="2.3" stroke-linejoin="round"/>
+<circle cx="60.0" cy="123.5" r="3" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.4"><title>中学校数 1948年度：指数 100.0</title></circle>
+<circle cx="132.8" cy="187.1" r="3" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.4"><title>中学校数 1958年度：指数 82.2</title></circle>
+<circle cx="205.6" cy="229.4" r="3" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.4"><title>中学校数 1968年度：指数 70.4</title></circle>
+<circle cx="278.5" cy="244.5" r="3" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.4"><title>中学校数 1978年度：指数 66.2</title></circle>
+<circle cx="351.3" cy="233.8" r="3" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.4"><title>中学校数 1988年度：指数 69.2</title></circle>
+<circle cx="424.1" cy="234.4" r="3" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.4"><title>中学校数 1998年度：指数 69.0</title></circle>
+<circle cx="496.9" cy="241.5" r="3" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.4"><title>中学校数 2008年度：指数 67.0</title></circle>
+<circle cx="569.7" cy="255.7" r="3" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.4"><title>中学校数 2018年度：指数 63.1</title></circle>
+<circle cx="628.0" cy="266.9" r="3" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.4"><title>中学校数 2026年度：指数 59.9</title></circle>
+<text x="637" y="270.9" class="slab" fill="var(--s4)">中学校数 60</text>
+<path d="M60.0 123.5 L67.3 116.3 L74.6 109.6 L81.8 101.9 L89.1 111.1 L96.4 108.5 L103.7 91.0 L111.0 73.9 L118.3 62.3 L125.5 51.0 L132.8 33.2 L140.1 37.1 L147.4 63.2 L154.7 89.1 L161.9 114.1 L169.2 133.5 L176.5 148.2 L183.8 156.7 L191.1 163.0 L198.4 167.4 L205.6 169.7 L212.9 169.0 L220.2 166.0 L227.5 162.7 L234.8 159.3 L242.1 155.3 L249.3 146.3 L256.6 137.1 L263.9 128.9 L271.2 122.0 L278.5 111.1 L285.7 95.1 L293.0 88.5 L300.3 85.3 L307.6 86.0 L314.9 91.4 L322.2 100.6 L329.4 112.8 L336.7 127.1 L344.0 141.7 L351.3 153.4 L358.6 162.3 L365.8 170.0 L373.1 177.2 L380.4 184.2 L387.7 190.1 L395.0 196.3 L402.3 203.3 L409.5 212.1 L416.8 220.4 L424.1 226.8 L431.4 232.2 L438.7 236.7 L445.9 239.0 L453.2 240.9 L460.5 241.3 L467.8 242.2 L475.1 242.3 L482.4 242.6 L489.6 244.4 L496.9 244.8 L504.2 246.7 L511.5 249.1 L518.8 252.6 L526.1 256.7 L533.3 259.6 L540.6 262.1 L547.9 264.0 L555.2 266.0 L562.5 267.2 L569.7 267.9 L577.0 269.8 L584.3 272.1 L591.6 274.6 L598.9 277.0 L606.2 280.4 L613.4 284.0 L620.7 288.3 L628.0 293.5" fill="none" stroke="var(--s2)" stroke-width="2.3" stroke-linejoin="round"/>
+<circle cx="60.0" cy="123.5" r="3" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.4"><title>児童数（小学校） 1948年度：指数 100.0</title></circle>
+<circle cx="132.8" cy="33.2" r="3" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.4"><title>児童数（小学校） 1958年度：指数 125.2</title></circle>
+<circle cx="205.6" cy="169.7" r="3" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.4"><title>児童数（小学校） 1968年度：指数 87.1</title></circle>
+<circle cx="278.5" cy="111.1" r="3" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.4"><title>児童数（小学校） 1978年度：指数 103.5</title></circle>
+<circle cx="351.3" cy="153.4" r="3" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.4"><title>児童数（小学校） 1988年度：指数 91.6</title></circle>
+<circle cx="424.1" cy="226.8" r="3" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.4"><title>児童数（小学校） 1998年度：指数 71.1</title></circle>
+<circle cx="496.9" cy="244.8" r="3" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.4"><title>児童数（小学校） 2008年度：指数 66.1</title></circle>
+<circle cx="569.7" cy="267.9" r="3" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.4"><title>児童数（小学校） 2018年度：指数 59.7</title></circle>
+<circle cx="628.0" cy="293.5" r="3" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.4"><title>児童数（小学校） 2026年度：指数 52.5</title></circle>
+<text x="637" y="297.5" class="slab" fill="var(--s2)">児童数（小学校） 52</text>
+<text x="132.8" y="23.2" text-anchor="middle" class="callout" fill="var(--s2)">児童数ピーク 1958年</text>
+<line x1="60" y1="374.0" x2="628" y2="374.0" stroke="var(--axis)" stroke-width="1.5"/>
+<text x="74.6" y="392.0" text-anchor="middle" class="tick sm">1950</text>
+<text x="147.4" y="392.0" text-anchor="middle" class="tick sm">1960</text>
+<text x="220.2" y="392.0" text-anchor="middle" class="tick sm">1970</text>
+<text x="293.0" y="392.0" text-anchor="middle" class="tick sm">1980</text>
+<text x="365.8" y="392.0" text-anchor="middle" class="tick sm">1990</text>
+<text x="438.7" y="392.0" text-anchor="middle" class="tick sm">2000</text>
+<text x="511.5" y="392.0" text-anchor="middle" class="tick sm">2010</text>
+<text x="584.3" y="392.0" text-anchor="middle" class="tick sm">2020</text>
+<text x="51" y="20" text-anchor="start" class="vtiny">1948年度＝100の指数</text>
+</svg></div>
+    <p class="src">出典：文部科学省「学校基本調査」（廃校クロニクル データセット収録の1948〜2026年度系列より）。2025・2026年度は速報値を含む。</p>
+  </figure>
+  <p>児童数は1958年度の1,349万人をピークに2026年度の565万人へ<strong>58％減</strong>ったが、小学校数は26,964校から18,383校へ<strong>32％減</strong>にとどまる。差の分だけ小規模校が積み上がり、それがいま統廃合として解消されつつある。<strong>学校は児童の減少に遅れて減る。</strong>平成の大合併は、この遅れが限界に達した時期とたまたま重なった。</p>
+  <p>昭和の大合併期（1953〜61年）には中学校数が16,285校から10,751校へ急減している。新制中学校1校を効率的に設置管理するという当時の合併目的が、そのまま学校数に現れた。これに対し平成の大合併期の小学校数の減少は、合併の有無にかかわらず続いていた傾向の延長線上にある。</p>
+
+  <h3>4-5　廃校はどれくらいで使われるようになるか</h3>
+  <p>廃校施設の活用状況は、廃校からの経過年数によって大きく異なる。令和6年5月1日時点で、各年度に廃校となった学校の未活用率をたどると、時間とともに活用が進む様子が見える。</p>
+  <figure>
+    <figcaption><b>図16</b>廃校からの経過年数と未活用率。廃校直後は43.3％が未活用だが、6年で25.8％、11年で15.2％、20年で11.4％まで下がる。半減までおよそ5〜6年かかる。</figcaption>
+    <div class="figbox"><svg viewBox="0 0 760 360" role="img" aria-label="廃校からの経過年数と未活用率" class="cht">
+<line x1="56" y1="302.0" x2="730" y2="302.0" stroke="var(--grid)" stroke-width="1"/>
+<text x="47" y="306.0" text-anchor="end" class="tick">0%</text>
+<line x1="56" y1="248.4" x2="730" y2="248.4" stroke="var(--grid)" stroke-width="1"/>
+<text x="47" y="252.4" text-anchor="end" class="tick">10%</text>
+<line x1="56" y1="194.8" x2="730" y2="194.8" stroke="var(--grid)" stroke-width="1"/>
+<text x="47" y="198.8" text-anchor="end" class="tick">20%</text>
+<line x1="56" y1="141.2" x2="730" y2="141.2" stroke="var(--grid)" stroke-width="1"/>
+<text x="47" y="145.2" text-anchor="end" class="tick">30%</text>
+<line x1="56" y1="87.6" x2="730" y2="87.6" stroke="var(--grid)" stroke-width="1"/>
+<text x="47" y="91.6" text-anchor="end" class="tick">40%</text>
+<line x1="56" y1="34.0" x2="730" y2="34.0" stroke="var(--grid)" stroke-width="1"/>
+<text x="47" y="38.0" text-anchor="end" class="tick">50%</text>
+<path d="M56.0 69.9 L91.5 125.1 L126.9 172.8 L162.4 166.9 L197.9 201.2 L233.4 163.7 L268.8 205.0 L304.3 195.9 L339.8 203.9 L375.3 201.8 L410.7 220.5 L446.2 222.1 L481.7 234.5 L517.2 228.6 L552.6 230.7 L588.1 238.8 L623.6 259.1 L659.1 248.4 L694.5 264.5 L730.0 240.9 L730.0 302.0 L56.0 302.0 Z" fill="var(--s2)" fill-opacity="0.12"/>
+<path d="M56.0 69.9 L91.5 125.1 L126.9 172.8 L162.4 166.9 L197.9 201.2 L233.4 163.7 L268.8 205.0 L304.3 195.9 L339.8 203.9 L375.3 201.8 L410.7 220.5 L446.2 222.1 L481.7 234.5 L517.2 228.6 L552.6 230.7 L588.1 238.8 L623.6 259.1 L659.1 248.4 L694.5 264.5 L730.0 240.9" fill="none" stroke="var(--s2)" stroke-width="2.6" stroke-linejoin="round"/>
+<circle cx="56.0" cy="69.9" r="4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>廃校から1年（2023年度廃校・298校）未活用率 43.3%</title></circle>
+<text x="56.0" y="59.9" text-anchor="middle" class="ptval" fill="var(--s2)">43.3</text>
+<circle cx="91.5" cy="125.1" r="4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>廃校から2年（2022年度廃校・358校）未活用率 33.0%</title></circle>
+<circle cx="126.9" cy="172.8" r="4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>廃校から3年（2021年度廃校・369校）未活用率 24.1%</title></circle>
+<text x="126.9" y="162.8" text-anchor="middle" class="ptval" fill="var(--s2)">24.1</text>
+<circle cx="162.4" cy="166.9" r="4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>廃校から4年（2020年度廃校・345校）未活用率 25.2%</title></circle>
+<circle cx="197.9" cy="201.2" r="4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>廃校から5年（2019年度廃校・384校）未活用率 18.8%</title></circle>
+<circle cx="233.4" cy="163.7" r="4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>廃校から6年（2018年度廃校・279校）未活用率 25.8%</title></circle>
+<text x="233.4" y="153.7" text-anchor="middle" class="ptval" fill="var(--s2)">25.8</text>
+<circle cx="268.8" cy="205.0" r="4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>廃校から7年（2017年度廃校・365校）未活用率 18.1%</title></circle>
+<circle cx="304.3" cy="195.9" r="4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>廃校から8年（2016年度廃校・405校）未活用率 19.8%</title></circle>
+<circle cx="339.8" cy="203.9" r="4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>廃校から9年（2015年度廃校・524校）未活用率 18.3%</title></circle>
+<circle cx="375.3" cy="201.8" r="4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>廃校から10年（2014年度廃校・475校）未活用率 18.7%</title></circle>
+<circle cx="410.7" cy="220.5" r="4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>廃校から11年（2013年度廃校・492校）未活用率 15.2%</title></circle>
+<text x="410.7" y="210.5" text-anchor="middle" class="ptval" fill="var(--s2)">15.2</text>
+<circle cx="446.2" cy="222.1" r="4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>廃校から12年（2012年度廃校・597校）未活用率 14.9%</title></circle>
+<circle cx="481.7" cy="234.5" r="4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>廃校から13年（2011年度廃校・484校）未活用率 12.6%</title></circle>
+<circle cx="517.2" cy="228.6" r="4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>廃校から14年（2010年度廃校・562校）未活用率 13.7%</title></circle>
+<circle cx="552.6" cy="230.7" r="4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>廃校から15年（2009年度廃校・534校）未活用率 13.3%</title></circle>
+<circle cx="588.1" cy="238.8" r="4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>廃校から16年（2008年度廃校・457校）未活用率 11.8%</title></circle>
+<text x="588.1" y="228.8" text-anchor="middle" class="ptval" fill="var(--s2)">11.8</text>
+<circle cx="623.6" cy="259.1" r="4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>廃校から17年（2007年度廃校・462校）未活用率 8.0%</title></circle>
+<circle cx="659.1" cy="248.4" r="4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>廃校から18年（2006年度廃校・428校）未活用率 10.0%</title></circle>
+<circle cx="694.5" cy="264.5" r="4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>廃校から19年（2005年度廃校・454校）未活用率 7.0%</title></circle>
+<circle cx="730.0" cy="240.9" r="4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.8"><title>廃校から20年（2004年度廃校・578校）未活用率 11.4%</title></circle>
+<text x="730.0" y="230.9" text-anchor="middle" class="ptval" fill="var(--s2)">11.4</text>
+<line x1="56" y1="302.0" x2="730" y2="302.0" stroke="var(--axis)" stroke-width="1.5"/>
+<text x="56.0" y="320.0" text-anchor="middle" class="tick sm">1</text>
+<text x="126.9" y="320.0" text-anchor="middle" class="tick sm">3</text>
+<text x="197.9" y="320.0" text-anchor="middle" class="tick sm">5</text>
+<text x="268.8" y="320.0" text-anchor="middle" class="tick sm">7</text>
+<text x="339.8" y="320.0" text-anchor="middle" class="tick sm">9</text>
+<text x="410.7" y="320.0" text-anchor="middle" class="tick sm">11</text>
+<text x="481.7" y="320.0" text-anchor="middle" class="tick sm">13</text>
+<text x="552.6" y="320.0" text-anchor="middle" class="tick sm">15</text>
+<text x="623.6" y="320.0" text-anchor="middle" class="tick sm">17</text>
+<text x="694.5" y="320.0" text-anchor="middle" class="tick sm">19</text>
+<text x="393.0" y="348" text-anchor="middle" class="axttl">廃校からの経過年数（令和6年5月1日時点）</text>
+<text x="64" y="48" class="note-in">廃校直後は4割超が未活用。半減までおよそ5〜6年</text>
+</svg></div>
+    <p class="src">出典：文部科学省「廃校施設活用状況実態調査」（令和6年5月1日現在）を廃校年度別に整理（廃校クロニクル データセットより）。<br>注：これは同一集団の追跡ではなく、ある時点での断面を経過年数順に並べたものである。年度による廃校の性格の違い（都市部か過疎地か等）は考慮していない。</p>
+  </figure>
+  <p>活用が決まるまでに5〜6年かかるという事実は、合併の時間差とも符合する。第4章2節でみたとおり廃校のピークは平成24年度であり、その世代の校舎が活用先を得たのは平成30年前後になる。一方で、20年経っても11.4％は使われないままである。</p>
+
+  <h3>4-6　都道府県別の消滅率</h3>
+  <p>実数では北海道が859校と突出するが、20年間に小中学校の何％が消えたかで正規化すると序列が入れ替わる。</p>
+  <figure>
+    <figcaption><b>図17</b>都道府県別の小中学校消滅率（平成16〜令和5年度）。全国平均20.9％を破線で示した。赤は全国平均以上、緑は平均未満。右端に廃校の実数を併記している。</figcaption>
+    <div class="figbox"><svg viewBox="0 0 760 990.5" role="img" aria-label="都道府県別の小中学校消滅率" class="cht">
+<line x1="76.0" y1="26" x2="76.0" y2="960.5" stroke="var(--grid)" stroke-width="1"/>
+<text x="76.0" y="20" text-anchor="middle" class="tick">0%</text>
+<text x="76.0" y="974.5" text-anchor="middle" class="tick">0%</text>
+<line x1="193.6" y1="26" x2="193.6" y2="960.5" stroke="var(--grid)" stroke-width="1"/>
+<text x="193.6" y="20" text-anchor="middle" class="tick">10%</text>
+<text x="193.6" y="974.5" text-anchor="middle" class="tick">10%</text>
+<line x1="311.2" y1="26" x2="311.2" y2="960.5" stroke="var(--grid)" stroke-width="1"/>
+<text x="311.2" y="20" text-anchor="middle" class="tick">20%</text>
+<text x="311.2" y="974.5" text-anchor="middle" class="tick">20%</text>
+<line x1="428.8" y1="26" x2="428.8" y2="960.5" stroke="var(--grid)" stroke-width="1"/>
+<text x="428.8" y="20" text-anchor="middle" class="tick">30%</text>
+<text x="428.8" y="974.5" text-anchor="middle" class="tick">30%</text>
+<line x1="546.4" y1="26" x2="546.4" y2="960.5" stroke="var(--grid)" stroke-width="1"/>
+<text x="546.4" y="20" text-anchor="middle" class="tick">40%</text>
+<text x="546.4" y="974.5" text-anchor="middle" class="tick">40%</text>
+<line x1="664.0" y1="26" x2="664.0" y2="960.5" stroke="var(--grid)" stroke-width="1"/>
+<text x="664.0" y="20" text-anchor="middle" class="tick">50%</text>
+<text x="664.0" y="974.5" text-anchor="middle" class="tick">50%</text>
+<line x1="321.8" y1="26" x2="321.8" y2="960.5" stroke="var(--axis)" stroke-width="1.6" stroke-dasharray="5 3"/>
+<text x="327.8" y="20" class="vtiny" fill="var(--ink2)">全国 20.9%</text>
+<text x="67" y="53.8" text-anchor="end" class="rowlab">秋田県</text>
+<rect x="76" y="43.3" width="512.9" height="12.9" fill="var(--s2)" rx="2"><title>秋田県　消滅率 43.61%（廃校215校）</title></rect>
+<text x="595.9" y="53.8" class="vsm">43.61</text>
+<text x="632.9" y="53.8" class="vtiny">215校</text>
+<text x="67" y="73.2" text-anchor="end" class="rowlab">岩手県</text>
+<rect x="76" y="62.8" width="493.8" height="12.9" fill="var(--s2)" rx="2"><title>岩手県　消滅率 41.99%（廃校304校）</title></rect>
+<text x="576.8" y="73.2" class="vsm">41.99</text>
+<text x="613.8" y="73.2" class="vtiny">304校</text>
+<text x="67" y="92.8" text-anchor="end" class="rowlab">山形県</text>
+<rect x="76" y="82.3" width="485.7" height="12.9" fill="var(--s2)" rx="2"><title>山形県　消滅率 41.3%（廃校223校）</title></rect>
+<text x="568.7" y="92.8" class="vsm">41.3</text>
+<text x="605.7" y="92.8" class="vtiny">223校</text>
+<text x="67" y="112.2" text-anchor="end" class="rowlab">青森県</text>
+<rect x="76" y="101.8" width="447.6" height="12.9" fill="var(--s2)" rx="2"><title>青森県　消滅率 38.06%（廃校247校）</title></rect>
+<text x="530.6" y="112.2" class="vsm">38.06</text>
+<text x="567.6" y="112.2" class="vtiny">247校</text>
+<text x="67" y="131.8" text-anchor="end" class="rowlab">鳥取県</text>
+<rect x="76" y="121.3" width="424.4" height="12.9" fill="var(--s2)" rx="2"><title>鳥取県　消滅率 36.09%（廃校96校）</title></rect>
+<text x="507.4" y="131.8" class="vsm">36.09</text>
+<text x="544.4" y="131.8" class="vtiny">96校</text>
+<text x="67" y="151.2" text-anchor="end" class="rowlab">熊本県</text>
+<rect x="76" y="140.8" width="403.4" height="12.9" fill="var(--s2)" rx="2"><title>熊本県　消滅率 34.3%（廃校261校）</title></rect>
+<text x="486.4" y="151.2" class="vsm">34.3</text>
+<text x="523.4" y="151.2" class="vtiny">261校</text>
+<text x="67" y="170.8" text-anchor="end" class="rowlab">北海道</text>
+<rect x="76" y="160.3" width="396.0" height="12.9" fill="var(--s2)" rx="2"><title>北海道　消滅率 33.67%（廃校768校）</title></rect>
+<text x="479.0" y="170.8" class="vsm">33.67</text>
+<text x="516.0" y="170.8" class="vtiny">768校</text>
+<text x="67" y="190.2" text-anchor="end" class="rowlab">福島県</text>
+<rect x="76" y="179.8" width="385.8" height="12.9" fill="var(--s2)" rx="2"><title>福島県　消滅率 32.81%（廃校294校）</title></rect>
+<text x="468.8" y="190.2" class="vsm">32.81</text>
+<text x="505.8" y="190.2" class="vtiny">294校</text>
+<text x="67" y="209.8" text-anchor="end" class="rowlab">大分県</text>
+<rect x="76" y="199.3" width="369.0" height="12.9" fill="var(--s2)" rx="2"><title>大分県　消滅率 31.38%（廃校177校）</title></rect>
+<text x="452.0" y="209.8" class="vsm">31.38</text>
+<text x="489.0" y="209.8" class="vtiny">177校</text>
+<text x="67" y="229.2" text-anchor="end" class="rowlab">香川県</text>
+<rect x="76" y="218.8" width="353.5" height="12.9" fill="var(--s2)" rx="2"><title>香川県　消滅率 30.06%（廃校101校）</title></rect>
+<text x="436.5" y="229.2" class="vsm">30.06</text>
+<text x="473.5" y="229.2" class="vtiny">101校</text>
+<text x="67" y="248.8" text-anchor="end" class="rowlab">徳島県</text>
+<rect x="76" y="238.3" width="352.8" height="12.9" fill="var(--s2)" rx="2"><title>徳島県　消滅率 30.0%（廃校117校）</title></rect>
+<text x="435.8" y="248.8" class="vsm">30.0</text>
+<text x="472.8" y="248.8" class="vtiny">117校</text>
+<text x="67" y="268.2" text-anchor="end" class="rowlab">和歌山県</text>
+<rect x="76" y="257.8" width="340.2" height="12.9" fill="var(--s2)" rx="2"><title>和歌山県　消滅率 28.93%（廃校149校）</title></rect>
+<text x="423.2" y="268.2" class="vsm">28.93</text>
+<text x="460.2" y="268.2" class="vtiny">149校</text>
+<text x="67" y="287.8" text-anchor="end" class="rowlab">島根県</text>
+<rect x="76" y="277.3" width="335.2" height="12.9" fill="var(--s2)" rx="2"><title>島根県　消滅率 28.5%（廃校116校）</title></rect>
+<text x="418.2" y="287.8" class="vsm">28.5</text>
+<text x="455.2" y="287.8" class="vtiny">116校</text>
+<text x="67" y="307.2" text-anchor="end" class="rowlab">高知県</text>
+<rect x="76" y="296.8" width="326.1" height="12.9" fill="var(--s2)" rx="2"><title>高知県　消滅率 27.73%（廃校132校）</title></rect>
+<text x="409.1" y="307.2" class="vsm">27.73</text>
+<text x="446.1" y="307.2" class="vtiny">132校</text>
+<text x="67" y="326.8" text-anchor="end" class="rowlab">茨城県</text>
+<rect x="76" y="316.3" width="313.9" height="12.9" fill="var(--s2)" rx="2"><title>茨城県　消滅率 26.69%（廃校245校）</title></rect>
+<text x="396.9" y="326.8" class="vsm">26.69</text>
+<text x="433.9" y="326.8" class="vtiny">245校</text>
+<text x="67" y="346.2" text-anchor="end" class="rowlab">宮城県</text>
+<rect x="76" y="335.8" width="311.3" height="12.9" fill="var(--s2)" rx="2"><title>宮城県　消滅率 26.47%（廃校202校）</title></rect>
+<text x="394.3" y="346.2" class="vsm">26.47</text>
+<text x="431.3" y="346.2" class="vtiny">202校</text>
+<text x="67" y="365.8" text-anchor="end" class="rowlab">広島県</text>
+<rect x="76" y="355.3" width="310.7" height="12.9" fill="var(--s2)" rx="2"><title>広島県　消滅率 26.42%（廃校260校）</title></rect>
+<text x="393.7" y="365.8" class="vsm">26.42</text>
+<text x="430.7" y="365.8" class="vtiny">260校</text>
+<text x="67" y="385.2" text-anchor="end" class="rowlab">石川県</text>
+<rect x="76" y="374.8" width="304.5" height="12.9" fill="var(--s2)" rx="2"><title>石川県　消滅率 25.89%（廃校102校）</title></rect>
+<text x="387.5" y="385.2" class="vsm">25.89</text>
+<text x="424.5" y="385.2" class="vtiny">102校</text>
+<text x="67" y="404.8" text-anchor="end" class="rowlab">奈良県</text>
+<rect x="76" y="394.3" width="304.3" height="12.9" fill="var(--s2)" rx="2"><title>奈良県　消滅率 25.88%（廃校103校）</title></rect>
+<text x="387.3" y="404.8" class="vsm">25.88</text>
+<text x="424.3" y="404.8" class="vtiny">103校</text>
+<text x="67" y="424.2" text-anchor="end" class="rowlab">富山県</text>
+<rect x="76" y="413.8" width="302.6" height="12.9" fill="var(--s2)" rx="2"><title>富山県　消滅率 25.73%（廃校88校）</title></rect>
+<text x="385.6" y="424.2" class="vsm">25.73</text>
+<text x="422.6" y="424.2" class="vtiny">88校</text>
+<text x="67" y="443.8" text-anchor="end" class="rowlab">新潟県</text>
+<rect x="76" y="433.3" width="301.9" height="12.9" fill="var(--s2)" rx="2"><title>新潟県　消滅率 25.67%（廃校230校）</title></rect>
+<text x="384.9" y="443.8" class="vsm">25.67</text>
+<text x="421.9" y="443.8" class="vtiny">230校</text>
+<text x="67" y="463.2" text-anchor="end" class="rowlab">長崎県</text>
+<rect x="76" y="452.8" width="296.2" height="12.9" fill="var(--s2)" rx="2"><title>長崎県　消滅率 25.19%（廃校169校）</title></rect>
+<text x="379.2" y="463.2" class="vsm">25.19</text>
+<text x="416.2" y="463.2" class="vtiny">169校</text>
+<text x="67" y="482.8" text-anchor="end" class="rowlab">鹿児島県</text>
+<rect x="76" y="472.3" width="293.1" height="12.9" fill="var(--s2)" rx="2"><title>鹿児島県　消滅率 24.92%（廃校236校）</title></rect>
+<text x="376.1" y="482.8" class="vsm">24.92</text>
+<text x="413.1" y="482.8" class="vtiny">236校</text>
+<text x="67" y="502.2" text-anchor="end" class="rowlab">栃木県</text>
+<rect x="76" y="491.8" width="277.5" height="12.9" fill="var(--s2)" rx="2"><title>栃木県　消滅率 23.6%（廃校152校）</title></rect>
+<text x="360.5" y="502.2" class="vsm">23.6</text>
+<text x="397.5" y="502.2" class="vtiny">152校</text>
+<text x="67" y="521.8" text-anchor="end" class="rowlab">山梨県</text>
+<rect x="76" y="511.3" width="270.4" height="12.9" fill="var(--s2)" rx="2"><title>山梨県　消滅率 22.99%（廃校80校）</title></rect>
+<text x="353.4" y="521.8" class="vsm">22.99</text>
+<text x="390.4" y="521.8" class="vtiny">80校</text>
+<text x="67" y="541.2" text-anchor="end" class="rowlab">愛媛県</text>
+<rect x="76" y="530.8" width="268.0" height="12.9" fill="var(--s2)" rx="2"><title>愛媛県　消滅率 22.79%（廃校121校）</title></rect>
+<text x="351.0" y="541.2" class="vsm">22.79</text>
+<text x="388.0" y="541.2" class="vtiny">121校</text>
+<text x="67" y="560.8" text-anchor="end" class="rowlab">山口県</text>
+<rect x="76" y="550.3" width="257.8" height="12.9" fill="var(--s2)" rx="2"><title>山口県　消滅率 21.92%（廃校128校）</title></rect>
+<text x="340.8" y="560.8" class="vsm">21.92</text>
+<text x="377.8" y="560.8" class="vtiny">128校</text>
+<text x="67" y="580.2" text-anchor="end" class="rowlab">京都府</text>
+<rect x="76" y="569.8" width="252.3" height="12.9" fill="var(--s2)" rx="2"><title>京都府　消滅率 21.45%（廃校151校）</title></rect>
+<text x="335.3" y="580.2" class="vsm">21.45</text>
+<text x="372.3" y="580.2" class="vtiny">151校</text>
+<text x="67" y="599.8" text-anchor="end" class="rowlab">三重県</text>
+<rect x="76" y="589.3" width="248.5" height="12.9" fill="var(--s2)" rx="2"><title>三重県　消滅率 21.13%（廃校142校）</title></rect>
+<text x="331.5" y="599.8" class="vsm">21.13</text>
+<text x="368.5" y="599.8" class="vtiny">142校</text>
+<text x="67" y="619.2" text-anchor="end" class="rowlab">佐賀県</text>
+<rect x="76" y="608.8" width="236.7" height="12.9" fill="var(--s3)" rx="2"><title>佐賀県　消滅率 20.13%（廃校64校）</title></rect>
+<text x="319.7" y="619.2" class="vsm">20.13</text>
+<text x="356.7" y="619.2" class="vtiny">64校</text>
+<text x="67" y="638.8" text-anchor="end" class="rowlab">宮崎県</text>
+<rect x="76" y="628.3" width="226.9" height="12.9" fill="var(--s3)" rx="2"><title>宮崎県　消滅率 19.29%（廃校87校）</title></rect>
+<text x="309.9" y="638.8" class="vsm">19.29</text>
+<text x="346.9" y="638.8" class="vtiny">87校</text>
+<text x="67" y="658.2" text-anchor="end" class="rowlab">群馬県</text>
+<rect x="76" y="647.8" width="208.9" height="12.9" fill="var(--s3)" rx="2"><title>群馬県　消滅率 17.76%（廃校100校）</title></rect>
+<text x="291.9" y="658.2" class="vsm">17.76</text>
+<text x="328.9" y="658.2" class="vtiny">100校</text>
+<text x="67" y="677.8" text-anchor="end" class="rowlab">岐阜県</text>
+<rect x="76" y="667.3" width="196.9" height="12.9" fill="var(--s3)" rx="2"><title>岐阜県　消滅率 16.74%（廃校107校）</title></rect>
+<text x="279.9" y="677.8" class="vsm">16.74</text>
+<text x="316.9" y="677.8" class="vtiny">107校</text>
+<text x="67" y="697.2" text-anchor="end" class="rowlab">岡山県</text>
+<rect x="76" y="686.8" width="196.6" height="12.9" fill="var(--s3)" rx="2"><title>岡山県　消滅率 16.72%（廃校108校）</title></rect>
+<text x="279.6" y="697.2" class="vsm">16.72</text>
+<text x="316.6" y="697.2" class="vtiny">108校</text>
+<text x="67" y="716.8" text-anchor="end" class="rowlab">福井県</text>
+<rect x="76" y="706.3" width="195.5" height="12.9" fill="var(--s3)" rx="2"><title>福井県　消滅率 16.62%（廃校54校）</title></rect>
+<text x="278.5" y="716.8" class="vsm">16.62</text>
+<text x="315.5" y="716.8" class="vtiny">54校</text>
+<text x="67" y="736.2" text-anchor="end" class="rowlab">長野県</text>
+<rect x="76" y="725.8" width="185.0" height="12.9" fill="var(--s3)" rx="2"><title>長野県　消滅率 15.73%（廃校103校）</title></rect>
+<text x="268.0" y="736.2" class="vsm">15.73</text>
+<text x="305.0" y="736.2" class="vtiny">103校</text>
+<text x="67" y="755.8" text-anchor="end" class="rowlab">兵庫県</text>
+<rect x="76" y="745.3" width="183.8" height="12.9" fill="var(--s3)" rx="2"><title>兵庫県　消滅率 15.63%（廃校206校）</title></rect>
+<text x="266.8" y="755.8" class="vsm">15.63</text>
+<text x="303.8" y="755.8" class="vtiny">206校</text>
+<text x="67" y="775.2" text-anchor="end" class="rowlab">千葉県</text>
+<rect x="76" y="764.8" width="178.8" height="12.9" fill="var(--s3)" rx="2"><title>千葉県　消滅率 15.2%（廃校205校）</title></rect>
+<text x="261.8" y="775.2" class="vsm">15.2</text>
+<text x="298.8" y="775.2" class="vtiny">205校</text>
+<text x="67" y="794.8" text-anchor="end" class="rowlab">静岡県</text>
+<rect x="76" y="784.3" width="147.1" height="12.9" fill="var(--s3)" rx="2"><title>静岡県　消滅率 12.51%（廃校112校）</title></rect>
+<text x="230.1" y="794.8" class="vsm">12.51</text>
+<text x="267.1" y="794.8" class="vtiny">112校</text>
+<text x="67" y="814.2" text-anchor="end" class="rowlab">福岡県</text>
+<rect x="76" y="803.8" width="146.6" height="12.9" fill="var(--s3)" rx="2"><title>福岡県　消滅率 12.47%（廃校152校）</title></rect>
+<text x="229.6" y="814.2" class="vsm">12.47</text>
+<text x="266.6" y="814.2" class="vtiny">152校</text>
+<text x="67" y="833.8" text-anchor="end" class="rowlab">沖縄県</text>
+<rect x="76" y="823.3" width="143.9" height="12.9" fill="var(--s3)" rx="2"><title>沖縄県　消滅率 12.24%（廃校58校）</title></rect>
+<text x="226.9" y="833.8" class="vsm">12.24</text>
+<text x="263.9" y="833.8" class="vtiny">58校</text>
+<text x="67" y="853.2" text-anchor="end" class="rowlab">東京都</text>
+<rect x="76" y="842.8" width="119.0" height="12.9" fill="var(--s3)" rx="2"><title>東京都　消滅率 10.12%（廃校239校）</title></rect>
+<text x="202.0" y="853.2" class="vsm">10.12</text>
+<text x="239.0" y="853.2" class="vtiny">239校</text>
+<text x="67" y="872.8" text-anchor="end" class="rowlab">大阪府</text>
+<rect x="76" y="862.3" width="105.8" height="12.9" fill="var(--s3)" rx="2"><title>大阪府　消滅率 9.0%（廃校148校）</title></rect>
+<text x="188.8" y="872.8" class="vsm">9.0</text>
+<text x="225.8" y="872.8" class="vtiny">148校</text>
+<text x="67" y="892.2" text-anchor="end" class="rowlab">滋賀県</text>
+<rect x="76" y="881.8" width="100.2" height="12.9" fill="var(--s3)" rx="2"><title>滋賀県　消滅率 8.52%（廃校30校）</title></rect>
+<text x="183.2" y="892.2" class="vsm">8.52</text>
+<text x="220.2" y="892.2" class="vtiny">30校</text>
+<text x="67" y="911.8" text-anchor="end" class="rowlab">神奈川県</text>
+<rect x="76" y="901.3" width="75.7" height="12.9" fill="var(--s3)" rx="2"><title>神奈川県　消滅率 6.44%（廃校93校）</title></rect>
+<text x="158.7" y="911.8" class="vsm">6.44</text>
+<text x="195.7" y="911.8" class="vtiny">93校</text>
+<text x="67" y="931.2" text-anchor="end" class="rowlab">埼玉県</text>
+<rect x="76" y="920.8" width="73.3" height="12.9" fill="var(--s3)" rx="2"><title>埼玉県　消滅率 6.23%（廃校83校）</title></rect>
+<text x="156.3" y="931.2" class="vsm">6.23</text>
+<text x="193.3" y="931.2" class="vtiny">83校</text>
+<text x="67" y="950.8" text-anchor="end" class="rowlab">愛知県</text>
+<rect x="76" y="940.3" width="60.6" height="12.9" fill="var(--s3)" rx="2"><title>愛知県　消滅率 5.15%（廃校76校）</title></rect>
+<text x="143.6" y="950.8" class="vsm">5.15</text>
+<text x="180.6" y="950.8" class="vtiny">76校</text>
+</svg></div>
+    <p class="src">出典：文部科学省「廃校施設活用状況実態調査」「学校基本調査」（廃校クロニクル データセットより）。消滅率＝20年間の廃校数÷（廃校数＋現存校数）。</p>
+  </figure>
+  <p>秋田43.6％、岩手42.0％、山形41.3％、青森38.1％と<strong>東北が上位を占める</strong>。20年で小中学校の4割以上が消えた県が複数ある。逆に愛知5.2％、埼玉6.2％、神奈川6.4％と、人口が増えた県では1割も減っていない。全国平均は20.9％で、<strong>20年に5校に1校が消えた</strong>計算になる。</p>
+</section>
+</div>
+<div class="tabpanel" id="panel-museum" role="tabpanel" aria-labelledby="tab-museum" hidden>
+
+<section id="museum">
+  <div class="sechead"><span class="n">第5章</span><h2>博物館</h2></div>
+  <p>博物館は、社会教育施設のなかで公民館と正反対の動きを示した施設である。合併が進んだ期間を通じて館数は増え続け、学芸員も増えた。本章では、文部科学省「社会教育調査」と日本博物館協会『博物館研究』という2つの系列から、その内実を確認する。</p>
+
+  <h3>5-1　館数は増えている</h3>
+  <p>社会教育調査でみると、博物館（登録博物館・指定施設）は平成11年度の1,045館から令和6年度の1,344館へ<strong>28.6％増</strong>、博物館類似施設を含めると5,109館から5,766館へ増えている。日本博物館協会『博物館研究』に基づく集計でも、2005年の4,003館から2024年の4,497館へ<strong>12.3％増</strong>である。集計対象と定義が異なるため水準は一致しないが、<strong>増加という方向は両系列で一致している</strong>。</p>
+  <figure>
+    <figcaption><b>図18</b>館種別の博物館数の推移（2005〜2024年）。歴史系が最も多く、増加の大半も歴史系が占める。棒の上の数値は合計。</figcaption>
+    <div class="figbox"><svg viewBox="0 0 760 420" role="img" aria-label="館種別の博物館数の推移" class="cht">
+<line x1="56" y1="364.0" x2="652" y2="364.0" stroke="var(--grid)" stroke-width="1"/>
+<text x="47" y="368.0" text-anchor="end" class="tick">0</text>
+<line x1="56" y1="297.2" x2="652" y2="297.2" stroke="var(--grid)" stroke-width="1"/>
+<text x="47" y="301.2" text-anchor="end" class="tick">1,000</text>
+<line x1="56" y1="230.4" x2="652" y2="230.4" stroke="var(--grid)" stroke-width="1"/>
+<text x="47" y="234.4" text-anchor="end" class="tick">2,000</text>
+<line x1="56" y1="163.6" x2="652" y2="163.6" stroke="var(--grid)" stroke-width="1"/>
+<text x="47" y="167.6" text-anchor="end" class="tick">3,000</text>
+<line x1="56" y1="96.8" x2="652" y2="96.8" stroke="var(--grid)" stroke-width="1"/>
+<text x="47" y="100.8" text-anchor="end" class="tick">4,000</text>
+<line x1="56" y1="30.0" x2="652" y2="30.0" stroke="var(--grid)" stroke-width="1"/>
+<text x="47" y="34.0" text-anchor="end" class="tick">5,000</text>
+<rect x="60.8" y="239.4" width="20.3" height="123.2" fill="var(--s1)" rx="1.5"><title>H17（2005年） 歴史 1,865館</title></rect>
+<rect x="60.8" y="180.4" width="20.3" height="57.7" fill="var(--s2)" rx="1.5"><title>H17（2005年） 美術 884館</title></rect>
+<rect x="60.8" y="145.3" width="20.3" height="33.7" fill="var(--s3)" rx="1.5"><title>H17（2005年） 郷土 525館</title></rect>
+<rect x="60.8" y="93.0" width="20.3" height="50.9" fill="var(--s4)" rx="1.5"><title>H17（2005年） その他 783館</title></rect>
+<text x="70.9" y="87.0" text-anchor="middle" class="vsm">4,057</text>
+<text x="70.9" y="382.0" text-anchor="middle" class="tick sm">H17</text>
+<rect x="90.6" y="241.9" width="20.3" height="120.7" fill="var(--s1)" rx="1.5"><title>H18（2006年） 歴史 1,828館</title></rect>
+<rect x="90.6" y="182.3" width="20.3" height="58.2" fill="var(--s2)" rx="1.5"><title>H18（2006年） 美術 892館</title></rect>
+<rect x="90.6" y="146.8" width="20.3" height="34.1" fill="var(--s3)" rx="1.5"><title>H18（2006年） 郷土 531館</title></rect>
+<rect x="90.6" y="94.1" width="20.3" height="51.3" fill="var(--s4)" rx="1.5"><title>H18（2006年） その他 789館</title></rect>
+<rect x="120.4" y="241.0" width="20.3" height="121.6" fill="var(--s1)" rx="1.5"><title>H19（2007年） 歴史 1,842館</title></rect>
+<rect x="120.4" y="180.8" width="20.3" height="58.7" fill="var(--s2)" rx="1.5"><title>H19（2007年） 美術 900館</title></rect>
+<rect x="120.4" y="145.1" width="20.3" height="34.3" fill="var(--s3)" rx="1.5"><title>H19（2007年） 郷土 535館</title></rect>
+<rect x="120.4" y="92.7" width="20.3" height="51.0" fill="var(--s4)" rx="1.5"><title>H19（2007年） その他 785館</title></rect>
+<text x="130.5" y="382.0" text-anchor="middle" class="tick sm">H19</text>
+<rect x="150.2" y="241.9" width="20.3" height="120.7" fill="var(--s1)" rx="1.5"><title>H20（2008年） 歴史 1,828館</title></rect>
+<rect x="150.2" y="181.4" width="20.3" height="59.1" fill="var(--s2)" rx="1.5"><title>H20（2008年） 美術 905館</title></rect>
+<rect x="150.2" y="146.4" width="20.3" height="33.6" fill="var(--s3)" rx="1.5"><title>H20（2008年） 郷土 524館</title></rect>
+<rect x="150.2" y="94.1" width="20.3" height="51.0" fill="var(--s4)" rx="1.5"><title>H20（2008年） その他 784館</title></rect>
+<text x="160.3" y="88.1" text-anchor="middle" class="vsm">4,041</text>
+<rect x="180.0" y="240.8" width="20.3" height="121.8" fill="var(--s1)" rx="1.5"><title>H21（2009年） 歴史 1,845館</title></rect>
+<rect x="180.0" y="180.2" width="20.3" height="59.1" fill="var(--s2)" rx="1.5"><title>H21（2009年） 美術 906館</title></rect>
+<rect x="180.0" y="145.8" width="20.3" height="33.0" fill="var(--s3)" rx="1.5"><title>H21（2009年） 郷土 515館</title></rect>
+<rect x="180.0" y="93.9" width="20.3" height="50.6" fill="var(--s4)" rx="1.5"><title>H21（2009年） その他 778館</title></rect>
+<text x="190.1" y="382.0" text-anchor="middle" class="tick sm">H21</text>
+<rect x="209.8" y="240.7" width="20.3" height="121.9" fill="var(--s1)" rx="1.5"><title>H22（2010年） 歴史 1,846館</title></rect>
+<rect x="209.8" y="179.8" width="20.3" height="59.5" fill="var(--s2)" rx="1.5"><title>H22（2010年） 美術 911館</title></rect>
+<rect x="209.8" y="146.0" width="20.3" height="32.5" fill="var(--s3)" rx="1.5"><title>H22（2010年） 郷土 507館</title></rect>
+<rect x="209.8" y="94.0" width="20.3" height="50.6" fill="var(--s4)" rx="1.5"><title>H22（2010年） その他 778館</title></rect>
+<rect x="239.6" y="238.2" width="20.3" height="124.4" fill="var(--s1)" rx="1.5"><title>H23（2011年） 歴史 1,883館</title></rect>
+<rect x="239.6" y="176.2" width="20.3" height="60.7" fill="var(--s2)" rx="1.5"><title>H23（2011年） 美術 929館</title></rect>
+<rect x="239.6" y="142.0" width="20.3" height="32.8" fill="var(--s3)" rx="1.5"><title>H23（2011年） 郷土 512館</title></rect>
+<rect x="239.6" y="89.7" width="20.3" height="50.9" fill="var(--s4)" rx="1.5"><title>H23（2011年） その他 783館</title></rect>
+<text x="249.7" y="83.7" text-anchor="middle" class="vsm">4,107</text>
+<text x="249.7" y="382.0" text-anchor="middle" class="tick sm">H23</text>
+<rect x="269.4" y="237.1" width="20.3" height="125.5" fill="var(--s1)" rx="1.5"><title>H24（2012年） 歴史 1,900館</title></rect>
+<rect x="269.4" y="175.0" width="20.3" height="60.7" fill="var(--s2)" rx="1.5"><title>H24（2012年） 美術 929館</title></rect>
+<rect x="269.4" y="141.1" width="20.3" height="32.5" fill="var(--s3)" rx="1.5"><title>H24（2012年） 郷土 508館</title></rect>
+<rect x="269.4" y="88.6" width="20.3" height="51.1" fill="var(--s4)" rx="1.5"><title>H24（2012年） その他 786館</title></rect>
+<rect x="299.2" y="235.0" width="20.3" height="127.6" fill="var(--s1)" rx="1.5"><title>H25（2013年） 歴史 1,931館</title></rect>
+<rect x="299.2" y="173.0" width="20.3" height="60.7" fill="var(--s2)" rx="1.5"><title>H25（2013年） 美術 929館</title></rect>
+<rect x="299.2" y="139.0" width="20.3" height="32.5" fill="var(--s3)" rx="1.5"><title>H25（2013年） 郷土 508館</title></rect>
+<rect x="299.2" y="86.1" width="20.3" height="51.5" fill="var(--s4)" rx="1.5"><title>H25（2013年） その他 792館</title></rect>
+<text x="309.3" y="382.0" text-anchor="middle" class="tick sm">H25</text>
+<rect x="329.0" y="233.9" width="20.3" height="128.7" fill="var(--s1)" rx="1.5"><title>H26（2014年） 歴史 1,947館</title></rect>
+<rect x="329.0" y="171.1" width="20.3" height="61.4" fill="var(--s2)" rx="1.5"><title>H26（2014年） 美術 940館</title></rect>
+<rect x="329.0" y="137.3" width="20.3" height="32.4" fill="var(--s3)" rx="1.5"><title>H26（2014年） 郷土 506館</title></rect>
+<rect x="329.0" y="84.3" width="20.3" height="51.6" fill="var(--s4)" rx="1.5"><title>H26（2014年） その他 794館</title></rect>
+<text x="339.1" y="78.3" text-anchor="middle" class="vsm">4,187</text>
+<rect x="358.8" y="233.3" width="20.3" height="129.3" fill="var(--s1)" rx="1.5"><title>H27（2015年） 歴史 1,956館</title></rect>
+<rect x="358.8" y="170.9" width="20.3" height="61.0" fill="var(--s2)" rx="1.5"><title>H27（2015年） 美術 934館</title></rect>
+<rect x="358.8" y="137.6" width="20.3" height="31.9" fill="var(--s3)" rx="1.5"><title>H27（2015年） 郷土 499館</title></rect>
+<rect x="358.8" y="84.0" width="20.3" height="52.2" fill="var(--s4)" rx="1.5"><title>H27（2015年） その他 802館</title></rect>
+<text x="368.9" y="382.0" text-anchor="middle" class="tick sm">H27</text>
+<rect x="388.6" y="233.3" width="20.3" height="129.3" fill="var(--s1)" rx="1.5"><title>H28（2016年） 歴史 1,957館</title></rect>
+<rect x="388.6" y="170.7" width="20.3" height="61.1" fill="var(--s2)" rx="1.5"><title>H28（2016年） 美術 936館</title></rect>
+<rect x="388.6" y="137.8" width="20.3" height="31.5" fill="var(--s3)" rx="1.5"><title>H28（2016年） 郷土 493館</title></rect>
+<rect x="388.6" y="84.4" width="20.3" height="52.0" fill="var(--s4)" rx="1.5"><title>H28（2016年） その他 799館</title></rect>
+<rect x="418.4" y="233.1" width="20.3" height="129.5" fill="var(--s1)" rx="1.5"><title>H29（2017年） 歴史 1,959館</title></rect>
+<rect x="418.4" y="169.4" width="20.3" height="62.3" fill="var(--s2)" rx="1.5"><title>H29（2017年） 美術 954館</title></rect>
+<rect x="418.4" y="136.5" width="20.3" height="31.5" fill="var(--s3)" rx="1.5"><title>H29（2017年） 郷土 492館</title></rect>
+<rect x="418.4" y="83.1" width="20.3" height="52.0" fill="var(--s4)" rx="1.5"><title>H29（2017年） その他 800館</title></rect>
+<text x="428.5" y="77.1" text-anchor="middle" class="vsm">4,205</text>
+<text x="428.5" y="382.0" text-anchor="middle" class="tick sm">H29</text>
+<rect x="448.2" y="231.5" width="20.3" height="131.1" fill="var(--s1)" rx="1.5"><title>H30（2018年） 歴史 1,984館</title></rect>
+<rect x="448.2" y="166.4" width="20.3" height="63.7" fill="var(--s2)" rx="1.5"><title>H30（2018年） 美術 974館</title></rect>
+<rect x="448.2" y="132.7" width="20.3" height="32.3" fill="var(--s3)" rx="1.5"><title>H30（2018年） 郷土 504館</title></rect>
+<rect x="448.2" y="78.4" width="20.3" height="53.0" fill="var(--s4)" rx="1.5"><title>H30（2018年） その他 814館</title></rect>
+<rect x="478.0" y="229.8" width="20.3" height="132.8" fill="var(--s1)" rx="1.5"><title>R1（2019年） 歴史 2,009館</title></rect>
+<rect x="478.0" y="163.5" width="20.3" height="64.9" fill="var(--s2)" rx="1.5"><title>R1（2019年） 美術 993館</title></rect>
+<rect x="478.0" y="128.8" width="20.3" height="33.3" fill="var(--s3)" rx="1.5"><title>R1（2019年） 郷土 519館</title></rect>
+<rect x="478.0" y="73.4" width="20.3" height="54.0" fill="var(--s4)" rx="1.5"><title>R1（2019年） その他 829館</title></rect>
+<text x="488.1" y="382.0" text-anchor="middle" class="tick sm">R1</text>
+<rect x="507.8" y="224.8" width="20.3" height="137.8" fill="var(--s1)" rx="1.5"><title>R2（2020年） 歴史 2,084館</title></rect>
+<rect x="507.8" y="158.7" width="20.3" height="64.7" fill="var(--s2)" rx="1.5"><title>R2（2020年） 美術 989館</title></rect>
+<rect x="507.8" y="123.1" width="20.3" height="34.2" fill="var(--s3)" rx="1.5"><title>R2（2020年） 郷土 533館</title></rect>
+<rect x="507.8" y="65.8" width="20.3" height="55.9" fill="var(--s4)" rx="1.5"><title>R2（2020年） その他 858館</title></rect>
+<text x="517.9" y="59.8" text-anchor="middle" class="vsm">4,464</text>
+<rect x="537.6" y="223.6" width="20.3" height="139.0" fill="var(--s1)" rx="1.5"><title>R3（2021年） 歴史 2,102館</title></rect>
+<rect x="537.6" y="157.1" width="20.3" height="65.1" fill="var(--s2)" rx="1.5"><title>R3（2021年） 美術 995館</title></rect>
+<rect x="537.6" y="121.5" width="20.3" height="34.2" fill="var(--s3)" rx="1.5"><title>R3（2021年） 郷土 533館</title></rect>
+<rect x="537.6" y="64.1" width="20.3" height="56.0" fill="var(--s4)" rx="1.5"><title>R3（2021年） その他 860館</title></rect>
+<text x="547.7" y="382.0" text-anchor="middle" class="tick sm">R3</text>
+<rect x="567.4" y="223.3" width="20.3" height="139.3" fill="var(--s1)" rx="1.5"><title>R4（2022年） 歴史 2,107館</title></rect>
+<rect x="567.4" y="157.1" width="20.3" height="64.8" fill="var(--s2)" rx="1.5"><title>R4（2022年） 美術 991館</title></rect>
+<rect x="567.4" y="121.3" width="20.3" height="34.3" fill="var(--s3)" rx="1.5"><title>R4（2022年） 郷土 535館</title></rect>
+<rect x="567.4" y="63.3" width="20.3" height="56.6" fill="var(--s4)" rx="1.5"><title>R4（2022年） その他 868館</title></rect>
+<rect x="597.2" y="223.3" width="20.3" height="139.3" fill="var(--s1)" rx="1.5"><title>R5（2023年） 歴史 2,107館</title></rect>
+<rect x="597.2" y="157.1" width="20.3" height="64.8" fill="var(--s2)" rx="1.5"><title>R5（2023年） 美術 991館</title></rect>
+<rect x="597.2" y="121.4" width="20.3" height="34.3" fill="var(--s3)" rx="1.5"><title>R5（2023年） 郷土 534館</title></rect>
+<rect x="597.2" y="63.5" width="20.3" height="56.4" fill="var(--s4)" rx="1.5"><title>R5（2023年） その他 866館</title></rect>
+<text x="607.3" y="57.5" text-anchor="middle" class="vsm">4,498</text>
+<text x="607.3" y="382.0" text-anchor="middle" class="tick sm">R5</text>
+<rect x="627.0" y="223.2" width="20.3" height="139.4" fill="var(--s1)" rx="1.5"><title>R6（2024年） 歴史 2,108館</title></rect>
+<rect x="627.0" y="157.6" width="20.3" height="64.2" fill="var(--s2)" rx="1.5"><title>R6（2024年） 美術 982館</title></rect>
+<rect x="627.0" y="121.7" width="20.3" height="34.5" fill="var(--s3)" rx="1.5"><title>R6（2024年） 郷土 537館</title></rect>
+<rect x="627.0" y="63.6" width="20.3" height="56.7" fill="var(--s4)" rx="1.5"><title>R6（2024年） その他 870館</title></rect>
+<text x="637.1" y="57.6" text-anchor="middle" class="vsm">4,497</text>
+<line x1="56" y1="364.0" x2="652" y2="364.0" stroke="var(--axis)" stroke-width="1.5"/>
+<text x="661" y="297.6" class="slab" fill="var(--s1)">歴史 2,108</text>
+<text x="661" y="194.4" class="slab" fill="var(--s2)">美術 982</text>
+<text x="661" y="143.7" class="slab" fill="var(--s3)">郷土 537</text>
+<text x="661" y="96.7" class="slab" fill="var(--s4)">その他 870</text>
+</svg></div>
+    <p class="src">出典：日本博物館協会『博物館研究』に基づく集計（『日本の博物館統計ダッシュボード』収録データより）。「その他」は総合・自然史・理工・動物園・水族館・植物園・動水植の合計。</p>
+  </figure>
+  <p>増加を牽引しているのは<strong>歴史系博物館</strong>で、2005年の1,865館から2024年の2,108館へ243館増えた。美術系は884→982館、郷土系は525→537館とほぼ横ばいである。動物園（77→80）、水族館（78→81）、植物園（85→81）といった生物系は20年間ほとんど変わっていない。</p>
+
+  <h3>5-2　開館と閉館のフロー</h3>
+  <p>館数の純増だけを見ると、博物館が安泰であるかのように見える。しかしストックの裏では、毎年一定数の館が閉じている。</p>
+  <figure>
+    <figcaption><b>図19</b>博物館の新規開館と閉館の件数（2005〜2024年）。新規開館は年によって大きく振れるが、閉館は毎年20〜45件の水準で継続している。</figcaption>
+    <div class="figbox"><svg viewBox="0 0 760 360" role="img" aria-label="博物館の新規開館と閉館の推移" class="cht">
+<line x1="56" y1="304.0" x2="660" y2="304.0" stroke="var(--grid)" stroke-width="1"/>
+<text x="47" y="308.0" text-anchor="end" class="tick">0</text>
+<line x1="56" y1="214.0" x2="660" y2="214.0" stroke="var(--grid)" stroke-width="1"/>
+<text x="47" y="218.0" text-anchor="end" class="tick">60</text>
+<line x1="56" y1="124.0" x2="660" y2="124.0" stroke="var(--grid)" stroke-width="1"/>
+<text x="47" y="128.0" text-anchor="end" class="tick">120</text>
+<line x1="56" y1="34.0" x2="660" y2="34.0" stroke="var(--grid)" stroke-width="1"/>
+<text x="47" y="38.0" text-anchor="end" class="tick">180</text>
+<rect x="60.4" y="205.0" width="10.3" height="99.0" fill="var(--s3)" rx="1.5"><title>H17（2005年） 新規開館 66件</title></rect>
+<rect x="71.5" y="266.5" width="10.3" height="37.5" fill="var(--s2)" rx="1.5"><title>H17（2005年） 閉館 25件</title></rect>
+<text x="71.1" y="322.0" text-anchor="middle" class="tick sm">H17</text>
+<rect x="90.6" y="205.0" width="10.3" height="99.0" fill="var(--s3)" rx="1.5"><title>H18（2006年） 新規開館 66件</title></rect>
+<rect x="101.7" y="275.5" width="10.3" height="28.5" fill="var(--s2)" rx="1.5"><title>H18（2006年） 閉館 19件</title></rect>
+<rect x="120.8" y="200.5" width="10.3" height="103.5" fill="var(--s3)" rx="1.5"><title>H19（2007年） 新規開館 69件</title></rect>
+<rect x="131.9" y="250.0" width="10.3" height="54.0" fill="var(--s2)" rx="1.5"><title>H19（2007年） 閉館 36件</title></rect>
+<text x="131.5" y="322.0" text-anchor="middle" class="tick sm">H19</text>
+<rect x="151.0" y="259.0" width="10.3" height="45.0" fill="var(--s3)" rx="1.5"><title>H20（2008年） 新規開館 30件</title></rect>
+<rect x="162.1" y="244.0" width="10.3" height="60.0" fill="var(--s2)" rx="1.5"><title>H20（2008年） 閉館 40件</title></rect>
+<rect x="181.2" y="212.5" width="10.3" height="91.5" fill="var(--s3)" rx="1.5"><title>H21（2009年） 新規開館 61件</title></rect>
+<rect x="192.3" y="257.5" width="10.3" height="46.5" fill="var(--s2)" rx="1.5"><title>H21（2009年） 閉館 31件</title></rect>
+<text x="191.9" y="322.0" text-anchor="middle" class="tick sm">H21</text>
+<rect x="211.4" y="254.5" width="10.3" height="49.5" fill="var(--s3)" rx="1.5"><title>H22（2010年） 新規開館 33件</title></rect>
+<rect x="222.5" y="266.5" width="10.3" height="37.5" fill="var(--s2)" rx="1.5"><title>H22（2010年） 閉館 25件</title></rect>
+<rect x="241.6" y="172.0" width="10.3" height="132.0" fill="var(--s3)" rx="1.5"><title>H23（2011年） 新規開館 88件</title></rect>
+<rect x="252.7" y="265.0" width="10.3" height="39.0" fill="var(--s2)" rx="1.5"><title>H23（2011年） 閉館 26件</title></rect>
+<text x="252.3" y="322.0" text-anchor="middle" class="tick sm">H23</text>
+<rect x="271.8" y="221.5" width="10.3" height="82.5" fill="var(--s3)" rx="1.5"><title>H24（2012年） 新規開館 55件</title></rect>
+<rect x="282.9" y="254.5" width="10.3" height="49.5" fill="var(--s2)" rx="1.5"><title>H24（2012年） 閉館 33件</title></rect>
+<rect x="302.0" y="178.0" width="10.3" height="126.0" fill="var(--s3)" rx="1.5"><title>H25（2013年） 新規開館 84件</title></rect>
+<rect x="313.1" y="268.0" width="10.3" height="36.0" fill="var(--s2)" rx="1.5"><title>H25（2013年） 閉館 24件</title></rect>
+<text x="312.7" y="322.0" text-anchor="middle" class="tick sm">H25</text>
+<rect x="332.2" y="227.5" width="10.3" height="76.5" fill="var(--s3)" rx="1.5"><title>H26（2014年） 新規開館 51件</title></rect>
+<rect x="343.3" y="265.0" width="10.3" height="39.0" fill="var(--s2)" rx="1.5"><title>H26（2014年） 閉館 26件</title></rect>
+<rect x="362.4" y="235.0" width="10.3" height="69.0" fill="var(--s3)" rx="1.5"><title>H27（2015年） 新規開館 46件</title></rect>
+<rect x="373.5" y="271.0" width="10.3" height="33.0" fill="var(--s2)" rx="1.5"><title>H27（2015年） 閉館 22件</title></rect>
+<text x="373.1" y="322.0" text-anchor="middle" class="tick sm">H27</text>
+<rect x="392.6" y="263.5" width="10.3" height="40.5" fill="var(--s3)" rx="1.5"><title>H28（2016年） 新規開館 27件</title></rect>
+<rect x="403.7" y="259.0" width="10.3" height="45.0" fill="var(--s2)" rx="1.5"><title>H28（2016年） 閉館 30件</title></rect>
+<rect x="422.8" y="233.5" width="10.3" height="70.5" fill="var(--s3)" rx="1.5"><title>H29（2017年） 新規開館 47件</title></rect>
+<rect x="433.9" y="250.0" width="10.3" height="54.0" fill="var(--s2)" rx="1.5"><title>H29（2017年） 閉館 36件</title></rect>
+<text x="433.5" y="322.0" text-anchor="middle" class="tick sm">H29</text>
+<rect x="453.0" y="163.0" width="10.3" height="141.0" fill="var(--s3)" rx="1.5"><title>H30（2018年） 新規開館 94件</title></rect>
+<rect x="464.1" y="266.5" width="10.3" height="37.5" fill="var(--s2)" rx="1.5"><title>H30（2018年） 閉館 25件</title></rect>
+<rect x="483.2" y="134.5" width="10.3" height="169.5" fill="var(--s3)" rx="1.5"><title>R1（2019年） 新規開館 113件</title></rect>
+<rect x="494.3" y="253.0" width="10.3" height="51.0" fill="var(--s2)" rx="1.5"><title>R1（2019年） 閉館 34件</title></rect>
+<text x="493.9" y="322.0" text-anchor="middle" class="tick sm">R1</text>
+<rect x="513.4" y="41.5" width="10.3" height="262.5" fill="var(--s3)" rx="1.5"><title>R2（2020年） 新規開館 175件</title></rect>
+<rect x="524.5" y="260.5" width="10.3" height="43.5" fill="var(--s2)" rx="1.5"><title>R2（2020年） 閉館 29件</title></rect>
+<rect x="543.6" y="196.0" width="10.3" height="108.0" fill="var(--s3)" rx="1.5"><title>R3（2021年） 新規開館 72件</title></rect>
+<rect x="554.7" y="236.5" width="10.3" height="67.5" fill="var(--s2)" rx="1.5"><title>R3（2021年） 閉館 45件</title></rect>
+<text x="554.3" y="322.0" text-anchor="middle" class="tick sm">R3</text>
+<rect x="573.8" y="241.0" width="10.3" height="63.0" fill="var(--s3)" rx="1.5"><title>R4（2022年） 新規開館 42件</title></rect>
+<rect x="584.9" y="277.0" width="10.3" height="27.0" fill="var(--s2)" rx="1.5"><title>R4（2022年） 閉館 18件</title></rect>
+<rect x="604.0" y="248.5" width="10.3" height="55.5" fill="var(--s3)" rx="1.5"><title>R5（2023年） 新規開館 37件</title></rect>
+<rect x="615.1" y="244.0" width="10.3" height="60.0" fill="var(--s2)" rx="1.5"><title>R5（2023年） 閉館 40件</title></rect>
+<text x="614.7" y="322.0" text-anchor="middle" class="tick sm">R5</text>
+<rect x="634.2" y="244.0" width="10.3" height="60.0" fill="var(--s3)" rx="1.5"><title>R6（2024年） 新規開館 40件</title></rect>
+<rect x="645.3" y="253.0" width="10.3" height="51.0" fill="var(--s2)" rx="1.5"><title>R6（2024年） 閉館 34件</title></rect>
+<line x1="56" y1="304.0" x2="660" y2="304.0" stroke="var(--axis)" stroke-width="1.5"/>
+<text x="524.1" y="33.5" text-anchor="middle" class="vsm" fill="var(--s3)">175</text>
+<rect x="668" y="42" width="11" height="11" fill="var(--s3)" rx="2"/>
+<text x="684" y="52" class="leg">新規開館 計1,296</text>
+<rect x="668" y="64" width="11" height="11" fill="var(--s2)" rx="2"/>
+<text x="684" y="74" class="leg">閉館 計598</text>
+</svg></div>
+    <p class="src">出典：日本博物館協会『博物館研究』に基づく集計（『日本の博物館統計ダッシュボード』収録データより）。「新規開館」には新設館と既存館の新規把握（追加館）を含む。</p>
+  </figure>
+  <p>20年間で閉館は延べ<strong>573件</strong>にのぼる。年平均29件で、館数の純増が続くなかでも<strong>毎年30館前後が姿を消している</strong>計算になる。純増という統計の裏で、個々の館の閉館は途切れなく起きている。</p>
+  <p>閉館と自治体財政の関係については、同ダッシュボードが財政指標との相関を検証しており、財政力指数との相関がr = 0.41と最も高い。ただしこれは「財政力が高い自治体ほど閉館が多い」という向きであり、博物館の多い都市部ほど母数が大きいことを反映したものと考えられる。経常収支比率との相関はr = −0.09で、財政の硬直度と閉館件数の間に明確な関係は見出されていない。</p>
+
+  <h3>5-3　運営体制と専門職</h3>
+  <p>博物館は、指定管理者制度の導入が早くから進んだ施設でもある。公立博物館（類似施設を含む）の導入率は平成20年度の26.3％から令和6年度の30.3％へ上昇した。公民館の11.4％、図書館の22.2％と比べて高い水準にある。</p>
+  <p>一方で学芸員は増え続けている。博物館の学芸員は平成14年度の3,393人から令和6年度の5,581人へ<strong>64.5％増</strong>、博物館類似施設では2,243人から3,817人へ<strong>70.2％増</strong>である。1館あたりでみても3.03人から4.15人へ厚くなった（第3章5節・表8）。</p>
+  <p>ただし、この増加には指定管理者制度による非常勤・委託職員の増加が含まれる点に留意が必要である。第2章でみたとおり、2008年の社会教育法等改正の国会審議では「社会教育施設における人材確保及びその在り方について、指定管理者制度の導入による弊害についても十分配慮し、検討すること」という附帯決議が付されており、長野県千曲市のように6館の博物館を指定管理から直営へ戻した事例も報告されている。</p>
+
+  <h3>5-4　財政面での位置づけ</h3>
+  <p>館数と人が増える一方で、博物館費は社会教育費のなかで<strong>最も大きく減った</strong>項目である。平成6会計年度の3,203億円から令和2会計年度の1,472億円へ<strong>54.0％減</strong>、平成11年度比でも47.3％減となっている（第3章6節・表9）。</p>
+  <p>館が増え、学芸員が増え、しかし予算は半減した。1館あたりの資源配分が薄くなっていることを意味しており、収蔵資料の保存環境や調査研究機能への影響は、館数という指標では捉えられない。</p>
+  <div class="note">
+    <div class="nh">合併と博物館</div>
+    <p>合併は博物館の館数を減らす方向には働かなかった。都道府県別にみても、合併による市町村減少率と博物館数の変化の相関はr = −0.08と無相関である。</p>
+    <p>理由は配置密度にある。1999年度時点で博物館は1団体あたり平均0.3館程度しか存在せず、合併しても重複はほとんど生じない。加えて、旧市町村の館が新市の分館として存続すれば統計上は引き続き1館と数えられる。第4章でみた廃校施設の活用用途でも、社会教育施設が858件、文化施設が348件を占めており、廃校が博物館・資料館に転用された例も含まれる。</p>
+    <p>合併が直撃したのは、旧町村が集落単位で密に配置していた公民館であり、博物館ではなかった。</p>
+  </div>
 </section>
 
-<section id="ch5">
-  <div class="sechead"><span class="n">第5章</span><h2>総合的な課題</h2></div>
+</div>
+<div class="tabpanel" id="panel-fisc" role="tabpanel" aria-labelledby="tab-fisc" hidden>
+<section id="fisc"><div class="sechead"><span class="n">第6章</span><h2>自治体財政</h2></div>
+  <h3>5-6　合併で自治体の財政は改善したのか</h3>
+  <p>合併推進の最大の論拠は行財政基盤の強化と効率化だった。では実際に財政は改善したのか。ここでは<strong>経常収支比率</strong>を指標にとる。経常的な収入に対する経常的な支出（人件費・扶助費・公債費等）の割合で、<strong>高いほど自由に使える財源が乏しく、財政が硬直的である</strong>ことを示す。新しい事業を始める余力が残っているかを測る指標であり、社会教育施設の維持や更新の余地に直結する。</p>
 
+  <h4>全国の推移 ── 他の指標は改善したが、経常収支比率だけは改善していない</h4>
+  <figure>
+    <figcaption><b>図13</b>市町村の主要財政指標の推移（2005〜2024年度）。上段の経常収支比率は20年間ほぼ横ばいで、合併直後の2007年度に96.7％のピークをつけている。下段の他の3指標は明確に改善した（指数が下がるほど改善）。</figcaption>
+    <div class="figbox"><svg viewBox="0 0 760 530" role="img" aria-label="市町村の財政指標の推移" class="cht">
+<text x="22" y="21" class="panel-ttl" fill="var(--s2)">経常収支比率（％）　高いほど財政が硬直的＝悪い</text>
+<line x1="58" y1="206.0" x2="592" y2="206.0" stroke="var(--grid)" stroke-width="1"/>
+<text x="49" y="210.0" text-anchor="end" class="tick">86</text>
+<line x1="58" y1="149.3" x2="592" y2="149.3" stroke="var(--grid)" stroke-width="1"/>
+<text x="49" y="153.3" text-anchor="end" class="tick">90</text>
+<line x1="58" y1="92.7" x2="592" y2="92.7" stroke="var(--grid)" stroke-width="1"/>
+<text x="49" y="96.7" text-anchor="end" class="tick">94</text>
+<line x1="58" y1="36.0" x2="592" y2="36.0" stroke="var(--grid)" stroke-width="1"/>
+<text x="49" y="40.0" text-anchor="end" class="tick">98</text>
+<rect x="52.0" y="36" width="40.1" height="170" fill="var(--band)"/>
+<text x="72.1" y="48" text-anchor="middle" class="band-lb">合併集中期</text>
+<path d="M58.0 109.4 L86.1 98.6 L114.2 54.8 L142.3 74.7 L170.4 75.3 L198.5 136.8 L226.6 93.8 L254.7 91.3 L282.8 105.6 L310.9 100.3 L339.1 91.7 L367.2 72.7 L395.3 75.5 L423.4 84.8 L451.5 73.3 L479.6 82.2 L507.7 177.6 L535.8 102.3 L563.9 108.5 L592.0 100.8" fill="none" stroke="var(--s2)" stroke-width="2.6" stroke-linejoin="round"/>
+<circle cx="58.0" cy="109.4" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H17（2005年度）経常収支比率 92.8%</title></circle>
+<text x="58.0" y="99.4" text-anchor="middle" class="ptval" fill="var(--s2)">92.8</text>
+<circle cx="86.1" cy="98.6" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H18（2006年度）経常収支比率 93.6%</title></circle>
+<circle cx="114.2" cy="54.8" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H19（2007年度）経常収支比率 96.7%</title></circle>
+<text x="114.2" y="44.8" text-anchor="middle" class="ptval" fill="var(--s2)">96.7</text>
+<circle cx="142.3" cy="74.7" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H20（2008年度）経常収支比率 95.3%</title></circle>
+<circle cx="170.4" cy="75.3" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H21（2009年度）経常収支比率 95.2%</title></circle>
+<circle cx="198.5" cy="136.8" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H22（2010年度）経常収支比率 90.9%</title></circle>
+<text x="198.5" y="150.8" text-anchor="middle" class="ptval" fill="var(--s2)">90.9</text>
+<circle cx="226.6" cy="93.8" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H23（2011年度）経常収支比率 93.9%</title></circle>
+<circle cx="254.7" cy="91.3" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H24（2012年度）経常収支比率 94.1%</title></circle>
+<circle cx="282.8" cy="105.6" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H25（2013年度）経常収支比率 93.1%</title></circle>
+<circle cx="310.9" cy="100.3" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H26（2014年度）経常収支比率 93.5%</title></circle>
+<circle cx="339.1" cy="91.7" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H27（2015年度）経常収支比率 94.1%</title></circle>
+<circle cx="367.2" cy="72.7" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H28（2016年度）経常収支比率 95.4%</title></circle>
+<circle cx="395.3" cy="75.5" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H29（2017年度）経常収支比率 95.2%</title></circle>
+<circle cx="423.4" cy="84.8" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H30（2018年度）経常収支比率 94.6%</title></circle>
+<circle cx="451.5" cy="73.3" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>R1（2019年度）経常収支比率 95.4%</title></circle>
+<circle cx="479.6" cy="82.2" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>R2（2020年度）経常収支比率 94.7%</title></circle>
+<circle cx="507.7" cy="177.6" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>R3（2021年度）経常収支比率 88.0%</title></circle>
+<text x="507.7" y="191.6" text-anchor="middle" class="ptval" fill="var(--s2)">88.0</text>
+<circle cx="535.8" cy="102.3" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>R4（2022年度）経常収支比率 93.3%</title></circle>
+<circle cx="563.9" cy="108.5" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>R5（2023年度）経常収支比率 92.9%</title></circle>
+<circle cx="592.0" cy="100.8" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>R6（2024年度）経常収支比率 93.4%</title></circle>
+<text x="592.0" y="90.8" text-anchor="middle" class="ptval" fill="var(--s2)">93.4</text>
+<text x="602" y="104.8" class="slab" fill="var(--s2)">経常収支比率</text>
+<text x="114.2" y="30.8" text-anchor="middle" class="callout" fill="var(--s2)">合併直後にピーク</text>
+<line x1="58" y1="206.0" x2="592" y2="206.0" stroke="var(--axis)" stroke-width="1.5"/>
+<text x="22" y="285" class="panel-ttl" fill="var(--ink2)">他の財政指標（2005年度＝100の指数）　下がるほど改善</text>
+<line x1="58" y1="450.0" x2="592" y2="450.0" stroke="var(--grid)" stroke-width="1"/>
+<text x="49" y="454.0" text-anchor="end" class="tick">60</text>
+<line x1="58" y1="407.1" x2="592" y2="407.1" stroke="var(--grid)" stroke-width="1"/>
+<text x="49" y="411.1" text-anchor="end" class="tick">80</text>
+<line x1="58" y1="364.3" x2="592" y2="364.3" stroke="var(--grid)" stroke-width="1"/>
+<text x="49" y="368.3" text-anchor="end" class="tick">100</text>
+<line x1="58" y1="321.4" x2="592" y2="321.4" stroke="var(--grid)" stroke-width="1"/>
+<text x="49" y="325.4" text-anchor="end" class="tick">120</text>
+<line x1="58" y1="364.3" x2="592" y2="364.3" stroke="var(--axis)" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M58.0 364.3 L86.1 364.7 L114.2 370.6 L142.3 372.8 L170.4 365.9 L198.5 359.6 L226.6 354.7 L254.7 359.3 L282.8 363.1 L310.9 369.7 L339.1 378.4 L367.2 390.0 L395.3 398.6 L423.4 405.5 L451.5 411.6 L479.6 417.4 L507.7 419.8 L535.8 417.4 L563.9 415.0 L592.0 412.4" fill="none" stroke="var(--s1)" stroke-width="2.3" stroke-linejoin="round"/>
+<circle cx="58.0" cy="364.3" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H17：指数 100.0（実数 14.474）</title></circle>
+<circle cx="86.1" cy="364.7" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H18：指数 99.8（実数 14.449）</title></circle>
+<circle cx="114.2" cy="370.6" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H19：指数 97.1（実数 14.049）</title></circle>
+<circle cx="142.3" cy="372.8" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H20：指数 96.0（実数 13.900）</title></circle>
+<circle cx="170.4" cy="365.9" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H21：指数 99.2（実数 14.362）</title></circle>
+<circle cx="198.5" cy="359.6" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H22：指数 102.2（実数 14.789）</title></circle>
+<circle cx="226.6" cy="354.7" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H23：指数 104.5（実数 15.123）</title></circle>
+<circle cx="254.7" cy="359.3" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H24：指数 102.3（実数 14.809）</title></circle>
+<circle cx="282.8" cy="363.1" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H25：指数 100.5（実数 14.551）</title></circle>
+<circle cx="310.9" cy="369.7" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H26：指数 97.5（実数 14.109）</title></circle>
+<circle cx="339.1" cy="378.4" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H27：指数 93.4（実数 13.523）</title></circle>
+<circle cx="367.2" cy="390.0" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H28：指数 88.0（実数 12.734）</title></circle>
+<circle cx="395.3" cy="398.6" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H29：指数 84.0（実数 12.153）</title></circle>
+<circle cx="423.4" cy="405.5" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H30：指数 80.8（実数 11.689）</title></circle>
+<circle cx="451.5" cy="411.6" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 R1：指数 77.9（実数 11.277）</title></circle>
+<circle cx="479.6" cy="417.4" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 R2：指数 75.2（実数 10.887）</title></circle>
+<circle cx="507.7" cy="419.8" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 R3：指数 74.1（実数 10.723）</title></circle>
+<circle cx="535.8" cy="417.4" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 R4：指数 75.2（実数 10.889）</title></circle>
+<circle cx="563.9" cy="415.0" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 R5：指数 76.3（実数 11.047）</title></circle>
+<circle cx="592.0" cy="412.4" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 R6：指数 77.5（実数 11.221）</title></circle>
+<text x="602" y="416.4" class="slab" fill="var(--s1)">実質公債費比率 78</text>
+<path d="M142.3 364.3 L170.4 363.6 L198.5 378.9 L226.6 382.4 L254.7 388.4 L282.8 395.2 L310.9 403.0 L339.1 410.2 L367.2 408.6 L395.3 406.6 L423.4 406.7 L451.5 405.3 L479.6 408.4 L507.7 423.9 L535.8 422.4 L563.9 425.5 L592.0 429.6" fill="none" stroke="var(--s3)" stroke-width="2.3" stroke-linejoin="round"/>
+<circle cx="142.3" cy="364.3" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 H20：指数 100.0（実数 234.774）</title></circle>
+<circle cx="170.4" cy="363.6" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 H21：指数 100.3（実数 235.562）</title></circle>
+<circle cx="198.5" cy="378.9" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 H22：指数 93.2（実数 218.738）</title></circle>
+<circle cx="226.6" cy="382.4" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 H23：指数 91.6（実数 214.938）</title></circle>
+<circle cx="254.7" cy="388.4" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 H24：指数 88.8（実数 208.368）</title></circle>
+<circle cx="282.8" cy="395.2" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 H25：指数 85.6（実数 200.868）</title></circle>
+<circle cx="310.9" cy="403.0" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 H26：指数 81.9（実数 192.319）</title></circle>
+<circle cx="339.1" cy="410.2" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 H27：指数 78.6（実数 184.430）</title></circle>
+<circle cx="367.2" cy="408.6" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 H28：指数 79.3（実数 186.191）</title></circle>
+<circle cx="395.3" cy="406.6" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 H29：指数 80.3（実数 188.462）</title></circle>
+<circle cx="423.4" cy="406.7" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 H30：指数 80.2（実数 188.300）</title></circle>
+<circle cx="451.5" cy="405.3" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 R1：指数 80.9（実数 189.826）</title></circle>
+<circle cx="479.6" cy="408.4" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 R2：指数 79.4（実数 186.477）</title></circle>
+<circle cx="507.7" cy="423.9" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 R3：指数 72.2（実数 169.440）</title></circle>
+<circle cx="535.8" cy="422.4" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 R4：指数 72.9（実数 171.077）</title></circle>
+<circle cx="563.9" cy="425.5" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 R5：指数 71.4（実数 167.730）</title></circle>
+<circle cx="592.0" cy="429.6" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 R6：指数 69.5（実数 163.206）</title></circle>
+<text x="602" y="433.6" class="slab" fill="var(--s3)">将来負担比率 70</text>
+<path d="M58.0 364.3 L86.1 380.7 L114.2 394.0 L142.3 402.4 L170.4 400.7 L198.5 391.3 L226.6 381.4 L254.7 377.1 L282.8 380.7 L310.9 384.8 L339.1 391.9 L367.2 397.1 L395.3 400.8 L423.4 401.3 L451.5 402.8 L479.6 403.2 L507.7 395.2 L535.8 392.8 L563.9 391.9 L592.0 399.4" fill="none" stroke="var(--s4)" stroke-width="2.3" stroke-linejoin="round"/>
+<circle cx="58.0" cy="364.3" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H17：指数 100.0（実数 2.336）</title></circle>
+<circle cx="86.1" cy="380.7" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H18：指数 92.3（実数 2.157）</title></circle>
+<circle cx="114.2" cy="394.0" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H19：指数 86.1（実数 2.012）</title></circle>
+<circle cx="142.3" cy="402.4" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H20：指数 82.2（実数 1.921）</title></circle>
+<circle cx="170.4" cy="400.7" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H21：指数 83.0（実数 1.939）</title></circle>
+<circle cx="198.5" cy="391.3" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H22：指数 87.4（実数 2.042）</title></circle>
+<circle cx="226.6" cy="381.4" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H23：指数 92.0（実数 2.150）</title></circle>
+<circle cx="254.7" cy="377.1" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H24：指数 94.0（実数 2.196）</title></circle>
+<circle cx="282.8" cy="380.7" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H25：指数 92.3（実数 2.157）</title></circle>
+<circle cx="310.9" cy="384.8" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H26：指数 90.4（実数 2.112）</title></circle>
+<circle cx="339.1" cy="391.9" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H27：指数 87.1（実数 2.035）</title></circle>
+<circle cx="367.2" cy="397.1" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H28：指数 84.7（実数 1.979）</title></circle>
+<circle cx="395.3" cy="400.8" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H29：指数 83.0（実数 1.938）</title></circle>
+<circle cx="423.4" cy="401.3" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H30：指数 82.7（実数 1.932）</title></circle>
+<circle cx="451.5" cy="402.8" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 R1：指数 82.0（実数 1.916）</title></circle>
+<circle cx="479.6" cy="403.2" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 R2：指数 81.8（実数 1.911）</title></circle>
+<circle cx="507.7" cy="395.2" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 R3：指数 85.6（実数 1.999）</title></circle>
+<circle cx="535.8" cy="392.8" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 R4：指数 86.7（実数 2.025）</title></circle>
+<circle cx="563.9" cy="391.9" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 R5：指数 87.1（実数 2.035）</title></circle>
+<circle cx="592.0" cy="399.4" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 R6：指数 83.6（実数 1.953）</title></circle>
+<text x="602" y="403.4" class="slab" fill="var(--s4)">財政力指数の逆数 84</text>
+<line x1="58" y1="450.0" x2="592" y2="450.0" stroke="var(--axis)" stroke-width="1.5"/>
+<text x="58.0" y="468.0" text-anchor="middle" class="tick sm">H17</text>
+<text x="114.2" y="468.0" text-anchor="middle" class="tick sm">H19</text>
+<text x="170.4" y="468.0" text-anchor="middle" class="tick sm">H21</text>
+<text x="226.6" y="468.0" text-anchor="middle" class="tick sm">H23</text>
+<text x="282.8" y="468.0" text-anchor="middle" class="tick sm">H25</text>
+<text x="339.1" y="468.0" text-anchor="middle" class="tick sm">H27</text>
+<text x="395.3" y="468.0" text-anchor="middle" class="tick sm">H29</text>
+<text x="451.5" y="468.0" text-anchor="middle" class="tick sm">R1</text>
+<text x="507.7" y="468.0" text-anchor="middle" class="tick sm">R3</text>
+<text x="563.9" y="468.0" text-anchor="middle" class="tick sm">R5</text>
+</svg></div>
+    <p class="src">出典：総務省「地方財政状況調査」に基づく市町村の財政指標（『日本の博物館統計ダッシュボード』収録データより）。財政力指数は数値が高いほど良い指標のため、下段では逆数をとって指数化している。<br>注：令和3年度（2021年度）の経常収支比率の落ち込みは、新型コロナ対策に伴う臨時的な歳入増の影響を含む。</p>
+  </figure>
+  <p>20年間の動きは指標によって大きく異なる。<strong>財政力指数は0.428から0.512へ、実質公債費比率は14.5％から11.2％へ、将来負担比率は234.8％から163.2％へ、いずれも明確に改善した。</strong>借金の重さと自立性という点では、市町村財政は確かに好転している。</p>
+  <p>ところが<strong>経常収支比率だけは92.8％（2005年度）から93.4％（2024年度）へと、20年かけてむしろ0.6ポイント悪化している</strong>。しかも合併が完了した直後の2007年度に96.7％という期間中のピークをつけた。財政の「重さ」は軽くなったが、「硬さ」は解消されなかった。</p>
+
+  <h4>合併市町村と非合併市町村を比べる</h4>
+  <p>全国平均では合併の効果を切り出せない。そこで、2024年度の全市町村の経常収支比率を、<strong>平成の大合併を経た団体（合併市町村）と、経ていない団体（非合併市町村）に分けて</strong>比較した。総務省「市町村別決算状況調」の団体別データに、同省の合併実績（649件）から得た合併後市町村名を突き合わせて分類している。</p>
+  <figure>
+    <figcaption><b>図14</b>合併市町村と非合併市町村の経常収支比率。上段は2024年度の分布、下段は2003年度（合併前）からの平均値の変化。両グループは合併前にはほぼ同じ水準から出発している。</figcaption>
+    <div class="figbox"><svg viewBox="0 0 760 470" role="img" aria-label="合併市町村と非合併市町村の経常収支比率" class="cht">
+<text x="18" y="26" class="panel-ttl" fill="var(--ink2)">2024年度 経常収支比率の分布（団体の割合％）</text>
+<line x1="128" y1="234.0" x2="720" y2="234.0" stroke="var(--grid)" stroke-width="1"/>
+<text x="119" y="238.0" text-anchor="end" class="tick">0%</text>
+<line x1="128" y1="196.0" x2="720" y2="196.0" stroke="var(--grid)" stroke-width="1"/>
+<text x="119" y="200.0" text-anchor="end" class="tick">10%</text>
+<line x1="128" y1="158.0" x2="720" y2="158.0" stroke="var(--grid)" stroke-width="1"/>
+<text x="119" y="162.0" text-anchor="end" class="tick">20%</text>
+<line x1="128" y1="120.0" x2="720" y2="120.0" stroke="var(--grid)" stroke-width="1"/>
+<text x="119" y="124.0" text-anchor="end" class="tick">30%</text>
+<line x1="128" y1="82.0" x2="720" y2="82.0" stroke="var(--grid)" stroke-width="1"/>
+<text x="119" y="86.0" text-anchor="end" class="tick">40%</text>
+<line x1="128" y1="44.0" x2="720" y2="44.0" stroke="var(--grid)" stroke-width="1"/>
+<text x="119" y="48.0" text-anchor="end" class="tick">50%</text>
+<rect x="138.7" y="199.1" width="37.5" height="34.9" fill="var(--s3)" rx="2"><title>非合併市町村 80%未満：9.2%</title></rect>
+<text x="157.5" y="194.1" text-anchor="middle" class="vtiny" fill="var(--s3)">9.2</text>
+<rect x="178.5" y="229.4" width="37.5" height="4.6" fill="var(--s2)" rx="2"><title>合併市町村 80%未満：1.2%</title></rect>
+<text x="197.2" y="224.4" text-anchor="middle" class="vtiny" fill="var(--s2)">1.2</text>
+<text x="177.3" y="251.0" text-anchor="middle" class="tick sm">80%未満</text>
+<rect x="237.4" y="183.4" width="37.5" height="50.6" fill="var(--s3)" rx="2"><title>非合併市町村 80〜85：13.3%</title></rect>
+<text x="256.1" y="178.4" text-anchor="middle" class="vtiny" fill="var(--s3)">13.3</text>
+<rect x="277.1" y="218.8" width="37.5" height="15.2" fill="var(--s2)" rx="2"><title>合併市町村 80〜85：4.0%</title></rect>
+<text x="295.9" y="213.8" text-anchor="middle" class="vtiny" fill="var(--s2)">4.0</text>
+<text x="276.0" y="251.0" text-anchor="middle" class="tick sm">80〜85</text>
+<rect x="336.0" y="146.8" width="37.5" height="87.2" fill="var(--s3)" rx="2"><title>非合併市町村 85〜90：22.9%</title></rect>
+<text x="354.8" y="141.8" text-anchor="middle" class="vtiny" fill="var(--s3)">22.9</text>
+<rect x="375.8" y="162.1" width="37.5" height="71.9" fill="var(--s2)" rx="2"><title>合併市町村 85〜90：18.9%</title></rect>
+<text x="394.5" y="157.1" text-anchor="middle" class="vtiny" fill="var(--s2)">18.9</text>
+<text x="374.7" y="251.0" text-anchor="middle" class="tick sm">85〜90</text>
+<rect x="434.7" y="106.2" width="37.5" height="127.8" fill="var(--s3)" rx="2"><title>非合併市町村 90〜95：33.6%</title></rect>
+<text x="453.5" y="101.2" text-anchor="middle" class="vtiny" fill="var(--s3)">33.6</text>
+<rect x="474.5" y="61.2" width="37.5" height="172.8" fill="var(--s2)" rx="2"><title>合併市町村 90〜95：45.5%</title></rect>
+<text x="493.2" y="56.2" text-anchor="middle" class="vtiny" fill="var(--s2)">45.5</text>
+<text x="473.3" y="251.0" text-anchor="middle" class="tick sm">90〜95</text>
+<rect x="533.4" y="161.9" width="37.5" height="72.1" fill="var(--s3)" rx="2"><title>非合併市町村 95〜100：19.0%</title></rect>
+<text x="552.1" y="156.9" text-anchor="middle" class="vtiny" fill="var(--s3)">19.0</text>
+<rect x="573.1" y="124.5" width="37.5" height="109.5" fill="var(--s2)" rx="2"><title>合併市町村 95〜100：28.8%</title></rect>
+<text x="591.9" y="119.5" text-anchor="middle" class="vtiny" fill="var(--s2)">28.8</text>
+<text x="572.0" y="251.0" text-anchor="middle" class="tick sm">95〜100</text>
+<rect x="632.0" y="226.6" width="37.5" height="7.4" fill="var(--s3)" rx="2"><title>非合併市町村 100%以上：1.9%</title></rect>
+<text x="650.8" y="221.6" text-anchor="middle" class="vtiny" fill="var(--s3)">1.9</text>
+<rect x="671.8" y="228.1" width="37.5" height="5.9" fill="var(--s2)" rx="2"><title>合併市町村 100%以上：1.6%</title></rect>
+<text x="690.5" y="223.1" text-anchor="middle" class="vtiny" fill="var(--s2)">1.6</text>
+<text x="670.7" y="251.0" text-anchor="middle" class="tick sm">100%以上</text>
+<line x1="128" y1="234.0" x2="720" y2="234.0" stroke="var(--axis)" stroke-width="1.5"/>
+<text x="177.3" y="60" text-anchor="start" class="note-in">← 弾力的（良い）　　　　硬直的（悪い） →</text>
+<rect x="134" y="268" width="12" height="12" fill="var(--s3)" rx="2"/>
+<text x="152" y="278" class="leg">非合併市町村（n=1,133）</text>
+<rect x="320" y="268" width="12" height="12" fill="var(--s2)" rx="2"/>
+<text x="338" y="278" class="leg">合併市町村（n=576）</text>
+<text x="18" y="314" class="panel-ttl" fill="var(--ink2)">2003年度 → 2024年度の変化（平均、％ポイント）</text>
+<line x1="128.0" y1="326" x2="128.0" y2="408" stroke="var(--grid)" stroke-width="1"/>
+<text x="128.0" y="426" text-anchor="middle" class="tick">84%</text>
+<line x1="235.6" y1="326" x2="235.6" y2="408" stroke="var(--grid)" stroke-width="1"/>
+<text x="235.6" y="426" text-anchor="middle" class="tick">86%</text>
+<line x1="343.3" y1="326" x2="343.3" y2="408" stroke="var(--grid)" stroke-width="1"/>
+<text x="343.3" y="426" text-anchor="middle" class="tick">88%</text>
+<line x1="450.9" y1="326" x2="450.9" y2="408" stroke="var(--grid)" stroke-width="1"/>
+<text x="450.9" y="426" text-anchor="middle" class="tick">90%</text>
+<line x1="558.5" y1="326" x2="558.5" y2="408" stroke="var(--grid)" stroke-width="1"/>
+<text x="558.5" y="426" text-anchor="middle" class="tick">92%</text>
+<line x1="666.2" y1="326" x2="666.2" y2="408" stroke="var(--grid)" stroke-width="1"/>
+<text x="666.2" y="426" text-anchor="middle" class="tick">94%</text>
+<text x="116" y="358.0" text-anchor="end" class="rowlab">非合併市町村</text>
+<line x1="241.0" y1="354.0" x2="429.4" y2="354.0" stroke="var(--s3)" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<circle cx="241.0" cy="354.0" r="5" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>非合併市町村 2003年度 86.1%</title></circle>
+<circle cx="429.4" cy="354.0" r="5.4" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.6"><title>非合併市町村 2024年度 89.6%（n=1113）</title></circle>
+<text x="232.0" y="358.0" text-anchor="end" class="vsm">86.1</text>
+<text x="439.4" y="358.0" class="vsm" fill="var(--s3)">89.6　（+3.5pt）</text>
+<text x="116" y="396.0" text-anchor="end" class="rowlab">合併市町村</text>
+<line x1="230.3" y1="392.0" x2="617.7" y2="392.0" stroke="var(--s2)" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<circle cx="230.3" cy="392.0" r="5" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>合併市町村 2003年度 85.9%</title></circle>
+<circle cx="617.7" cy="392.0" r="5.4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>合併市町村 2024年度 93.1%（n=333）</title></circle>
+<text x="221.3" y="396.0" text-anchor="end" class="vsm">85.9</text>
+<text x="627.7" y="396.0" class="vsm" fill="var(--s2)">93.1　（+7.2pt）</text>
+</svg></div>
+    <p class="src">出典：総務省「市町村別決算状況調」平成15年度・令和6年度、同「平成11年度以降の市町村合併の実績」より本報告が算出。</p>
+  </figure>
+  <div class="tbox"><table>
+<caption><b>表15</b>合併市町村と非合併市町村の経常収支比率（2024年度）。経常収支比率は経常的な収入に対する経常的な支出の割合で、高いほど自由に使える財源が乏しく財政が硬直的であることを示す。</caption>
+<thead><tr><th>区分</th><th>団体数</th><th>平均</th><th>中央値</th><th>85%未満<br>（弾力的）</th><th>95%以上<br>（硬直的）</th></tr></thead><tbody>
+<tr><td>合併市町村</td><td class="num">576</td><td class="num neg">92.6%</td><td class="num">93.2%</td><td class="num">5.2%</td><td class="num">30.4%</td></tr>
+<tr><td>非合併市町村</td><td class="num">1,133</td><td class="num">89.6%</td><td class="num">90.5%</td><td class="num">22.5%</td><td class="num">20.9%</td></tr>
+<tr class="tot"><td>差（合併 − 非合併）</td><td class="num">—</td><td class="num neg">+3.0pt</td><td class="num neg">+2.7pt</td><td class="num">-17.3pt</td><td class="num neg">+9.5pt</td></tr>
+</tbody></table></div>
+  <p class="src">出典：同上。分類は合併後市町村名との照合による。</p>
+
+  <p>結果は一貫している。</p>
+  <ul>
+    <li><strong>2024年度の経常収支比率は、合併市町村92.6％に対し非合併市町村89.6％で、合併市町村のほうが3.0ポイント硬直的である。</strong>中央値でも93.2％対90.5％と2.7ポイントの差がある。</li>
+    <li><strong>分布の形が違う。</strong>85％未満の弾力的な団体は非合併では22.5％を占めるのに対し、合併市町村では<strong>5.2％</strong>しかない。逆に95％以上の硬直的な団体は合併30.4％、非合併20.9％である。</li>
+    <li><strong>出発点の差では説明できない。</strong>合併前の2003年度時点の平均は、非合併86.1％、合併85.9％とほぼ同じだった。そこから非合併は+3.5ポイント、合併は+7.2ポイントと、<strong>悪化幅が2倍になっている</strong>。</li>
+  </ul>
+
+  <div class="note">
+    <div class="nh">なぜ合併市町村のほうが硬直したのか</div>
+    <p>日本総合研究所が市町村別パネルデータで行った検証は、同じ結論に達している。経常経費を項目別に分解した結果、合併市町村で比率を押し上げていたのは、一時的には人件費・物件費、構造的には<strong>公債費・扶助費・繰出金</strong>であり、「なかでも過去に発行した地方債の返済金（元利償還金）等である公債費の押し上げが顕著である」としている。</p>
+    <p>公債費の中身は、第1章でみた<strong>合併特例債</strong>にほかならない。事業費の95％を起債でき、元利償還金の70％が交付税措置される仕組みは、裏を返せば<strong>残り30％は自前で返す借金</strong>である。発行可能総額11兆8,600億円という規模で整備された施設の償還が、いま経常収支比率として現れている。</p>
+    <p>同研究の結論は「合併した市町村では、非合併市町村に比べ、財政の自立性が高まった一方、財政の弾力性は若干ながら低下しており、<strong>合併により財政基盤が強化されたとはいえない</strong>」というものである。本報告の団体別集計も、これと整合する。</p>
+  </div>
+
+  <div class="note">
+    <div class="nh">この比較の限界</div>
+    <p>第一に、これは<strong>因果関係の証明ではない</strong>。合併を選んだ市町村ともともと財政が厳しかった市町村は重なりうる。ただし2003年度の平均がほぼ同水準だったことは、少なくとも出発点の差では説明できないことを示している。</p>
+    <p>第二に、2003年度から追跡できる合併市町村は、<strong>編入合併で名称が存続した333団体に限られる</strong>。これらは主に合併の中心となった市であり、新設合併で新しい名称になった団体は同じ方法では追跡できない。</p>
+    <p>第三に、団体名で突合しているため、同名の市町村（府中市など）の一部が集計から落ちている。2024年度は1,718団体中1,709団体を捕捉している。</p>
+    <p>第四に、<strong>都道府県単位に集計すると、この差は消える</strong>（合併市町村の割合と県平均経常収支比率の相関はr = +0.14）。大阪府は合併率2.3％で経常収支比率95.9％と全国最悪、長野県は合併率23.4％で84.6％と最良である。県平均は都市・農村構造に支配されるため、合併の効果を見るには団体単位でみる必要がある。</p>
+  </div>
+
+  <h4>財政と施設をつなぐ</h4>
+  <p>財政の硬直化は、社会教育施設の運営に直接はね返る。第3章でみたとおり、社会教育費は平成6会計年度の27,103億円から令和2会計年度の15,144億円へ44.1％減少し、公民館費は33.4％、博物館費は47.3％減った。経常収支比率が90％を超える状態とは、<strong>予算の9割以上が固定的な支出で埋まり、社会教育のような裁量的経費が真っ先に削られる状態</strong>である。</p>
+  <p>もっとも、県単位でみる限り、財政指標と施設数の変化に明確な関係は見出せない（2024年度の経常収支比率と公民館数の変化の相関はr = −0.23、博物館数の変化とはr = −0.05）。財政の厳しさは施設削減の必要条件ではあっても、どの施設をどれだけ減らすかを決めているのは、第5章2節でみたとおり各自治体の政策判断である。</p>
+  <p>なお、日本博物館協会『博物館研究』に基づく集計では、博物館数は2005年の4,003館から2024年の4,497館へ<strong>12.3％増加</strong>している。社会教育調査でみた博物館の増加傾向とも一致しており、財政の硬直化が進むなかでも博物館は減っていない。減ったのは、繰り返しになるが公民館である。</p>
+</section>
+</div>
+<div class="tabpanel" id="panel-issues" role="tabpanel" aria-labelledby="tab-issues" hidden>
+<section id="issues"><div class="sechead"><span class="n">第7章</span><h2>総合的な課題</h2></div>
   <h3>5-1　因果を切り分ける</h3>
   <p>本調査で確認された事実を、要因別に整理する。合併の影響を過大にも過小にも評価しないためには、この切り分けが不可欠である。</p>
   <div class="tbox"><table>
@@ -2425,261 +3355,6 @@ footer{margin-top:64px;padding-top:24px;border-top:2px solid var(--ink);
   <p>つまり、合併の影響は「完了」していない。第2章で引いた渡辺総務副大臣の答弁が挙げた失敗例（廃校を転用したミュージアム、蔵書の足りない図書館）は、合併特例債で整備された施設が20〜30年後に更新期を迎えたときに、あらためて統廃合の対象になることを予告している。</p>
 
 
-  <h3>5-6　合併で自治体の財政は改善したのか</h3>
-  <p>合併推進の最大の論拠は行財政基盤の強化と効率化だった。では実際に財政は改善したのか。ここでは<strong>経常収支比率</strong>を指標にとる。経常的な収入に対する経常的な支出（人件費・扶助費・公債費等）の割合で、<strong>高いほど自由に使える財源が乏しく、財政が硬直的である</strong>ことを示す。新しい事業を始める余力が残っているかを測る指標であり、社会教育施設の維持や更新の余地に直結する。</p>
-
-  <h4>全国の推移 ── 他の指標は改善したが、経常収支比率だけは改善していない</h4>
-  <figure>
-    <figcaption><b>図13</b>市町村の主要財政指標の推移（2005〜2024年度）。上段の経常収支比率は20年間ほぼ横ばいで、合併直後の2007年度に96.7％のピークをつけている。下段の他の3指標は明確に改善した（指数が下がるほど改善）。</figcaption>
-    <div class="figbox"><svg viewBox="0 0 760 530" role="img" aria-label="市町村の財政指標の推移" class="cht">
-<text x="22" y="21" class="panel-ttl" fill="var(--s2)">経常収支比率（％）　高いほど財政が硬直的＝悪い</text>
-<line x1="58" y1="206.0" x2="592" y2="206.0" stroke="var(--grid)" stroke-width="1"/>
-<text x="49" y="210.0" text-anchor="end" class="tick">86</text>
-<line x1="58" y1="149.3" x2="592" y2="149.3" stroke="var(--grid)" stroke-width="1"/>
-<text x="49" y="153.3" text-anchor="end" class="tick">90</text>
-<line x1="58" y1="92.7" x2="592" y2="92.7" stroke="var(--grid)" stroke-width="1"/>
-<text x="49" y="96.7" text-anchor="end" class="tick">94</text>
-<line x1="58" y1="36.0" x2="592" y2="36.0" stroke="var(--grid)" stroke-width="1"/>
-<text x="49" y="40.0" text-anchor="end" class="tick">98</text>
-<rect x="52.0" y="36" width="40.1" height="170" fill="var(--band)"/>
-<text x="72.1" y="48" text-anchor="middle" class="band-lb">合併集中期</text>
-<path d="M58.0 109.4 L86.1 98.6 L114.2 54.8 L142.3 74.7 L170.4 75.3 L198.5 136.8 L226.6 93.8 L254.7 91.3 L282.8 105.6 L310.9 100.3 L339.1 91.7 L367.2 72.7 L395.3 75.5 L423.4 84.8 L451.5 73.3 L479.6 82.2 L507.7 177.6 L535.8 102.3 L563.9 108.5 L592.0 100.8" fill="none" stroke="var(--s2)" stroke-width="2.6" stroke-linejoin="round"/>
-<circle cx="58.0" cy="109.4" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H17（2005年度）経常収支比率 92.8%</title></circle>
-<text x="58.0" y="99.4" text-anchor="middle" class="ptval" fill="var(--s2)">92.8</text>
-<circle cx="86.1" cy="98.6" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H18（2006年度）経常収支比率 93.6%</title></circle>
-<circle cx="114.2" cy="54.8" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H19（2007年度）経常収支比率 96.7%</title></circle>
-<text x="114.2" y="44.8" text-anchor="middle" class="ptval" fill="var(--s2)">96.7</text>
-<circle cx="142.3" cy="74.7" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H20（2008年度）経常収支比率 95.3%</title></circle>
-<circle cx="170.4" cy="75.3" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H21（2009年度）経常収支比率 95.2%</title></circle>
-<circle cx="198.5" cy="136.8" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H22（2010年度）経常収支比率 90.9%</title></circle>
-<text x="198.5" y="150.8" text-anchor="middle" class="ptval" fill="var(--s2)">90.9</text>
-<circle cx="226.6" cy="93.8" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H23（2011年度）経常収支比率 93.9%</title></circle>
-<circle cx="254.7" cy="91.3" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H24（2012年度）経常収支比率 94.1%</title></circle>
-<circle cx="282.8" cy="105.6" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H25（2013年度）経常収支比率 93.1%</title></circle>
-<circle cx="310.9" cy="100.3" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H26（2014年度）経常収支比率 93.5%</title></circle>
-<circle cx="339.1" cy="91.7" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H27（2015年度）経常収支比率 94.1%</title></circle>
-<circle cx="367.2" cy="72.7" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H28（2016年度）経常収支比率 95.4%</title></circle>
-<circle cx="395.3" cy="75.5" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H29（2017年度）経常収支比率 95.2%</title></circle>
-<circle cx="423.4" cy="84.8" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>H30（2018年度）経常収支比率 94.6%</title></circle>
-<circle cx="451.5" cy="73.3" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>R1（2019年度）経常収支比率 95.4%</title></circle>
-<circle cx="479.6" cy="82.2" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>R2（2020年度）経常収支比率 94.7%</title></circle>
-<circle cx="507.7" cy="177.6" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>R3（2021年度）経常収支比率 88.0%</title></circle>
-<text x="507.7" y="191.6" text-anchor="middle" class="ptval" fill="var(--s2)">88.0</text>
-<circle cx="535.8" cy="102.3" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>R4（2022年度）経常収支比率 93.3%</title></circle>
-<circle cx="563.9" cy="108.5" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>R5（2023年度）経常収支比率 92.9%</title></circle>
-<circle cx="592.0" cy="100.8" r="3.6" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>R6（2024年度）経常収支比率 93.4%</title></circle>
-<text x="592.0" y="90.8" text-anchor="middle" class="ptval" fill="var(--s2)">93.4</text>
-<text x="602" y="104.8" class="slab" fill="var(--s2)">経常収支比率</text>
-<text x="114.2" y="30.8" text-anchor="middle" class="callout" fill="var(--s2)">合併直後にピーク</text>
-<line x1="58" y1="206.0" x2="592" y2="206.0" stroke="var(--axis)" stroke-width="1.5"/>
-<text x="22" y="285" class="panel-ttl" fill="var(--ink2)">他の財政指標（2005年度＝100の指数）　下がるほど改善</text>
-<line x1="58" y1="450.0" x2="592" y2="450.0" stroke="var(--grid)" stroke-width="1"/>
-<text x="49" y="454.0" text-anchor="end" class="tick">60</text>
-<line x1="58" y1="407.1" x2="592" y2="407.1" stroke="var(--grid)" stroke-width="1"/>
-<text x="49" y="411.1" text-anchor="end" class="tick">80</text>
-<line x1="58" y1="364.3" x2="592" y2="364.3" stroke="var(--grid)" stroke-width="1"/>
-<text x="49" y="368.3" text-anchor="end" class="tick">100</text>
-<line x1="58" y1="321.4" x2="592" y2="321.4" stroke="var(--grid)" stroke-width="1"/>
-<text x="49" y="325.4" text-anchor="end" class="tick">120</text>
-<line x1="58" y1="364.3" x2="592" y2="364.3" stroke="var(--axis)" stroke-width="1.4" stroke-dasharray="4 3"/>
-<path d="M58.0 364.3 L86.1 364.7 L114.2 370.6 L142.3 372.8 L170.4 365.9 L198.5 359.6 L226.6 354.7 L254.7 359.3 L282.8 363.1 L310.9 369.7 L339.1 378.4 L367.2 390.0 L395.3 398.6 L423.4 405.5 L451.5 411.6 L479.6 417.4 L507.7 419.8 L535.8 417.4 L563.9 415.0 L592.0 412.4" fill="none" stroke="var(--s1)" stroke-width="2.3" stroke-linejoin="round"/>
-<circle cx="58.0" cy="364.3" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H17：指数 100.0（実数 14.474）</title></circle>
-<circle cx="86.1" cy="364.7" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H18：指数 99.8（実数 14.449）</title></circle>
-<circle cx="114.2" cy="370.6" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H19：指数 97.1（実数 14.049）</title></circle>
-<circle cx="142.3" cy="372.8" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H20：指数 96.0（実数 13.900）</title></circle>
-<circle cx="170.4" cy="365.9" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H21：指数 99.2（実数 14.362）</title></circle>
-<circle cx="198.5" cy="359.6" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H22：指数 102.2（実数 14.789）</title></circle>
-<circle cx="226.6" cy="354.7" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H23：指数 104.5（実数 15.123）</title></circle>
-<circle cx="254.7" cy="359.3" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H24：指数 102.3（実数 14.809）</title></circle>
-<circle cx="282.8" cy="363.1" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H25：指数 100.5（実数 14.551）</title></circle>
-<circle cx="310.9" cy="369.7" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H26：指数 97.5（実数 14.109）</title></circle>
-<circle cx="339.1" cy="378.4" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H27：指数 93.4（実数 13.523）</title></circle>
-<circle cx="367.2" cy="390.0" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H28：指数 88.0（実数 12.734）</title></circle>
-<circle cx="395.3" cy="398.6" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H29：指数 84.0（実数 12.153）</title></circle>
-<circle cx="423.4" cy="405.5" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 H30：指数 80.8（実数 11.689）</title></circle>
-<circle cx="451.5" cy="411.6" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 R1：指数 77.9（実数 11.277）</title></circle>
-<circle cx="479.6" cy="417.4" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 R2：指数 75.2（実数 10.887）</title></circle>
-<circle cx="507.7" cy="419.8" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 R3：指数 74.1（実数 10.723）</title></circle>
-<circle cx="535.8" cy="417.4" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 R4：指数 75.2（実数 10.889）</title></circle>
-<circle cx="563.9" cy="415.0" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 R5：指数 76.3（実数 11.047）</title></circle>
-<circle cx="592.0" cy="412.4" r="3.2" fill="var(--s1)" stroke="var(--paper)" stroke-width="1.5"><title>実質公債費比率 R6：指数 77.5（実数 11.221）</title></circle>
-<text x="602" y="416.4" class="slab" fill="var(--s1)">実質公債費比率 78</text>
-<path d="M142.3 364.3 L170.4 363.6 L198.5 378.9 L226.6 382.4 L254.7 388.4 L282.8 395.2 L310.9 403.0 L339.1 410.2 L367.2 408.6 L395.3 406.6 L423.4 406.7 L451.5 405.3 L479.6 408.4 L507.7 423.9 L535.8 422.4 L563.9 425.5 L592.0 429.6" fill="none" stroke="var(--s3)" stroke-width="2.3" stroke-linejoin="round"/>
-<circle cx="142.3" cy="364.3" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 H20：指数 100.0（実数 234.774）</title></circle>
-<circle cx="170.4" cy="363.6" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 H21：指数 100.3（実数 235.562）</title></circle>
-<circle cx="198.5" cy="378.9" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 H22：指数 93.2（実数 218.738）</title></circle>
-<circle cx="226.6" cy="382.4" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 H23：指数 91.6（実数 214.938）</title></circle>
-<circle cx="254.7" cy="388.4" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 H24：指数 88.8（実数 208.368）</title></circle>
-<circle cx="282.8" cy="395.2" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 H25：指数 85.6（実数 200.868）</title></circle>
-<circle cx="310.9" cy="403.0" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 H26：指数 81.9（実数 192.319）</title></circle>
-<circle cx="339.1" cy="410.2" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 H27：指数 78.6（実数 184.430）</title></circle>
-<circle cx="367.2" cy="408.6" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 H28：指数 79.3（実数 186.191）</title></circle>
-<circle cx="395.3" cy="406.6" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 H29：指数 80.3（実数 188.462）</title></circle>
-<circle cx="423.4" cy="406.7" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 H30：指数 80.2（実数 188.300）</title></circle>
-<circle cx="451.5" cy="405.3" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 R1：指数 80.9（実数 189.826）</title></circle>
-<circle cx="479.6" cy="408.4" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 R2：指数 79.4（実数 186.477）</title></circle>
-<circle cx="507.7" cy="423.9" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 R3：指数 72.2（実数 169.440）</title></circle>
-<circle cx="535.8" cy="422.4" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 R4：指数 72.9（実数 171.077）</title></circle>
-<circle cx="563.9" cy="425.5" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 R5：指数 71.4（実数 167.730）</title></circle>
-<circle cx="592.0" cy="429.6" r="3.2" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.5"><title>将来負担比率 R6：指数 69.5（実数 163.206）</title></circle>
-<text x="602" y="433.6" class="slab" fill="var(--s3)">将来負担比率 70</text>
-<path d="M58.0 364.3 L86.1 380.7 L114.2 394.0 L142.3 402.4 L170.4 400.7 L198.5 391.3 L226.6 381.4 L254.7 377.1 L282.8 380.7 L310.9 384.8 L339.1 391.9 L367.2 397.1 L395.3 400.8 L423.4 401.3 L451.5 402.8 L479.6 403.2 L507.7 395.2 L535.8 392.8 L563.9 391.9 L592.0 399.4" fill="none" stroke="var(--s4)" stroke-width="2.3" stroke-linejoin="round"/>
-<circle cx="58.0" cy="364.3" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H17：指数 100.0（実数 2.336）</title></circle>
-<circle cx="86.1" cy="380.7" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H18：指数 92.3（実数 2.157）</title></circle>
-<circle cx="114.2" cy="394.0" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H19：指数 86.1（実数 2.012）</title></circle>
-<circle cx="142.3" cy="402.4" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H20：指数 82.2（実数 1.921）</title></circle>
-<circle cx="170.4" cy="400.7" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H21：指数 83.0（実数 1.939）</title></circle>
-<circle cx="198.5" cy="391.3" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H22：指数 87.4（実数 2.042）</title></circle>
-<circle cx="226.6" cy="381.4" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H23：指数 92.0（実数 2.150）</title></circle>
-<circle cx="254.7" cy="377.1" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H24：指数 94.0（実数 2.196）</title></circle>
-<circle cx="282.8" cy="380.7" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H25：指数 92.3（実数 2.157）</title></circle>
-<circle cx="310.9" cy="384.8" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H26：指数 90.4（実数 2.112）</title></circle>
-<circle cx="339.1" cy="391.9" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H27：指数 87.1（実数 2.035）</title></circle>
-<circle cx="367.2" cy="397.1" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H28：指数 84.7（実数 1.979）</title></circle>
-<circle cx="395.3" cy="400.8" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H29：指数 83.0（実数 1.938）</title></circle>
-<circle cx="423.4" cy="401.3" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 H30：指数 82.7（実数 1.932）</title></circle>
-<circle cx="451.5" cy="402.8" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 R1：指数 82.0（実数 1.916）</title></circle>
-<circle cx="479.6" cy="403.2" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 R2：指数 81.8（実数 1.911）</title></circle>
-<circle cx="507.7" cy="395.2" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 R3：指数 85.6（実数 1.999）</title></circle>
-<circle cx="535.8" cy="392.8" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 R4：指数 86.7（実数 2.025）</title></circle>
-<circle cx="563.9" cy="391.9" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 R5：指数 87.1（実数 2.035）</title></circle>
-<circle cx="592.0" cy="399.4" r="3.2" fill="var(--s4)" stroke="var(--paper)" stroke-width="1.5"><title>財政力指数の逆数 R6：指数 83.6（実数 1.953）</title></circle>
-<text x="602" y="403.4" class="slab" fill="var(--s4)">財政力指数の逆数 84</text>
-<line x1="58" y1="450.0" x2="592" y2="450.0" stroke="var(--axis)" stroke-width="1.5"/>
-<text x="58.0" y="468.0" text-anchor="middle" class="tick sm">H17</text>
-<text x="114.2" y="468.0" text-anchor="middle" class="tick sm">H19</text>
-<text x="170.4" y="468.0" text-anchor="middle" class="tick sm">H21</text>
-<text x="226.6" y="468.0" text-anchor="middle" class="tick sm">H23</text>
-<text x="282.8" y="468.0" text-anchor="middle" class="tick sm">H25</text>
-<text x="339.1" y="468.0" text-anchor="middle" class="tick sm">H27</text>
-<text x="395.3" y="468.0" text-anchor="middle" class="tick sm">H29</text>
-<text x="451.5" y="468.0" text-anchor="middle" class="tick sm">R1</text>
-<text x="507.7" y="468.0" text-anchor="middle" class="tick sm">R3</text>
-<text x="563.9" y="468.0" text-anchor="middle" class="tick sm">R5</text>
-</svg></div>
-    <p class="src">出典：総務省「地方財政状況調査」に基づく市町村の財政指標（『日本の博物館統計ダッシュボード』収録データより）。財政力指数は数値が高いほど良い指標のため、下段では逆数をとって指数化している。<br>注：令和3年度（2021年度）の経常収支比率の落ち込みは、新型コロナ対策に伴う臨時的な歳入増の影響を含む。</p>
-  </figure>
-  <p>20年間の動きは指標によって大きく異なる。<strong>財政力指数は0.428から0.512へ、実質公債費比率は14.5％から11.2％へ、将来負担比率は234.8％から163.2％へ、いずれも明確に改善した。</strong>借金の重さと自立性という点では、市町村財政は確かに好転している。</p>
-  <p>ところが<strong>経常収支比率だけは92.8％（2005年度）から93.4％（2024年度）へと、20年かけてむしろ0.6ポイント悪化している</strong>。しかも合併が完了した直後の2007年度に96.7％という期間中のピークをつけた。財政の「重さ」は軽くなったが、「硬さ」は解消されなかった。</p>
-
-  <h4>合併市町村と非合併市町村を比べる</h4>
-  <p>全国平均では合併の効果を切り出せない。そこで、2024年度の全市町村の経常収支比率を、<strong>平成の大合併を経た団体（合併市町村）と、経ていない団体（非合併市町村）に分けて</strong>比較した。総務省「市町村別決算状況調」の団体別データに、同省の合併実績（649件）から得た合併後市町村名を突き合わせて分類している。</p>
-  <figure>
-    <figcaption><b>図14</b>合併市町村と非合併市町村の経常収支比率。上段は2024年度の分布、下段は2003年度（合併前）からの平均値の変化。両グループは合併前にはほぼ同じ水準から出発している。</figcaption>
-    <div class="figbox"><svg viewBox="0 0 760 470" role="img" aria-label="合併市町村と非合併市町村の経常収支比率" class="cht">
-<text x="18" y="26" class="panel-ttl" fill="var(--ink2)">2024年度 経常収支比率の分布（団体の割合％）</text>
-<line x1="128" y1="234.0" x2="720" y2="234.0" stroke="var(--grid)" stroke-width="1"/>
-<text x="119" y="238.0" text-anchor="end" class="tick">0%</text>
-<line x1="128" y1="196.0" x2="720" y2="196.0" stroke="var(--grid)" stroke-width="1"/>
-<text x="119" y="200.0" text-anchor="end" class="tick">10%</text>
-<line x1="128" y1="158.0" x2="720" y2="158.0" stroke="var(--grid)" stroke-width="1"/>
-<text x="119" y="162.0" text-anchor="end" class="tick">20%</text>
-<line x1="128" y1="120.0" x2="720" y2="120.0" stroke="var(--grid)" stroke-width="1"/>
-<text x="119" y="124.0" text-anchor="end" class="tick">30%</text>
-<line x1="128" y1="82.0" x2="720" y2="82.0" stroke="var(--grid)" stroke-width="1"/>
-<text x="119" y="86.0" text-anchor="end" class="tick">40%</text>
-<line x1="128" y1="44.0" x2="720" y2="44.0" stroke="var(--grid)" stroke-width="1"/>
-<text x="119" y="48.0" text-anchor="end" class="tick">50%</text>
-<rect x="138.7" y="199.1" width="37.5" height="34.9" fill="var(--s3)" rx="2"><title>非合併市町村 80%未満：9.2%</title></rect>
-<text x="157.5" y="194.1" text-anchor="middle" class="vtiny" fill="var(--s3)">9.2</text>
-<rect x="178.5" y="229.4" width="37.5" height="4.6" fill="var(--s2)" rx="2"><title>合併市町村 80%未満：1.2%</title></rect>
-<text x="197.2" y="224.4" text-anchor="middle" class="vtiny" fill="var(--s2)">1.2</text>
-<text x="177.3" y="251.0" text-anchor="middle" class="tick sm">80%未満</text>
-<rect x="237.4" y="183.4" width="37.5" height="50.6" fill="var(--s3)" rx="2"><title>非合併市町村 80〜85：13.3%</title></rect>
-<text x="256.1" y="178.4" text-anchor="middle" class="vtiny" fill="var(--s3)">13.3</text>
-<rect x="277.1" y="218.8" width="37.5" height="15.2" fill="var(--s2)" rx="2"><title>合併市町村 80〜85：4.0%</title></rect>
-<text x="295.9" y="213.8" text-anchor="middle" class="vtiny" fill="var(--s2)">4.0</text>
-<text x="276.0" y="251.0" text-anchor="middle" class="tick sm">80〜85</text>
-<rect x="336.0" y="146.8" width="37.5" height="87.2" fill="var(--s3)" rx="2"><title>非合併市町村 85〜90：22.9%</title></rect>
-<text x="354.8" y="141.8" text-anchor="middle" class="vtiny" fill="var(--s3)">22.9</text>
-<rect x="375.8" y="162.1" width="37.5" height="71.9" fill="var(--s2)" rx="2"><title>合併市町村 85〜90：18.9%</title></rect>
-<text x="394.5" y="157.1" text-anchor="middle" class="vtiny" fill="var(--s2)">18.9</text>
-<text x="374.7" y="251.0" text-anchor="middle" class="tick sm">85〜90</text>
-<rect x="434.7" y="106.2" width="37.5" height="127.8" fill="var(--s3)" rx="2"><title>非合併市町村 90〜95：33.6%</title></rect>
-<text x="453.5" y="101.2" text-anchor="middle" class="vtiny" fill="var(--s3)">33.6</text>
-<rect x="474.5" y="61.2" width="37.5" height="172.8" fill="var(--s2)" rx="2"><title>合併市町村 90〜95：45.5%</title></rect>
-<text x="493.2" y="56.2" text-anchor="middle" class="vtiny" fill="var(--s2)">45.5</text>
-<text x="473.3" y="251.0" text-anchor="middle" class="tick sm">90〜95</text>
-<rect x="533.4" y="161.9" width="37.5" height="72.1" fill="var(--s3)" rx="2"><title>非合併市町村 95〜100：19.0%</title></rect>
-<text x="552.1" y="156.9" text-anchor="middle" class="vtiny" fill="var(--s3)">19.0</text>
-<rect x="573.1" y="124.5" width="37.5" height="109.5" fill="var(--s2)" rx="2"><title>合併市町村 95〜100：28.8%</title></rect>
-<text x="591.9" y="119.5" text-anchor="middle" class="vtiny" fill="var(--s2)">28.8</text>
-<text x="572.0" y="251.0" text-anchor="middle" class="tick sm">95〜100</text>
-<rect x="632.0" y="226.6" width="37.5" height="7.4" fill="var(--s3)" rx="2"><title>非合併市町村 100%以上：1.9%</title></rect>
-<text x="650.8" y="221.6" text-anchor="middle" class="vtiny" fill="var(--s3)">1.9</text>
-<rect x="671.8" y="228.1" width="37.5" height="5.9" fill="var(--s2)" rx="2"><title>合併市町村 100%以上：1.6%</title></rect>
-<text x="690.5" y="223.1" text-anchor="middle" class="vtiny" fill="var(--s2)">1.6</text>
-<text x="670.7" y="251.0" text-anchor="middle" class="tick sm">100%以上</text>
-<line x1="128" y1="234.0" x2="720" y2="234.0" stroke="var(--axis)" stroke-width="1.5"/>
-<text x="177.3" y="60" text-anchor="start" class="note-in">← 弾力的（良い）　　　　硬直的（悪い） →</text>
-<rect x="134" y="268" width="12" height="12" fill="var(--s3)" rx="2"/>
-<text x="152" y="278" class="leg">非合併市町村（n=1,133）</text>
-<rect x="320" y="268" width="12" height="12" fill="var(--s2)" rx="2"/>
-<text x="338" y="278" class="leg">合併市町村（n=576）</text>
-<text x="18" y="314" class="panel-ttl" fill="var(--ink2)">2003年度 → 2024年度の変化（平均、％ポイント）</text>
-<line x1="128.0" y1="326" x2="128.0" y2="408" stroke="var(--grid)" stroke-width="1"/>
-<text x="128.0" y="426" text-anchor="middle" class="tick">84%</text>
-<line x1="235.6" y1="326" x2="235.6" y2="408" stroke="var(--grid)" stroke-width="1"/>
-<text x="235.6" y="426" text-anchor="middle" class="tick">86%</text>
-<line x1="343.3" y1="326" x2="343.3" y2="408" stroke="var(--grid)" stroke-width="1"/>
-<text x="343.3" y="426" text-anchor="middle" class="tick">88%</text>
-<line x1="450.9" y1="326" x2="450.9" y2="408" stroke="var(--grid)" stroke-width="1"/>
-<text x="450.9" y="426" text-anchor="middle" class="tick">90%</text>
-<line x1="558.5" y1="326" x2="558.5" y2="408" stroke="var(--grid)" stroke-width="1"/>
-<text x="558.5" y="426" text-anchor="middle" class="tick">92%</text>
-<line x1="666.2" y1="326" x2="666.2" y2="408" stroke="var(--grid)" stroke-width="1"/>
-<text x="666.2" y="426" text-anchor="middle" class="tick">94%</text>
-<text x="116" y="358.0" text-anchor="end" class="rowlab">非合併市町村</text>
-<line x1="241.0" y1="354.0" x2="429.4" y2="354.0" stroke="var(--s3)" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
-<circle cx="241.0" cy="354.0" r="5" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>非合併市町村 2003年度 86.1%</title></circle>
-<circle cx="429.4" cy="354.0" r="5.4" fill="var(--s3)" stroke="var(--paper)" stroke-width="1.6"><title>非合併市町村 2024年度 89.6%（n=1113）</title></circle>
-<text x="232.0" y="358.0" text-anchor="end" class="vsm">86.1</text>
-<text x="439.4" y="358.0" class="vsm" fill="var(--s3)">89.6　（+3.5pt）</text>
-<text x="116" y="396.0" text-anchor="end" class="rowlab">合併市町村</text>
-<line x1="230.3" y1="392.0" x2="617.7" y2="392.0" stroke="var(--s2)" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
-<circle cx="230.3" cy="392.0" r="5" fill="var(--paper)" stroke="var(--axis)" stroke-width="2"><title>合併市町村 2003年度 85.9%</title></circle>
-<circle cx="617.7" cy="392.0" r="5.4" fill="var(--s2)" stroke="var(--paper)" stroke-width="1.6"><title>合併市町村 2024年度 93.1%（n=333）</title></circle>
-<text x="221.3" y="396.0" text-anchor="end" class="vsm">85.9</text>
-<text x="627.7" y="396.0" class="vsm" fill="var(--s2)">93.1　（+7.2pt）</text>
-</svg></div>
-    <p class="src">出典：総務省「市町村別決算状況調」平成15年度・令和6年度、同「平成11年度以降の市町村合併の実績」より本報告が算出。</p>
-  </figure>
-  <div class="tbox"><table>
-<caption><b>表15</b>合併市町村と非合併市町村の経常収支比率（2024年度）。経常収支比率は経常的な収入に対する経常的な支出の割合で、高いほど自由に使える財源が乏しく財政が硬直的であることを示す。</caption>
-<thead><tr><th>区分</th><th>団体数</th><th>平均</th><th>中央値</th><th>85%未満<br>（弾力的）</th><th>95%以上<br>（硬直的）</th></tr></thead><tbody>
-<tr><td>合併市町村</td><td class="num">576</td><td class="num neg">92.6%</td><td class="num">93.2%</td><td class="num">5.2%</td><td class="num">30.4%</td></tr>
-<tr><td>非合併市町村</td><td class="num">1,133</td><td class="num">89.6%</td><td class="num">90.5%</td><td class="num">22.5%</td><td class="num">20.9%</td></tr>
-<tr class="tot"><td>差（合併 − 非合併）</td><td class="num">—</td><td class="num neg">+3.0pt</td><td class="num neg">+2.7pt</td><td class="num">-17.3pt</td><td class="num neg">+9.5pt</td></tr>
-</tbody></table></div>
-  <p class="src">出典：同上。分類は合併後市町村名との照合による。</p>
-
-  <p>結果は一貫している。</p>
-  <ul>
-    <li><strong>2024年度の経常収支比率は、合併市町村92.6％に対し非合併市町村89.6％で、合併市町村のほうが3.0ポイント硬直的である。</strong>中央値でも93.2％対90.5％と2.7ポイントの差がある。</li>
-    <li><strong>分布の形が違う。</strong>85％未満の弾力的な団体は非合併では22.5％を占めるのに対し、合併市町村では<strong>5.2％</strong>しかない。逆に95％以上の硬直的な団体は合併30.4％、非合併20.9％である。</li>
-    <li><strong>出発点の差では説明できない。</strong>合併前の2003年度時点の平均は、非合併86.1％、合併85.9％とほぼ同じだった。そこから非合併は+3.5ポイント、合併は+7.2ポイントと、<strong>悪化幅が2倍になっている</strong>。</li>
-  </ul>
-
-  <div class="note">
-    <div class="nh">なぜ合併市町村のほうが硬直したのか</div>
-    <p>日本総合研究所が市町村別パネルデータで行った検証は、同じ結論に達している。経常経費を項目別に分解した結果、合併市町村で比率を押し上げていたのは、一時的には人件費・物件費、構造的には<strong>公債費・扶助費・繰出金</strong>であり、「なかでも過去に発行した地方債の返済金（元利償還金）等である公債費の押し上げが顕著である」としている。</p>
-    <p>公債費の中身は、第1章でみた<strong>合併特例債</strong>にほかならない。事業費の95％を起債でき、元利償還金の70％が交付税措置される仕組みは、裏を返せば<strong>残り30％は自前で返す借金</strong>である。発行可能総額11兆8,600億円という規模で整備された施設の償還が、いま経常収支比率として現れている。</p>
-    <p>同研究の結論は「合併した市町村では、非合併市町村に比べ、財政の自立性が高まった一方、財政の弾力性は若干ながら低下しており、<strong>合併により財政基盤が強化されたとはいえない</strong>」というものである。本報告の団体別集計も、これと整合する。</p>
-  </div>
-
-  <div class="note">
-    <div class="nh">この比較の限界</div>
-    <p>第一に、これは<strong>因果関係の証明ではない</strong>。合併を選んだ市町村ともともと財政が厳しかった市町村は重なりうる。ただし2003年度の平均がほぼ同水準だったことは、少なくとも出発点の差では説明できないことを示している。</p>
-    <p>第二に、2003年度から追跡できる合併市町村は、<strong>編入合併で名称が存続した333団体に限られる</strong>。これらは主に合併の中心となった市であり、新設合併で新しい名称になった団体は同じ方法では追跡できない。</p>
-    <p>第三に、団体名で突合しているため、同名の市町村（府中市など）の一部が集計から落ちている。2024年度は1,718団体中1,709団体を捕捉している。</p>
-    <p>第四に、<strong>都道府県単位に集計すると、この差は消える</strong>（合併市町村の割合と県平均経常収支比率の相関はr = +0.14）。大阪府は合併率2.3％で経常収支比率95.9％と全国最悪、長野県は合併率23.4％で84.6％と最良である。県平均は都市・農村構造に支配されるため、合併の効果を見るには団体単位でみる必要がある。</p>
-  </div>
-
-  <h4>財政と施設をつなぐ</h4>
-  <p>財政の硬直化は、社会教育施設の運営に直接はね返る。第3章でみたとおり、社会教育費は平成6会計年度の27,103億円から令和2会計年度の15,144億円へ44.1％減少し、公民館費は33.4％、博物館費は47.3％減った。経常収支比率が90％を超える状態とは、<strong>予算の9割以上が固定的な支出で埋まり、社会教育のような裁量的経費が真っ先に削られる状態</strong>である。</p>
-  <p>もっとも、県単位でみる限り、財政指標と施設数の変化に明確な関係は見出せない（2024年度の経常収支比率と公民館数の変化の相関はr = −0.23、博物館数の変化とはr = −0.05）。財政の厳しさは施設削減の必要条件ではあっても、どの施設をどれだけ減らすかを決めているのは、第5章2節でみたとおり各自治体の政策判断である。</p>
-  <p>なお、日本博物館協会『博物館研究』に基づく集計では、博物館数は2005年の4,003館から2024年の4,497館へ<strong>12.3％増加</strong>している。社会教育調査でみた博物館の増加傾向とも一致しており、財政の硬直化が進むなかでも博物館は減っていない。減ったのは、繰り返しになるが公民館である。</p>
-
   <h3>5-7　検証の空白</h3>
   <p>最後に、本調査を通じて明らかになった<strong>データの欠落</strong>を記録しておく。政策提言の前提を確認するうえで重要である。</p>
   <ul>
@@ -2695,7 +3370,256 @@ footer{margin-top:64px;padding-top:24px;border-top:2px solid var(--ink);
     <p>影響が現れたのは合併の瞬間ではなく、合併から3〜7年後の、新自治体が総合計画と行政改革を実行する局面だった。合併算定替の終了と施設の更新期の到来により、この過程は現在も継続している。</p>
   </div>
 </section>
+</div>
+<div class="tabpanel" id="panel-data" role="tabpanel" aria-labelledby="tab-data" hidden>
 
+<section id="data">
+  <div class="sechead"><span class="n">参考データ</span><h2>参考データ</h2></div>
+  <p>本報告の分析に用いた都道府県別・長期系列のデータを、並べ替えと絞り込みができる形で収録する。列見出しをクリックすると並べ替わる。</p>
+
+  <h3>A　社会教育施設と人口（都道府県別）</h3>
+  <p>本報告が文部科学省「社会教育調査」と総務省統計局「人口推計」から構築したデータセット。第3章7節の図7〜9の基礎データにあたる。</p>
+  <div class="tctl" data-filter-for="t-fac"><input type="text" id="q-fac" placeholder="都道府県で絞り込み" aria-label="都道府県で絞り込み"><span class="cnt"></span></div>
+<div class="tbox tall"><table data-sortable id="t-fac">
+<thead><tr><th>都道府県</th><th>公民館<br>2008</th><th>公民館<br>2024</th><th>公民館<br>増減率</th><th>図書館<br>2024</th><th>博物館<br>2024</th><th>人口<br>2024</th><th>高齢化率<br>2024</th><th>公民館1館<br>あたり人口</th></tr></thead><tbody>
+<tr><td>長野県</td><td class="num">1,378</td><td class="num">1,785</td><td class="num pos">+29.5%</td><td class="num">120</td><td class="num">340</td><td class="num">199万</td><td class="num">32.9%</td><td class="num">1,113</td></tr>
+<tr><td>埼玉県</td><td class="num">526</td><td class="num">462</td><td class="num neg">-12.2%</td><td class="num">174</td><td class="num">138</td><td class="num">733万</td><td class="num">27.5%</td><td class="num">15,870</td></tr>
+<tr><td>宮城県</td><td class="num">511</td><td class="num">432</td><td class="num neg">-15.5%</td><td class="num">35</td><td class="num">123</td><td class="num">225万</td><td class="num">29.6%</td><td class="num">5,204</td></tr>
+<tr><td>山形県</td><td class="num">640</td><td class="num">423</td><td class="num neg">-33.9%</td><td class="num">39</td><td class="num">83</td><td class="num">101万</td><td class="num">35.6%</td><td class="num">2,390</td></tr>
+<tr><td>北海道</td><td class="num">511</td><td class="num">400</td><td class="num neg">-21.7%</td><td class="num">166</td><td class="num">339</td><td class="num">504万</td><td class="num">33.3%</td><td class="num">12,605</td></tr>
+<tr><td>岡山県</td><td class="num">431</td><td class="num">385</td><td class="num neg">-10.7%</td><td class="num">69</td><td class="num">129</td><td class="num">183万</td><td class="num">31.2%</td><td class="num">4,756</td></tr>
+<tr><td>熊本県</td><td class="num">414</td><td class="num">385</td><td class="num neg">-7.0%</td><td class="num">53</td><td class="num">90</td><td class="num">170万</td><td class="num">32.6%</td><td class="num">4,410</td></tr>
+<tr><td>愛媛県</td><td class="num">473</td><td class="num">354</td><td class="num neg">-25.2%</td><td class="num">44</td><td class="num">89</td><td class="num">128万</td><td class="num">34.5%</td><td class="num">3,602</td></tr>
+<tr><td>奈良県</td><td class="num">439</td><td class="num">347</td><td class="num neg">-21.0%</td><td class="num">33</td><td class="num">49</td><td class="num">128万</td><td class="num">32.9%</td><td class="num">3,703</td></tr>
+<tr><td>福島県</td><td class="num">420</td><td class="num">345</td><td class="num neg">-17.9%</td><td class="num">71</td><td class="num">136</td><td class="num">174万</td><td class="num">33.7%</td><td class="num">5,052</td></tr>
+<tr><td>愛知県</td><td class="num">403</td><td class="num">334</td><td class="num neg">-17.1%</td><td class="num">94</td><td class="num">206</td><td class="num">746万</td><td class="num">25.8%</td><td class="num">22,335</td></tr>
+<tr><td>新潟県</td><td class="num">740</td><td class="num">325</td><td class="num neg">-56.1%</td><td class="num">77</td><td class="num">207</td><td class="num">210万</td><td class="num">34.2%</td><td class="num">6,458</td></tr>
+<tr><td>和歌山県</td><td class="num">331</td><td class="num">317</td><td class="num neg">-4.2%</td><td class="num">28</td><td class="num">49</td><td class="num">88万</td><td class="num">34.4%</td><td class="num">2,776</td></tr>
+<tr><td>福岡県</td><td class="num">385</td><td class="num">313</td><td class="num neg">-18.7%</td><td class="num">115</td><td class="num">141</td><td class="num">509万</td><td class="num">28.6%</td><td class="num">16,268</td></tr>
+<tr><td>山梨県</td><td class="num">525</td><td class="num">302</td><td class="num neg">-42.5%</td><td class="num">52</td><td class="num">98</td><td class="num">79万</td><td class="num">32.0%</td><td class="num">2,619</td></tr>
+<tr><td>兵庫県</td><td class="num">373</td><td class="num">301</td><td class="num neg">-19.3%</td><td class="num">109</td><td class="num">199</td><td class="num">534万</td><td class="num">30.2%</td><td class="num">17,731</td></tr>
+<tr><td>秋田県</td><td class="num">408</td><td class="num">295</td><td class="num neg">-27.7%</td><td class="num">49</td><td class="num">89</td><td class="num">90万</td><td class="num">39.5%</td><td class="num">3,037</td></tr>
+<tr><td>千葉県</td><td class="num">318</td><td class="num">292</td><td class="num neg">-8.2%</td><td class="num">145</td><td class="num">112</td><td class="num">625万</td><td class="num">28.1%</td><td class="num">21,408</td></tr>
+<tr><td>徳島県</td><td class="num">337</td><td class="num">290</td><td class="num neg">-13.9%</td><td class="num">28</td><td class="num">48</td><td class="num">68万</td><td class="num">35.8%</td><td class="num">2,362</td></tr>
+<tr><td>岐阜県</td><td class="num">346</td><td class="num">289</td><td class="num neg">-16.5%</td><td class="num">76</td><td class="num">190</td><td class="num">192万</td><td class="num">31.4%</td><td class="num">6,626</td></tr>
+<tr><td>三重県</td><td class="num">433</td><td class="num">275</td><td class="num neg">-36.5%</td><td class="num">46</td><td class="num">106</td><td class="num">171万</td><td class="num">30.9%</td><td class="num">6,222</td></tr>
+<tr><td>石川県</td><td class="num">331</td><td class="num">271</td><td class="num neg">-18.1%</td><td class="num">38</td><td class="num">136</td><td class="num">110万</td><td class="num">30.7%</td><td class="num">4,048</td></tr>
+<tr><td>青森県</td><td class="num">299</td><td class="num">249</td><td class="num neg">-16.7%</td><td class="num">36</td><td class="num">94</td><td class="num">116万</td><td class="num">35.7%</td><td class="num">4,675</td></tr>
+<tr><td>鹿児島県</td><td class="num">291</td><td class="num">236</td><td class="num neg">-18.9%</td><td class="num">64</td><td class="num">125</td><td class="num">153万</td><td class="num">34.2%</td><td class="num">6,492</td></tr>
+<tr><td>富山県</td><td class="num">337</td><td class="num">230</td><td class="num neg">-31.8%</td><td class="num">56</td><td class="num">105</td><td class="num">100万</td><td class="num">33.2%</td><td class="num">4,335</td></tr>
+<tr><td>島根県</td><td class="num">341</td><td class="num">222</td><td class="num neg">-34.9%</td><td class="num">41</td><td class="num">79</td><td class="num">64万</td><td class="num">35.2%</td><td class="num">2,892</td></tr>
+<tr><td>大阪府</td><td class="num">294</td><td class="num">207</td><td class="num neg">-29.6%</td><td class="num">154</td><td class="num">98</td><td class="num">876万</td><td class="num">27.6%</td><td class="num">42,304</td></tr>
+<tr><td>大分県</td><td class="num">245</td><td class="num">205</td><td class="num neg">-16.3%</td><td class="num">33</td><td class="num">75</td><td class="num">109万</td><td class="num">34.4%</td><td class="num">5,298</td></tr>
+<tr><td>群馬県</td><td class="num">228</td><td class="num">204</td><td class="num neg">-10.5%</td><td class="num">58</td><td class="num">99</td><td class="num">189万</td><td class="num">31.1%</td><td class="num">9,260</td></tr>
+<tr><td>高知県</td><td class="num">205</td><td class="num">193</td><td class="num neg">-5.9%</td><td class="num">40</td><td class="num">46</td><td class="num">66万</td><td class="num">36.6%</td><td class="num">3,394</td></tr>
+<tr><td>茨城県</td><td class="num">389</td><td class="num">187</td><td class="num neg">-51.9%</td><td class="num">67</td><td class="num">94</td><td class="num">281万</td><td class="num">30.9%</td><td class="num">15,005</td></tr>
+<tr><td>広島県</td><td class="num">387</td><td class="num">186</td><td class="num neg">-51.9%</td><td class="num">89</td><td class="num">134</td><td class="num">271万</td><td class="num">30.4%</td><td class="num">14,591</td></tr>
+<tr><td>栃木県</td><td class="num">193</td><td class="num">184</td><td class="num neg">-4.7%</td><td class="num">56</td><td class="num">137</td><td class="num">188万</td><td class="num">30.5%</td><td class="num">10,239</td></tr>
+<tr><td>福井県</td><td class="num">221</td><td class="num">184</td><td class="num neg">-16.7%</td><td class="num">37</td><td class="num">85</td><td class="num">74万</td><td class="num">31.8%</td><td class="num">4,011</td></tr>
+<tr><td>長崎県</td><td class="num">203</td><td class="num">177</td><td class="num neg">-12.8%</td><td class="num">40</td><td class="num">85</td><td class="num">125万</td><td class="num">34.7%</td><td class="num">7,073</td></tr>
+<tr><td>鳥取県</td><td class="num">197</td><td class="num">175</td><td class="num neg">-11.2%</td><td class="num">30</td><td class="num">48</td><td class="num">53万</td><td class="num">33.7%</td><td class="num">3,034</td></tr>
+<tr><td>山口県</td><td class="num">291</td><td class="num">167</td><td class="num neg">-42.6%</td><td class="num">56</td><td class="num">95</td><td class="num">128万</td><td class="num">35.5%</td><td class="num">7,671</td></tr>
+<tr><td>神奈川県</td><td class="num">178</td><td class="num">165</td><td class="num neg">-7.3%</td><td class="num">85</td><td class="num">162</td><td class="num">922万</td><td class="num">26.0%</td><td class="num">55,909</td></tr>
+<tr><td>香川県</td><td class="num">182</td><td class="num">158</td><td class="num neg">-13.2%</td><td class="num">32</td><td class="num">60</td><td class="num">92万</td><td class="num">32.8%</td><td class="num">5,804</td></tr>
+<tr><td>岩手県</td><td class="num">334</td><td class="num">149</td><td class="num neg">-55.4%</td><td class="num">47</td><td class="num">105</td><td class="num">114万</td><td class="num">35.4%</td><td class="num">7,678</td></tr>
+<tr><td>佐賀県</td><td class="num">136</td><td class="num">118</td><td class="num neg">-13.2%</td><td class="num">31</td><td class="num">64</td><td class="num">79万</td><td class="num">32.0%</td><td class="num">6,678</td></tr>
+<tr><td>京都府</td><td class="num">232</td><td class="num">114</td><td class="num neg">-50.9%</td><td class="num">69</td><td class="num">159</td><td class="num">252万</td><td class="num">29.8%</td><td class="num">22,105</td></tr>
+<tr><td>東京都</td><td class="num">136</td><td class="num">113</td><td class="num neg">-16.9%</td><td class="num">399</td><td class="num">341</td><td class="num">1,418万</td><td class="num">22.7%</td><td class="num">125,469</td></tr>
+<tr><td>沖縄県</td><td class="num">104</td><td class="num">103</td><td class="num neg">-1.0%</td><td class="num">37</td><td class="num">65</td><td class="num">147万</td><td class="num">24.2%</td><td class="num">14,233</td></tr>
+<tr><td>宮崎県</td><td class="num">120</td><td class="num">72</td><td class="num neg">-40.0%</td><td class="num">34</td><td class="num">56</td><td class="num">103万</td><td class="num">34.0%</td><td class="num">14,347</td></tr>
+<tr><td>滋賀県</td><td class="num">176</td><td class="num">66</td><td class="num neg">-62.5%</td><td class="num">52</td><td class="num">78</td><td class="num">140万</td><td class="num">27.2%</td><td class="num">21,242</td></tr>
+<tr><td>静岡県</td><td class="num">174</td><td class="num">45</td><td class="num neg">-74.1%</td><td class="num">96</td><td class="num">186</td><td class="num">353万</td><td class="num">31.2%</td><td class="num">78,378</td></tr>
+</tbody></table></div>
+  <p class="src">出典：文部科学省「社会教育調査」各年度、総務省統計局「人口推計（各年10月1日現在）」。公民館は類似施設を含む。博物館は博物館類似施設を含む。</p>
+
+  <h3>B　廃校クロニクル：都道府県別の正規化指標</h3>
+  <p>公立小中学校の廃校を人口・児童生徒数・学校ストックで正規化した指標。実数では北海道が最多だが、消滅率でみると東北が上位を占める。</p>
+  <div class="tctl" data-filter-for="t-norm"><input type="text" id="q-norm" placeholder="都道府県で絞り込み" aria-label="都道府県で絞り込み"><span class="cnt"></span></div>
+<div class="tbox tall"><table data-sortable id="t-norm">
+<thead><tr><th>都道府県</th><th>廃校 小学校</th><th>廃校 中学校</th><th>廃校 小中計</th><th>20年間の消滅率</th><th>人口10万人<br>あたり廃校数</th><th>人口増減率<br>2000→2023</th><th>小学校数<br>2023</th><th>中学校数<br>2023</th></tr></thead><tbody>
+<tr><td>秋田県</td><td class="num">169</td><td class="num">46</td><td class="num">215</td><td class="num neg">43.61%</td><td class="num">23.52</td><td class="num">-23.1%</td><td class="num">174</td><td class="num">104</td></tr>
+<tr><td>岩手県</td><td class="num">227</td><td class="num">77</td><td class="num">304</td><td class="num neg">41.99%</td><td class="num">26.14</td><td class="num">-17.9%</td><td class="num">271</td><td class="num">149</td></tr>
+<tr><td>山形県</td><td class="num">172</td><td class="num">51</td><td class="num">223</td><td class="num neg">41.3%</td><td class="num">21.73</td><td class="num">-17.5%</td><td class="num">223</td><td class="num">94</td></tr>
+<tr><td>青森県</td><td class="num">198</td><td class="num">49</td><td class="num">247</td><td class="num neg">38.06%</td><td class="num">20.86</td><td class="num">-19.8%</td><td class="num">249</td><td class="num">153</td></tr>
+<tr><td>鳥取県</td><td class="num">83</td><td class="num">13</td><td class="num">96</td><td class="num neg">36.09%</td><td class="num">17.88</td><td class="num">-12.4%</td><td class="num">114</td><td class="num">56</td></tr>
+<tr><td>熊本県</td><td class="num">207</td><td class="num">54</td><td class="num">261</td><td class="num neg">34.3%</td><td class="num">15.27</td><td class="num">-8.1%</td><td class="num">330</td><td class="num">170</td></tr>
+<tr><td>北海道</td><td class="num">558</td><td class="num">210</td><td class="num">768</td><td class="num neg">33.67%</td><td class="num">15.08</td><td class="num">-10.4%</td><td class="num">950</td><td class="num">563</td></tr>
+<tr><td>福島県</td><td class="num">235</td><td class="num">59</td><td class="num">294</td><td class="num neg">32.81%</td><td class="num">16.64</td><td class="num">-16.9%</td><td class="num">390</td><td class="num">212</td></tr>
+<tr><td>大分県</td><td class="num">141</td><td class="num">36</td><td class="num">177</td><td class="num neg">31.38%</td><td class="num">16.15</td><td class="num">-10.2%</td><td class="num">260</td><td class="num">127</td></tr>
+<tr><td>香川県</td><td class="num">77</td><td class="num">24</td><td class="num">101</td><td class="num neg">30.06%</td><td class="num">10.91</td><td class="num">-9.5%</td><td class="num">160</td><td class="num">75</td></tr>
+<tr><td>徳島県</td><td class="num">101</td><td class="num">16</td><td class="num">117</td><td class="num neg">30.0%</td><td class="num">16.83</td><td class="num">-15.7%</td><td class="num">184</td><td class="num">89</td></tr>
+<tr><td>和歌山県</td><td class="num">111</td><td class="num">38</td><td class="num">149</td><td class="num neg">28.93%</td><td class="num">16.7</td><td class="num">-16.6%</td><td class="num">240</td><td class="num">126</td></tr>
+<tr><td>島根県</td><td class="num">95</td><td class="num">21</td><td class="num">116</td><td class="num neg">28.5%</td><td class="num">17.85</td><td class="num">-14.7%</td><td class="num">196</td><td class="num">95</td></tr>
+<tr><td>高知県</td><td class="num">106</td><td class="num">26</td><td class="num">132</td><td class="num neg">27.73%</td><td class="num">19.82</td><td class="num">-18.2%</td><td class="num">222</td><td class="num">122</td></tr>
+<tr><td>茨城県</td><td class="num">199</td><td class="num">46</td><td class="num">245</td><td class="num neg">26.69%</td><td class="num">8.67</td><td class="num">-5.4%</td><td class="num">449</td><td class="num">224</td></tr>
+<tr><td>宮城県</td><td class="num">147</td><td class="num">55</td><td class="num">202</td><td class="num neg">26.47%</td><td class="num">8.92</td><td class="num">-4.3%</td><td class="num">361</td><td class="num">200</td></tr>
+<tr><td>広島県</td><td class="num">216</td><td class="num">44</td><td class="num">260</td><td class="num neg">26.42%</td><td class="num">9.5</td><td class="num">-4.9%</td><td class="num">463</td><td class="num">261</td></tr>
+<tr><td>石川県</td><td class="num">71</td><td class="num">31</td><td class="num">102</td><td class="num neg">25.89%</td><td class="num">9.2</td><td class="num">-6.1%</td><td class="num">202</td><td class="num">90</td></tr>
+<tr><td>奈良県</td><td class="num">83</td><td class="num">20</td><td class="num">103</td><td class="num neg">25.88%</td><td class="num">7.95</td><td class="num">-10.2%</td><td class="num">188</td><td class="num">107</td></tr>
+<tr><td>富山県</td><td class="num">75</td><td class="num">13</td><td class="num">88</td><td class="num neg">25.73%</td><td class="num">8.74</td><td class="num">-10.2%</td><td class="num">178</td><td class="num">76</td></tr>
+<tr><td>新潟県</td><td class="num">199</td><td class="num">31</td><td class="num">230</td><td class="num neg">25.67%</td><td class="num">10.82</td><td class="num">-14.1%</td><td class="num">436</td><td class="num">230</td></tr>
+<tr><td>長崎県</td><td class="num">124</td><td class="num">45</td><td class="num">169</td><td class="num neg">25.19%</td><td class="num">13.34</td><td class="num">-16.5%</td><td class="num">318</td><td class="num">184</td></tr>
+<tr><td>鹿児島県</td><td class="num">148</td><td class="num">88</td><td class="num">236</td><td class="num neg">24.92%</td><td class="num">15.24</td><td class="num">-13.3%</td><td class="num">491</td><td class="num">220</td></tr>
+<tr><td>栃木県</td><td class="num">118</td><td class="num">34</td><td class="num">152</td><td class="num neg">23.6%</td><td class="num">8.01</td><td class="num">-5.4%</td><td class="num">336</td><td class="num">156</td></tr>
+<tr><td>山梨県</td><td class="num">58</td><td class="num">22</td><td class="num">80</td><td class="num neg">22.99%</td><td class="num">10.05</td><td class="num">-10.4%</td><td class="num">176</td><td class="num">92</td></tr>
+<tr><td>愛媛県</td><td class="num">95</td><td class="num">26</td><td class="num">121</td><td class="num neg">22.79%</td><td class="num">9.37</td><td class="num">-13.5%</td><td class="num">279</td><td class="num">131</td></tr>
+<tr><td>山口県</td><td class="num">85</td><td class="num">43</td><td class="num">128</td><td class="num neg">21.92%</td><td class="num">9.86</td><td class="num">-15.1%</td><td class="num">296</td><td class="num">160</td></tr>
+<tr><td>京都府</td><td class="num">118</td><td class="num">33</td><td class="num">151</td><td class="num neg">21.45%</td><td class="num">5.96</td><td class="num">-4.1%</td><td class="num">365</td><td class="num">188</td></tr>
+<tr><td>三重県</td><td class="num">107</td><td class="num">35</td><td class="num">142</td><td class="num neg">21.13%</td><td class="num">8.22</td><td class="num">-7.0%</td><td class="num">363</td><td class="num">167</td></tr>
+<tr><td>佐賀県</td><td class="num">45</td><td class="num">19</td><td class="num">64</td><td class="num neg">20.13%</td><td class="num">8.05</td><td class="num">-9.3%</td><td class="num">163</td><td class="num">91</td></tr>
+<tr><td>宮崎県</td><td class="num">59</td><td class="num">28</td><td class="num">87</td><td class="num neg">19.29%</td><td class="num">8.35</td><td class="num">-10.9%</td><td class="num">232</td><td class="num">132</td></tr>
+<tr><td>群馬県</td><td class="num">64</td><td class="num">36</td><td class="num">100</td><td class="num neg">17.76%</td><td class="num">5.26</td><td class="num">-6.1%</td><td class="num">303</td><td class="num">160</td></tr>
+<tr><td>岐阜県</td><td class="num">74</td><td class="num">33</td><td class="num">107</td><td class="num neg">16.74%</td><td class="num">5.54</td><td class="num">-8.4%</td><td class="num">351</td><td class="num">181</td></tr>
+<tr><td>岡山県</td><td class="num">83</td><td class="num">25</td><td class="num">108</td><td class="num neg">16.72%</td><td class="num">5.85</td><td class="num">-5.3%</td><td class="num">375</td><td class="num">163</td></tr>
+<tr><td>福井県</td><td class="num">39</td><td class="num">15</td><td class="num">54</td><td class="num neg">16.62%</td><td class="num">7.26</td><td class="num">-10.2%</td><td class="num">191</td><td class="num">80</td></tr>
+<tr><td>長野県</td><td class="num">79</td><td class="num">24</td><td class="num">103</td><td class="num neg">15.73%</td><td class="num">5.14</td><td class="num">-9.5%</td><td class="num">359</td><td class="num">193</td></tr>
+<tr><td>兵庫県</td><td class="num">160</td><td class="num">46</td><td class="num">206</td><td class="num neg">15.63%</td><td class="num">3.84</td><td class="num">-3.3%</td><td class="num">737</td><td class="num">375</td></tr>
+<tr><td>千葉県</td><td class="num">161</td><td class="num">44</td><td class="num">205</td><td class="num neg">15.2%</td><td class="num">3.28</td><td class="num">+5.6%</td><td class="num">756</td><td class="num">388</td></tr>
+<tr><td>静岡県</td><td class="num">86</td><td class="num">26</td><td class="num">112</td><td class="num neg">12.51%</td><td class="num">3.15</td><td class="num">-5.6%</td><td class="num">493</td><td class="num">290</td></tr>
+<tr><td>福岡県</td><td class="num">111</td><td class="num">41</td><td class="num">152</td><td class="num neg">12.47%</td><td class="num">2.98</td><td class="num">+1.7%</td><td class="num">714</td><td class="num">353</td></tr>
+<tr><td>沖縄県</td><td class="num">33</td><td class="num">25</td><td class="num">58</td><td class="num neg">12.24%</td><td class="num">3.95</td><td class="num">+11.4%</td><td class="num">266</td><td class="num">150</td></tr>
+<tr><td>東京都</td><td class="num">150</td><td class="num">89</td><td class="num">239</td><td class="num neg">10.12%</td><td class="num">1.7</td><td class="num">+16.8%</td><td class="num">1,323</td><td class="num">800</td></tr>
+<tr><td>大阪府</td><td class="num">117</td><td class="num">31</td><td class="num">148</td><td class="num neg">9.0%</td><td class="num">1.69</td><td class="num">-0.5%</td><td class="num">983</td><td class="num">513</td></tr>
+<tr><td>滋賀県</td><td class="num">25</td><td class="num">5</td><td class="num">30</td><td class="num neg">8.52%</td><td class="num">2.13</td><td class="num">+4.8%</td><td class="num">219</td><td class="num">103</td></tr>
+<tr><td>神奈川県</td><td class="num">65</td><td class="num">28</td><td class="num">93</td><td class="num neg">6.44%</td><td class="num">1.01</td><td class="num">+8.7%</td><td class="num">881</td><td class="num">471</td></tr>
+<tr><td>埼玉県</td><td class="num">63</td><td class="num">20</td><td class="num">83</td><td class="num neg">6.23%</td><td class="num">1.13</td><td class="num">+5.7%</td><td class="num">803</td><td class="num">446</td></tr>
+<tr><td>愛知県</td><td class="num">62</td><td class="num">14</td><td class="num">76</td><td class="num neg">5.15%</td><td class="num">1.02</td><td class="num">+6.2%</td><td class="num">967</td><td class="num">434</td></tr>
+</tbody></table></div>
+  <p class="src">出典：「廃校クロニクル — 日本の小中学校の廃校データ分析」データセット（Fujiterun/japan-school-closures）。原データは文部科学省「廃校施設活用状況実態調査」「学校基本調査」、総務省統計局の人口統計。</p>
+
+  <h3>C　廃校クロニクル：全国長期系列（1948〜2026年度）</h3>
+  <p>学校数・児童生徒数・1校あたり人数・総人口の79年系列。図15の基礎データ。</p>
+  <div class="tbox tall"><table data-sortable id="t-long">
+<thead><tr><th>年度</th><th>小学校数</th><th>中学校数</th><th>児童数</th><th>生徒数</th><th>1校あたり児童数</th><th>総人口（千人）</th></tr></thead><tbody>
+<tr><td>1948</td><td class="num">25,237</td><td class="num">16,285</td><td class="num">10,774,652</td><td class="num">4,792,504</td><td class="num">426.9</td><td class="num">80,002</td></tr>
+<tr><td>1949</td><td class="num">25,638</td><td class="num">14,200</td><td class="num">10,991,927</td><td class="num">5,186,188</td><td class="num">428.7</td><td class="num">81,773</td></tr>
+<tr><td>1950</td><td class="num">25,878</td><td class="num">14,165</td><td class="num">11,191,401</td><td class="num">5,332,515</td><td class="num">432.5</td><td class="num">83,200</td></tr>
+<tr><td>1951</td><td class="num">26,056</td><td class="num">13,836</td><td class="num">11,422,992</td><td class="num">5,129,482</td><td class="num">438.4</td><td class="num">84,541</td></tr>
+<tr><td>1952</td><td class="num">26,377</td><td class="num">13,748</td><td class="num">11,148,325</td><td class="num">5,076,495</td><td class="num">422.7</td><td class="num">85,808</td></tr>
+<tr><td>1953</td><td class="num">26,555</td><td class="num">13,685</td><td class="num">11,225,469</td><td class="num">5,187,378</td><td class="num">422.7</td><td class="num">86,981</td></tr>
+<tr><td>1954</td><td class="num">26,804</td><td class="num">13,773</td><td class="num">11,750,925</td><td class="num">5,664,066</td><td class="num">438.4</td><td class="num">88,239</td></tr>
+<tr><td>1955</td><td class="num">26,880</td><td class="num">13,767</td><td class="num">12,266,952</td><td class="num">5,883,692</td><td class="num">456.4</td><td class="num">89,276</td></tr>
+<tr><td>1956</td><td class="num">26,957</td><td class="num">13,724</td><td class="num">12,616,311</td><td class="num">5,962,449</td><td class="num">468.0</td><td class="num">90,172</td></tr>
+<tr><td>1957</td><td class="num">26,988</td><td class="num">13,622</td><td class="num">12,956,285</td><td class="num">5,718,182</td><td class="num">480.1</td><td class="num">90,928</td></tr>
+<tr><td>1958</td><td class="num">26,964</td><td class="num">13,392</td><td class="num">13,492,087</td><td class="num">5,209,951</td><td class="num">500.4</td><td class="num">91,767</td></tr>
+<tr><td>1959</td><td class="num">26,916</td><td class="num">13,135</td><td class="num">13,374,700</td><td class="num">5,180,319</td><td class="num">496.9</td><td class="num">92,641</td></tr>
+<tr><td>1960</td><td class="num">26,858</td><td class="num">12,986</td><td class="num">12,590,680</td><td class="num">5,899,973</td><td class="num">468.8</td><td class="num">93,419</td></tr>
+<tr><td>1961</td><td class="num">26,741</td><td class="num">12,849</td><td class="num">11,810,874</td><td class="num">6,924,693</td><td class="num">441.7</td><td class="num">94,287</td></tr>
+<tr><td>1962</td><td class="num">26,615</td><td class="num">12,647</td><td class="num">11,056,915</td><td class="num">7,328,344</td><td class="num">415.4</td><td class="num">95,181</td></tr>
+<tr><td>1963</td><td class="num">26,423</td><td class="num">12,502</td><td class="num">10,471,383</td><td class="num">6,963,975</td><td class="num">396.3</td><td class="num">96,156</td></tr>
+<tr><td>1964</td><td class="num">26,210</td><td class="num">12,310</td><td class="num">10,030,990</td><td class="num">6,475,693</td><td class="num">382.7</td><td class="num">97,182</td></tr>
+<tr><td>1965</td><td class="num">25,977</td><td class="num">12,079</td><td class="num">9,775,532</td><td class="num">5,956,630</td><td class="num">376.3</td><td class="num">98,275</td></tr>
+<tr><td>1966</td><td class="num">25,687</td><td class="num">11,851</td><td class="num">9,584,061</td><td class="num">5,555,762</td><td class="num">373.1</td><td class="num">99,036</td></tr>
+<tr><td>1967</td><td class="num">25,487</td><td class="num">11,684</td><td class="num">9,452,071</td><td class="num">5,270,854</td><td class="num">370.9</td><td class="num">100,196</td></tr>
+<tr><td>1968</td><td class="num">25,262</td><td class="num">11,463</td><td class="num">9,383,182</td><td class="num">5,043,069</td><td class="num">371.4</td><td class="num">101,331</td></tr>
+<tr><td>1969</td><td class="num">25,013</td><td class="num">11,278</td><td class="num">9,403,193</td><td class="num">4,865,196</td><td class="num">375.9</td><td class="num">102,536</td></tr>
+<tr><td>1970</td><td class="num">24,790</td><td class="num">11,040</td><td class="num">9,493,485</td><td class="num">4,716,833</td><td class="num">383.0</td><td class="num">103,720</td></tr>
+<tr><td>1971</td><td class="num">24,540</td><td class="num">10,839</td><td class="num">9,595,021</td><td class="num">4,694,250</td><td class="num">391.0</td><td class="num">105,145</td></tr>
+<tr><td>1972</td><td class="num">24,325</td><td class="num">10,686</td><td class="num">9,696,133</td><td class="num">4,688,444</td><td class="num">398.6</td><td class="num">107,595</td></tr>
+<tr><td>1973</td><td class="num">24,592</td><td class="num">10,836</td><td class="num">9,816,536</td><td class="num">4,779,593</td><td class="num">399.2</td><td class="num">109,104</td></tr>
+<tr><td>1974</td><td class="num">24,606</td><td class="num">10,802</td><td class="num">10,088,776</td><td class="num">4,735,705</td><td class="num">410.0</td><td class="num">110,573</td></tr>
+<tr><td>1975</td><td class="num">24,650</td><td class="num">10,751</td><td class="num">10,364,846</td><td class="num">4,762,442</td><td class="num">420.5</td><td class="num">111,940</td></tr>
+<tr><td>1976</td><td class="num">24,717</td><td class="num">10,719</td><td class="num">10,609,985</td><td class="num">4,833,902</td><td class="num">429.3</td><td class="num">113,094</td></tr>
+<tr><td>1977</td><td class="num">24,777</td><td class="num">10,723</td><td class="num">10,819,651</td><td class="num">4,977,119</td><td class="num">436.7</td><td class="num">114,165</td></tr>
+<tr><td>1978</td><td class="num">24,828</td><td class="num">10,778</td><td class="num">11,146,874</td><td class="num">5,048,296</td><td class="num">449.0</td><td class="num">115,190</td></tr>
+<tr><td>1979</td><td class="num">24,899</td><td class="num">10,746</td><td class="num">11,629,110</td><td class="num">4,966,972</td><td class="num">467.1</td><td class="num">116,155</td></tr>
+<tr><td>1980</td><td class="num">24,945</td><td class="num">10,780</td><td class="num">11,826,573</td><td class="num">5,094,402</td><td class="num">474.1</td><td class="num">117,060</td></tr>
+<tr><td>1981</td><td class="num">25,005</td><td class="num">10,810</td><td class="num">11,924,653</td><td class="num">5,299,282</td><td class="num">476.9</td><td class="num">117,902</td></tr>
+<tr><td>1982</td><td class="num">25,043</td><td class="num">10,879</td><td class="num">11,901,520</td><td class="num">5,623,975</td><td class="num">475.2</td><td class="num">118,728</td></tr>
+<tr><td>1983</td><td class="num">25,045</td><td class="num">10,950</td><td class="num">11,739,452</td><td class="num">5,706,810</td><td class="num">468.7</td><td class="num">119,536</td></tr>
+<tr><td>1984</td><td class="num">25,064</td><td class="num">11,047</td><td class="num">11,464,221</td><td class="num">5,828,867</td><td class="num">457.4</td><td class="num">120,305</td></tr>
+<tr><td>1985</td><td class="num">25,040</td><td class="num">11,131</td><td class="num">11,095,372</td><td class="num">5,990,183</td><td class="num">443.1</td><td class="num">121,049</td></tr>
+<tr><td>1986</td><td class="num">24,982</td><td class="num">11,190</td><td class="num">10,665,404</td><td class="num">6,105,749</td><td class="num">426.9</td><td class="num">121,660</td></tr>
+<tr><td>1987</td><td class="num">24,933</td><td class="num">11,230</td><td class="num">10,226,323</td><td class="num">6,081,330</td><td class="num">410.2</td><td class="num">122,239</td></tr>
+<tr><td>1988</td><td class="num">24,901</td><td class="num">11,266</td><td class="num">9,872,520</td><td class="num">5,896,080</td><td class="num">396.5</td><td class="num">122,745</td></tr>
+<tr><td>1989</td><td class="num">24,851</td><td class="num">11,264</td><td class="num">9,606,627</td><td class="num">5,619,297</td><td class="num">386.6</td><td class="num">123,205</td></tr>
+<tr><td>1990</td><td class="num">24,827</td><td class="num">11,275</td><td class="num">9,373,295</td><td class="num">5,369,162</td><td class="num">377.5</td><td class="num">123,611</td></tr>
+<tr><td>1991</td><td class="num">24,798</td><td class="num">11,290</td><td class="num">9,157,429</td><td class="num">5,188,314</td><td class="num">369.3</td><td class="num">124,101</td></tr>
+<tr><td>1992</td><td class="num">24,730</td><td class="num">11,300</td><td class="num">8,947,226</td><td class="num">5,036,840</td><td class="num">361.8</td><td class="num">124,567</td></tr>
+<tr><td>1993</td><td class="num">24,676</td><td class="num">11,292</td><td class="num">8,768,881</td><td class="num">4,850,137</td><td class="num">355.4</td><td class="num">124,938</td></tr>
+<tr><td>1994</td><td class="num">24,635</td><td class="num">11,289</td><td class="num">8,582,871</td><td class="num">4,681,166</td><td class="num">348.4</td><td class="num">125,265</td></tr>
+<tr><td>1995</td><td class="num">24,548</td><td class="num">11,274</td><td class="num">8,370,246</td><td class="num">4,570,390</td><td class="num">341.0</td><td class="num">125,570</td></tr>
+<tr><td>1996</td><td class="num">24,482</td><td class="num">11,269</td><td class="num">8,105,629</td><td class="num">4,527,400</td><td class="num">331.1</td><td class="num">125,859</td></tr>
+<tr><td>1997</td><td class="num">24,376</td><td class="num">11,257</td><td class="num">7,855,387</td><td class="num">4,481,480</td><td class="num">322.3</td><td class="num">126,157</td></tr>
+<tr><td>1998</td><td class="num">24,295</td><td class="num">11,236</td><td class="num">7,663,533</td><td class="num">4,380,604</td><td class="num">315.4</td><td class="num">126,472</td></tr>
+<tr><td>1999</td><td class="num">24,188</td><td class="num">11,220</td><td class="num">7,500,317</td><td class="num">4,243,762</td><td class="num">310.1</td><td class="num">126,667</td></tr>
+<tr><td>2000</td><td class="num">24,106</td><td class="num">11,209</td><td class="num">7,366,079</td><td class="num">4,103,717</td><td class="num">305.6</td><td class="num">126,926</td></tr>
+<tr><td>2001</td><td class="num">23,964</td><td class="num">11,191</td><td class="num">7,296,920</td><td class="num">3,991,911</td><td class="num">304.5</td><td class="num">127,316</td></tr>
+<tr><td>2002</td><td class="num">23,808</td><td class="num">11,159</td><td class="num">7,239,327</td><td class="num">3,862,849</td><td class="num">304.1</td><td class="num">127,486</td></tr>
+<tr><td>2003</td><td class="num">23,633</td><td class="num">11,134</td><td class="num">7,226,910</td><td class="num">3,748,319</td><td class="num">305.8</td><td class="num">127,694</td></tr>
+<tr><td>2004</td><td class="num">23,420</td><td class="num">11,102</td><td class="num">7,200,933</td><td class="num">3,663,513</td><td class="num">307.5</td><td class="num">127,787</td></tr>
+<tr><td>2005</td><td class="num">23,123</td><td class="num">11,035</td><td class="num">7,197,458</td><td class="num">3,626,415</td><td class="num">311.3</td><td class="num">127,768</td></tr>
+<tr><td>2006</td><td class="num">22,878</td><td class="num">10,992</td><td class="num">7,187,417</td><td class="num">3,601,527</td><td class="num">314.2</td><td class="num">127,901</td></tr>
+<tr><td>2007</td><td class="num">22,693</td><td class="num">10,955</td><td class="num">7,132,874</td><td class="num">3,614,552</td><td class="num">314.3</td><td class="num">128,033</td></tr>
+<tr><td>2008</td><td class="num">22,476</td><td class="num">10,915</td><td class="num">7,121,781</td><td class="num">3,592,378</td><td class="num">316.9</td><td class="num">128,084</td></tr>
+<tr><td>2009</td><td class="num">22,258</td><td class="num">10,864</td><td class="num">7,063,606</td><td class="num">3,600,323</td><td class="num">317.4</td><td class="num">128,032</td></tr>
+<tr><td>2010</td><td class="num">22,000</td><td class="num">10,815</td><td class="num">6,993,376</td><td class="num">3,558,166</td><td class="num">317.9</td><td class="num">128,057</td></tr>
+<tr><td>2011</td><td class="num">21,721</td><td class="num">10,751</td><td class="num">6,887,292</td><td class="num">3,573,821</td><td class="num">317.1</td><td class="num">127,834</td></tr>
+<tr><td>2012</td><td class="num">21,460</td><td class="num">10,699</td><td class="num">6,764,619</td><td class="num">3,552,663</td><td class="num">315.2</td><td class="num">127,593</td></tr>
+<tr><td>2013</td><td class="num">21,131</td><td class="num">10,628</td><td class="num">6,676,920</td><td class="num">3,536,182</td><td class="num">316.0</td><td class="num">127,414</td></tr>
+<tr><td>2014</td><td class="num">20,852</td><td class="num">10,557</td><td class="num">6,600,006</td><td class="num">3,504,334</td><td class="num">316.5</td><td class="num">127,237</td></tr>
+<tr><td>2015</td><td class="num">20,601</td><td class="num">10,484</td><td class="num">6,543,104</td><td class="num">3,465,215</td><td class="num">317.6</td><td class="num">127,095</td></tr>
+<tr><td>2016</td><td class="num">20,313</td><td class="num">10,404</td><td class="num">6,483,515</td><td class="num">3,406,029</td><td class="num">319.2</td><td class="num">127,042</td></tr>
+<tr><td>2017</td><td class="num">20,095</td><td class="num">10,325</td><td class="num">6,448,658</td><td class="num">3,333,334</td><td class="num">320.9</td><td class="num">126,919</td></tr>
+<tr><td>2018</td><td class="num">19,892</td><td class="num">10,270</td><td class="num">6,427,867</td><td class="num">3,251,670</td><td class="num">323.1</td><td class="num">126,749</td></tr>
+<tr><td>2019</td><td class="num">19,738</td><td class="num">10,222</td><td class="num">6,368,550</td><td class="num">3,218,137</td><td class="num">322.7</td><td class="num">126,555</td></tr>
+<tr><td>2020</td><td class="num">19,525</td><td class="num">10,142</td><td class="num">6,300,693</td><td class="num">3,211,219</td><td class="num">322.7</td><td class="num">126,146</td></tr>
+<tr><td>2021</td><td class="num">19,336</td><td class="num">10,076</td><td class="num">6,223,395</td><td class="num">3,229,697</td><td class="num">321.9</td><td class="num">125,502</td></tr>
+<tr><td>2022</td><td class="num">19,161</td><td class="num">10,012</td><td class="num">6,151,305</td><td class="num">3,205,220</td><td class="num">321.0</td><td class="num">124,947</td></tr>
+<tr><td>2023</td><td class="num">18,980</td><td class="num">9,944</td><td class="num">6,049,685</td><td class="num">3,177,508</td><td class="num">318.7</td><td class="num">124,352</td></tr>
+<tr><td>2024</td><td class="num">18,822</td><td class="num">9,882</td><td class="num">5,941,733</td><td class="num">3,141,132</td><td class="num">315.7</td><td class="num">123,802</td></tr>
+<tr><td>2025</td><td class="num">18,607</td><td class="num">9,827</td><td class="num">5,812,375</td><td class="num">3,105,297</td><td class="num">312.4</td><td class="num">—</td></tr>
+<tr><td>2026</td><td class="num">18,383</td><td class="num">9,761</td><td class="num">5,654,461</td><td class="num">3,060,031</td><td class="num">307.6</td><td class="num">—</td></tr>
+</tbody></table></div>
+  <p class="src">出典：同上。原データは文部科学省「学校基本調査」。2025・2026年度は速報値を含む。</p>
+
+  <h3>D　閉館ウォッチ：施設の閉館・休館情報</h3>
+  <p>日本全国の施設の閉館・休館情報を毎週収集しているプロジェクトのデータ。博物館・図書館だけでなく商業施設・公共施設・スポーツ施設なども対象とする（飲食店は対象外）。統計が3年に一度の断面しか示さないのに対し、こちらは<strong>いま起きている閉館を継時的に記録する</strong>試みである。</p>
+  <div class="note">
+    <div class="nh">収録範囲について</div>
+    <p>このデータセットは週次収集を開始した直後であり、現時点で<strong>3週分・17件</strong>にとどまる。統計的な傾向を論じられる規模ではない。本報告では、社会教育施設の閉館が過去の出来事ではなく現在進行形であることを示す<strong>定性的な参考資料</strong>として収録している。</p>
+    <p>17件の内訳は恒久閉鎖6件・一時休館11件。カテゴリ別では図書館3件、博物館・科学館2件、美術館1件、動物園1件と、社会教育施設が17件中7件を占める。</p>
+  </div>
+  <div class="chips" data-chips-for="t-cw">
+<button class="chip" data-cat="all" aria-pressed="true">すべて</button>
+<button class="chip" data-cat="スポーツ施設">スポーツ施設</button>
+<button class="chip" data-cat="レジャー・公園施設">レジャー・公園施設</button>
+<button class="chip" data-cat="公共施設">公共施設</button>
+<button class="chip" data-cat="動物園">動物園</button>
+<button class="chip" data-cat="博物館・科学館">博物館・科学館</button>
+<button class="chip" data-cat="商業施設">商業施設</button>
+<button class="chip" data-cat="図書館">図書館</button>
+<button class="chip" data-cat="図書館・文化施設">図書館・文化施設</button>
+<button class="chip" data-cat="娯楽施設">娯楽施設</button>
+<button class="chip" data-cat="温浴施設">温浴施設</button>
+<button class="chip" data-cat="美術館">美術館</button>
+</div>
+<div class="tctl" data-filter-for="t-cw"><input type="text" id="q-cw" placeholder="施設名・理由で検索" aria-label="施設名・理由で検索"><span class="cnt"></span></div>
+<div class="tbox"><table data-sortable id="t-cw">
+<thead><tr><th>施設名</th><th>都道府県</th><th>カテゴリ</th><th>種別</th><th>時期</th><th>理由</th></tr></thead><tbody>
+<tr data-cat="図書館・文化施設"><td><a href="https://acic.kyoto-art.ac.jp/2026/08/24/20260824news/" target="_blank" rel="noopener">京都芸術大学 芸術文化情報センター（ACIC）</a></td><td>京都府</td><td>図書館・文化施設</td><td class="num" style="text-align:left">一時休館</td><td style="text-align:left;white-space:normal">2026年9月2日（水）〜9月13日（日）長期休館</td><td style="text-align:left;white-space:normal;min-width:14em">館内整理のため</td></tr>
+<tr data-cat="公共施設"><td><a href="https://tomakomai.goguynet.jp/2026/09/11/renewal-jfekaerumirai/" target="_blank" rel="noopener">JFEリサイクルプラザ苫小牧</a></td><td>北海道</td><td>公共施設（リサイクル・環境学習施設）</td><td class="num" style="text-align:left">一時休館</td><td style="text-align:left;white-space:normal">2026年9月12日〜10月2日 休館（10月3日に「JFEカエルみらい館」としてリニューアルオープン予定）</td><td style="text-align:left;white-space:normal;min-width:14em">苫小牧市環境学習交流施設としてのリニューアル工事のため</td></tr>
+<tr data-cat="温浴施設"><td><a href="https://hokkaido-michinoeki.jp/michiekiinfo/shihoroonseninfo/68986" target="_blank" rel="noopener">しほろ温泉プラザ緑風</a></td><td>北海道</td><td>温浴施設（道の駅併設）</td><td class="num" style="text-align:left">一時休館</td><td style="text-align:left;white-space:normal">2026年11月25日（水）全館休館（1日間）</td><td style="text-align:left;white-space:normal;min-width:14em">館内メンテナンス作業のため</td></tr>
+<tr data-cat="図書館"><td><a href="https://www.library.city.inzai.lg.jp/8106/" target="_blank" rel="noopener">印西市立小倉台図書館</a></td><td>千葉県</td><td>図書館</td><td class="num" style="text-align:left">一時休館</td><td style="text-align:left;white-space:normal">2026年9月1日〜2027年8月31日（1年間休館予定）</td><td style="text-align:left;white-space:normal;min-width:14em">保全改修工事のため</td></tr>
+<tr data-cat="スポーツ施設"><td><a href="https://ichikawa.goguynet.jp/2026/09/05/shiminpoollast/" target="_blank" rel="noopener">市川市市民プール</a></td><td>千葉県</td><td>スポーツ施設（市営プール）</td><td class="num neg" style="text-align:left">恒久閉鎖</td><td style="text-align:left;white-space:normal">2026年9月6日 閉鎖（解体予定、2027年夏に周辺へ大型レジャープールを暫定設置）</td><td style="text-align:left;white-space:normal;min-width:14em">ろ過装置など機械設備の老朽化</td></tr>
+<tr data-cat="図書館"><td><a href="https://fujimi-fujimino.goguynet.jp/2026/09/09/fujimishiritsutosyokan/" target="_blank" rel="noopener">富士見市立図書館（中央図書館・鶴瀬西分館・ふじみ野分館・水谷東公民館図書室）</a></td><td>埼玉県</td><td>図書館</td><td class="num" style="text-align:left">一時休館</td><td style="text-align:left;white-space:normal">2026年9月13日 全館臨時休館（1日間）</td><td style="text-align:left;white-space:normal;min-width:14em">中央図書館の施設工事のため</td></tr>
+<tr data-cat="動物園"><td><a href="https://www.toyama-familypark.jp/11798" target="_blank" rel="noopener">富山市ファミリーパーク</a></td><td>富山県</td><td>動物園</td><td class="num" style="text-align:left">一時休館</td><td style="text-align:left;white-space:normal">2026年9月3日（木）臨時休業</td><td style="text-align:left;white-space:normal;min-width:14em">大雨のため</td></tr>
+<tr data-cat="博物館・科学館"><td><a href="https://www.city.hiroshima.lg.jp/tourism-culture/history/1026883/1026885/1031506.html" target="_blank" rel="noopener">広島市こども文化科学館</a></td><td>広島県</td><td>博物館・科学館</td><td class="num" style="text-align:left">一時休館</td><td style="text-align:left;white-space:normal">2027年3月末 休館予定〜2029年度リニューアルオープン予定</td><td style="text-align:left;white-space:normal;min-width:14em">大規模改修工事（展示更新）のため</td></tr>
+<tr data-cat="商業施設"><td><a href="https://www.chukei-news.co.jp/news/2026/09/02/OK0002609020101_05/" target="_blank" rel="noopener">イオン南陽店</a></td><td>愛知県</td><td>商業施設（スーパーマーケット）</td><td class="num neg" style="text-align:left">恒久閉鎖</td><td style="text-align:left;white-space:normal">2027年春 閉店予定（2026年9月1日発表）</td><td style="text-align:left;white-space:normal;min-width:14em">—</td></tr>
+<tr data-cat="商業施設"><td><a href="https://toshoken.com/news/31346" target="_blank" rel="noopener">イトーヨーカドー小岩店</a></td><td>東京都</td><td>商業施設（総合スーパー）</td><td class="num neg" style="text-align:left">恒久閉鎖</td><td style="text-align:left;white-space:normal">2026年9月6日 閉店</td><td style="text-align:left;white-space:normal;min-width:14em">JR小岩駅北口地区市街地再開発事業に伴う店舗建替え（2027年度に移転・新装開店予定）</td></tr>
+<tr data-cat="商業施設"><td><a href="https://kichifan.com/2026/09/09/olympic-takaido-megadonki/" target="_blank" rel="noopener">オリンピック高井戸店</a></td><td>東京都</td><td>商業施設（ホームセンター）</td><td class="num neg" style="text-align:left">恒久閉鎖</td><td style="text-align:left;white-space:normal">2026年9月6日 閉店（地下1階非食品フロアは8月30日に先行閉店）</td><td style="text-align:left;white-space:normal;min-width:14em">運営元Olympicグループとドン・キホーテなどを展開するPPIH（パン・パシフィック・インターナショナルホールディングス）の経営統合に伴う業態転換。2026年12月1日に「MEGAドン・キホーテ高井戸店」としてリニューアルオープン予定</td></tr>
+<tr data-cat="図書館"><td><a href="https://www.city.taito.lg.jp/library/news/lib_news/kyoutsu/tosyosys_kyukan.html" target="_blank" rel="noopener">台東区立図書館（区立図書館全館）</a></td><td>東京都</td><td>図書館</td><td class="num" style="text-align:left">一時休館</td><td style="text-align:left;white-space:normal">2026年9月10日 臨時休館・サービス停止（1日間）</td><td style="text-align:left;white-space:normal;min-width:14em">図書館情報システム更新のため</td></tr>
+<tr data-cat="娯楽施設"><td><a href="https://prtimes.jp/main/html/rd/p/000000209.000045787.html" target="_blank" rel="noopener">新宿コパボウル</a></td><td>東京都</td><td>娯楽施設（ボウリング場）</td><td class="num neg" style="text-align:left">恒久閉鎖</td><td style="text-align:left;white-space:normal">2026年9月30日 閉店（1971年10月28日開業、約55年の歴史に幕）</td><td style="text-align:left;white-space:normal;min-width:14em">入居ビル「ヒューマックスパビリオン新宿歌舞伎町」の契約満了・建て替えに伴う閉店</td></tr>
+<tr data-cat="博物館・科学館"><td><a href="https://www.miraikan.jst.go.jp/news/general/202603244471.html" target="_blank" rel="noopener">日本科学未来館</a></td><td>東京都</td><td>博物館・科学館</td><td class="num" style="text-align:left">一時休館</td><td style="text-align:left;white-space:normal">2026年10月1日〜2027年4月23日（約半年間、全館休館）</td><td style="text-align:left;white-space:normal;min-width:14em">施設整備工事（老朽化に伴う大規模改修）のため</td></tr>
+<tr data-cat="美術館"><td><a href="https://www.mori.art.museum/jp/news/2026/08/9007/" target="_blank" rel="noopener">森美術館</a></td><td>東京都</td><td>美術館</td><td class="num" style="text-align:left">一時休館</td><td style="text-align:left;white-space:normal">2027年9月24日〜2028年4月下旬（予定）</td><td style="text-align:left;white-space:normal;min-width:14em">改修工事に伴う一時休館</td></tr>
+<tr data-cat="商業施設"><td><a href="https://news.yahoo.co.jp/expert/articles/dc3f2f62fe943325a306529accc7d8a28d81ada3" target="_blank" rel="noopener">西武渋谷店</a></td><td>東京都</td><td>商業施設（百貨店）</td><td class="num neg" style="text-align:left">恒久閉鎖</td><td style="text-align:left;white-space:normal">2026年9月30日 閉店</td><td style="text-align:left;white-space:normal;min-width:14em">再開発を巡る地権者との協議が不調に終わり、契約満了に伴い閉店</td></tr>
+<tr data-cat="レジャー・公園施設"><td><a href="https://www.shinwanosato.jp/2026/09/post-703/" target="_blank" rel="noopener">しんわの里</a></td><td>鹿児島県</td><td>レジャー・公園施設</td><td class="num" style="text-align:left">一時休館</td><td style="text-align:left;white-space:normal">2026年9月5日（土）屋外施設・遊具を臨時休業（1日間）</td><td style="text-align:left;white-space:normal;min-width:14em">台風接近に伴う暴風のため</td></tr>
+</tbody></table></div>
+  <p class="src">出典：「閉館ウォッチ」データリポジトリ（Fujiterun/closure-watch-data）。2026年8月31日週〜9月14日週の3週分。施設名をクリックすると出典記事が開く。</p>
+</section>
+
+</div>
+<div class="tabpanel" id="panel-src" role="tabpanel" aria-labelledby="tab-src" hidden>
 <section id="src">
   <div class="sechead"><span class="n">出典</span><h2>出典一覧</h2></div>
   <ol class="srclist">
@@ -2723,3 +3647,93 @@ footer{margin-top:64px;padding-top:24px;border-top:2px solid var(--ink);
   </footer>
 </section>
 </div>
+</div>
+
+<script>
+(function(){
+  const tabs = Array.from(document.querySelectorAll('.tabsbar button[role="tab"]'));
+  const panels = new Map(tabs.map(t => [t.dataset.tab, document.getElementById('panel-'+t.dataset.tab)]));
+  function show(id, push){
+    if(!panels.has(id)) id = tabs[0].dataset.tab;
+    tabs.forEach(t => t.setAttribute('aria-selected', String(t.dataset.tab === id)));
+    panels.forEach((p, k) => { p.hidden = (k !== id); });
+    if(push && location.hash.slice(1).split('/')[0] !== id) history.replaceState(null,'','#'+id);
+    document.querySelector('.tabsbar').scrollIntoView({block:'start'});
+  }
+  tabs.forEach(t => t.addEventListener('click', () => show(t.dataset.tab, true)));
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[data-goto]');
+    if(!a) return;
+    e.preventDefault();
+    show(a.dataset.goto, true);
+    const anc = a.getAttribute('href');
+    if(anc && anc.startsWith('#') && anc.length > 1){
+      const el = document.querySelector(anc);
+      if(el) setTimeout(() => el.scrollIntoView({block:'start', behavior:'smooth'}), 60);
+    }
+  });
+  window.addEventListener('hashchange', () => show(location.hash.slice(1), false));
+  show(location.hash.slice(1) || tabs[0].dataset.tab, false);
+
+  /* ---- 並べ替え可能な表 ---- */
+  function cellVal(tr, i){
+    const td = tr.children[i]; if(!td) return '';
+    const t = td.textContent.replace(/[,\s　]/g,'').replace('△','-').replace('−','-').replace('％','').replace('%','');
+    const n = parseFloat(t);
+    return (t !== '' && !isNaN(n) && /^-?[\d.]+$/.test(t)) ? n : td.textContent.trim();
+  }
+  document.querySelectorAll('table[data-sortable]').forEach(tb => {
+    const head = tb.tHead && tb.tHead.rows[tb.tHead.rows.length-1];
+    if(!head) return;
+    Array.from(head.cells).forEach((th, i) => {
+      th.classList.add('sortable');
+      th.tabIndex = 0;
+      const go = () => {
+        const dir = th.dataset.dir === 'asc' ? 'desc' : 'asc';
+        Array.from(head.cells).forEach(o => o.removeAttribute('data-dir'));
+        th.dataset.dir = dir;
+        const body = tb.tBodies[0];
+        const rows = Array.from(body.rows).filter(r => !r.classList.contains('tot'));
+        const tot = Array.from(body.rows).filter(r => r.classList.contains('tot'));
+        rows.sort((a,b) => {
+          const x = cellVal(a,i), y = cellVal(b,i);
+          if(typeof x === 'number' && typeof y === 'number') return dir==='asc' ? x-y : y-x;
+          return dir==='asc' ? String(x).localeCompare(String(y),'ja') : String(y).localeCompare(String(x),'ja');
+        });
+        rows.concat(tot).forEach(r => body.appendChild(r));
+      };
+      th.addEventListener('click', go);
+      th.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); go(); } });
+    });
+  });
+
+  /* ---- 絞り込み（検索＋カテゴリチップ） ---- */
+  document.querySelectorAll('[data-filter-for]').forEach(ctl => {
+    const tb = document.getElementById(ctl.dataset.filterFor);
+    if(!tb) return;
+    const input = ctl.querySelector('input');
+    const cnt = ctl.querySelector('.cnt');
+    const chipBox = document.querySelector('[data-chips-for="'+ctl.dataset.filterFor+'"]');
+    const chips = chipBox ? Array.from(chipBox.querySelectorAll('.chip')) : [];
+    let active = 'all';
+    function apply(){
+      const q = (input && input.value || '').trim().toLowerCase();
+      let n = 0;
+      Array.from(tb.tBodies[0].rows).forEach(r => {
+        const txt = r.textContent.toLowerCase();
+        const cat = r.dataset.cat || '';
+        const ok = (!q || txt.includes(q)) && (active === 'all' || cat === active);
+        r.hidden = !ok; if(ok) n++;
+      });
+      if(cnt) cnt.textContent = n + ' 件';
+    }
+    if(input) input.addEventListener('input', apply);
+    chips.forEach(c => c.addEventListener('click', () => {
+      active = c.dataset.cat;
+      chips.forEach(o => o.setAttribute('aria-pressed', String(o === c)));
+      apply();
+    }));
+    apply();
+  });
+})();
+</script>

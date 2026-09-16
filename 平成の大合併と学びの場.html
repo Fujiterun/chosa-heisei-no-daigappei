@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <title>平成の大合併と学びの場</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -111,6 +112,21 @@ svg .callout{font-family:var(--sans);font-size:11px;fill:var(--ink2)}
 svg .leg{font-family:var(--sans);font-size:11.5px;fill:var(--ink2)}
 svg .panel-ttl{font-family:var(--sans);font-size:12.5px;font-weight:700}
 .src{font-family:var(--mono);font-size:11px;color:var(--ink3);margin-top:10px;line-height:1.7}
+
+/* ---- グラフのホバー表示 ---- */
+.cht-tip{position:fixed;left:0;top:0;z-index:80;pointer-events:none;opacity:0;
+  transition:opacity .08s linear;background:var(--ink);color:var(--paper);
+  font-family:var(--sans);font-size:12.5px;line-height:1.6;letter-spacing:.01em;
+  padding:7px 11px;border-radius:5px;max-width:min(300px,72vw);white-space:pre-line;
+  font-variant-numeric:tabular-nums;box-shadow:0 5px 18px rgba(0,0,0,.26)}
+.cht-tip[data-on]{opacity:1}
+svg.cht [data-tip]{cursor:crosshair}
+svg.cht [data-hot],svg.cht [data-hot] circle,svg.cht [data-hot] rect{
+  stroke:var(--ink);stroke-width:1.8px}
+.hint{font-family:var(--mono);font-size:11px;line-height:1.7;color:var(--ink3);
+  margin:0 0 22px;max-width:72ch}
+.hint b{color:var(--s2);font-weight:500;margin-right:7px}
+
 
 /* ---- tables ---- */
 .tbox{overflow-x:auto;border:1px solid var(--rule);background:var(--panel);margin:0}
@@ -259,6 +275,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
 <li role="presentation"><button role="tab" id="tab-data" aria-controls="panel-data" aria-selected="false" data-tab="data"><span class="n">13</span>参考資料</button></li>
 <li role="presentation"><button role="tab" id="tab-src" aria-controls="panel-src" aria-selected="false" data-tab="src"><span class="n">14</span>出典</button></li>
 </ol></nav>
+<p class="hint"><b>操作</b>グラフは点・棒にカーソルを合わせると（タッチ端末では触れると）実数が出る。表は見出しをクリックで並べ替え、検索欄のある表は絞り込める。</p>
 <div class="tabpanel" id="panel-summary" role="tabpanel" aria-labelledby="tab-summary">
 
 <section id="summary">
@@ -6173,12 +6190,12 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
 (function(){
   const tabs = Array.from(document.querySelectorAll('.tabsbar button[role="tab"]'));
   const panels = new Map(tabs.map(t => [t.dataset.tab, document.getElementById('panel-'+t.dataset.tab)]));
-  function show(id, push){
+  function show(id, push, scroll){
     if(!panels.has(id)) id = tabs[0].dataset.tab;
     tabs.forEach(t => t.setAttribute('aria-selected', String(t.dataset.tab === id)));
     panels.forEach((p, k) => { p.hidden = (k !== id); });
     if(push && location.hash.slice(1).split('/')[0] !== id) history.replaceState(null,'','#'+id);
-    document.querySelector('.tabsbar').scrollIntoView({block:'start'});
+    if(scroll !== false) document.querySelector('.tabsbar').scrollIntoView({block:'start'});
   }
   tabs.forEach(t => t.addEventListener('click', () => show(t.dataset.tab, true)));
   document.addEventListener('click', e => {
@@ -6193,7 +6210,7 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
     }
   });
   window.addEventListener('hashchange', () => show(location.hash.slice(1), false));
-  show(location.hash.slice(1) || tabs[0].dataset.tab, false);
+  show(location.hash.slice(1) || tabs[0].dataset.tab, false, !!location.hash.slice(1));
 
   /* ---- 並べ替え可能な表 ---- */
   function cellVal(tr, i){
@@ -6255,5 +6272,83 @@ th.sortable[data-dir="desc"]::after{content:"↓";color:var(--s1)}
     }));
     apply();
   });
+
+  /* ---- グラフのホバー表示（SVGの<title>を独自ツールチップに置き換える） ---- */
+  (function(){
+    const tip = document.createElement('div');
+    tip.className = 'cht-tip';
+    document.body.appendChild(tip);
+    let cur = null;
+    function hide(){
+      if(cur){ cur.removeAttribute('data-hot'); cur = null; }
+      tip.removeAttribute('data-on');
+    }
+    function place(cx, cy){
+      const pad = 15, w = tip.offsetWidth, h = tip.offsetHeight;
+      let x = cx + pad, y = cy + pad;
+      if(x + w > window.innerWidth - 8)  x = cx - w - pad;
+      if(y + h > window.innerHeight - 8) y = cy - h - pad;
+      tip.style.left = Math.max(8, x) + 'px';
+      tip.style.top  = Math.max(8, y) + 'px';
+    }
+    document.querySelectorAll('svg.cht').forEach(svg => {
+      const marks = [];
+      svg.querySelectorAll('title').forEach(t => {
+        const el = t.parentNode, txt = t.textContent;
+        el.removeChild(t);                      /* ブラウザ既定のツールチップを止める */
+        el.setAttribute('data-tip', txt);
+        if(!el.hasAttribute('aria-label')){        /* 読み上げ用の名前は維持する */
+          el.setAttribute('aria-label', txt);
+          if(!el.hasAttribute('role')) el.setAttribute('role', 'img');
+        }
+        marks.push(el);
+      });
+      if(!marks.length) return;
+      let boxes = null;
+      function geom(){
+        if(boxes) return boxes;
+        boxes = [];
+        marks.forEach(el => {
+          try{
+            const b = el.getBBox();
+            if(b.width || b.height) boxes.push({el:el, x:b.x+b.width/2, y:b.y+b.height/2, hw:b.width/2, hh:b.height/2});
+          }catch(_){}
+        });
+        return boxes;
+      }
+      function at(e){
+        let el = e.target && e.target.closest ? e.target.closest('[data-tip]') : null;
+        if(!el){                                 /* 小さい点は近傍でも拾う */
+          const m = svg.getScreenCTM();
+          if(m){
+            const pt = svg.createSVGPoint();
+            pt.x = e.clientX; pt.y = e.clientY;
+            const p = pt.matrixTransform(m.inverse());
+            let best = null, bd = 1e9;
+            geom().forEach(c => {
+              const dx = Math.max(Math.abs(p.x - c.x) - c.hw, 0);
+              const dy = Math.max(Math.abs(p.y - c.y) - c.hh, 0);
+              const d = Math.sqrt(dx*dx + dy*dy);
+              if(d < bd){ bd = d; best = c.el; }
+            });
+            if(best && bd <= 16) el = best;
+          }
+        }
+        if(!el){ hide(); return; }
+        if(el !== cur){
+          if(cur) cur.removeAttribute('data-hot');
+          cur = el; cur.setAttribute('data-hot', '');
+          tip.textContent = el.getAttribute('data-tip');
+          tip.setAttribute('data-on', '');
+        }
+        place(e.clientX, e.clientY);
+      }
+      svg.addEventListener('pointermove', at);
+      svg.addEventListener('pointerdown', at);
+      svg.addEventListener('pointerleave', hide);
+    });
+    window.addEventListener('scroll', hide, true);
+    window.addEventListener('blur', hide);
+  })();
 })();
 </script>

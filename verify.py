@@ -118,6 +118,50 @@ try:
         got = [r for r in chrono.LONG if int(r['年度'])==y][0]['小学校数']
         chk(abs(float(got)-v) < 1, f"小学校数 {y}年度={v:,}（学校基本調査）")
     chk("16,285校から10,751校" not in txt, "誤記「中学校 16,285校→10,751校」が残っていない")
+    # ---- 47都道府県シナリオ ----
+    import pref_scen as PS, region_scen as RS, scenario3 as NAT
+    chk(len(PS.PREFS)==47, f"都道府県別推計が47件（実際{len(PS.PREFS)}）")
+    mono = [(p,f,y) for p in PS.PREFS for f in PS.DKEY if PS.FAC[p][f]
+            for y in PS.YEARS[1:]
+            if not (PS.access(p,f,'good',y) <= PS.access(p,f,'bad',y)+1e-9 <= PS.access(p,f,'worst',y)+1e-9)]
+    chk(not mono, f"都道府県シナリオの単調性（良い≤悪い≤最悪） {mono[:3]}")
+    for f in ('公民館','図書館','博物館','小中学校'):
+        a = sum(RS.FAC[r][f]['2024'] for r in RS.RMAP)
+        b = sum(PS.FAC[p][f] for p in PS.PREFS)
+        chk(abs(a-b) < 0.5, f"{f}の47県合計と8地方合計が一致（{b:,.0f}／{a:,.0f}）")
+    need = [p for p in PS.PREFS if PS.FAC[p]['公民館'] and PS.count(p,'公民館','good',2050) > PS.FAC[p]['公民館']]
+    chk(len(need)==20, f"良い未来で公民館の増設が必要な県=20（実際{len(need)}）")
+    chk("増やす必要がある20都道府県" in txt, "本文の県数の記述が試算と一致")
+    n0 = sum(PS.FAC[p]['公民館'] for p in need)
+    n1 = sum(PS.count(p,'公民館','good',2050) for p in need)
+    chk(f"{n0:,.0f}館から{n1:,.0f}館へ{n1-n0:,.0f}館の不足" in txt,
+        f"20都府県の合計（{n0:,.0f}→{n1:,.0f}、{n1-n0:+,.0f}）が本文と一致")
+    gap = sum(sum(PS.count(p,f,'good',2050)-PS.count(p,f,'bad',2050) for p in PS.PREFS if PS.FAC[p][f])
+              for f in PS.DKEY)
+    chk(f"{gap:,.0f}施設" in txt, f"良い未来と悪い未来の差 {gap:,.0f}施設 が本文と一致")
+    for p, f, v in [('秋田県','小中学校',-54.7), ('青森県','小中学校',-54.5),
+                    ('秋田県','公民館',-49.7), ('東京都','小中学校',-14.6), ('東京都','公民館',-15.9)]:
+        got = (PS.count(p,f,'bad',2050)/PS.FAC[p][f]-1)*100
+        chk(abs(round(got,1)-v) < 0.05, f"{p}の{f} 2050年減少率 {v}%（実際{got:.1f}%）")
+    d = PS.FAC['長野県']['公民館'] - PS.count('長野県','公民館','bad',2050)
+    chk(abs(d-638) < 1, f"長野県の公民館 638館減（実際{d:.0f}）")
+    for f, m, want in [('公民館','good',12106), ('公民館','bad',6532), ('公民館','worst',4295),
+                       ('小中学校','good',16540), ('図書館','worst',1121), ('博物館','bad',2890)]:
+        got = NAT.count(f, m, 2070)
+        chk(abs(got-want) < 1, f"全国2070年 {f}・{m} = {want:,}（実際{got:,.0f}）")
+    for f, m, want in [('公民館','bad',1.85), ('公民館','worst',2.82), ('図書館','worst',2.13),
+                       ('小中学校','bad',1.15)]:
+        got = NAT.access(f,m,2070)/NAT.access(f,'good',2024)
+        chk(abs(round(got,2)-want) < 0.005, f"遠さ {f}・{m} = {want}倍（実際{got:.2f}）")
+
+    # ---- SVGラベルの色指定がCSSに負けていないか ----
+    FILLCLS = {'tick','tick sm','rowlab','axttl','band-lb','note-in','inbar',
+               'vsm','vtiny','vzero','callout','leg'}
+    lost = [m.group(0) for m in re.finditer(r'<text[^>]*>', h)
+            if (c := re.search(r'class="([^"]+)"', m.group(0))) and c.group(1) in FILLCLS
+            and re.search(r'\sfill="', m.group(0)) and 'style="fill' not in m.group(0)]
+    chk(not lost, f"SVGラベルの色がCSSに上書きされる箇所なし（{len(lost)}件）")
+
     # ---- タブ内リンクの整合 ----
     ids = {t[0] for t in shell.TABS}
     gotos = set(re.findall(r'data-goto="([a-z0-9\-]+)"', h))

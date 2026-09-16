@@ -92,6 +92,42 @@ try:
     tbad=sorted(r for r in trefs-set(tabs))
     chk(not tbad, f"本文の表参照に未定義なし {tbad}")
     chk('図8' not in txt or True, "（参考）仮番号80x/81x/82x/83x/84x/85xの残骸なし" )
+    # ---- 年表タブ ----
+    import chrono, shell
+    chk(len(chrono.EV)==54, f"年表の採録件数=54（実際{len(chrono.EV)}）")
+    chk(f"{len(chrono.EV)}件" in txt, "本文の年表件数の記述が採録件数と一致")
+    rows = dict((r[0], r) for r in chrono.elast_rows())
+    for lb, want in [("1990-99", 0.13), ("1999-2010", 1.34), ("2010-15", 0.99), ("2015-26", 0.79)]:
+        got = rows[lb][3]
+        chk(abs(round(got,2)-want) < 0.005, f"追随度 {lb}={want:.2f}（実際{got:.3f}）")
+    kom = dict((f"{a}->{b}", ((vb/va)**(1/(b-a))-1)*100)
+               for (a,va),(b,vb) in zip(chrono.KOM[:-1], chrono.KOM[1:]))
+    chk(abs(kom["2005->2008"]+3.06) < 0.005, f"公民館 2005→2008 年率−3.06%（実際{kom['2005->2008']:.2f}）")
+    chk(abs(kom["2021->2024"]+1.89) < 0.005, f"公民館 2021→2024 年率−1.89%（実際{kom['2021->2024']:.2f}）")
+    lib = dict((f"{a}->{b}", ((vb/va)**(1/(b-a))-1)*100)
+               for (a,va),(b,vb) in zip(chrono.LIB[:-1], chrono.LIB[1:]))
+    chk(abs(lib["2002->2005"]-2.80) < 0.005, f"図書館 2002→2005 年率+2.80%（実際{lib['2002->2005']:.2f}）")
+    mus = dict((f"{a}->{b}", ((vb/va)**(1/(b-a))-1)*100)
+               for (a,va),(b,vb) in zip(chrono.MUS[:-1], chrono.MUS[1:]))
+    chk(abs(mus["2008->2011"]-0.37) < 0.005, f"博物館 2008→2011 年率+0.37%（実際{mus['2008->2011']:.2f}）")
+    for y, v in [(1953, 13685), (1961, 12849)]:
+        got = [r for r in chrono.LONG if int(r['年度'])==y][0]['中学校数']
+        chk(abs(float(got)-v) < 1, f"中学校数 {y}年度={v:,}（学校基本調査）")
+        chk(f"{v:,}校" in txt, f"本文に中学校数 {v:,}校 の記述あり")
+    for y, v in [(1953, 26555), (1961, 26741)]:
+        got = [r for r in chrono.LONG if int(r['年度'])==y][0]['小学校数']
+        chk(abs(float(got)-v) < 1, f"小学校数 {y}年度={v:,}（学校基本調査）")
+    chk("16,285校から10,751校" not in txt, "誤記「中学校 16,285校→10,751校」が残っていない")
+    # ---- タブ内リンクの整合 ----
+    ids = {t[0] for t in shell.TABS}
+    gotos = set(re.findall(r'data-goto="([a-z0-9\-]+)"', h))
+    chk(not (gotos-ids), f"data-goto の参照先がすべて実在するタブ {sorted(gotos-ids)}")
+    import collections
+    _ids = re.findall(r'\bid="([^"]+)"', h)
+    _dup = sorted(k for k, v in collections.Counter(_ids).items() if v > 1)
+    chk(not _dup, f"HTML内のidに重複なし {_dup}")
+    anchors = set(re.findall(r'href="#panel-([a-z0-9\-]+)"', h))
+    chk(not (anchors-ids), f"#panel- アンカーがすべて実在 {sorted(anchors-ids)}")
     leftover=re.findall(r'[図表](8[0-9]{2})', txt)
     chk(not leftover, f"仮番号の残骸なし {sorted(set(leftover))}")
 except FileNotFoundError:

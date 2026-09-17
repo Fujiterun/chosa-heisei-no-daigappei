@@ -94,7 +94,7 @@ try:
     chk('図8' not in txt or True, "（参考）仮番号80x/81x/82x/83x/84x/85xの残骸なし" )
     # ---- 年表タブ ----
     import chrono, shell
-    chk(len(chrono.EV)==54, f"年表の採録件数=54（実際{len(chrono.EV)}）")
+    chk(len(chrono.EV)==57, f"年表の採録件数=57（実際{len(chrono.EV)}）")
     chk(f"{len(chrono.EV)}件" in txt, "本文の年表件数の記述が採録件数と一致")
     rows = dict((r[0], r) for r in chrono.elast_rows())
     for lb, want in [("1990-99", 0.13), ("1999-2010", 1.34), ("2010-15", 0.99), ("2015-26", 0.79)]:
@@ -153,6 +153,60 @@ try:
                        ('小中学校','bad',1.15)]:
         got = NAT.access(f,m,2070)/NAT.access(f,'good',2024)
         chk(abs(round(got,2)-want) < 0.005, f"遠さ {f}・{m} = {want}倍（実際{got:.2f}）")
+
+    # ---- 予算（地方教育費調査） ----
+    import budget as BG, body_pace as PC
+    for y, lb, tot, sch, soc, adm in BG.FIELD:
+        chk(abs(sch+soc+adm-tot) <= 2, f"{lb} 分野別の内訳合計＝総額（差{sch+soc+adm-tot}）")
+    r = BG.field_rows()
+    for nm, ix, want in [("総額",6,-14.9), ("学校教育費",7,-11.2), ("社会教育費",8,-42.8), ("教育行政費",9,5.2)]:
+        got = r[-1][ix]-100
+        chk(abs(round(got,1)-want) < 0.05, f"H8→R5 {nm} {want:+.1f}%（実際{got:+.1f}%）")
+    chk(abs(round(r[0][10],1)-14.7) < 0.05 and abs(round(r[-1][10],1)-9.9) < 0.05,
+        f"社会教育費の割合 14.7%→9.9%（実際{r[0][10]:.1f}%→{r[-1][10]:.1f}%）")
+    b = BG.FAC[0]; e = BG.FAC[-1]
+    for nm, i, want in [("社会教育費",2,-44.1), ("公民館費",3,-34.2), ("図書館費",4,-16.2), ("博物館費",5,-54.0)]:
+        got = (e[i]/b[i]-1)*100
+        chk(abs(round(got,1)-want) < 0.05, f"H6→R2 {nm} {want:+.1f}%（実際{got:+.1f}%）")
+    # 地方教育費調査の2系列が重なる年で一致するか
+    ann = {lb: soc for _, lb, _, _, soc, _ in BG.FIELD}
+    for lb, yr, soc, *_ in BG.FAC:
+        if lb in ann:
+            chk(abs(ann[lb]-soc) <= 1, f"{lb} 社会教育費が2系列で一致（年次表{ann[lb]:,}／内訳表{soc:,}）")
+    d11 = {f: (bd, n, pp) for l, f, bd, n, pp in BG.per_facility() if l == "H11"}
+    d30 = {f: (bd, n, pp) for l, f, bd, n, pp in BG.per_facility() if l == "H30"}
+    for f, ix, want in [("図書館",1,29.6), ("図書館",0,-22.3), ("図書館",2,-40.0),
+                        ("博物館",1,12.3), ("博物館",0,-50.3), ("博物館",2,-55.7),
+                        ("公民館",1,-25.1), ("公民館",0,-31.9), ("公民館",2,-9.1)]:
+        got = (d30[f][ix]/d11[f][ix]-1)*100
+        lab = ["予算","施設数","1施設あたり"][ix]
+        chk(abs(round(got,1)-want) < 0.05, f"H11→H30 {f}の{lab} {want:+.1f}%（実際{got:+.1f}%）")
+    chk(abs(sum(v for _, v, _ in BG.NAT) - BG.NAT_TOTAL) <= 2,
+        f"令和8年度 主要経費の合計＝122兆3,092億円（差{sum(v for _,v,_ in BG.NAT)-BG.NAT_TOTAL}）")
+    chk("46,028億円（3.8％）" in txt, "文教関係46,028億円（3.8%）の記述が計算と一致")
+    for nm, yrs, sc, ss, jc, js in PC.PACE:
+        pass
+    p1, p2 = PC.PACE[1], PC.PACE[2]
+    for lab, a, b2, want in [("小 年あたり", p1[3]/p1[1], p2[3]/p2[1], (185.9, 250.8)),
+                             ("中 年あたり", p1[5]/p1[1], p2[5]/p2[1], (40.9, 61.8))]:
+        chk(abs(round(a,1)-want[0]) < 0.05 and abs(round(b2,1)-want[1]) < 0.05,
+            f"{lab} {want[0]}→{want[1]}（実際{a:.1f}→{b2:.1f}）")
+    s1, s2 = p1[3]/(p1[2]/10000), p2[3]/(p2[2]/10000)
+    j1, j2 = p1[5]/(p1[4]/10000), p2[5]/(p2[4]/10000)
+    chk(abs(round(s1,1)-43.3) < 0.05 and abs(round(s2,1)-44.4) < 0.05,
+        f"小 児童1万人減あたり 43.3→44.4（実際{s1:.1f}→{s2:.1f}）")
+    chk(abs(round(j1,1)-7.0) < 0.05 and abs(round(j2,1)-16.3) < 0.05,
+        f"中 生徒1万人減あたり 7.0→16.3（実際{j1:.1f}→{j2:.1f}）")
+    chk(abs(round(j2/j1,1)-2.3) < 0.05, f"中学校は2.3倍に加速（実際{j2/j1:.2f}倍）")
+
+    # ---- 網羅チェック表の集計と本文の一致 ----
+    import coverage as CV
+    _c = {k: 0 for k in CV.MARK}
+    for _, _st, _ in CV.AXES:
+        for _f in CV.FACS: _c[_st[_f]] += 1
+    _tot = sum(_c.values())
+    chk(f"{_tot}セル中、未取得は{_c['未']}セル" in txt,
+        f"網羅チェックの本文が集計と一致（{_tot}セル／未取得{_c['未']}）")
 
     # ---- SVGラベルの色指定がCSSに負けていないか ----
     FILLCLS = {'tick','tick sm','rowlab','axttl','band-lb','note-in','inbar',

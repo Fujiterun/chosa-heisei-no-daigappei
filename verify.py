@@ -22,12 +22,19 @@ for t in ('section','figure','table','div','details','nav','button','svg','tbody
 ids = re.findall(r'\bid="([^"]+)"', h)
 dup = sorted(k for k, v in collections.Counter(ids).items() if v > 1)
 chk(not dup, f'id に重複なし {dup}')
-nav = h[h.index('<nav class="tabsbar"'):h.index('</nav>')]
+nav = h[h.index('<nav class="navpanel"'):h.index('</nav>')]
 tabs = re.findall(r'data-tab="([a-z]+)"', nav)
 panels = re.findall(r'class="tabpanel" id="panel-([a-z]+)"', h)
-chk(tabs == panels, f'タブとパネルが一対一（{len(tabs)}／{len(panels)}）')
-nums = re.findall(r'id="tab-[a-z]+"[^>]*><span class="n">(\d+)</span>', h)
-chk(nums == [f'{i:02d}' for i in range(len(tabs))], f'タブ番号が00から連番（{len(nums)}件）')
+chk(tabs == panels, f'メニューとパネルが同じ順序で一対一（{len(tabs)}／{len(panels)}）')
+nums = re.findall(r'data-tab="[a-z]+">\s*<span class="n">(\d+)</span>', nav)
+chk(nums == [f'{i:02d}' for i in range(len(tabs))], f'章番号が00から連番（{len(nums)}件）')
+groups = re.findall(r'<section class="navgroup"><h3>([^<]+)<', nav)
+chk(len(groups) >= 4, f'メニューが{len(groups)}カテゴリに分かれている {groups}')
+chk(h.count('id="navtoggle"') == 1 and h.count('id="navpanel"') == 1, 'ハンバーガーの要素が1組だけ存在')
+chk('.tabsbar' not in h, '旧タブバーの残骸なし')
+vis = re.findall(r'<div class="tabpanel" id="panel-([a-z]+)"[^>]*?>', h)
+openp = [m.group(1) for m in re.finditer(r'<div class="tabpanel" id="panel-([a-z]+)" role="tabpanel" aria-labelledby="tab-\1">', h)]
+chk(openp == [tabs[0]], f'初期表示は先頭章のみ {openp}')
 
 # ---------- 2. 図表番号 ----------
 figs = [int(x) for x in re.findall(r'<b>図(\d+)</b>', h)]
